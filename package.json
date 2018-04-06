@@ -1,0 +1,39 @@
+{
+  "name": "react-semantic-ui-calendars",
+  "version": "0.0.0",
+  "description": "Calendars styled with Semantic UI for React",
+  "main": "dist/index.js",
+  "scripts": {
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "test": "kcd-scripts test"
+  },
+  "keywords": [
+    "semantic-ui",
+    "calendar",
+    "react",
+    "render-props"
+  ],
+  "author": "Arthur Denner <arthurdenner7@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "dayzed": "^1.1.0",
+    "prop-types": "^15.6.1",
+    "react": "16.2",
+    "react-dom": "16.2",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.79.1"
+  },
+  "devDependencies": {
+    "@storybook/react": "^3.4.0",
+    "babel-core": "^6.26.0",
+    "kcd-scripts": "^0.36.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arthurdenner/react-semantic-ui-calendars.git"
+  },
+  "bugs": {
+    "url": "https://github.com/arthurdenner/react-semantic-ui-calendars/issues"
+  },
+  "homepage": "https://github.com/arthurdenner/react-semantic-ui-calendars#readme"
+}
