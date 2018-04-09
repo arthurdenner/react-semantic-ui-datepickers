@@ -1,0 +1,9 @@
+.clndr-btn {
+  display: flex !important;
+  align-items: center;
+  height: 100%;
+}
+
+.clndr-btn-content {
+  margin: 0 5px;
+}
