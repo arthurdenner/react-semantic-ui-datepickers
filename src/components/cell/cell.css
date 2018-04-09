@@ -6,9 +6,18 @@
   cursor: pointer;
 }
 
+.clndr-cell:hover {
+  background: #cacbcd;
+  color: inherit;
+}
+
 .clndr-cell-disabled {
   cursor: not-allowed;
   opacity: 0.45;
+}
+
+.clndr-cell-disabled:hover {
+  background: white;
 }
 
 .clndr-cell-today {
