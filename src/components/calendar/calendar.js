@@ -4,6 +4,7 @@ import { Segment } from 'semantic-ui-react';
 import Dayzed from 'dayzed';
 import Button from '../button';
 import CalendarCell from '../cell';
+import { getToday } from '../../utils';
 import { monthNamesShort, weekdayNamesShort } from '../../data';
 import 'semantic-ui-css/semantic.min.css';
 import './calendar.css';
@@ -13,6 +14,7 @@ const Calendar = ({
   onDateSelected,
   selected,
   selectedClassName,
+  showToday,
   ...otherProps
 }) => (
   <Dayzed
@@ -77,6 +79,15 @@ const Calendar = ({
                 );
               })
             )}
+            {showToday && (
+              <CalendarCell
+                fluid
+                {...getToday(selected)}
+                {...getDateProps({ dateObj: getToday(selected) })}
+              >
+                Today
+              </CalendarCell>
+            )}
           </div>
         </Segment>
       ))
@@ -89,10 +100,12 @@ Calendar.propTypes = {
   onDateSelected: PropTypes.func,
   selected: PropTypes.instanceOf(Date),
   selectedClassName: PropTypes.string,
+  showToday: PropTypes.bool,
 };
 
 Calendar.defaultProps = {
   onDateSelected: () => {},
+  showToday: true,
 };
 
 export default Calendar;
