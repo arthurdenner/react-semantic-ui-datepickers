@@ -33,29 +33,32 @@ class Calendar extends Component {
                 <Button
                   icon="angle double left"
                   iconPosition="left"
+                  title="Last year"
                   {...getBackProps({ calendars, offset: 12 })}
                 />
                 <Button
-                  content="Back"
                   icon="angle left"
                   iconPosition="left"
-                  {...getBackProps({ calendars })}
                   style={{ marginRight: 0 }}
+                  title="Last month"
+                  {...getBackProps({ calendars })}
                 />
 
                 <span className="clndr-control-month">
                   {monthNamesShort[calendar.month]} {calendar.year}
                 </span>
+
                 <Button
-                  content="Next"
                   icon="angle right"
                   iconPosition="right"
+                  title="Next month"
                   {...getForwardProps({ calendars })}
                 />
                 <Button
                   icon="angle double right"
                   iconPosition="right"
                   style={{ marginRight: 0 }}
+                  title="Next year"
                   {...getForwardProps({ calendars, offset: 12 })}
                 />
               </div>

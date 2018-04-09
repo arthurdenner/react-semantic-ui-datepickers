@@ -25,10 +25,12 @@ class Single extends React.Component {
     const { selectedDate } = this.state;
 
     return (
-      <Calendar
-        selected={this.state.selectedDate}
-        onDateSelected={this.handleOnDateSelected}
-      />
+      <div style={{ margin: 50 }}>
+        <Calendar
+          selected={this.state.selectedDate}
+          onDateSelected={this.handleOnDateSelected}
+        />
+      </div>
     );
   }
 }
