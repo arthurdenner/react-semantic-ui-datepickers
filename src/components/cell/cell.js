@@ -21,15 +21,14 @@ const CalendarCell = ({
 );
 
 CalendarCell.propTypes = {
+  selected: PropTypes.bool,
   selectable: PropTypes.bool,
   selectedClassName: PropTypes.string,
   today: PropTypes.bool,
 };
 
 CalendarCell.defaultProps = {
-  selectable: false,
   selectedClassName: 'clndr-cell-selected',
-  today: false,
 };
 
 export default CalendarCell;

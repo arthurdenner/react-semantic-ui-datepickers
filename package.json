@@ -4,6 +4,9 @@
   "description": "Calendars styled with Semantic UI for React",
   "main": "dist/index.js",
   "scripts": {
+    "build": "kcd-scripts build",
+    "lint": "kcd-scripts lint",
+    "precommit": "kcd-scripts precommit",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "kcd-scripts test"
   },
@@ -30,6 +33,17 @@
     "babel-runtime": "^6.26.0",
     "kcd-scripts": "^0.36.1"
   },
+  "eslintConfig": {
+    "extends": "./node_modules/kcd-scripts/eslint.js",
+    "rules": {
+      "import/no-unassigned-import": 0
+    }
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "coverage",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/arthurdenner/react-semantic-ui-calendars.git"

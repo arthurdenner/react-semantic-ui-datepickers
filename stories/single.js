@@ -6,10 +6,11 @@ class Single extends React.Component {
     selectedDate: null,
   };
 
-  handleOnDateSelected = ({ selected, selectable, date }) => {
+  handleOnDateSelected = ({ selectable, date }) => {
     if (!selectable) {
       return;
     }
+
     this.setState(({ selectedDate }) => {
       let newDate = date;
 
@@ -27,7 +28,7 @@ class Single extends React.Component {
     return (
       <div style={{ margin: 50 }}>
         <Calendar
-          selected={this.state.selectedDate}
+          selected={selectedDate}
           onDateSelected={this.handleOnDateSelected}
         />
       </div>
