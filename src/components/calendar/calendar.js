@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import Dayzed from 'dayzed';
-import Button from '../button';
+import Button, { TodayButton } from '../button';
 import CalendarCell from '../cell';
 import { getToday } from '../../utils';
 import { monthNamesShort, weekdayNamesShort } from '../../data';
@@ -79,16 +79,15 @@ const Calendar = ({
                 );
               })
             )}
-            {showToday && (
-              <CalendarCell
-                fluid
-                {...getToday(selected)}
-                {...getDateProps({ dateObj: getToday(selected) })}
-              >
-                Today
-              </CalendarCell>
-            )}
           </div>
+          {showToday && (
+            <TodayButton
+              {...getToday(selected)}
+              {...getDateProps({ dateObj: getToday(selected) })}
+            >
+              Today
+            </TodayButton>
+          )}
         </Segment>
       ))
     }

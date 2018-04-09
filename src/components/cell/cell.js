@@ -4,7 +4,6 @@ import cn from 'classnames';
 import './cell.css';
 
 const CalendarCell = ({
-  fluid,
   selectable,
   selected,
   selectedClassName,
@@ -13,7 +12,6 @@ const CalendarCell = ({
 }) => (
   <span
     className={cn('clndr-cell', {
-      'clndr-cell-full': fluid,
       'clndr-cell-today': today,
       'clndr-cell-disabled': !selectable,
       [selectedClassName]: selected,
@@ -23,7 +21,6 @@ const CalendarCell = ({
 );
 
 CalendarCell.propTypes = {
-  fluid: PropTypes.bool,
   selected: PropTypes.bool,
   selectable: PropTypes.bool,
   selectedClassName: PropTypes.string,

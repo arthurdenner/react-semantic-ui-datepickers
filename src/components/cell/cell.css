@@ -8,17 +8,14 @@
 
 .clndr-cell-disabled {
   cursor: not-allowed;
+  opacity: 0.45;
 }
 
 .clndr-cell-today {
-  background: #e0e0e0;
+  background: #e0e1e2;
 }
 
 .clndr-cell-selected {
   background: #4f4f4f;
   color: #f2f2f2;
-}
-
-.clndr-cell-full {
-  grid-column: 1 / -1;
 }

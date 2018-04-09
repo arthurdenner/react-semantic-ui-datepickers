@@ -17,4 +17,7 @@
   grid-template-columns: repeat(7, minmax(40px, 1fr));
   background-color: rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.28571429rem;
+  position: relative;
+  overflow: hidden;
 }
