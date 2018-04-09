@@ -1,0 +1,19 @@
+.clndr-control {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto auto;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.clndr-control-month {
+  padding: 0 20px;
+}
+
+.clndr-days {
+  text-align: center;
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(7, minmax(40px, 1fr));
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
