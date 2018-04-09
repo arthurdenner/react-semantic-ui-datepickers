@@ -1,0 +1,20 @@
+.clndr-cell {
+  background: white;
+  transition: all 200ms;
+  padding: 5px 0;
+  height: 30px;
+  cursor: pointer;
+}
+
+.clndr-cell-disabled {
+  cursor: not-allowed;
+}
+
+.clndr-cell-today {
+  background: #e0e0e0;
+}
+
+.clndr-cell-selected {
+  background: #4f4f4f;
+  color: #f2f2f2;
+}

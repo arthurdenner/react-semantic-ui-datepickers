@@ -16,6 +16,7 @@
   "author": "Arthur Denner <arthurdenner7@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.5",
     "dayzed": "^1.1.0",
     "prop-types": "^15.6.1",
     "react": "16.2",
