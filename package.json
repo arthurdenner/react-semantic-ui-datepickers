@@ -20,7 +20,8 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "dayzed": "^1.1.0",
+    "date-fns": "^1.29.0",
+    "dayzed": "^2.0.1",
     "prop-types": "^15.6.1",
     "react": "16.2",
     "react-dom": "16.2",

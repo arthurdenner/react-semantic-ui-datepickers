@@ -1,23 +1,9 @@
-export const normalizeDate = date => {
-  const newDate = new Date(date.getTime());
-  newDate.setHours(0, 0, 0, 0);
-
-  return newDate;
-};
-
-const isEqual = (date, dateToCompare) => {
-  if (!date || !dateToCompare) {
-    return false;
-  }
-
-  return (
-    normalizeDate(date).getTime() === normalizeDate(dateToCompare).getTime()
-  );
-};
+import isEqual from 'date-fns/is_equal';
+import startOfTheDay from 'date-fns/start_of_day';
 
 export const getToday = selected => {
   return {
-    date: normalizeDate(new Date()),
+    date: startOfTheDay(new Date()),
     selectable: true,
     selected: isEqual(new Date(), selected),
     today: true,
