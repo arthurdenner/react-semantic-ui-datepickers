@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
 import isEqual from 'date-fns/is_equal';
+import isValid from 'date-fns/is_valid';
+import parse from 'date-fns/parse';
 import { formatDate } from '../utils';
 import Calendar from '../components/calendar';
 import Portal from '../components/portal';
@@ -23,6 +25,7 @@ class SimpleInput extends Component {
   state = {
     isCalendarVisible: false,
     selectedDate: null,
+    selectedDateFormatted: '',
   };
 
   onDateSelected = ({ selectable, date }) => {
@@ -30,7 +33,7 @@ class SimpleInput extends Component {
       return;
     }
 
-    const { onDateSelected } = this.props;
+    const { format, onDateSelected } = this.props;
 
     this.setState(({ selectedDate }) => {
       let newDate = date;
@@ -39,13 +42,50 @@ class SimpleInput extends Component {
         newDate = null;
       }
 
-      onDateSelected(date);
+      onDateSelected(newDate);
 
       return {
         isCalendarVisible: false,
         selectedDate: newDate,
+        selectedDateFormatted: formatDate(newDate, format),
       };
     });
+  };
+
+  handleBlur = () => {
+    const { format } = this.props;
+    const { selectedDateFormatted } = this.state;
+    const newDate = parse(selectedDateFormatted);
+
+    if (format.length !== selectedDateFormatted.length || !isValid(newDate)) {
+      this.setState({
+        selectedDateFormatted: '',
+      });
+    }
+  };
+
+  handleDateChange = (evt, { value }) => {
+    const { format, onDateSelected } = this.props;
+
+    this.setState({
+      selectedDate: null,
+      selectedDateFormatted: value,
+    });
+
+    onDateSelected(null);
+
+    if (value.length === format.length) {
+      const newDate = parse(value);
+
+      if (isValid(newDate)) {
+        this.setState({
+          selectedDate: newDate,
+          selectedDateFormatted: formatDate(newDate, format),
+        });
+
+        onDateSelected(newDate);
+      }
+    }
   };
 
   showCalendar = () => {
@@ -56,16 +96,21 @@ class SimpleInput extends Component {
 
   render() {
     const { date, format, inputProps } = this.props;
-    const { isCalendarVisible, selectedDate } = this.state;
+    const {
+      isCalendarVisible,
+      selectedDate,
+      selectedDateFormatted,
+    } = this.state;
 
     return (
       <div id="test">
         <Form.Input
           icon="calendar"
-          onChange={() => {}}
+          onBlur={this.handleBlur}
+          onChange={this.handleDateChange}
           onClick={this.showCalendar}
           placeholder={format}
-          value={formatDate(selectedDate, format)}
+          value={selectedDateFormatted}
           {...inputProps}
         />
         {isCalendarVisible && (
