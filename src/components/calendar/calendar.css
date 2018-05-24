@@ -1,8 +1,17 @@
+.clndr-calendar {
+  margin: 0 !important;
+}
+
 .clndr-control {
   display: grid;
-  grid-template-columns: auto auto 1fr auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 10px;
   align-items: center;
+}
+
+.clndr-control > div {
+  display: flex;
+  justify-content: var(--justify, flex-start);
 }
 
 .clndr-control-month {

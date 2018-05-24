@@ -4,22 +4,25 @@ import { Form } from 'semantic-ui-react';
 import isEqual from 'date-fns/is_equal';
 import isValid from 'date-fns/is_valid';
 import parse from 'date-fns/parse';
-import { formatDate } from '../utils';
+import formatByPattern from 'format-string-by-pattern';
+import { formatDate, omit, pick, semanticInputProps } from '../utils';
 import Calendar from '../components/calendar';
 import Portal from '../components/portal';
 
 class SimpleInput extends Component {
   static propTypes = {
     date: PropTypes.instanceOf(Date),
+    fluid: PropTypes.bool,
     format: PropTypes.string,
-    inputProps: PropTypes.object,
-    onDateSelected: PropTypes.func.isRequired,
+    onDateChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
   };
 
   static defaultProps = {
     date: undefined,
+    fluid: false,
     format: 'YYYY-MM-DD',
-    inputProps: {},
+    placeholder: null,
   };
 
   state = {
@@ -33,7 +36,7 @@ class SimpleInput extends Component {
       return;
     }
 
-    const { format, onDateSelected } = this.props;
+    const { format, onDateChange } = this.props;
 
     this.setState(({ selectedDate }) => {
       let newDate = date;
@@ -42,7 +45,7 @@ class SimpleInput extends Component {
         newDate = null;
       }
 
-      onDateSelected(newDate);
+      onDateChange(newDate);
 
       return {
         isCalendarVisible: false,
@@ -65,25 +68,36 @@ class SimpleInput extends Component {
   };
 
   handleDateChange = (evt, { value }) => {
-    const { format, onDateSelected } = this.props;
+    if (!value) {
+      this.setState({
+        selectedDate: null,
+        selectedDateFormatted: '',
+      });
+
+      return;
+    }
+
+    const { format, onDateChange } = this.props;
+    const formatInputValue = formatByPattern(format);
+    const formattedValue = formatInputValue(value.replace(/\D/g, ''));
 
     this.setState({
       selectedDate: null,
-      selectedDateFormatted: value,
+      selectedDateFormatted: formattedValue,
     });
 
-    onDateSelected(null);
+    onDateChange(null);
 
-    if (value.length === format.length) {
-      const newDate = parse(value);
+    if (formattedValue.length === format.length) {
+      const newDate = parse(formattedValue, format, new Date());
 
       if (isValid(newDate)) {
         this.setState({
-          selectedDate: newDate,
           selectedDateFormatted: formatDate(newDate, format),
+          selectedDate: newDate,
         });
 
-        onDateSelected(newDate);
+        onDateChange(newDate);
       }
     }
   };
@@ -94,8 +108,21 @@ class SimpleInput extends Component {
     }));
   };
 
+  get dayzedProps() {
+    return omit(semanticInputProps, this.props);
+  }
+
+  get inputProps() {
+    const props = pick(semanticInputProps, this.props);
+
+    return {
+      ...props,
+      placeholder: props.placeholder || this.props.format,
+    };
+  }
+
   render() {
-    const { date, format, inputProps } = this.props;
+    const { date, fluid } = this.props;
     const {
       isCalendarVisible,
       selectedDate,
@@ -105,18 +132,20 @@ class SimpleInput extends Component {
     return (
       <div id="test">
         <Form.Input
-          icon="calendar"
+          {...this.inputProps}
+          fluid={fluid}
           onBlur={this.handleBlur}
           onChange={this.handleDateChange}
           onClick={this.showCalendar}
-          placeholder={format}
+          icon="calendar"
           value={selectedDateFormatted}
-          {...inputProps}
         />
         {isCalendarVisible && (
           <Portal query="#test">
             <Calendar
+              {...this.dayzedProps}
               date={selectedDate || date}
+              fluid={fluid}
               onDateSelected={this.onDateSelected}
               selected={selectedDate}
             />

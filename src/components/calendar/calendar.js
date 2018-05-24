@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
 import Dayzed from 'dayzed';
@@ -11,6 +11,8 @@ import './calendar.css';
 
 const Calendar = ({
   fluid,
+  minDate,
+  maxDate,
   onDateSelected,
   selected,
   selectedClassName,
@@ -19,39 +21,57 @@ const Calendar = ({
 }) => (
   <Dayzed
     {...otherProps}
+    minDate={minDate}
+    maxDate={maxDate}
     onDateSelected={onDateSelected}
     selected={selected}
     render={({ calendars, getBackProps, getForwardProps, getDateProps }) =>
-      calendars.map(calendar => (
-        <Segment compact={!fluid} key={`${calendar.year}-${calendar.month}`}>
+      calendars.map((calendar, calendarIdx) => (
+        <Segment
+          className="clndr-calendar"
+          compact={!fluid}
+          key={`${calendar.year}-${calendar.month}`}
+        >
           <div className="clndr-control">
-            <Button
-              icon="angle double left"
-              title="Last year"
-              {...getBackProps({ calendars, offset: 12 })}
-            />
-            <Button
-              icon="angle left"
-              style={{ marginRight: 0 }}
-              title="Last month"
-              {...getBackProps({ calendars })}
-            />
+            <div>
+              {calendarIdx === 0 && (
+                <Fragment>
+                  <Button
+                    icon="angle double left"
+                    title="Last year"
+                    {...getBackProps({ calendars, offset: 12 })}
+                  />
+                  <Button
+                    icon="angle left"
+                    style={{ marginRight: 0 }}
+                    title="Last month"
+                    {...getBackProps({ calendars })}
+                  />
+                </Fragment>
+              )}
+            </div>
 
             <span className="clndr-control-month">
               {monthNamesShort[calendar.month]} {calendar.year}
             </span>
 
-            <Button
-              icon="angle right"
-              title="Next month"
-              {...getForwardProps({ calendars })}
-            />
-            <Button
-              icon="angle double right"
-              style={{ marginRight: 0 }}
-              title="Next year"
-              {...getForwardProps({ calendars, offset: 12 })}
-            />
+            <div style={{ '--justify': 'flex-end' }}>
+              {calendarIdx === calendars.length - 1 && (
+                <Fragment>
+                  <Button
+                    icon="angle right"
+                    title="Next month"
+                    {...getForwardProps({ calendars })}
+                  />
+                  <Button
+                    icon="angle double right"
+                    style={{ marginRight: 0 }}
+                    title="Next year"
+                    {...getForwardProps({ calendars, offset: 12 })}
+                  />
+                </Fragment>
+              )}
+            </div>
           </div>
           <div className="clndr-days">
             {weekdayNamesShort.map(weekday => (
@@ -62,8 +82,8 @@ const Calendar = ({
               </CalendarCell>
             ))}
             {calendar.weeks.map(week =>
-              week.map((dateObj, index) => {
-                const key = `${calendar.year}-${calendar.month}-${index}`;
+              week.map((dateObj, weekIdx) => {
+                const key = `${calendar.year}-${calendar.month}-${weekIdx}`;
 
                 return dateObj ? (
                   <CalendarCell
@@ -82,8 +102,10 @@ const Calendar = ({
           </div>
           {showToday && (
             <TodayButton
-              {...getToday(selected)}
-              {...getDateProps({ dateObj: getToday(selected) })}
+              {...getToday(selected, minDate, maxDate)}
+              {...getDateProps({
+                dateObj: getToday(selected, minDate, maxDate),
+              })}
             >
               Today
             </TodayButton>
@@ -96,6 +118,8 @@ const Calendar = ({
 
 Calendar.propTypes = {
   fluid: PropTypes.bool,
+  maxDate: PropTypes.instanceOf(Date),
+  minDate: PropTypes.instanceOf(Date),
   onDateSelected: PropTypes.func,
   selected: PropTypes.instanceOf(Date),
   selectedClassName: PropTypes.string,
@@ -104,6 +128,8 @@ Calendar.propTypes = {
 
 Calendar.defaultProps = {
   onDateSelected: () => {},
+  maxDate: null,
+  minDate: null,
   showToday: true,
 };
 
