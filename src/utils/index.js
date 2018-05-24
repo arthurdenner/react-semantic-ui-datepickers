@@ -3,19 +3,6 @@ import isBefore from 'date-fns/is_before';
 import isEqual from 'date-fns/is_equal';
 import startOfDay from 'date-fns/start_of_day';
 
-export const semanticInputProps = [
-  'disabled',
-  'error',
-  'icon',
-  'iconPosition',
-  'label',
-  'labelPosition',
-  'loading',
-  'placeholder',
-  'size',
-  'transparent',
-];
-
 function isSelectable(date, minDate, maxDate) {
   if (
     (minDate && isBefore(date, minDate)) ||

@@ -1,3 +1,16 @@
+export const semanticInputProps = [
+  'disabled',
+  'error',
+  'icon',
+  'iconPosition',
+  'label',
+  'labelPosition',
+  'loading',
+  'placeholder',
+  'size',
+  'transparent',
+];
+
 export const monthNamesShort = [
   'Jan',
   'Feb',
@@ -13,12 +26,4 @@ export const monthNamesShort = [
   'Dec',
 ];
 
-export const weekdayNamesShort = [
-  'Sun',
-  'Mon',
-  'Tue',
-  'Wed',
-  'Thu',
-  'Fri',
-  'Sat',
-];
+export const weekdayNamesShort = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];

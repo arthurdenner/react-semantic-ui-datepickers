@@ -5,7 +5,8 @@ import isEqual from 'date-fns/is_equal';
 import isValid from 'date-fns/is_valid';
 import parse from 'date-fns/parse';
 import formatByPattern from 'format-string-by-pattern';
-import { formatDate, omit, pick, semanticInputProps } from '../utils';
+import { formatDate, omit, pick } from '../utils';
+import { semanticInputProps } from '../data';
 import Calendar from '../components/calendar';
 import Portal from '../components/portal';
 
