@@ -4,6 +4,9 @@ import Simple from '../src/inputs/simple';
 
 storiesOf('Examples', module)
   .add('Simple', () => <Simple onDateChange={console.log} />)
-  .add('Simple with custom props', () => (
+  .add('Simple with outside days', () => (
+    <Simple showOutsideDays onDateChange={console.log} />
+  ))
+  .add('Simple with custom format prop', () => (
     <Simple format="DD/MM/YYYY" onDateChange={console.log} />
   ));

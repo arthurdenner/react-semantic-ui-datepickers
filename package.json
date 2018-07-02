@@ -21,7 +21,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
-    "dayzed": "^2.0.1",
+    "dayzed": "^2.2.0",
     "format-string-by-pattern": "^0.3.0",
     "prop-types": "^15.6.1",
     "react": "16.2",

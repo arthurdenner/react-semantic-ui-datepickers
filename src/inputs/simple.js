@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'semantic-ui-react';
-import isEqual from 'date-fns/is_equal';
-import isValid from 'date-fns/is_valid';
-import parse from 'date-fns/parse';
-import formatByPattern from 'format-string-by-pattern';
 import { formatDate, omit, pick } from '../utils';
 import { semanticInputProps } from '../data';
 import Calendar from '../components/calendar';
 import Portal from '../components/portal';
+import DatePicker from '../dayzed-pickers/DatePicker';
+
+const initialState = {
+  isCalendarVisible: false,
+  selectedDate: null,
+  selectedDateFormatted: '',
+};
 
 class SimpleInput extends Component {
   static propTypes = {
@@ -26,81 +29,24 @@ class SimpleInput extends Component {
     placeholder: null,
   };
 
-  state = {
-    isCalendarVisible: false,
-    selectedDate: null,
-    selectedDateFormatted: '',
-  };
+  state = initialState;
 
-  onDateSelected = ({ selectable, date }) => {
-    if (!selectable) {
-      return;
-    }
-
+  onDateSelected = newDate => {
     const { format, onDateChange } = this.props;
 
-    this.setState(({ selectedDate }) => {
-      let newDate = date;
-
-      if (selectedDate && isEqual(selectedDate, date)) {
-        newDate = null;
-      }
-
-      onDateChange(newDate);
-
-      return {
-        isCalendarVisible: false,
-        selectedDate: newDate,
-        selectedDateFormatted: formatDate(newDate, format),
-      };
-    });
-  };
-
-  handleBlur = () => {
-    const { format } = this.props;
-    const { selectedDateFormatted } = this.state;
-    const newDate = parse(selectedDateFormatted);
-
-    if (format.length !== selectedDateFormatted.length || !isValid(newDate)) {
-      this.setState({
-        selectedDateFormatted: '',
-      });
-    }
-  };
-
-  handleDateChange = (evt, { value }) => {
-    if (!value) {
-      this.setState({
-        selectedDate: null,
-        selectedDateFormatted: '',
-      });
+    if (!newDate) {
+      this.setState(initialState, () => onDateChange(null));
 
       return;
     }
 
-    const { format, onDateChange } = this.props;
-    const formatInputValue = formatByPattern(format);
-    const formattedValue = formatInputValue(value.replace(/\D/g, ''));
+    const newState = {
+      isCalendarVisible: false,
+      selectedDate: newDate,
+      selectedDateFormatted: formatDate(newDate, format),
+    };
 
-    this.setState({
-      selectedDate: null,
-      selectedDateFormatted: formattedValue,
-    });
-
-    onDateChange(null);
-
-    if (formattedValue.length === format.length) {
-      const newDate = parse(formattedValue, format, new Date());
-
-      if (isValid(newDate)) {
-        this.setState({
-          selectedDateFormatted: formatDate(newDate, format),
-          selectedDate: newDate,
-        });
-
-        onDateChange(newDate);
-      }
-    }
+    this.setState(newState, () => onDateChange(newDate));
   };
 
   showCalendar = () => {
@@ -135,21 +81,21 @@ class SimpleInput extends Component {
         <Form.Input
           {...this.inputProps}
           fluid={fluid}
-          onBlur={this.handleBlur}
-          onChange={this.handleDateChange}
           onClick={this.showCalendar}
           icon="calendar"
+          readOnly
           value={selectedDateFormatted}
         />
         {isCalendarVisible && (
           <Portal query="#test">
-            <Calendar
+            <DatePicker
               {...this.dayzedProps}
-              date={selectedDate || date}
-              fluid={fluid}
-              onDateSelected={this.onDateSelected}
+              onChange={this.onDateSelected}
               selected={selectedDate}
-            />
+              date={selectedDate || date}
+            >
+              {props => <Calendar {...props} fluid={fluid} />}
+            </DatePicker>
           </Portal>
         )}
       </div>

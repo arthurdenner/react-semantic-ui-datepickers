@@ -8,12 +8,15 @@ const CalendarCell = ({
   selected,
   selectedClassName,
   today,
+  nextMonth,
+  prevMonth,
   ...otherProps
 }) => (
   <span
     className={cn('clndr-cell', {
       'clndr-cell-today': today,
       'clndr-cell-disabled': !selectable,
+      'clndr-cell-other-month': nextMonth || prevMonth,
       [selectedClassName]: selected,
     })}
     {...otherProps}
@@ -21,6 +24,8 @@ const CalendarCell = ({
 );
 
 CalendarCell.propTypes = {
+  nextMonth: PropTypes.bool,
+  prevMonth: PropTypes.bool,
   selected: PropTypes.bool,
   selectable: PropTypes.bool,
   selectedClassName: PropTypes.string,
@@ -29,6 +34,8 @@ CalendarCell.propTypes = {
 
 CalendarCell.defaultProps = {
   selectedClassName: 'clndr-cell-selected',
+  nextMonth: false,
+  prevMonth: false,
 };
 
 export default CalendarCell;
