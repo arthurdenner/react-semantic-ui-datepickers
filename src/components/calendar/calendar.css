@@ -1,3 +1,9 @@
+.clndr-calendars-wrapper {
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(var(--n, 1), 1fr);
+}
+
 .clndr-calendar {
   margin: 0 !important;
 }
@@ -7,16 +13,24 @@
   grid-template-columns: auto 1fr auto;
   margin-bottom: 10px;
   align-items: center;
+  height: 28.5px;
 }
 
 .clndr-control > div {
   display: flex;
-  justify-content: var(--justify, flex-start);
+  justify-self: var(--justify, flex-start);
 }
 
 .clndr-control-month {
   padding: 0 20px;
   text-align: center;
+  grid-column: 1 / -1;
+}
+
+.clndr-control-buttons {
+  position: absolute;
+  margin-top: 1rem;
+  top: 0;
 }
 
 .clndr-days {

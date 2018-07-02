@@ -4,12 +4,16 @@ import cn from 'classnames';
 import './cell.css';
 
 const CalendarCell = ({
+  hovered, // eslint-disable-line
+  inRange,
+  end, // eslint-disable-line
+  start, // eslint-disable-line
+  nextMonth,
+  prevMonth,
   selectable,
   selected,
   selectedClassName,
   today,
-  nextMonth,
-  prevMonth,
   ...otherProps
 }) => (
   <span
@@ -17,6 +21,7 @@ const CalendarCell = ({
       'clndr-cell-today': today,
       'clndr-cell-disabled': !selectable,
       'clndr-cell-other-month': nextMonth || prevMonth,
+      'clndr-cell-inrange': inRange,
       [selectedClassName]: selected,
     })}
     {...otherProps}
@@ -24,18 +29,22 @@ const CalendarCell = ({
 );
 
 CalendarCell.propTypes = {
+  hovered: PropTypes.bool,
+  inRange: PropTypes.bool,
   nextMonth: PropTypes.bool,
   prevMonth: PropTypes.bool,
-  selected: PropTypes.bool,
   selectable: PropTypes.bool,
+  selected: PropTypes.bool,
   selectedClassName: PropTypes.string,
   today: PropTypes.bool,
 };
 
 CalendarCell.defaultProps = {
-  selectedClassName: 'clndr-cell-selected',
+  hovered: false,
+  inRange: false,
   nextMonth: false,
   prevMonth: false,
+  selectedClassName: 'clndr-cell-selected',
 };
 
 export default CalendarCell;

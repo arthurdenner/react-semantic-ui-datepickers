@@ -19,91 +19,103 @@ const Calendar = ({
   getBackProps,
   getForwardProps,
   getDateProps,
-}) =>
-  calendars.map((calendar, calendarIdx) => (
-    <Segment
-      className="clndr-calendar"
-      compact={!fluid}
-      key={`${calendar.year}-${calendar.month}`}
+}) => (
+  <Segment>
+    <div
+      className="clndr-calendars-wrapper"
+      style={{ '--n': calendars.length }}
     >
-      <div className="clndr-control">
-        <div>
-          {calendarIdx === 0 && (
-            <Fragment>
-              <Button
-                icon="angle double left"
-                title="Last year"
-                {...getBackProps({ calendars, offset: 12 })}
-              />
-              <Button
-                icon="angle left"
-                style={{ marginRight: 0 }}
-                title="Last month"
-                {...getBackProps({ calendars })}
-              />
-            </Fragment>
-          )}
-        </div>
-
-        <span className="clndr-control-month">
-          {monthNamesShort[calendar.month]} {calendar.year}
-        </span>
-
-        <div style={{ '--justify': 'flex-end' }}>
-          {calendarIdx === calendars.length - 1 && (
-            <Fragment>
-              <Button
-                icon="angle right"
-                title="Next month"
-                {...getForwardProps({ calendars })}
-              />
-              <Button
-                icon="angle double right"
-                style={{ marginRight: 0 }}
-                title="Next year"
-                {...getForwardProps({ calendars, offset: 12 })}
-              />
-            </Fragment>
-          )}
-        </div>
-      </div>
-      <div className="clndr-days">
-        {weekdayNamesShort.map(weekday => (
-          <CalendarCell key={`${calendar.year}-${calendar.month}-${weekday}`}>
-            {weekday}
-          </CalendarCell>
-        ))}
-        {calendar.weeks.map(week =>
-          week.map((dateObj, weekIdx) => {
-            const key = `${calendar.year}-${calendar.month}-${weekIdx}`;
-
-            return dateObj ? (
-              <CalendarCell
-                key={key}
-                selectedClassName={selectedClassName}
-                {...dateObj}
-                {...getDateProps({ dateObj })}
-              >
-                {dateObj.date.getDate()}
-              </CalendarCell>
-            ) : (
-              <CalendarCell key={key} />
-            );
-          })
-        )}
-      </div>
-      {showToday && (
-        <TodayButton
-          {...getToday(selected, minDate, maxDate)}
-          {...getDateProps({
-            dateObj: getToday(selected, minDate, maxDate),
-          })}
+      {calendars.map((calendar, calendarIdx) => (
+        <div
+          className="clndr-calendar"
+          key={`${calendar.year}-${calendar.month}`}
         >
-          Today
-        </TodayButton>
-      )}
-    </Segment>
-  ));
+          <div className="clndr-control">
+            <div className="clndr-control-buttons">
+              {calendarIdx === 0 && (
+                <Fragment>
+                  <Button
+                    icon="angle double left"
+                    title="Last year"
+                    {...getBackProps({ calendars, offset: 12 })}
+                  />
+                  <Button
+                    icon="angle left"
+                    style={{ marginRight: 0 }}
+                    title="Last month"
+                    {...getBackProps({ calendars })}
+                  />
+                </Fragment>
+              )}
+            </div>
+
+            <span className="clndr-control-month">
+              {monthNamesShort[calendar.month]} {calendar.year}
+            </span>
+
+            <div
+              className="clndr-control-buttons"
+              style={{ '--justify': 'flex-end' }}
+            >
+              {calendarIdx === calendars.length - 1 && (
+                <Fragment>
+                  <Button
+                    icon="angle right"
+                    title="Next month"
+                    {...getForwardProps({ calendars })}
+                  />
+                  <Button
+                    icon="angle double right"
+                    style={{ marginRight: 0 }}
+                    title="Next year"
+                    {...getForwardProps({ calendars, offset: 12 })}
+                  />
+                </Fragment>
+              )}
+            </div>
+          </div>
+          <div className="clndr-days">
+            {weekdayNamesShort.map(weekday => (
+              <CalendarCell
+                key={`${calendar.year}-${calendar.month}-${weekday}`}
+              >
+                {weekday}
+              </CalendarCell>
+            ))}
+            {calendar.weeks.map(week =>
+              week.map((dateObj, weekIdx) => {
+                const key = `${calendar.year}-${calendar.month}-${weekIdx}`;
+
+                return dateObj ? (
+                  <CalendarCell
+                    key={key}
+                    selectedClassName={selectedClassName}
+                    {...dateObj}
+                    {...getDateProps({ dateObj })}
+                  >
+                    {dateObj.date.getDate()}
+                  </CalendarCell>
+                ) : (
+                  <CalendarCell key={key} />
+                );
+              })
+            )}
+          </div>
+        </div>
+      ))}
+    </div>
+    {showToday && (
+      <TodayButton
+        {...getToday(selected, minDate, maxDate)}
+        {...getDateProps({
+          dateObj: getToday(selected, minDate, maxDate),
+        })}
+      >
+        Today
+      </TodayButton>
+    )}
+  </Segment>
+);
 
 Calendar.propTypes = {
   fluid: PropTypes.bool,

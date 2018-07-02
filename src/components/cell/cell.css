@@ -1,5 +1,5 @@
 .clndr-cell {
-  background: white;
+  background-color: white;
   transition: all 200ms;
   padding: 5px 0;
   height: 30px;
@@ -7,7 +7,16 @@
 }
 
 .clndr-cell:hover {
-  background: #cacbcd;
+  background-color: #cacbcd;
+  color: inherit;
+}
+
+.clndr-cell-today {
+  background-color: #e0e1e2;
+}
+
+.clndr-cell-inrange {
+  background-color: #cacbcd;
   color: inherit;
 }
 
@@ -17,15 +26,11 @@
 }
 
 .clndr-cell-disabled:hover {
-  background: white;
-}
-
-.clndr-cell-today {
-  background: #e0e1e2;
+  background-color: white;
 }
 
 .clndr-cell-selected {
-  background: #4f4f4f;
+  background-color: #4f4f4f;
   color: #f2f2f2;
 }
 
