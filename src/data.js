@@ -11,19 +11,27 @@ export const semanticInputProps = [
   'transparent',
 ];
 
-export const monthNamesShort = [
-  'Jan',
-  'Feb',
-  'Mar',
-  'Apr',
+export const monthNamesEng = [
+  'January',
+  'February',
+  'March',
+  'April',
   'May',
-  'Jun',
-  'Jul',
-  'Aug',
-  'Sep',
-  'Oct',
-  'Nov',
-  'Dec',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
 ];
 
-export const weekdayNamesShort = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+export const weekdayNamesEng = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];

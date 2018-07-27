@@ -45,3 +45,6 @@ export const pick = (keysToPick, obj) => {
 
   return newObj;
 };
+
+export const moveElementsByN = (n = 0, arr = []) =>
+  arr.slice(n).concat(arr.slice(0, n));

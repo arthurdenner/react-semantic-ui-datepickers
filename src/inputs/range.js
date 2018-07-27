@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Input } from 'semantic-ui-react';
-import { formatDate, omit, pick } from '../utils';
-import { semanticInputProps } from '../data';
+import { formatDate, omit, pick, moveElementsByN } from '../utils';
+import { monthNamesEng, semanticInputProps, weekdayNamesEng } from '../data';
 import Calendar from '../components/calendar';
 import RangeDatePicker from '../dayzed-pickers/RangeDatePicker';
 import BaseInput from './index';
@@ -17,14 +17,18 @@ class RangeInput extends BaseInput {
   static propTypes = {
     date: PropTypes.instanceOf(Date),
     format: PropTypes.string,
+    monthNames: PropTypes.array,
     onDateChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
+    weekdayNames: PropTypes.array,
   };
 
   static defaultProps = {
     date: undefined,
     format: 'YYYY-MM-DD',
+    monthNames: monthNamesEng,
     placeholder: null,
+    weekdayNames: weekdayNamesEng,
   };
 
   state = initialState;
@@ -68,9 +72,16 @@ class RangeInput extends BaseInput {
     };
   }
 
+  get weekdayNames() {
+    const { firstDayOfWeek } = this.dayzedProps;
+    const { weekdayNames } = this.props;
+
+    return moveElementsByN(firstDayOfWeek, weekdayNames);
+  }
+
   render() {
     const { isVisible, selectedDate, selectedDateFormatted } = this.state;
-    const { date } = this.props;
+    const { date, monthNames } = this.props;
 
     return (
       <div
@@ -94,7 +105,13 @@ class RangeInput extends BaseInput {
             selected={selectedDate}
             date={date}
           >
-            {props => <Calendar {...props} />}
+            {props => (
+              <Calendar
+                {...props}
+                monthNames={monthNames}
+                weekdayNames={this.weekdayNames}
+              />
+            )}
           </RangeDatePicker>
         )}
       </div>

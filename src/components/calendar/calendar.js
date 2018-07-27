@@ -4,20 +4,21 @@ import { Segment } from 'semantic-ui-react';
 import Button, { TodayButton } from '../button';
 import CalendarCell from '../cell';
 import { getToday } from '../../utils';
-import { monthNamesShort, weekdayNamesShort } from '../../data';
 import 'semantic-ui-css/semantic.min.css';
 import './calendar.css';
 
 const Calendar = ({
-  minDate,
+  calendars,
+  getBackProps,
+  getDateProps,
+  getForwardProps,
   maxDate,
+  minDate,
+  monthNames,
   selected,
   selectedClassName,
   showToday,
-  calendars,
-  getBackProps,
-  getForwardProps,
-  getDateProps,
+  weekdayNames,
 }) => (
   <Segment className="clndr-calendars-segment">
     <div
@@ -48,8 +49,11 @@ const Calendar = ({
               )}
             </div>
 
-            <span className="clndr-control-month">
-              {monthNamesShort[calendar.month]} {calendar.year}
+            <span
+              className="clndr-control-month"
+              title={`${monthNames[calendar.month]} ${calendar.year}`}
+            >
+              {monthNames[calendar.month].slice(0, 3)} {calendar.year}
             </span>
 
             <div
@@ -74,11 +78,12 @@ const Calendar = ({
             </div>
           </div>
           <div className="clndr-days">
-            {weekdayNamesShort.map(weekday => (
+            {weekdayNames.map(weekday => (
               <CalendarCell
                 key={`${calendar.year}-${calendar.month}-${weekday}`}
+                title={weekday}
               >
-                {weekday}
+                {weekday.slice(0, 2)}
               </CalendarCell>
             ))}
             {calendar.weeks.map(week =>
@@ -123,16 +128,18 @@ Calendar.propTypes = {
   getForwardProps: PropTypes.func.isRequired,
   maxDate: PropTypes.instanceOf(Date),
   minDate: PropTypes.instanceOf(Date),
+  monthNames: PropTypes.array.isRequired,
   onDateSelected: PropTypes.func,
   selected: PropTypes.instanceOf(Date),
   selectedClassName: PropTypes.string,
   showToday: PropTypes.bool,
+  weekdayNames: PropTypes.array.isRequired,
 };
 
 Calendar.defaultProps = {
-  onDateSelected: () => {},
   maxDate: null,
   minDate: null,
+  onDateSelected: () => {},
   showToday: true,
 };
 
