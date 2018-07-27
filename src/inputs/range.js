@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 import { formatDate, omit, pick } from '../utils';
 import { semanticInputProps } from '../data';
 import Calendar from '../components/calendar';
-import Portal from '../components/portal';
 import RangeDatePicker from '../dayzed-pickers/RangeDatePicker';
+import BaseInput from './index';
 
 const initialState = {
-  isCalendarVisible: false,
+  isVisible: false,
   selectedDate: [],
   selectedDateFormatted: '',
 };
 
-class RangeInput extends Component {
+class RangeInput extends BaseInput {
   static propTypes = {
     date: PropTypes.instanceOf(Date),
-    fluid: PropTypes.bool,
     format: PropTypes.string,
     onDateChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
@@ -24,7 +23,6 @@ class RangeInput extends Component {
 
   static defaultProps = {
     date: undefined,
-    fluid: false,
     format: 'YYYY-MM-DD',
     placeholder: null,
   };
@@ -41,18 +39,19 @@ class RangeInput extends Component {
     }
 
     const newState = {
-      // isCalendarVisible: false,
       selectedDate: newDates,
-      // selectedDateFormatted: formatDate(newDate, format),
+      selectedDateFormatted: newDates
+        .map(newDate => formatDate(newDate, format))
+        .join(' - '),
     };
 
-    this.setState(newState, () => onDateChange(newDates));
-  };
+    this.setState(newState, () => {
+      onDateChange(newDates);
 
-  showCalendar = () => {
-    this.setState(({ isCalendarVisible }) => ({
-      isCalendarVisible: !isCalendarVisible,
-    }));
+      if (newDates.length === 2) {
+        this.setState({ isVisible: false });
+      }
+    });
   };
 
   get dayzedProps() {
@@ -61,43 +60,42 @@ class RangeInput extends Component {
 
   get inputProps() {
     const props = pick(semanticInputProps, this.props);
+    const placeholder = props.placeholder || this.props.format;
 
     return {
       ...props,
-      placeholder: props.placeholder || this.props.format,
+      placeholder,
     };
   }
 
   render() {
-    const { date, fluid } = this.props;
-    const {
-      isCalendarVisible,
-      selectedDate,
-      selectedDateFormatted,
-    } = this.state;
+    const { isVisible, selectedDate, selectedDateFormatted } = this.state;
+    const { date } = this.props;
 
     return (
-      <div id="test">
-        <Form.Input
+      <div
+        style={{ display: 'inline-block' }}
+        ref={el => {
+          this.el = el;
+        }}
+      >
+        <Input
           {...this.inputProps}
-          fluid={fluid}
           onClick={this.showCalendar}
           icon="calendar"
           readOnly
           value={selectedDateFormatted}
         />
-        {isCalendarVisible && (
-          <Portal query="#test">
-            <RangeDatePicker
-              {...this.dayzedProps}
-              monthsToDisplay={2}
-              onChange={this.onDateSelected}
-              selected={selectedDate}
-              date={date}
-            >
-              {props => <Calendar {...props} fluid={fluid} />}
-            </RangeDatePicker>
-          </Portal>
+        {isVisible && (
+          <RangeDatePicker
+            {...this.dayzedProps}
+            monthsToDisplay={2}
+            onChange={this.onDateSelected}
+            selected={selectedDate}
+            date={date}
+          >
+            {props => <Calendar {...props} />}
+          </RangeDatePicker>
         )}
       </div>
     );

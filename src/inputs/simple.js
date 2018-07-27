@@ -1,22 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { Form } from 'semantic-ui-react';
+import { Input } from 'semantic-ui-react';
 import { formatDate, omit, pick } from '../utils';
 import { semanticInputProps } from '../data';
 import Calendar from '../components/calendar';
-import Portal from '../components/portal';
 import DatePicker from '../dayzed-pickers/DatePicker';
+import BaseInput from './index';
 
 const initialState = {
-  isCalendarVisible: false,
+  isVisible: false,
   selectedDate: null,
   selectedDateFormatted: '',
 };
 
-class SimpleInput extends Component {
+class SimpleInput extends BaseInput {
   static propTypes = {
     date: PropTypes.instanceOf(Date),
-    fluid: PropTypes.bool,
     format: PropTypes.string,
     onDateChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
@@ -24,7 +23,6 @@ class SimpleInput extends Component {
 
   static defaultProps = {
     date: undefined,
-    fluid: false,
     format: 'YYYY-MM-DD',
     placeholder: null,
   };
@@ -41,18 +39,14 @@ class SimpleInput extends Component {
     }
 
     const newState = {
-      isCalendarVisible: false,
+      isVisible: false,
       selectedDate: newDate,
       selectedDateFormatted: formatDate(newDate, format),
     };
 
-    this.setState(newState, () => onDateChange(newDate));
-  };
-
-  showCalendar = () => {
-    this.setState(({ isCalendarVisible }) => ({
-      isCalendarVisible: !isCalendarVisible,
-    }));
+    this.setState(newState, () => {
+      onDateChange(newDate);
+    });
   };
 
   get dayzedProps() {
@@ -61,42 +55,41 @@ class SimpleInput extends Component {
 
   get inputProps() {
     const props = pick(semanticInputProps, this.props);
+    const placeholder = props.placeholder || this.props.format;
 
     return {
       ...props,
-      placeholder: props.placeholder || this.props.format,
+      placeholder,
     };
   }
 
   render() {
-    const { date, fluid } = this.props;
-    const {
-      isCalendarVisible,
-      selectedDate,
-      selectedDateFormatted,
-    } = this.state;
+    const { isVisible, selectedDate, selectedDateFormatted } = this.state;
+    const { date } = this.props;
 
     return (
-      <div id="test">
-        <Form.Input
+      <div
+        style={{ display: 'inline-block' }}
+        ref={el => {
+          this.el = el;
+        }}
+      >
+        <Input
           {...this.inputProps}
-          fluid={fluid}
           onClick={this.showCalendar}
           icon="calendar"
           readOnly
           value={selectedDateFormatted}
         />
-        {isCalendarVisible && (
-          <Portal query="#test">
-            <DatePicker
-              {...this.dayzedProps}
-              onChange={this.onDateSelected}
-              selected={selectedDate}
-              date={selectedDate || date}
-            >
-              {props => <Calendar {...props} fluid={fluid} />}
-            </DatePicker>
-          </Portal>
+        {isVisible && (
+          <DatePicker
+            {...this.dayzedProps}
+            onChange={this.onDateSelected}
+            selected={selectedDate}
+            date={selectedDate || date}
+          >
+            {props => <Calendar {...props} />}
+          </DatePicker>
         )}
       </div>
     );

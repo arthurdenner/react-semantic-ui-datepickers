@@ -11,4 +11,10 @@ storiesOf('Examples', module)
   .add('Simple with custom format prop', () => (
     <Simple format="DD/MM/YYYY" onDateChange={console.log} />
   ))
-  .add('Range', () => <Range onDateChange={console.log} />);
+  .add('Range', () => <Range onDateChange={console.log} />)
+  .add('Range with outside days', () => (
+    <Range showOutsideDays onDateChange={console.log} />
+  ))
+  .add('Range with custom format prop', () => (
+    <Range format="DD/MM/YYYY" onDateChange={console.log} />
+  ));
