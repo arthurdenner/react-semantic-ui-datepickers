@@ -9,7 +9,6 @@ import 'semantic-ui-css/semantic.min.css';
 import './calendar.css';
 
 const Calendar = ({
-  fluid,
   minDate,
   maxDate,
   selected,
@@ -20,7 +19,7 @@ const Calendar = ({
   getForwardProps,
   getDateProps,
 }) => (
-  <Segment>
+  <Segment className="clndr-calendars-segment">
     <div
       className="clndr-calendars-wrapper"
       style={{ '--n': calendars.length }}
@@ -118,7 +117,10 @@ const Calendar = ({
 );
 
 Calendar.propTypes = {
-  fluid: PropTypes.bool,
+  calendars: PropTypes.array.isRequired,
+  getBackProps: PropTypes.func.isRequired,
+  getDateProps: PropTypes.func.isRequired,
+  getForwardProps: PropTypes.func.isRequired,
   maxDate: PropTypes.instanceOf(Date),
   minDate: PropTypes.instanceOf(Date),
   onDateSelected: PropTypes.func,
