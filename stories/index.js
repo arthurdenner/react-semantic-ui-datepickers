@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import Range from '../src/inputs/range';
-import Simple from '../src/inputs/simple';
+import SemanticDatepicker from '../src/components/datepicker';
 
 const brazilianMonths = [
   'Janeiro',
@@ -29,28 +28,42 @@ const brazilianWeek = [
 ];
 
 storiesOf('Examples', module)
-  .add('Simple', () => <Simple onDateChange={console.log} />)
+  .add('Simple', () => <SemanticDatepicker onDateChange={console.log} />)
   .add('Simple with firstDayOfWeek', () => (
-    <Simple firstDayOfWeek={3} onDateChange={console.log} />
+    <SemanticDatepicker firstDayOfWeek={3} onDateChange={console.log} />
   ))
   .add('Simple with outside days', () => (
-    <Simple showOutsideDays onDateChange={console.log} />
+    <SemanticDatepicker showOutsideDays onDateChange={console.log} />
   ))
   .add('Simple with format prop', () => (
-    <Simple format="DD/MM/YYYY" onDateChange={console.log} />
+    <SemanticDatepicker format="DD/MM/YYYY" onDateChange={console.log} />
   ))
-  .add('Range', () => <Range onDateChange={console.log} />)
+  .add('Range', () => (
+    <SemanticDatepicker type="range" onDateChange={console.log} />
+  ))
   .add('Range with firstDayOfWeek', () => (
-    <Range firstDayOfWeek={6} onDateChange={console.log} />
+    <SemanticDatepicker
+      type="range"
+      firstDayOfWeek={6}
+      onDateChange={console.log}
+    />
   ))
   .add('Range with outside days', () => (
-    <Range showOutsideDays onDateChange={console.log} />
+    <SemanticDatepicker
+      type="range"
+      showOutsideDays
+      onDateChange={console.log}
+    />
   ))
   .add('Range with format prop', () => (
-    <Range format="DD/MM/YYYY" onDateChange={console.log} />
+    <SemanticDatepicker
+      type="range"
+      format="DD/MM/YYYY"
+      onDateChange={console.log}
+    />
   ))
   .add('Simple with brazilian labels', () => (
-    <Simple
+    <SemanticDatepicker
       onDateChange={console.log}
       format="DD/MM/YYYY"
       monthNames={brazilianMonths}

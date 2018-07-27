@@ -2,7 +2,7 @@ import React from 'react';
 import isSameDay from 'date-fns/is_same_day';
 import compareAsc from 'date-fns/compare_asc';
 
-import BaseDatePicker from './BaseDatePicker';
+import BaseDatePicker from './base';
 import { composeEventHandlers, isInRange } from './utils';
 import { rangeDatePickerPropTypes } from './propTypes';
 

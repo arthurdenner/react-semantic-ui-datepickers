@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseDatePicker from './BaseDatePicker';
+import BaseDatePicker from './base';
 import { datePickerPropTypes } from './propTypes';
 
 class DatePicker extends React.Component {
