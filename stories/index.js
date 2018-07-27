@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import SemanticDatepicker from '../src/components/datepicker';
+import SemanticDatepicker from '../src';
 
 const brazilianMonths = [
   'Janeiro',
