@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 import { omit } from '../../utils';
 
+const propsToIgnore = ['hovered', 'end', 'inRange', 'start'];
+
 const TodayButton = ({ selectable, selected, today, ...rest }) => {
-  const otherProps = omit(['inRange'], rest);
+  const otherProps = omit(propsToIgnore, rest);
 
   return (
     <Button
