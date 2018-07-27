@@ -18,6 +18,7 @@ const Calendar = ({
   selected,
   selectedClassName,
   showToday,
+  todayButtonText,
   weekdayNames,
 }) => (
   <Segment className="clndr-calendars-segment">
@@ -115,7 +116,7 @@ const Calendar = ({
           dateObj: getToday(selected, minDate, maxDate),
         })}
       >
-        Today
+        {todayButtonText}
       </TodayButton>
     )}
   </Segment>
@@ -133,6 +134,7 @@ Calendar.propTypes = {
   selected: PropTypes.instanceOf(Date),
   selectedClassName: PropTypes.string,
   showToday: PropTypes.bool,
+  todayButtonText: PropTypes.string.isRequired,
   weekdayNames: PropTypes.array.isRequired,
 };
 

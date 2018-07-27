@@ -17,9 +17,7 @@ const TodayButton = ({ selectable, selected, today, ...rest }) => {
       today={today.toString()}
       style={{ marginTop: 10 }}
       {...otherProps}
-    >
-      Today
-    </Button>
+    />
   );
 };
 

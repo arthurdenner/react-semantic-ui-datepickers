@@ -20,6 +20,7 @@ class RangeInput extends BaseInput {
     monthNames: PropTypes.array,
     onDateChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
+    todayButtonText: PropTypes.string,
     weekdayNames: PropTypes.array,
   };
 
@@ -28,6 +29,7 @@ class RangeInput extends BaseInput {
     format: 'YYYY-MM-DD',
     monthNames: monthNamesEng,
     placeholder: null,
+    todayButtonText: 'Today',
     weekdayNames: weekdayNamesEng,
   };
 
@@ -81,7 +83,7 @@ class RangeInput extends BaseInput {
 
   render() {
     const { isVisible, selectedDate, selectedDateFormatted } = this.state;
-    const { date, monthNames } = this.props;
+    const { date, monthNames, todayButtonText } = this.props;
 
     return (
       <div
@@ -109,6 +111,7 @@ class RangeInput extends BaseInput {
               <Calendar
                 {...props}
                 monthNames={monthNames}
+                todayButtonText={todayButtonText}
                 weekdayNames={this.weekdayNames}
               />
             )}

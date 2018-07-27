@@ -52,7 +52,9 @@ storiesOf('Examples', module)
   .add('Simple with brazilian labels', () => (
     <Simple
       onDateChange={console.log}
+      format="DD/MM/YYYY"
       monthNames={brazilianMonths}
+      todayButtonText="Hoje"
       weekdayNames={brazilianWeek}
     />
   ));
