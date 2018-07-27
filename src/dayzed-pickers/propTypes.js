@@ -28,11 +28,6 @@ export const datePickerPropTypes = {
   onDateSelected: PropTypes.func,
 };
 
-export const multiDatePickerPropTypes = {
-  ...datePickerPropTypes,
-  selected: PropTypes.arrayOf(Date),
-};
-
 export const rangeDatePickerPropTypes = {
   ...datePickerPropTypes,
   selected: PropTypes.arrayOf(Date),

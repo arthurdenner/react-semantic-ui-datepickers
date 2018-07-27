@@ -1,5 +1,5 @@
 import React from 'react';
-import Dayzed from './Dayzed';
+import Dayzed from 'dayzed';
 import { getArrowKeyHandlers } from './utils';
 import { baseDatePickerPropTypes } from './propTypes';
 

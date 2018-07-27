@@ -1,32 +1,9 @@
-import Dayzed from './Dayzed';
+/* This module was created by @donysukardi in the PR below:
+https://github.com/deseretdigital/dayzed/pull/25
+He didn't publish the components to npm, so I copied them */
+
 import BaseDatePicker from './BaseDatePicker';
 import DatePicker from './DatePicker';
-import MultiDatePicker from './MultiDatePicker';
 import RangeDatePicker from './RangeDatePicker';
-import {
-  dayzedPropTypes,
-  baseDatePickerPropTypes,
-  datePickerPropTypes,
-  multiDatePickerPropTypes,
-  rangeDatePickerPropTypes,
-} from './propTypes';
 
-/*
- * Fix importing in typescript after rollup compilation
- * https://github.com/rollup/rollup/issues/1156
- * https://github.com/Microsoft/TypeScript/issues/13017#issuecomment-268657860
- */
-Dayzed.default = Dayzed;
-
-export {
-  BaseDatePicker,
-  DatePicker,
-  MultiDatePicker,
-  RangeDatePicker,
-  dayzedPropTypes,
-  baseDatePickerPropTypes,
-  datePickerPropTypes,
-  multiDatePickerPropTypes,
-  rangeDatePickerPropTypes,
-};
-export default Dayzed;
+export { BaseDatePicker, DatePicker, RangeDatePicker };
