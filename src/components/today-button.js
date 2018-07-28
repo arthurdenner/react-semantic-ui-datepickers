@@ -13,7 +13,15 @@ const TodayButton = ({
   start,
   today,
   ...otherProps
-}) => <Button compact fluid style={style} {...otherProps} />;
+}) => (
+  <Button
+    className="clndr-button-today"
+    compact
+    fluid
+    style={style}
+    {...otherProps}
+  />
+);
 
 TodayButton.propTypes = {
   end: PropTypes.bool,
