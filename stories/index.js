@@ -5,14 +5,14 @@ import SemanticDatepicker from '../src';
 import localePtBr from '../src/locales/pt-BR';
 
 storiesOf('Examples', module)
-  .add('Simple', () => <SemanticDatepicker onDateChange={console.log} />)
-  .add('Simple with firstDayOfWeek', () => (
+  .add('Basic', () => <SemanticDatepicker onDateChange={console.log} />)
+  .add('Basic with firstDayOfWeek', () => (
     <SemanticDatepicker firstDayOfWeek={3} onDateChange={console.log} />
   ))
-  .add('Simple with outside days', () => (
+  .add('Basic with outside days', () => (
     <SemanticDatepicker showOutsideDays onDateChange={console.log} />
   ))
-  .add('Simple with format prop', () => (
+  .add('Basic with format prop', () => (
     <SemanticDatepicker format="DD/MM/YYYY" onDateChange={console.log} />
   ))
   .add('Range', () => (
@@ -39,7 +39,7 @@ storiesOf('Examples', module)
       onDateChange={console.log}
     />
   ))
-  .add('Simple with brazilian portuguese locale', () => (
+  .add('Basic with brazilian portuguese locale', () => (
     <SemanticDatepicker
       onDateChange={console.log}
       format="DD/MM/YYYY"

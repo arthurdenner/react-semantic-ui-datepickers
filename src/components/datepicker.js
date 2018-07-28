@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { formatSelectedDate, moveElementsByN, omit, pick } from '../utils';
 import localeEn from '../locales/en-US';
+import BasicDatePicker from '../pickers/basic';
 import RangeDatePicker from '../pickers/range';
-import SimpleDatePicker from '../pickers/simple';
 import Calendar from './calendar';
 import Input from './input';
 
@@ -33,7 +33,7 @@ class SemanticDatepicker extends React.Component {
       PropTypes.arrayOf(Date),
       PropTypes.instanceOf(Date),
     ]),
-    type: PropTypes.oneOf(['simple', 'range']),
+    type: PropTypes.oneOf(['basic', 'range']),
   };
 
   static defaultProps = {
@@ -43,7 +43,7 @@ class SemanticDatepicker extends React.Component {
     locale: localeEn,
     placeholder: null,
     selected: null,
-    type: 'simple',
+    type: 'basic',
   };
 
   get isRangeInput() {
@@ -91,7 +91,7 @@ class SemanticDatepicker extends React.Component {
 
   state = this.initialState;
 
-  Component = this.isRangeInput ? RangeDatePicker : SimpleDatePicker;
+  Component = this.isRangeInput ? RangeDatePicker : BasicDatePicker;
 
   resetState = () => {
     const { onDateChange } = this.props;
@@ -169,7 +169,7 @@ class SemanticDatepicker extends React.Component {
     });
   };
 
-  handleSimpleInput = newDate => {
+  handleBasicInput = newDate => {
     const { format, onDateChange } = this.props;
 
     if (!newDate) {
@@ -193,7 +193,7 @@ class SemanticDatepicker extends React.Component {
     if (this.isRangeInput) {
       this.handleRangeInput(...args);
     } else {
-      this.handleSimpleInput(...args);
+      this.handleBasicInput(...args);
     }
   };
 
