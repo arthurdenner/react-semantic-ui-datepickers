@@ -13,6 +13,7 @@ const semanticInputProps = [
   'error',
   'icon',
   'iconPosition',
+  'id',
   'label',
   'labelPosition',
   'loading',
@@ -202,6 +203,7 @@ class SemanticDatepicker extends React.Component {
 
     return (
       <div
+        className="field"
         style={style}
         ref={el => {
           this.el = el;

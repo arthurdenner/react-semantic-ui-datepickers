@@ -49,6 +49,17 @@ storiesOf('Examples', module)
   ))
   .add('Basic as form component', () => (
     <Form>
-      <SemanticDatepicker label="Birth date" onDateChange={console.log} />
+      <Form.Group width="equals">
+        <SemanticDatepicker
+          label="Birth date"
+          id="birthDate"
+          onDateChange={console.log}
+        />
+        <SemanticDatepicker
+          label="Start date"
+          id="startDate"
+          onDateChange={console.log}
+        />
+      </Form.Group>
     </Form>
   ));
