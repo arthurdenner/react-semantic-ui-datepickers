@@ -18,7 +18,6 @@ const Calendar = ({
   nextYear,
   previousMonth,
   previousYear,
-  selected,
   selectedClassName,
   showToday,
   todayButton,
@@ -114,9 +113,9 @@ const Calendar = ({
     </div>
     {showToday && (
       <TodayButton
-        {...getToday(selected, minDate, maxDate)}
+        {...getToday(minDate, maxDate)}
         {...getDateProps({
-          dateObj: getToday(selected, minDate, maxDate),
+          dateObj: getToday(minDate, maxDate),
         })}
       >
         {todayButton}
@@ -137,7 +136,6 @@ Calendar.propTypes = {
   nextYear: PropTypes.string.isRequired,
   previousMonth: PropTypes.string.isRequired,
   previousYear: PropTypes.string.isRequired,
-  selected: PropTypes.instanceOf(Date),
   selectedClassName: PropTypes.string,
   showToday: PropTypes.bool,
   todayButton: PropTypes.string.isRequired,

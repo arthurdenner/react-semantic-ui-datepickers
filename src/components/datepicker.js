@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { formatDate, omit, pick, moveElementsByN } from '../utils';
+import { formatSelectedDate, moveElementsByN, omit, pick } from '../utils';
 import localeEn from '../locales/en-US';
 import RangeDatePicker from '../pickers/range';
 import SimpleDatePicker from '../pickers/simple';
@@ -29,6 +29,10 @@ class SemanticDatepicker extends React.Component {
     locale: PropTypes.object,
     onDateChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
+    selected: PropTypes.oneOfType([
+      PropTypes.arrayOf(Date),
+      PropTypes.instanceOf(Date),
+    ]),
     type: PropTypes.oneOf(['simple', 'range']),
   };
 
@@ -38,6 +42,7 @@ class SemanticDatepicker extends React.Component {
     format: 'YYYY-MM-DD',
     locale: localeEn,
     placeholder: null,
+    selected: null,
     type: 'simple',
   };
 
@@ -46,10 +51,13 @@ class SemanticDatepicker extends React.Component {
   }
 
   get initialState() {
+    const { format, selected } = this.props;
+    const initialSelectedDate = this.isRangeInput ? [] : null;
+
     return {
       isVisible: false,
-      selectedDate: this.isRangeInput ? [] : null,
-      selectedDateFormatted: '',
+      selectedDate: selected || initialSelectedDate,
+      selectedDateFormatted: formatSelectedDate(selected, format),
     };
   }
 
@@ -67,11 +75,16 @@ class SemanticDatepicker extends React.Component {
     };
   }
 
+  get date() {
+    const { selectedDate } = this.state;
+    const { date } = this.props;
+
+    return this.isRangeInput ? selectedDate[0] : selectedDate || date;
+  }
+
   get weekdays() {
     const { firstDayOfWeek } = this.dayzedProps;
-    const {
-      locale: { weekdays },
-    } = this.props;
+    const { weekdays } = this.props.locale;
 
     return moveElementsByN(firstDayOfWeek, weekdays);
   }
@@ -136,9 +149,7 @@ class SemanticDatepicker extends React.Component {
 
     const newState = {
       selectedDate: newDates,
-      selectedDateFormatted: newDates
-        .map(newDate => formatDate(newDate, format))
-        .join(' - '),
+      selectedDateFormatted: formatSelectedDate(newDates, format),
     };
 
     this.setState(newState, () => {
@@ -154,7 +165,7 @@ class SemanticDatepicker extends React.Component {
     const { format, onDateChange } = this.props;
 
     if (!newDate) {
-      this.setState(this.initialState, () => onDateChange(null));
+      this.resetState();
 
       return;
     }
@@ -162,7 +173,7 @@ class SemanticDatepicker extends React.Component {
     const newState = {
       isVisible: false,
       selectedDate: newDate,
-      selectedDateFormatted: formatDate(newDate, format),
+      selectedDateFormatted: formatSelectedDate(newDate, format),
     };
 
     this.setState(newState, () => {
@@ -180,7 +191,7 @@ class SemanticDatepicker extends React.Component {
 
   render() {
     const { isVisible, selectedDate, selectedDateFormatted } = this.state;
-    const { clearable, date, locale } = this.props;
+    const { clearable, locale } = this.props;
 
     return (
       <div
@@ -202,10 +213,15 @@ class SemanticDatepicker extends React.Component {
             monthsToDisplay={this.isRangeInput ? 2 : 1}
             onChange={this.onDateSelected}
             selected={selectedDate}
-            date={date}
+            date={this.date}
           >
             {props => (
-              <Calendar {...props} {...locale} weekdays={this.weekdays} />
+              <Calendar
+                {...this.dayzedProps}
+                {...props}
+                {...locale}
+                weekdays={this.weekdays}
+              />
             )}
           </this.Component>
         )}

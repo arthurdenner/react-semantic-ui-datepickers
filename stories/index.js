@@ -39,7 +39,7 @@ storiesOf('Examples', module)
       onDateChange={console.log}
     />
   ))
-  .add('Simple with brazilian labels', () => (
+  .add('Simple with brazilian portuguese locale', () => (
     <SemanticDatepicker
       onDateChange={console.log}
       format="DD/MM/YYYY"
