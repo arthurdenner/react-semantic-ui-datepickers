@@ -7,6 +7,11 @@ import CalendarCell from '../cell';
 import { getToday } from '../../utils';
 import './calendar.css';
 
+const styles = {
+  leftBtn: { textAlign: 'start' },
+  rightBtn: { textAlign: 'end' },
+};
+
 const Calendar = ({
   calendars,
   getBackProps,
@@ -30,12 +35,9 @@ const Calendar = ({
       style={{ '--n': calendars.length }}
     >
       {calendars.map((calendar, calendarIdx) => (
-        <div
-          className="clndr-calendar"
-          key={`${calendar.year}-${calendar.month}`}
-        >
+        <div key={`${calendar.year}-${calendar.month}`}>
           <div className="clndr-control">
-            <div className="clndr-control-buttons">
+            <div style={styles.leftBtn}>
               {calendarIdx === 0 && (
                 <Fragment>
                   <Button
@@ -53,17 +55,11 @@ const Calendar = ({
               )}
             </div>
 
-            <span
-              className="clndr-control-month"
-              title={`${months[calendar.month]} ${calendar.year}`}
-            >
+            <span title={`${months[calendar.month]} ${calendar.year}`}>
               {months[calendar.month].slice(0, 3)} {calendar.year}
             </span>
 
-            <div
-              className="clndr-control-buttons"
-              style={{ '--justify': 'flex-end' }}
-            >
+            <div style={styles.rightBtn}>
               {calendarIdx === calendars.length - 1 && (
                 <Fragment>
                   <Button
