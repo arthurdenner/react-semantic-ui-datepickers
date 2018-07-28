@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import { Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
 import localePtBr from '../src/locales/pt-BR';
@@ -45,4 +46,9 @@ storiesOf('Examples', module)
       format="DD/MM/YYYY"
       locale={localePtBr}
     />
+  ))
+  .add('Basic as form component', () => (
+    <Form>
+      <SemanticDatepicker label="Birth date" onDateChange={console.log} />
+    </Form>
   ));

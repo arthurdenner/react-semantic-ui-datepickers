@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon, Input } from 'semantic-ui-react';
+import { Form, Icon } from 'semantic-ui-react';
 
 const CustomInput = ({ isIconClickable, onClear, onClick, value, ...rest }) => (
-  <Input
+  <Form.Input
     {...rest}
     onClick={onClick}
     icon={
