@@ -1,39 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { monthNamesEng, semanticInputProps, weekdayNamesEng } from '../data';
 import { formatDate, omit, pick, moveElementsByN } from '../utils';
+import localeEn from '../locales/en-US';
 import RangeDatePicker from '../pickers/range';
 import SimpleDatePicker from '../pickers/simple';
 import Calendar from './calendar';
 import Input from './input';
 
 const style = { display: 'inline-block' };
+const semanticInputProps = [
+  'disabled',
+  'error',
+  'icon',
+  'iconPosition',
+  'label',
+  'labelPosition',
+  'loading',
+  'placeholder',
+  'size',
+  'transparent',
+];
 
-class BaseInput extends React.Component {
+class SemanticDatepicker extends React.Component {
   static propTypes = {
     clearable: PropTypes.bool,
     date: PropTypes.instanceOf(Date),
     format: PropTypes.string,
-    monthNames: PropTypes.array,
+    locale: PropTypes.object,
     onDateChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
-    todayButtonText: PropTypes.string,
     type: PropTypes.oneOf(['simple', 'range']),
-    weekdayNames: PropTypes.array,
   };
 
   static defaultProps = {
     clearable: true,
     date: undefined,
     format: 'YYYY-MM-DD',
-    monthNames: monthNamesEng,
+    locale: localeEn,
     placeholder: null,
-    todayButtonText: 'Today',
     type: 'simple',
-    weekdayNames: weekdayNamesEng,
   };
-
-  /* Getters */
 
   get isRangeInput() {
     return this.props.type === 'range';
@@ -61,11 +67,13 @@ class BaseInput extends React.Component {
     };
   }
 
-  get weekdayNames() {
+  get weekdays() {
     const { firstDayOfWeek } = this.dayzedProps;
-    const { weekdayNames } = this.props;
+    const {
+      locale: { weekdays },
+    } = this.props;
 
-    return moveElementsByN(firstDayOfWeek, weekdayNames);
+    return moveElementsByN(firstDayOfWeek, weekdays);
   }
 
   state = this.initialState;
@@ -75,7 +83,9 @@ class BaseInput extends React.Component {
   resetState = () => {
     const { onDateChange } = this.props;
 
-    this.setState(this.initialState, () => onDateChange(null));
+    this.setState(this.initialState, () => {
+      onDateChange(null);
+    });
   };
 
   mousedownCb = mousedownEvent => {
@@ -170,7 +180,7 @@ class BaseInput extends React.Component {
 
   render() {
     const { isVisible, selectedDate, selectedDateFormatted } = this.state;
-    const { clearable, date, monthNames, todayButtonText } = this.props;
+    const { clearable, date, locale } = this.props;
 
     return (
       <div
@@ -195,12 +205,7 @@ class BaseInput extends React.Component {
             date={date}
           >
             {props => (
-              <Calendar
-                {...props}
-                monthNames={monthNames}
-                todayButtonText={todayButtonText}
-                weekdayNames={this.weekdayNames}
-              />
+              <Calendar {...props} {...locale} weekdays={this.weekdays} />
             )}
           </this.Component>
         )}
@@ -209,4 +214,4 @@ class BaseInput extends React.Component {
   }
 }
 
-export default BaseInput;
+export default SemanticDatepicker;

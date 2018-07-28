@@ -1,31 +1,8 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
-
-const brazilianMonths = [
-  'Janeiro',
-  'Fevereiro',
-  'Março',
-  'Abril',
-  'Maio',
-  'Junho',
-  'Julho',
-  'Agosto',
-  'Setembro',
-  'Outubro',
-  'Novembro',
-  'Dezembro',
-];
-
-const brazilianWeek = [
-  'Domingo',
-  'Segunda',
-  'Terça',
-  'Quarta',
-  'Quinta',
-  'Sexta',
-  'Sábado',
-];
+import localePtBr from '../src/locales/pt-BR';
 
 storiesOf('Examples', module)
   .add('Simple', () => <SemanticDatepicker onDateChange={console.log} />)
@@ -66,8 +43,6 @@ storiesOf('Examples', module)
     <SemanticDatepicker
       onDateChange={console.log}
       format="DD/MM/YYYY"
-      monthNames={brazilianMonths}
-      todayButtonText="Hoje"
-      weekdayNames={brazilianWeek}
+      locale={localePtBr}
     />
   ));

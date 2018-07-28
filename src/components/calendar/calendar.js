@@ -4,7 +4,6 @@ import { Segment } from 'semantic-ui-react';
 import Button, { TodayButton } from '../button';
 import CalendarCell from '../cell';
 import { getToday } from '../../utils';
-import 'semantic-ui-css/semantic.min.css';
 import './calendar.css';
 
 const Calendar = ({
@@ -14,12 +13,16 @@ const Calendar = ({
   getForwardProps,
   maxDate,
   minDate,
-  monthNames,
+  months,
+  nextMonth,
+  nextYear,
+  previousMonth,
+  previousYear,
   selected,
   selectedClassName,
   showToday,
-  todayButtonText,
-  weekdayNames,
+  todayButton,
+  weekdays,
 }) => (
   <Segment className="clndr-calendars-segment">
     <div
@@ -37,13 +40,13 @@ const Calendar = ({
                 <Fragment>
                   <Button
                     icon="angle double left"
-                    title="Last year"
+                    title={previousYear}
                     {...getBackProps({ calendars, offset: 12 })}
                   />
                   <Button
                     icon="angle left"
                     style={{ marginRight: 0 }}
-                    title="Last month"
+                    title={previousMonth}
                     {...getBackProps({ calendars })}
                   />
                 </Fragment>
@@ -52,9 +55,9 @@ const Calendar = ({
 
             <span
               className="clndr-control-month"
-              title={`${monthNames[calendar.month]} ${calendar.year}`}
+              title={`${months[calendar.month]} ${calendar.year}`}
             >
-              {monthNames[calendar.month].slice(0, 3)} {calendar.year}
+              {months[calendar.month].slice(0, 3)} {calendar.year}
             </span>
 
             <div
@@ -65,13 +68,13 @@ const Calendar = ({
                 <Fragment>
                   <Button
                     icon="angle right"
-                    title="Next month"
+                    title={nextMonth}
                     {...getForwardProps({ calendars })}
                   />
                   <Button
                     icon="angle double right"
                     style={{ marginRight: 0 }}
-                    title="Next year"
+                    title={nextYear}
                     {...getForwardProps({ calendars, offset: 12 })}
                   />
                 </Fragment>
@@ -79,7 +82,7 @@ const Calendar = ({
             </div>
           </div>
           <div className="clndr-days">
-            {weekdayNames.map(weekday => (
+            {weekdays.map(weekday => (
               <CalendarCell
                 key={`${calendar.year}-${calendar.month}-${weekday}`}
                 title={weekday}
@@ -116,7 +119,7 @@ const Calendar = ({
           dateObj: getToday(selected, minDate, maxDate),
         })}
       >
-        {todayButtonText}
+        {todayButton}
       </TodayButton>
     )}
   </Segment>
@@ -129,19 +132,21 @@ Calendar.propTypes = {
   getForwardProps: PropTypes.func.isRequired,
   maxDate: PropTypes.instanceOf(Date),
   minDate: PropTypes.instanceOf(Date),
-  monthNames: PropTypes.array.isRequired,
-  onDateSelected: PropTypes.func,
+  months: PropTypes.array.isRequired,
+  nextMonth: PropTypes.string.isRequired,
+  nextYear: PropTypes.string.isRequired,
+  previousMonth: PropTypes.string.isRequired,
+  previousYear: PropTypes.string.isRequired,
   selected: PropTypes.instanceOf(Date),
   selectedClassName: PropTypes.string,
   showToday: PropTypes.bool,
-  todayButtonText: PropTypes.string.isRequired,
-  weekdayNames: PropTypes.array.isRequired,
+  todayButton: PropTypes.string.isRequired,
+  weekdays: PropTypes.array.isRequired,
 };
 
 Calendar.defaultProps = {
   maxDate: null,
   minDate: null,
-  onDateSelected: () => {},
   showToday: true,
 };
 
