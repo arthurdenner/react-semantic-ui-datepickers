@@ -24,7 +24,6 @@ const Calendar = ({
   nextYear,
   previousMonth,
   previousYear,
-  selectedClassName,
   showToday,
   todayButton,
   weekdays,
@@ -93,7 +92,6 @@ const Calendar = ({
                 return dateObj ? (
                   <CalendarCell
                     key={key}
-                    selectedClassName={selectedClassName}
                     {...dateObj}
                     {...getDateProps({ dateObj })}
                   >
@@ -133,7 +131,6 @@ Calendar.propTypes = {
   nextYear: PropTypes.string.isRequired,
   previousMonth: PropTypes.string.isRequired,
   previousYear: PropTypes.string.isRequired,
-  selectedClassName: PropTypes.string,
   showToday: PropTypes.bool,
   todayButton: PropTypes.string.isRequired,
   weekdays: PropTypes.array.isRequired,

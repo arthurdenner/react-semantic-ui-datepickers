@@ -38,6 +38,7 @@
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js",
     "rules": {
+      "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
       "import/no-unassigned-import": 0,
       "no-console": 1
     }

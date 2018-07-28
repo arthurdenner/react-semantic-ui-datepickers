@@ -1,31 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
-import { omit } from '../utils';
 
-const propsToIgnore = ['hovered', 'end', 'inRange', 'start'];
 const style = { marginTop: 10 };
 
-const TodayButton = ({ selectable, selected, today, ...rest }) => {
-  const otherProps = omit(propsToIgnore, rest);
-
-  return (
-    <Button
-      compact
-      fluid
-      selectable={selectable.toString()}
-      selected={selected.toString()}
-      today={today.toString()}
-      style={style}
-      {...otherProps}
-    />
-  );
-};
+const TodayButton = ({
+  end,
+  hovered,
+  inRange,
+  selectable,
+  selected,
+  start,
+  today,
+  ...otherProps
+}) => <Button compact fluid style={style} {...otherProps} />;
 
 TodayButton.propTypes = {
+  end: PropTypes.bool,
+  hovered: PropTypes.bool,
   inRange: PropTypes.bool,
   selectable: PropTypes.bool,
   selected: PropTypes.bool,
+  start: PropTypes.bool,
   today: PropTypes.bool,
 };
 
