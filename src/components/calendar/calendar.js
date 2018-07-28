@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { Segment } from 'semantic-ui-react';
-import Button, { TodayButton } from '../button';
+import Button from '../button';
+import TodayButton from '../today-button';
 import CalendarCell from '../cell';
 import { getToday } from '../../utils';
 import './calendar.css';

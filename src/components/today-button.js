@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
-import { omit } from '../../utils';
+import { omit } from '../utils';
 
 const propsToIgnore = ['hovered', 'end', 'inRange', 'start'];
+const style = { marginTop: 10 };
 
 const TodayButton = ({ selectable, selected, today, ...rest }) => {
   const otherProps = omit(propsToIgnore, rest);
@@ -15,7 +16,7 @@ const TodayButton = ({ selectable, selected, today, ...rest }) => {
       selectable={selectable.toString()}
       selected={selected.toString()}
       today={today.toString()}
-      style={{ marginTop: 10 }}
+      style={style}
       {...otherProps}
     />
   );
