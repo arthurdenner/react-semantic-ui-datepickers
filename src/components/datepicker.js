@@ -95,10 +95,18 @@ class SemanticDatepicker extends React.Component {
 
   resetState = () => {
     const { onDateChange } = this.props;
+    const initialSelectedDate = this.isRangeInput ? [] : null;
 
-    this.setState(this.initialState, () => {
-      onDateChange(null);
-    });
+    this.setState(
+      {
+        isVisible: false,
+        selectedDate: initialSelectedDate,
+        selectedDateFormatted: '',
+      },
+      () => {
+        onDateChange(null);
+      }
+    );
   };
 
   mousedownCb = mousedownEvent => {
