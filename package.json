@@ -1,7 +1,7 @@
 {
   "name": "react-semantic-ui-datepickers",
   "version": "0.0.0-semantically-released",
-  "description": "Datepickers built with Semantic UI for React",
+  "description": "Datepickers built with Semantic UI for React and Dayzed",
   "main": "dist/react-semantic-ui-datepickers.js",
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
@@ -13,6 +13,9 @@
     "test": "kcd-scripts test",
     "travis-deploy-once": "travis-deploy-once"
   },
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "semantic-ui",
     "calendar",
@@ -24,8 +27,7 @@
   "dependencies": {
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
-    "dayzed": "^2.2.0",
-    "format-string-by-pattern": "^0.3.0"
+    "dayzed": "^2.2.0"
   },
   "devDependencies": {
     "@storybook/react": "^3.4.0",
@@ -51,7 +53,12 @@
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js",
     "rules": {
-      "no-unused-vars": ["error", { "ignoreRestSiblings": true }],
+      "no-unused-vars": [
+        "error",
+        {
+          "ignoreRestSiblings": true
+        }
+      ],
       "import/no-unassigned-import": 0,
       "no-console": 1
     }
