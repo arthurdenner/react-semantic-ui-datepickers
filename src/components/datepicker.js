@@ -17,6 +17,7 @@ const semanticInputProps = [
   'label',
   'labelPosition',
   'loading',
+  'name',
   'placeholder',
   'size',
   'transparent',

@@ -1,0 +1,26 @@
+{
+  "projectName": "react-semantic-ui-datepickers",
+  "projectOwner": "arthurdenner",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "arthurdenner",
+      "name": "Arthur Denner",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/13774309?v=4",
+      "profile": "https://github.com/arthurdenner",
+      "contributions": [
+        "code",
+        "design",
+        "doc",
+        "example",
+        "ideas"
+      ]
+    }
+  ]
+}
