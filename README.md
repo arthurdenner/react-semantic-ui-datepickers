@@ -1,22 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [📆 react-semantic-ui-datepickers](#-react-semantic-ui-datepickers)
-  - [Overview](#overview)
-  - [Table of Contents](#table-of-contents)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Supported Props](#supported-props)
-    - [Own Props](#own-props)
-    - [Form.Input Props](#forminput-props)
-    - [Dayzed Props](#dayzed-props)
-  - [Customization](#customization)
-  - [Roadmap](#roadmap)
-  - [Contributors](#contributors)
-  - [LICENSE](#license)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 # 📆 react-semantic-ui-datepickers
 
 Datepickers built with [Semantic UI for React][semantic-ui-react] and [Dayzed][dayzed]
@@ -33,16 +14,21 @@ It supports most props of Form.Input and Dayzed components. Check the [supported
 
 ## Table of Contents
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 - [Installation](#installation)
 - [Usage](#usage)
 - [Supported Props](#supported-props)
   - [Own Props](#own-props)
-  - [Form.Input Props](#form.input-props)
+  - [Form.Input Props](#forminput-props)
   - [Dayzed Props](#dayzed-props)
 - [Customization](#customization)
 - [Roadmap](#roadmap)
 - [Contributors](#contributors)
 - [LICENSE](#license)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## Installation
 
