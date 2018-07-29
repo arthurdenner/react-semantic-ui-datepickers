@@ -5,7 +5,7 @@
   "main": "dist/react-semantic-ui-datepickers.js",
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
-    "build": "kcd-scripts build --bundle --react",
+    "build": "kcd-scripts build --bundle cjs.minify",
     "lint": "kcd-scripts lint",
     "precommit": "kcd-scripts precommit",
     "semantic-release": "semantic-release",
@@ -36,6 +36,7 @@
     "prop-types": "^15.6.1",
     "react": "16.2",
     "react-dom": "16.2",
+    "rollup-plugin-copy": "^0.2.3",
     "rollup-plugin-postcss": "^1.6.2",
     "semantic-release": "^15.8.1",
     "semantic-ui-css": "^2.3.1",
