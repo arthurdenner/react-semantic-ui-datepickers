@@ -6,10 +6,14 @@
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
     "build": "kcd-scripts build --bundle cjs.minify",
+    "deploy": "now --public ./storybook-static -A ../now.json && now alias",
     "lint": "kcd-scripts lint",
     "precommit": "kcd-scripts precommit",
+    "predeploy": "npm run storybook:build",
     "semantic-release": "semantic-release",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9001 -c stories",
+    "storybook:build": "build-storybook -c stories",
+    "storybook:serve": "serve ./storybook-static -p 6006",
     "test": "kcd-scripts test",
     "travis-deploy-once": "travis-deploy-once",
     "validate": "kcd-scripts validate"
@@ -44,6 +48,7 @@
     "semantic-release": "^15.8.1",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.79.1",
+    "serve": "^9.4.0",
     "travis-deploy-once": "^5.0.1"
   },
   "peerDependencies": {

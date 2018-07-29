@@ -57,6 +57,8 @@ const AppWithRange = ({ onDateChange }) => (
 );
 ```
 
+More examples [here](https://react-semantic-ui-datepickers.now.sh).
+
 ## Supported Props
 
 ### Own Props
