@@ -5,7 +5,6 @@ import { Form, Icon } from 'semantic-ui-react';
 const CustomInput = ({ isIconClickable, onClear, onClick, value, ...rest }) => (
   <Form.Input
     {...rest}
-    onClick={onClick}
     icon={
       <Icon
         link
@@ -13,6 +12,7 @@ const CustomInput = ({ isIconClickable, onClear, onClick, value, ...rest }) => (
         onClick={isIconClickable ? onClear : onClick}
       />
     }
+    onClick={onClick}
     readOnly
     value={value}
   />

@@ -1,10 +1,10 @@
 {
-  "name": "react-semantic-ui-calendars",
+  "name": "react-semantic-ui-datepickers",
   "version": "0.0.0",
   "description": "Calendars styled with Semantic UI for React",
-  "main": "dist/index.js",
+  "main": "dist/react-semantic-ui-datepickers.js",
   "scripts": {
-    "build": "kcd-scripts build",
+    "build": "kcd-scripts build --bundle --react",
     "lint": "kcd-scripts lint",
     "precommit": "kcd-scripts precommit",
     "storybook": "start-storybook -p 9001 -c .storybook",
@@ -22,18 +22,24 @@
     "classnames": "^2.2.5",
     "date-fns": "^1.29.0",
     "dayzed": "^2.2.0",
-    "format-string-by-pattern": "^0.3.0",
-    "prop-types": "^15.6.1",
-    "react": "16.2",
-    "react-dom": "16.2",
-    "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.1"
+    "format-string-by-pattern": "^0.3.0"
   },
   "devDependencies": {
     "@storybook/react": "^3.4.0",
     "babel-core": "^6.26.0",
     "babel-runtime": "^6.26.0",
-    "kcd-scripts": "^0.36.1"
+    "kcd-scripts": "^0.36.1",
+    "prop-types": "^15.6.1",
+    "react": "16.2",
+    "react-dom": "16.2",
+    "rollup-plugin-postcss": "^1.6.2",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.79.1"
+  },
+  "peerDependencies": {
+    "prop-types": ">=15",
+    "react": ">=15",
+    "semantic-ui-react": ">=0.75.0"
   },
   "eslintConfig": {
     "extends": "./node_modules/kcd-scripts/eslint.js",
@@ -50,10 +56,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/arthurdenner/react-semantic-ui-calendars.git"
+    "url": "https://github.com/arthurdenner/react-semantic-ui-datepickers.git"
   },
   "bugs": {
-    "url": "https://github.com/arthurdenner/react-semantic-ui-calendars/issues"
+    "url": "https://github.com/arthurdenner/react-semantic-ui-datepickers/issues"
   },
-  "homepage": "https://github.com/arthurdenner/react-semantic-ui-calendars#readme"
+  "homepage": "https://github.com/arthurdenner/react-semantic-ui-datepickers#readme"
 }
