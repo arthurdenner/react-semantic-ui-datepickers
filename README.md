@@ -47,13 +47,19 @@ yarn add react-semantic-ui-datepickers
 ```jsx
 import React from 'react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
+import ptLocale from 'react-semantic-ui-datepickers/dist/locales/pt-BR';
+import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
 const AppWithBasic = ({ onDateChange }) => (
   <SemanticDatepicker onDateChange={onDateChange} />
 );
 
-const AppWithRange = ({ onDateChange }) => (
-  <SemanticDatepicker onDateChange={onDateChange} type="range" />
+const AppWithRangeAndInPortuguese = ({ onDateChange }) => (
+  <SemanticDatepicker
+    locale={ptLocale}
+    onDateChange={onDateChange}
+    type="range"
+  />
 );
 ```
 
