@@ -2,7 +2,7 @@ import format from 'date-fns/format';
 import isBefore from 'date-fns/is_before';
 import startOfDay from 'date-fns/start_of_day';
 
-function isSelectable(date, minDate, maxDate) {
+export const isSelectable = (date, minDate, maxDate) => {
   if (
     (minDate && isBefore(date, minDate)) ||
     (maxDate && isBefore(maxDate, date))
@@ -11,7 +11,7 @@ function isSelectable(date, minDate, maxDate) {
   }
 
   return true;
-}
+};
 
 export const getToday = (minDate, maxDate) => {
   const today = new Date();
@@ -45,8 +45,7 @@ export const pick = (keysToPick, obj) => {
   return newObj;
 };
 
-export const moveElementsByN = (n = 0, arr = []) =>
-  arr.slice(n).concat(arr.slice(0, n));
+export const moveElementsByN = (n, arr) => arr.slice(n).concat(arr.slice(0, n));
 
 export const formatSelectedDate = (selectedDate, dateFormat) => {
   if (!selectedDate) {
