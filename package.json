@@ -11,7 +11,8 @@
     "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "test": "kcd-scripts test",
-    "travis-deploy-once": "travis-deploy-once"
+    "travis-deploy-once": "travis-deploy-once",
+    "validate": "kcd-scripts validate"
   },
   "files": [
     "dist"
@@ -66,7 +67,8 @@
   "eslintIgnore": [
     "node_modules",
     "coverage",
-    "dist"
+    "dist",
+    "stories"
   ],
   "repository": {
     "type": "git",

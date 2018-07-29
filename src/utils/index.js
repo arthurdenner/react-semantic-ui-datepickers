@@ -47,6 +47,7 @@ export const pick = (keysToPick, obj) => {
 
 export const moveElementsByN = (n = 0, arr = []) =>
   arr.slice(n).concat(arr.slice(0, n));
+
 export const formatSelectedDate = (selectedDate, dateFormat) => {
   if (!selectedDate) {
     return '';
