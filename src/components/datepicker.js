@@ -15,7 +15,6 @@ const semanticInputProps = [
   'iconPosition',
   'id',
   'label',
-  'labelPosition',
   'loading',
   'name',
   'placeholder',
@@ -214,7 +213,7 @@ class SemanticDatepicker extends React.Component {
       >
         <Input
           {...this.inputProps}
-          isIconClickable={Boolean(clearable && selectedDateFormatted)}
+          isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
           onClear={this.resetState}
           onClick={this.showCalendar}
           value={selectedDateFormatted}

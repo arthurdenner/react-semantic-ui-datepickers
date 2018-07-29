@@ -2,14 +2,21 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Icon } from 'semantic-ui-react';
 
-const CustomInput = ({ isIconClickable, onClear, onClick, value, ...rest }) => (
+const CustomInput = ({
+  icon,
+  isClearIconVisible,
+  onClear,
+  onClick,
+  value,
+  ...rest
+}) => (
   <Form.Input
     {...rest}
     icon={
       <Icon
         link
-        name={isIconClickable ? 'close' : 'calendar'}
-        onClick={isIconClickable ? onClear : onClick}
+        name={isClearIconVisible ? 'close' : icon}
+        onClick={isClearIconVisible ? onClear : onClick}
       />
     }
     onClick={onClick}
@@ -19,10 +26,15 @@ const CustomInput = ({ isIconClickable, onClear, onClick, value, ...rest }) => (
 );
 
 CustomInput.propTypes = {
-  isIconClickable: PropTypes.bool.isRequired,
+  icon: PropTypes.string,
+  isClearIconVisible: PropTypes.bool.isRequired,
   onClear: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
+};
+
+CustomInput.defaultProps = {
+  icon: 'calendar',
 };
 
 export default CustomInput;
