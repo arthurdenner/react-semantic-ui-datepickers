@@ -3,6 +3,7 @@
   "version": "0.0.0-semantically-released",
   "description": "Datepickers built with Semantic UI for React and Dayzed",
   "main": "dist/react-semantic-ui-datepickers.js",
+  "typings": "./dist/index.d.ts",
   "scripts": {
     "add-contributor": "kcd-scripts contributors add",
     "build": "kcd-scripts build --bundle cjs.minify",

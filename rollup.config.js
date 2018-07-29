@@ -11,7 +11,10 @@ module.exports = {
     sourcemap: true,
   }),
   plugins: [
-    copy({ 'src/locales': 'dist/locales' }),
+    copy({
+      'src/locales': 'dist/locales',
+      'src/index.d.ts': 'dist/index.d.ts',
+    }),
     postcss({ extract: true, minimize: true }),
   ].concat(rollupConfig.plugins),
 };
