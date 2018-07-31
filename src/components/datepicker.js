@@ -26,6 +26,7 @@ class SemanticDatepicker extends React.Component {
   static propTypes = {
     clearable: PropTypes.bool,
     date: PropTypes.instanceOf(Date),
+    firstDayOfWeek: PropTypes.number,
     format: PropTypes.string,
     keepOpenOnClear: PropTypes.bool,
     keepOpenOnSelect: PropTypes.bool,
@@ -44,6 +45,7 @@ class SemanticDatepicker extends React.Component {
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
     date: undefined,
+    firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
     locale: localeEn,
     placeholder: null,
@@ -151,7 +153,7 @@ class SemanticDatepicker extends React.Component {
   handleRangeInput = newDates => {
     const { format, keepOpenOnSelect, onDateChange } = this.props;
 
-    if (!newDates.length) {
+    if (!newDates || !newDates.length) {
       this.resetState();
 
       return;
