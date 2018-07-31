@@ -2,6 +2,7 @@
   text-align: center;
   position: absolute !important;
   margin-top: 0.25rem !important;
+  z-index: 2000;
 }
 
 .clndr-calendars-wrapper {

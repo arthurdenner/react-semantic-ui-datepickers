@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'react-fast-compare';
 import { formatSelectedDate, moveElementsByN, omit, pick } from '../utils';
 import localeEn from '../locales/en-US';
 import BasicDatePicker from '../pickers/basic';
@@ -26,6 +27,7 @@ class SemanticDatepicker extends React.Component {
   static propTypes = {
     clearable: PropTypes.bool,
     date: PropTypes.instanceOf(Date),
+    firstDayOfWeek: PropTypes.number,
     format: PropTypes.string,
     keepOpenOnClear: PropTypes.bool,
     keepOpenOnSelect: PropTypes.bool,
@@ -44,12 +46,21 @@ class SemanticDatepicker extends React.Component {
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
     date: undefined,
+    firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
     locale: localeEn,
     placeholder: null,
     selected: null,
     type: 'basic',
   };
+
+  componentDidUpdate(prevProps) {
+    const { selected } = this.props;
+
+    if (!isEqual(selected, prevProps.selected)) {
+      this.onDateSelected(selected);
+    }
+  }
 
   get isRangeInput() {
     return this.props.type === 'range';
@@ -151,7 +162,7 @@ class SemanticDatepicker extends React.Component {
   handleRangeInput = newDates => {
     const { format, keepOpenOnSelect, onDateChange } = this.props;
 
-    if (!newDates.length) {
+    if (!newDates || !newDates.length) {
       this.resetState();
 
       return;
