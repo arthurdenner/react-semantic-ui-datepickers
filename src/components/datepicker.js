@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import isEqual from 'react-fast-compare';
 import { formatSelectedDate, moveElementsByN, omit, pick } from '../utils';
 import localeEn from '../locales/en-US';
 import BasicDatePicker from '../pickers/basic';
@@ -52,6 +53,14 @@ class SemanticDatepicker extends React.Component {
     selected: null,
     type: 'basic',
   };
+
+  componentDidUpdate(prevProps) {
+    const { selected } = this.props;
+
+    if (!isEqual(selected, prevProps.selected)) {
+      this.onDateSelected(selected);
+    }
+  }
 
   get isRangeInput() {
     return this.props.type === 'range';
