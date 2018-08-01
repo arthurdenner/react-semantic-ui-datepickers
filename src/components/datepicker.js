@@ -239,19 +239,15 @@ class SemanticDatepicker extends React.Component {
             selected={selectedDate}
             date={this.date}
           >
-            {props => {
-              console.log(props);
-
-              return (
-                <Calendar
-                  {...this.dayzedProps}
-                  {...props}
-                  {...locale}
-                  pointing={pointing}
-                  weekdays={this.weekdays}
-                />
-              );
-            }}
+            {props => (
+              <Calendar
+                {...this.dayzedProps}
+                {...props}
+                {...locale}
+                pointing={pointing}
+                weekdays={this.weekdays}
+              />
+            )}
           </this.Component>
         )}
       </div>
