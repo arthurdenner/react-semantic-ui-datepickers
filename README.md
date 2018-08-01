@@ -4,7 +4,7 @@ Datepickers built with [Semantic UI for React][semantic-ui-react] and [Dayzed][d
 
 [![version][version-badge]][package]
 [![MIT License][license-badge]][license]
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors)
 
 ## Overview
 
@@ -131,8 +131,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars0.githubusercontent.com/u/13774309?v=4" width="100px;"/><br /><sub><b>Arthur Denner</b></sub>](https://github.com/arthurdenner)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Code") [🎨](#design-arthurdenner "Design") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Documentation") [💡](#example-arthurdenner "Examples") [🤔](#ideas-arthurdenner "Ideas, Planning, & Feedback") |
-| :---: |
+| [<img src="https://avatars0.githubusercontent.com/u/13774309?v=4" width="100px;"/><br /><sub><b>Arthur Denner</b></sub>](https://github.com/arthurdenner)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Code") [🎨](#design-arthurdenner "Design") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Documentation") [💡](#example-arthurdenner "Examples") [🤔](#ideas-arthurdenner "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/10627086?v=4" width="100px;"/><br /><sub><b>Emerson Laurentino</b></sub>](https://twitter.com/elaurent_)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=emersonlaurentino "Code") [🤔](#ideas-emersonlaurentino "Ideas, Planning, & Feedback") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=emersonlaurentino "Documentation") [💡](#example-emersonlaurentino "Examples") |
+| :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
