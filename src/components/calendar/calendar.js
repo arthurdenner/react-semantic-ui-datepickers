@@ -13,6 +13,17 @@ const styles = {
   rightBtn: { textAlign: 'end' },
 };
 
+const pointings = {
+  'bottom left': 'clndr-bottom clndr-left',
+  'bottom right': 'clndr-bottom clndr-right',
+  'top left': 'clndr-top clndr-left',
+  'top right': 'clndr-top clndr-right',
+  bottom: 'clndr-bottom',
+  left: 'clndr-left',
+  right: 'clndr-right',
+  top: 'clndr-top',
+};
+
 const Calendar = ({
   calendars,
   getBackProps,
@@ -30,9 +41,7 @@ const Calendar = ({
   weekdays,
   pointing,
 }) => (
-  <Segment
-    className={cn('clndr-calendars-segment', ([`clndr-${pointing}`]: pointing))}
-  >
+  <Segment className={cn('clndr-calendars-segment', pointings[pointing])}>
     <div
       className="clndr-calendars-wrapper"
       style={{ '--n': calendars.length }}
@@ -133,7 +142,16 @@ Calendar.propTypes = {
   months: PropTypes.array.isRequired,
   nextMonth: PropTypes.string.isRequired,
   nextYear: PropTypes.string.isRequired,
-  pointing: PropTypes.oneOf(['left', 'right']),
+  pointing: PropTypes.oneOf([
+    'bottom',
+    'top',
+    'left',
+    'right',
+    'bottom left',
+    'bottom right',
+    'top left',
+    'top right',
+  ]),
   previousMonth: PropTypes.string.isRequired,
   previousYear: PropTypes.string.isRequired,
   showToday: PropTypes.bool,

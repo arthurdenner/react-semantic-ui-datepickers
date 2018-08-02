@@ -5,8 +5,14 @@ import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
 import localePtBr from '../src/locales/pt-BR';
 
-const Content = ({ children }) => (
-  <div style={{ display: 'flex', flex: 1, justifyContent: 'center' }}>
+const Content = ({ children, style }) => (
+  <div
+    style={Object.assign(
+      {},
+      { display: 'flex', flex: 1, justifyContent: 'center' },
+      style
+    )}
+  >
     {children}
   </div>
 );
@@ -108,5 +114,62 @@ storiesOf('Examples', module)
   .add('Basic with right pointing', () => (
     <Content>
       <SemanticDatepicker pointing="right" onDateChange={console.log} />
+    </Content>
+  ))
+  .add('Basic with top pointing', () => (
+    <Content
+      style={{
+        alignItems: 'flex-end',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0,
+      }}
+    >
+      <SemanticDatepicker pointing="top" onDateChange={console.log} />
+    </Content>
+  ))
+  .add('Basic with top left pointing', () => (
+    <Content
+      style={{
+        alignItems: 'flex-end',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0,
+      }}
+    >
+      <SemanticDatepicker pointing="top left" onDateChange={console.log} />
+    </Content>
+  ))
+  .add('Basic with top right pointing', () => (
+    <Content
+      style={{
+        alignItems: 'flex-end',
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        bottom: 0,
+        top: 0,
+      }}
+    >
+      <SemanticDatepicker pointing="top right" onDateChange={console.log} />
+    </Content>
+  ))
+  .add('Basic with bottom pointing', () => (
+    <Content>
+      <SemanticDatepicker pointing="bottom" onDateChange={console.log} />
+    </Content>
+  ))
+  .add('Basic with bottom left pointing', () => (
+    <Content>
+      <SemanticDatepicker pointing="bottom left" onDateChange={console.log} />
+    </Content>
+  ))
+  .add('Basic with bottom right pointing', () => (
+    <Content>
+      <SemanticDatepicker pointing="bottom right" onDateChange={console.log} />
     </Content>
   ));
