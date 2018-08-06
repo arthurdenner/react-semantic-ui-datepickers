@@ -21,6 +21,18 @@
         "example",
         "ideas"
       ]
+    },
+    {
+      "login": "emersonlaurentino",
+      "name": "Emerson Laurentino",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/10627086?v=4",
+      "profile": "https://twitter.com/elaurent_",
+      "contributions": [
+        "code",
+        "ideas",
+        "doc",
+        "example"
+      ]
     }
   ]
 }

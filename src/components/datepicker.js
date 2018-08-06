@@ -8,7 +8,7 @@ import RangeDatePicker from '../pickers/range';
 import Calendar from './calendar';
 import Input from './input';
 
-const style = { display: 'inline-block' };
+const style = { display: 'inline-block', position: 'relative' };
 const semanticInputProps = [
   'disabled',
   'error',
@@ -39,9 +39,11 @@ class SemanticDatepicker extends React.Component {
       PropTypes.instanceOf(Date),
     ]),
     type: PropTypes.oneOf(['basic', 'range']),
+    pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
   };
 
   static defaultProps = {
+    pointing: 'left',
     clearable: true,
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
@@ -212,7 +214,7 @@ class SemanticDatepicker extends React.Component {
 
   render() {
     const { isVisible, selectedDate, selectedDateFormatted } = this.state;
-    const { clearable, locale } = this.props;
+    const { clearable, locale, pointing } = this.props;
 
     return (
       <div
@@ -242,6 +244,7 @@ class SemanticDatepicker extends React.Component {
                 {...this.dayzedProps}
                 {...props}
                 {...locale}
+                pointing={pointing}
                 weekdays={this.weekdays}
               />
             )}

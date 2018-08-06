@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 import { Segment } from 'semantic-ui-react';
 import Button from '../button';
 import TodayButton from '../today-button';
@@ -10,6 +11,13 @@ import './calendar.css';
 const styles = {
   leftBtn: { textAlign: 'start' },
   rightBtn: { textAlign: 'end' },
+};
+
+const pointings = {
+  'top left': 'clndr-top clndr-left',
+  'top right': 'clndr-top clndr-right',
+  left: 'clndr-left',
+  right: 'clndr-right',
 };
 
 const Calendar = ({
@@ -27,8 +35,9 @@ const Calendar = ({
   showToday,
   todayButton,
   weekdays,
+  pointing,
 }) => (
-  <Segment className="clndr-calendars-segment">
+  <Segment className={cn('clndr-calendars-segment', pointings[pointing])}>
     <div
       className="clndr-calendars-wrapper"
       style={{ '--n': calendars.length }}
@@ -129,6 +138,7 @@ Calendar.propTypes = {
   months: PropTypes.array.isRequired,
   nextMonth: PropTypes.string.isRequired,
   nextYear: PropTypes.string.isRequired,
+  pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
   previousMonth: PropTypes.string.isRequired,
   previousYear: PropTypes.string.isRequired,
   showToday: PropTypes.bool,
@@ -137,6 +147,7 @@ Calendar.propTypes = {
 };
 
 Calendar.defaultProps = {
+  pointing: 'left',
   maxDate: null,
   minDate: null,
   showToday: true,
