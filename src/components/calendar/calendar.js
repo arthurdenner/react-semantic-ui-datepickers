@@ -14,14 +14,10 @@ const styles = {
 };
 
 const pointings = {
-  'bottom left': 'clndr-bottom clndr-left',
-  'bottom right': 'clndr-bottom clndr-right',
   'top left': 'clndr-top clndr-left',
   'top right': 'clndr-top clndr-right',
-  bottom: 'clndr-bottom',
   left: 'clndr-left',
   right: 'clndr-right',
-  top: 'clndr-top',
 };
 
 const Calendar = ({
@@ -142,16 +138,7 @@ Calendar.propTypes = {
   months: PropTypes.array.isRequired,
   nextMonth: PropTypes.string.isRequired,
   nextYear: PropTypes.string.isRequired,
-  pointing: PropTypes.oneOf([
-    'bottom',
-    'top',
-    'left',
-    'right',
-    'bottom left',
-    'bottom right',
-    'top left',
-    'top right',
-  ]),
+  pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
   previousMonth: PropTypes.string.isRequired,
   previousYear: PropTypes.string.isRequired,
   showToday: PropTypes.bool,

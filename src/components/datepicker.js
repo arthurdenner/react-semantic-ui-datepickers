@@ -39,7 +39,7 @@ class SemanticDatepicker extends React.Component {
       PropTypes.instanceOf(Date),
     ]),
     type: PropTypes.oneOf(['basic', 'range']),
-    pointing: PropTypes.oneOf(['left', 'right']),
+    pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
   };
 
   static defaultProps = {
