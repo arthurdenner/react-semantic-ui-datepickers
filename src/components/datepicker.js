@@ -19,6 +19,7 @@ const semanticInputProps = [
   'loading',
   'name',
   'placeholder',
+  'required',
   'size',
   'transparent',
 ];

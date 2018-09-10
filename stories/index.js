@@ -96,6 +96,7 @@ storiesOf('Examples', module)
             label="Birth date"
             id="birthDate"
             onDateChange={console.log}
+            required
           />
           <SemanticDatepicker
             label="Start date"
