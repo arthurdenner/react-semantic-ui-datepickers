@@ -58,18 +58,20 @@ class SemanticDatepicker extends React.Component {
     ]),
     type: PropTypes.oneOf(['basic', 'range']),
     pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
+    filterDate: PropTypes.func,
   };
 
   static defaultProps = {
-    pointing: 'left',
     clearable: true,
-    keepOpenOnClear: false,
-    keepOpenOnSelect: false,
     date: undefined,
+    filterDate: () => true,
     firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
+    keepOpenOnClear: false,
+    keepOpenOnSelect: false,
     locale: localeEn,
     placeholder: null,
+    pointing: 'left',
     selected: null,
     type: 'basic',
   };
@@ -232,7 +234,7 @@ class SemanticDatepicker extends React.Component {
 
   render() {
     const { isVisible, selectedDate, selectedDateFormatted } = this.state;
-    const { clearable, locale, pointing } = this.props;
+    const { clearable, locale, pointing, filterDate } = this.props;
 
     return (
       <div
@@ -262,6 +264,7 @@ class SemanticDatepicker extends React.Component {
                 {...this.dayzedProps}
                 {...props}
                 {...locale}
+                filterDate={filterDate}
                 pointing={pointing}
                 weekdays={this.weekdays}
               />
