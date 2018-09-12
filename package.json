@@ -50,7 +50,7 @@
     "semantic-release": "^15.8.1",
     "semantic-ui-css": "^2.3.1",
     "semantic-ui-react": "^0.79.1",
-    "serve": "^9.4.0",
+    "serve": "^10.0.0",
     "travis-deploy-once": "^5.0.1"
   },
   "peerDependencies": {
