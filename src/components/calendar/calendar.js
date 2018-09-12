@@ -98,7 +98,6 @@ const Calendar = ({
             {calendar.weeks.map(week =>
               week.map((dateObj, weekIdx) => {
                 const key = `${calendar.year}-${calendar.month}-${weekIdx}`;
-                console.log({ dateObj });
 
                 return dateObj ? (
                   <CalendarCell
