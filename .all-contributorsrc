@@ -33,6 +33,17 @@
         "doc",
         "example"
       ]
+    },
+    {
+      "login": "lucasnsborges",
+      "name": "Lucas Borges",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/12260334?v=4",
+      "profile": "https://github.com/lucasnsborges",
+      "contributions": [
+        "code",
+        "doc",
+        "example"
+      ]
     }
   ]
 }
