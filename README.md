@@ -78,6 +78,7 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 | locale           | object   | no       | [en-US](https://github.com/arthurdenner/react-semantic-ui-datepickers/blob/master/src/locales/en-US.js) | Object with the labels to be used on the library PS: Feel free to submit PR's with more locales!                |
 | onDateChange     | function | yes      |                                                                                                         | Callback fired when the value changes                                                                           |
 | type             | string   | no       | basic                                                                                                   | Type of input to render. Available options: 'basic' and 'range'                                                 |
+| filterDate       | function | no       | () => true                                                                                              | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
 
 ### Form.Input Props
 
