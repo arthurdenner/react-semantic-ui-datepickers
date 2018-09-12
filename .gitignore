@@ -3,6 +3,5 @@ dist/
 node_modules/
 storybook-static/
 package-lock.json
-yarn.lock
 *.log
 .eslintcache

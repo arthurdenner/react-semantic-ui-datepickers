@@ -1,4 +1,6 @@
 {
+  "type": "static",
+  "public": true,
   "alias": "react-semantic-ui-datepickers",
   "name": "react-semantic-ui-datepickers"
 }
