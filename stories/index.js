@@ -182,6 +182,19 @@ storiesOf('Examples', module)
   ))
   .add('Basic with filterDate', () => (
     <Content>
-      <SemanticDatepicker filterDate={isWeekday} />
+      <SemanticDatepicker
+        maxDate={new Date('2019-01-01')}
+        filterDate={isWeekday}
+        onDateChange={console.log}
+        showOutsideDays
+      />
+    </Content>
+  ))
+  .add('Basic with maxDate', () => (
+    <Content>
+      <SemanticDatepicker
+        maxDate={new Date('2019-01-01')}
+        onDateChange={console.log}
+      />
     </Content>
   ));
