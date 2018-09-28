@@ -78,6 +78,8 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 | locale           | object   | no       | [en-US](https://github.com/arthurdenner/react-semantic-ui-datepickers/blob/master/src/locales/en-US.js) | Object with the labels to be used on the library PS: Feel free to submit PR's with more locales!                |
 | onDateChange     | function | yes      |                                                                                                         | Callback fired when the value changes                                                                           |
 | type             | string   | no       | basic                                                                                                   | Type of input to render. Available options: 'basic' and 'range'                                                 |
+|selected   | Date, arrayOf(Date)    | no |  | Default date selected |
+| pointing | string | no | 'left' | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right' |
 
 ### Form.Input Props
 
