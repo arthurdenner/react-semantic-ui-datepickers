@@ -22,6 +22,7 @@ const pointings = {
 
 const Calendar = ({
   calendars,
+  filterDate,
   getBackProps,
   getDateProps,
   getForwardProps,
@@ -98,16 +99,22 @@ const Calendar = ({
               week.map((dateObj, weekIdx) => {
                 const key = `${calendar.year}-${calendar.month}-${weekIdx}`;
 
-                return dateObj ? (
+                if (!dateObj) {
+                  return <CalendarCell key={key} />;
+                }
+
+                const selectable =
+                  dateObj.selectable && filterDate(dateObj.date);
+
+                return (
                   <CalendarCell
                     key={key}
                     {...dateObj}
-                    {...getDateProps({ dateObj })}
+                    {...getDateProps({ dateObj: { ...dateObj, selectable } })}
+                    selectable={selectable}
                   >
                     {dateObj.date.getDate()}
                   </CalendarCell>
-                ) : (
-                  <CalendarCell key={key} />
                 );
               })
             )}

@@ -17,6 +17,12 @@ const Content = ({ children, style }) => (
   </div>
 );
 
+const isWeekday = date => {
+  const day = date.getDay();
+
+  return day !== 0 && day !== 6;
+};
+
 storiesOf('Examples', module)
   .add('Basic', () => (
     <Content>
@@ -172,5 +178,24 @@ storiesOf('Examples', module)
   .add('Basic with bottom right pointing', () => (
     <Content>
       <SemanticDatepicker pointing="bottom right" onDateChange={console.log} />
+    </Content>
+  ))
+  .add('Basic with filterDate', () => (
+    <Content>
+      <SemanticDatepicker
+        filterDate={isWeekday}
+        onDateChange={console.log}
+        showOutsideDays
+      />
+    </Content>
+  ))
+  .add('Basic with filterDate setting a maxDate', () => (
+    <Content>
+      <SemanticDatepicker
+        filterDate={isWeekday}
+        maxDate={new Date('2019-01-01')}
+        onDateChange={console.log}
+        showOutsideDays
+      />
     </Content>
   ));
