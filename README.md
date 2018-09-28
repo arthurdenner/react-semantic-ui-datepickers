@@ -79,6 +79,8 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 | onDateChange     | function | yes      |                                                                                                         | Callback fired when the value changes                                                                           |
 | type             | string   | no       | basic                                                                                                   | Type of input to render. Available options: 'basic' and 'range'                                                 |
 | filterDate       | function | no       | () => true                                                                                              | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
+|selected   | Date, arrayOf(Date)    | no |  | Default date selected |
+| pointing | string | no | 'left' | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right' |
 
 ### Form.Input Props
 
