@@ -1,7 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import isEqual from 'react-fast-compare';
-import { formatSelectedDate, moveElementsByN, omit, pick } from '../utils';
+import isValid from 'date-fns/is_valid';
+import formatStringByPattern from 'format-string-by-pattern';
+import {
+  formatSelectedDate,
+  moveElementsByN,
+  omit,
+  parseOnBlur,
+  pick,
+} from '../utils';
 import localeEn from '../locales/en-US';
 import BasicDatePicker from '../pickers/basic';
 import RangeDatePicker from '../pickers/range';
@@ -96,6 +104,7 @@ class SemanticDatepicker extends React.Component {
       isVisible: false,
       selectedDate: selected || initialSelectedDate,
       selectedDateFormatted: formatSelectedDate(selected, format),
+      typedValue: null,
     };
   }
 
@@ -193,6 +202,7 @@ class SemanticDatepicker extends React.Component {
     const newState = {
       selectedDate: newDates,
       selectedDateFormatted: formatSelectedDate(newDates, format),
+      typedValue: null,
     };
 
     this.setState(newState, () => {
@@ -217,10 +227,65 @@ class SemanticDatepicker extends React.Component {
       isVisible: keepOpenOnSelect,
       selectedDate: newDate,
       selectedDateFormatted: formatSelectedDate(newDate, format),
+      typedValue: null,
     };
 
     this.setState(newState, () => {
       onDateChange(newDate);
+    });
+  };
+
+  handleBlur = () => {
+    const { format } = this.props;
+    const { typedValue } = this.state;
+
+    if (!typedValue) {
+      return;
+    }
+
+    const parsedValue = parseOnBlur(typedValue, format, this.isRangeInput);
+
+    if (this.isRangeInput) {
+      const areDatesValid = parsedValue.every(isValid);
+
+      if (areDatesValid) {
+        this.handleRangeInput(parsedValue);
+        return;
+      }
+    } else {
+      const isDateValid = isValid(parsedValue);
+
+      if (isDateValid) {
+        this.handleBasicInput(parsedValue);
+        return;
+      }
+    }
+
+    this.setState({ typedValue: null });
+  };
+
+  handleChange = (evt, { value }) => {
+    const { format, onDateChange } = this.props;
+    const formatString = this.isRangeInput ? `${format} - ${format}` : format;
+
+    if (!value) {
+      const newState = {
+        selectedDate: this.isRangeInput ? [] : null,
+        selectedDateFormatted: '',
+        typedValue: null,
+      };
+
+      this.setState(newState, () => {
+        onDateChange(null);
+      });
+
+      return;
+    }
+
+    this.setState({
+      selectedDate: this.isRangeInput ? [] : null,
+      selectedDateFormatted: '',
+      typedValue: formatStringByPattern(formatString, value),
     });
   };
 
@@ -233,7 +298,12 @@ class SemanticDatepicker extends React.Component {
   };
 
   render() {
-    const { isVisible, selectedDate, selectedDateFormatted } = this.state;
+    const {
+      isVisible,
+      selectedDate,
+      selectedDateFormatted,
+      typedValue,
+    } = this.state;
     const { clearable, locale, pointing, filterDate } = this.props;
 
     return (
@@ -247,9 +317,11 @@ class SemanticDatepicker extends React.Component {
         <Input
           {...this.inputProps}
           isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
+          onBlur={this.handleBlur}
+          onChange={this.handleChange}
           onClear={this.resetState}
           onClick={this.showCalendar}
-          value={selectedDateFormatted}
+          value={typedValue || selectedDateFormatted}
         />
         {isVisible && (
           <this.Component

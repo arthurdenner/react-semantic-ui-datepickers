@@ -20,7 +20,6 @@ const CustomInput = ({
       />
     }
     onClick={onClick}
-    readOnly
     value={value}
   />
 );
