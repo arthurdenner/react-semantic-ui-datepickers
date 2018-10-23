@@ -65,9 +65,15 @@ export const parseOnBlur = (typedValue, formatString, isRangeInput) => {
   if (isRangeInput) {
     const rangeValues = typedValue.split(' - ');
 
-    return rangeValues.map(value =>
-      dateFnsV2.parse(value, parseFormatString(formatString, true), new Date())
-    );
+    return rangeValues
+      .map(value =>
+        dateFnsV2.parse(
+          value,
+          parseFormatString(formatString, true),
+          new Date()
+        )
+      )
+      .sort((a, b) => (a > b ? 1 : -1));
   }
 
   return dateFnsV2.parse(
