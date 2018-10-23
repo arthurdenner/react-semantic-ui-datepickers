@@ -8,6 +8,7 @@ import {
   isSelectable,
   moveElementsByN,
   omit,
+  parseFormatString,
   pick,
 } from '../utils';
 
@@ -141,5 +142,13 @@ describe('formatSelectedDate', () => {
     expect(formatSelectedDate([june14, june20], 'DD/MM/YYYY')).toBe(
       '14/06/2018 - 20/06/2018'
     );
+  });
+});
+
+describe('parseFormatString', () => {
+  it('should change the case of letters D and Y', () => {
+    expect(parseFormatString('YYYY-MM-DD')).toBe('yyyy-MM-dd');
+
+    expect(parseFormatString('DD/MM/yyyy')).toBe('dd/MM/yyyy');
   });
 });

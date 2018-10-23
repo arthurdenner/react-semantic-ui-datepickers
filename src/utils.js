@@ -1,6 +1,7 @@
 import format from 'date-fns/format';
 import isBefore from 'date-fns/is_before';
 import startOfDay from 'date-fns/start_of_day';
+import dateFnsV2 from '../date-fns-v2';
 
 export const isSelectable = (date, minDate, maxDate) => {
   if (
@@ -55,4 +56,23 @@ export const formatSelectedDate = (selectedDate, dateFormat) => {
   return Array.isArray(selectedDate)
     ? selectedDate.map(date => formatDate(date, dateFormat)).join(' - ')
     : formatDate(selectedDate, dateFormat);
+};
+
+export const parseFormatString = formatString =>
+  formatString.replace(/[D, Y]/gi, a => a.toLowerCase());
+
+export const parseOnBlur = (typedValue, formatString, isRangeInput) => {
+  if (isRangeInput) {
+    const rangeValues = typedValue.split(' - ');
+
+    return rangeValues.map(value =>
+      dateFnsV2.parse(value, parseFormatString(formatString, true), new Date())
+    );
+  }
+
+  return dateFnsV2.parse(
+    typedValue,
+    parseFormatString(formatString),
+    new Date()
+  );
 };
