@@ -44,6 +44,15 @@
         "doc",
         "example"
       ]
+    },
+    {
+      "login": "rallysson",
+      "name": "Rallysson",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/12260324?v=4",
+      "profile": "https://github.com/rallysson",
+      "contributions": [
+        "doc"
+      ]
     }
   ]
 }

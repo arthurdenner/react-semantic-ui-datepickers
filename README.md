@@ -4,7 +4,7 @@ Datepickers built with [Semantic UI for React][semantic-ui-react] and [Dayzed][d
 
 [![version][version-badge]][package]
 [![MIT License][license-badge]][license]
-[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors)
 
 ## Overview
 
@@ -69,18 +69,18 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 
 ### Own Props
 
-| property         | type     | required | default                                                                                                 | description                                                                                                     |
-| ---------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| clearable        | boolean  | no       | true                                                                                                    | Allows the user to clear the value                                                                              |
-| format           | string   | no       | 'YYYY-MM-DD'                                                                                            | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format) |
-| keepOpenOnClear  | boolean  | no       | false                                                                                                   | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                           |
-| keepOpenOnSelect | boolean  | no       | false                                                                                                   | Keeps the datepicker open when a date is selected                                                               |
-| locale           | object   | no       | [en-US](https://github.com/arthurdenner/react-semantic-ui-datepickers/blob/master/src/locales/en-US.js) | Object with the labels to be used on the library PS: Feel free to submit PR's with more locales!                |
-| onDateChange     | function | yes      |                                                                                                         | Callback fired when the value changes                                                                           |
-| type             | string   | no       | basic                                                                                                   | Type of input to render. Available options: 'basic' and 'range'                                                 |
-| filterDate       | function | no       | () => true                                                                                              | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
-|selected   | Date, arrayOf(Date)    | no |  | Default date selected |
-| pointing | string | no | 'left' | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right' |
+| property         | type                | required | default                                                                                                 | description                                                                                                     |
+| ---------------- | ------------------- | -------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| clearable        | boolean             | no       | true                                                                                                    | Allows the user to clear the value                                                                              |
+| format           | string              | no       | 'YYYY-MM-DD'                                                                                            | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format) |
+| keepOpenOnClear  | boolean             | no       | false                                                                                                   | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                           |
+| keepOpenOnSelect | boolean             | no       | false                                                                                                   | Keeps the datepicker open when a date is selected                                                               |
+| locale           | object              | no       | [en-US](https://github.com/arthurdenner/react-semantic-ui-datepickers/blob/master/src/locales/en-US.js) | Object with the labels to be used on the library PS: Feel free to submit PR's with more locales!                |
+| onDateChange     | function            | yes      |                                                                                                         | Callback fired when the value changes                                                                           |
+| type             | string              | no       | basic                                                                                                   | Type of input to render. Available options: 'basic' and 'range'                                                 |
+| filterDate       | function            | no       | () => true                                                                                              | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
+| selected         | Date, arrayOf(Date) | no       |                                                                                                         | Default date selected                                                                                           |
+| pointing         | string              | no       | 'left'                                                                                                  | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
 
 ### Form.Input Props
 
@@ -134,8 +134,8 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore -->
-| [<img src="https://avatars0.githubusercontent.com/u/13774309?v=4" width="100px;"/><br /><sub><b>Arthur Denner</b></sub>](https://github.com/arthurdenner)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Code") [🎨](#design-arthurdenner "Design") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Documentation") [💡](#example-arthurdenner "Examples") [🤔](#ideas-arthurdenner "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/10627086?v=4" width="100px;"/><br /><sub><b>Emerson Laurentino</b></sub>](https://twitter.com/elaurent_)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=emersonlaurentino "Code") [🤔](#ideas-emersonlaurentino "Ideas, Planning, & Feedback") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=emersonlaurentino "Documentation") [💡](#example-emersonlaurentino "Examples") | [<img src="https://avatars2.githubusercontent.com/u/12260334?v=4" width="100px;"/><br /><sub><b>Lucas Borges</b></sub>](https://github.com/lucasnsborges)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=lucasnsborges "Code") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=lucasnsborges "Documentation") [💡](#example-lucasnsborges "Examples") |
-| :---: | :---: | :---: |
+| [<img src="https://avatars0.githubusercontent.com/u/13774309?v=4" width="100px;"/><br /><sub><b>Arthur Denner</b></sub>](https://github.com/arthurdenner)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Code") [🎨](#design-arthurdenner "Design") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=arthurdenner "Documentation") [💡](#example-arthurdenner "Examples") [🤔](#ideas-arthurdenner "Ideas, Planning, & Feedback") | [<img src="https://avatars2.githubusercontent.com/u/10627086?v=4" width="100px;"/><br /><sub><b>Emerson Laurentino</b></sub>](https://twitter.com/elaurent_)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=emersonlaurentino "Code") [🤔](#ideas-emersonlaurentino "Ideas, Planning, & Feedback") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=emersonlaurentino "Documentation") [💡](#example-emersonlaurentino "Examples") | [<img src="https://avatars2.githubusercontent.com/u/12260334?v=4" width="100px;"/><br /><sub><b>Lucas Borges</b></sub>](https://github.com/lucasnsborges)<br />[💻](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=lucasnsborges "Code") [📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=lucasnsborges "Documentation") [💡](#example-lucasnsborges "Examples") | [<img src="https://avatars3.githubusercontent.com/u/12260324?v=4" width="100px;"/><br /><sub><b>Rallysson</b></sub>](https://github.com/rallysson)<br />[📖](https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=rallysson "Documentation") |
+| :---: | :---: | :---: | :---: |
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
