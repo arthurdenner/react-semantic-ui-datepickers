@@ -62,23 +62,15 @@ export const parseFormatString = formatString =>
   formatString.replace(/[D, Y]/gi, a => a.toLowerCase());
 
 export const parseOnBlur = (typedValue, formatString, isRangeInput) => {
+  const parsedFormatString = parseFormatString(formatString);
+
   if (isRangeInput) {
     const rangeValues = typedValue.split(' - ');
 
     return rangeValues
-      .map(value =>
-        dateFnsV2.parse(
-          value,
-          parseFormatString(formatString, true),
-          new Date()
-        )
-      )
+      .map(value => dateFnsV2.parse(value, parsedFormatString, new Date()))
       .sort((a, b) => (a > b ? 1 : -1));
   }
 
-  return dateFnsV2.parse(
-    typedValue,
-    parseFormatString(formatString),
-    new Date()
-  );
+  return dateFnsV2.parse(typedValue, parsedFormatString, new Date());
 };
