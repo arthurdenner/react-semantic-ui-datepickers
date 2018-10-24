@@ -1,5 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import parse from 'date-fns/parse';
 import { Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
@@ -91,6 +92,8 @@ storiesOf('Examples', module)
         onDateChange={console.log}
         format="DD/MM/YYYY"
         locale={localePtBr}
+        selected={parse('2018-10-01')}
+        keepOpenOnSelect
       />
     </Content>
   ))

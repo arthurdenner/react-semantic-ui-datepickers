@@ -289,6 +289,13 @@ class SemanticDatepicker extends React.Component {
     });
   };
 
+  handleKeyDown = evt => {
+    // If the Enter key was pressed...
+    if (evt.keyCode === 13) {
+      this.handleBlur();
+    }
+  };
+
   onDateSelected = (...args) => {
     if (this.isRangeInput) {
       this.handleRangeInput(...args);
@@ -321,6 +328,7 @@ class SemanticDatepicker extends React.Component {
           onChange={this.handleChange}
           onClear={this.resetState}
           onClick={this.showCalendar}
+          onKeyDown={this.handleKeyDown}
           value={typedValue || selectedDateFormatted}
         />
         {isVisible && (
