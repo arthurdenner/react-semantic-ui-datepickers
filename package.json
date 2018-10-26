@@ -11,7 +11,7 @@
     "lint": "kcd-scripts lint",
     "precommit": "kcd-scripts precommit",
     "predeploy": "npm run storybook:build",
-    "postinstall": "cd date-fns-v2/ && npm install",
+    "prepare": "cd date-fns-v2/ && npm install",
     "semantic-release": "semantic-release",
     "storybook": "start-storybook -p 9001 -c stories",
     "storybook:build": "build-storybook -c stories",
