@@ -58,6 +58,7 @@ class SemanticDatepicker extends React.Component {
     keepOpenOnClear: PropTypes.bool,
     keepOpenOnSelect: PropTypes.bool,
     locale: PropTypes.object,
+    onBlur: PropTypes.func,
     onDateChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     selected: PropTypes.oneOfType([
@@ -78,6 +79,7 @@ class SemanticDatepicker extends React.Component {
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
     locale: localeEn,
+    onBlur: () => {},
     placeholder: null,
     pointing: 'left',
     selected: null,
@@ -235,9 +237,11 @@ class SemanticDatepicker extends React.Component {
     });
   };
 
-  handleBlur = () => {
-    const { format } = this.props;
+  handleBlur = event => {
+    const { format, onBlur } = this.props;
     const { typedValue } = this.state;
+
+    onBlur(event);
 
     if (!typedValue) {
       return;
