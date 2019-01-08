@@ -137,6 +137,7 @@ const Calendar = ({
 
 Calendar.propTypes = {
   calendars: PropTypes.array.isRequired,
+  filterDate: PropTypes.func.isRequired,
   getBackProps: PropTypes.func.isRequired,
   getDateProps: PropTypes.func.isRequired,
   getForwardProps: PropTypes.func.isRequired,
