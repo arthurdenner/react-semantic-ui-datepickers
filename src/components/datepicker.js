@@ -7,6 +7,7 @@ import {
   formatSelectedDate,
   moveElementsByN,
   omit,
+  onlyNumbers,
   parseOnBlur,
   pick,
 } from '../utils';
@@ -51,6 +52,7 @@ const semanticInputProps = [
 
 class SemanticDatepicker extends React.Component {
   static propTypes = {
+    allowOnlyNumbers: PropTypes.bool,
     clearable: PropTypes.bool,
     date: PropTypes.instanceOf(Date),
     firstDayOfWeek: PropTypes.number,
@@ -71,6 +73,7 @@ class SemanticDatepicker extends React.Component {
   };
 
   static defaultProps = {
+    allowOnlyNumbers: false,
     clearable: true,
     date: undefined,
     filterDate: () => true,
@@ -269,10 +272,11 @@ class SemanticDatepicker extends React.Component {
   };
 
   handleChange = (evt, { value }) => {
-    const { format, onDateChange } = this.props;
+    const { allowOnlyNumbers, format, onDateChange } = this.props;
     const formatString = this.isRangeInput ? `${format} - ${format}` : format;
+    const typedValue = allowOnlyNumbers ? onlyNumbers(value) : value;
 
-    if (!value) {
+    if (!typedValue) {
       const newState = {
         selectedDate: this.isRangeInput ? [] : null,
         selectedDateFormatted: '',
@@ -289,7 +293,7 @@ class SemanticDatepicker extends React.Component {
     this.setState({
       selectedDate: this.isRangeInput ? [] : null,
       selectedDateFormatted: '',
-      typedValue: formatStringByPattern(formatString, value),
+      typedValue: formatStringByPattern(formatString, typedValue),
     });
   };
 

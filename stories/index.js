@@ -30,6 +30,11 @@ storiesOf('Examples', module)
       <SemanticDatepicker onDateChange={console.log} />
     </Content>
   ))
+  .add('Basic with allowOnlyNumbers', () => (
+    <Content>
+      <SemanticDatepicker allowOnlyNumbers onDateChange={console.log} />
+    </Content>
+  ))
   .add('Basic with firstDayOfWeek', () => (
     <Content>
       <SemanticDatepicker firstDayOfWeek={3} onDateChange={console.log} />

@@ -74,3 +74,5 @@ export const parseOnBlur = (typedValue, formatString, isRangeInput) => {
 
   return dateFnsV2.parse(typedValue, parsedFormatString, new Date());
 };
+
+export const onlyNumbers = (value = '') => value.replace(/[^\d]/g, '');

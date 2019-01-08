@@ -8,6 +8,7 @@ import {
   isSelectable,
   moveElementsByN,
   omit,
+  onlyNumbers,
   parseFormatString,
   pick,
 } from '../utils';
@@ -150,5 +151,11 @@ describe('parseFormatString', () => {
     expect(parseFormatString('YYYY-MM-DD')).toBe('yyyy-MM-dd');
 
     expect(parseFormatString('DD/MM/yyyy')).toBe('dd/MM/yyyy');
+  });
+});
+
+describe('onlyNumbers', () => {
+  it('should only return numbers', () => {
+    expect(onlyNumbers('ABC-1025.4.8')).toBe('102548');
   });
 });

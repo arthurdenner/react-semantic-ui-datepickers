@@ -69,6 +69,7 @@
           "ignoreRestSiblings": true
         }
       ],
+      "complexity": ["error", 10],
       "import/no-unassigned-import": 0,
       "no-console": 1
     }
