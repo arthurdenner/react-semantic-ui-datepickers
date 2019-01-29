@@ -31,7 +31,6 @@ export interface SemanticDatepickerProps {
   name?: string;
   onDateChange: (newDate: Date | Date[] | null) => void;
   placeholder?: string;
-  placeholder?: string;
   selected?: Date | Date[];
   showOutsideDays?: boolean;
   size?: SemanticSIZES;
