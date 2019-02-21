@@ -30,9 +30,17 @@ storiesOf('Examples', module)
       <SemanticDatepicker onDateChange={console.log} />
     </Content>
   ))
-  .add('Basic Readonly', () => (
+  .add('Basic with readOnly', () => (
     <Content>
       <SemanticDatepicker onDateChange={console.log} readOnly={true} />
+    </Content>
+  ))
+  .add('Basic with clearOnSameDateClick={false}', () => (
+    <Content>
+      <SemanticDatepicker
+        onDateChange={console.log}
+        clearOnSameDateClick={false}
+      />
     </Content>
   ))
   .add('Basic with allowOnlyNumbers', () => (
