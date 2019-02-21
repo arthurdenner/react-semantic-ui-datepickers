@@ -30,6 +30,11 @@ storiesOf('Examples', module)
       <SemanticDatepicker onDateChange={console.log} />
     </Content>
   ))
+  .add('Basic Readonly', () => (
+    <Content>
+      <SemanticDatepicker onDateChange={console.log} readOnly={true} />
+    </Content>
+  ))
   .add('Basic with allowOnlyNumbers', () => (
     <Content>
       <SemanticDatepicker allowOnlyNumbers onDateChange={console.log} />
