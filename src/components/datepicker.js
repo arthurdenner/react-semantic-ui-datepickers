@@ -48,6 +48,7 @@ const semanticInputProps = [
   'required',
   'size',
   'transparent',
+  'readOnly',
 ];
 
 class SemanticDatepicker extends React.Component {
@@ -70,6 +71,7 @@ class SemanticDatepicker extends React.Component {
     type: PropTypes.oneOf(['basic', 'range']),
     pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
     filterDate: PropTypes.func,
+    readOnly: PropTypes.bool,
   };
 
   static defaultProps = {

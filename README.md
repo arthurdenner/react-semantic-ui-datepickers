@@ -95,6 +95,7 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 - placeholder
 - size
 - transparent
+- readOnly
 
 ### Dayzed Props
 
