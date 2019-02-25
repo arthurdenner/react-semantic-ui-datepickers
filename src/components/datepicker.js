@@ -60,6 +60,7 @@ class SemanticDatepicker extends React.Component {
     format: PropTypes.string,
     keepOpenOnClear: PropTypes.bool,
     keepOpenOnSelect: PropTypes.bool,
+    clearOnSameDateClick: PropTypes.bool,
     locale: PropTypes.object,
     onBlur: PropTypes.func,
     onDateChange: PropTypes.func.isRequired,
@@ -83,6 +84,7 @@ class SemanticDatepicker extends React.Component {
     format: 'YYYY-MM-DD',
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
+    clearOnSameDateClick: true,
     locale: localeEn,
     onBlur: () => {},
     placeholder: null,
@@ -222,11 +224,28 @@ class SemanticDatepicker extends React.Component {
   };
 
   handleBasicInput = newDate => {
-    const { format, keepOpenOnSelect, onDateChange } = this.props;
+    const {
+      format,
+      keepOpenOnSelect,
+      onDateChange,
+      clearOnSameDateClick,
+    } = this.props;
 
     if (!newDate) {
-      this.resetState();
-
+      // if clearOnSameDateClick is true (this is the default case)
+      // then reset the state. This is what was previously the default
+      // behavior, without a specific prop.
+      if (clearOnSameDateClick) {
+        this.resetState();
+      } else {
+        // Don't reset the state. Instead, close or keep open the
+        // datepicker according to the value of keepOpenOnSelect.
+        // Essentially, follow the default behavior of clicking a date
+        // but without changing the value in state.
+        this.setState({
+          isVisible: keepOpenOnSelect,
+        });
+      }
       return;
     }
 
@@ -322,7 +341,6 @@ class SemanticDatepicker extends React.Component {
       typedValue,
     } = this.state;
     const { clearable, locale, pointing, filterDate } = this.props;
-
     return (
       <div
         className="field"
