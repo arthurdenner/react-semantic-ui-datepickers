@@ -43,15 +43,4 @@ Also, make sure to run the tests before you commit your changes:
 
 `npm run test` or `yarn test`.
 
-## Add yourself as a contributor
-
-This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
-
-To add yourself to the table of contributors on the `README.md`, please use the
-automated script as part of your PR:
-
-`npm run add-contributor` or `yarn add-contributor`
-
-Follow the prompt and commit `.all-contributorsrc` and `README.md` in the PR.
-
 Thank you for taking the time to contribute! 👍
