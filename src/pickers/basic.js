@@ -6,7 +6,9 @@ class DatePicker extends React.Component {
   /* eslint-disable-next-line */
   _handleOnDateSelected = ({ selected, selectable, date }) => {
     const { selected: selectedDate, onChange, onDateSelected } = this.props;
-    onDateSelected && onDateSelected({ selected, selectable, date });
+    if (onDateSelected) {
+      onDateSelected({ selected, selectable, date });
+    }
 
     if (!selectable) {
       return;
@@ -17,7 +19,9 @@ class DatePicker extends React.Component {
       newDate = null;
     }
 
-    onChange && onChange(newDate);
+    if (onChange) {
+      onChange(newDate);
+    }
   };
 
   render() {

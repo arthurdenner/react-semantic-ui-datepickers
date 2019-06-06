@@ -9,7 +9,10 @@
 export function composeEventHandlers(...fns) {
   return (event, ...args) =>
     fns.some(fn => {
-      fn && fn(event, ...args);
+      if (fn) {
+        fn(event, ...args);
+      }
+
       return event.defaultPrevented;
     });
 }
@@ -29,7 +32,9 @@ export function getArrowKeyHandlers(config) {
       38: config.up,
       40: config.down,
     }[keyCode];
-    fn && fn(event);
+    if (fn) {
+      fn(event);
+    }
   };
 }
 
