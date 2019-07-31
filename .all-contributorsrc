@@ -73,6 +73,17 @@
         "example",
         "ideas"
       ]
+    },
+    {
+      "login": "jaaaco",
+      "name": "Jakub Wietrzyk",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/450726?v=4",
+      "profile": "https://medium.com/@jaaaco",
+      "contributions": [
+        "code",
+        "translation"
+      ]
     }
-  ]
+  ],
+  "contributorsPerLine": 7
 }
