@@ -9,7 +9,9 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "prepare": "cd date-fns-v2/ && npm install",
-    "test": "tsdx test --env=jsdom"
+    "test": "tsdx test --env=jsdom",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "husky": {
     "hooks": {
@@ -37,10 +39,18 @@
     "react-fast-compare": "^2.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@storybook/addon-actions": "^5.2.1",
+    "@storybook/addon-links": "^5.2.1",
+    "@storybook/addons": "^5.2.1",
+    "@storybook/react": "^5.2.1",
     "@types/jest": "^24.0.16",
     "@types/react": "^16.8.24",
     "@types/react-dom": "^16.8.5",
+    "@types/storybook__react": "^4.0.2",
     "autoprefixer": "^9.6.1",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.0.6",
     "cssnano": "^4.1.10",
     "husky": "^3.0.2",
     "prettier": "^1.18.2",
