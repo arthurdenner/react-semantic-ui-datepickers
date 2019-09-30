@@ -47,7 +47,7 @@
     "pretty-quick": "^1.11.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "rollup-plugin-copy": "^3.1.0",
+    "rollup-plugin-copy": "^0.2.3",
     "rollup-plugin-postcss": "^2.0.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.87.3",

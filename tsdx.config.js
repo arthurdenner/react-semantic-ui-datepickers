@@ -6,12 +6,6 @@ const cssnano = require('cssnano');
 module.exports = {
   rollup(config, options) {
     config.plugins.push(
-      copy({
-        targets: [{ src: 'src/locales/**/*', dest: 'dist/locales' }],
-      })
-    );
-
-    config.plugins.push(
       postcss({
         plugins: [
           autoprefixer(),
@@ -22,6 +16,9 @@ module.exports = {
         inject: true,
         // only write out CSS for the first bundle (avoids pointless extra files):
         extract: !!options.writeMeta,
+      }),
+      copy({
+        'src/locales': 'dist/locales',
       })
     );
 
