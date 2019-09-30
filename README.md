@@ -126,7 +126,6 @@ In order to customize the elements, you can override the styles of the classes b
   > @donysukardi did some work on accessibility in the BaseDatePicker, but I couldn't get it working correcly. Feel free to help on this!
 - Add more tests (including e2e)
   > The current threshold is pretty useless 😕
-- Add TypeScript definitions (or migrate to TypeScript)
 
 > Feel free to open issues and/or create PRs to improve other aspects of the library!
 
