@@ -1,8 +1,8 @@
 import React from 'react';
+import { BasicDatePickerProps } from '../types';
 import BaseDatePicker from './base';
-import { datePickerPropTypes } from './propTypes';
 
-class DatePicker extends React.Component {
+class DatePicker extends React.Component<BasicDatePickerProps> {
   /* eslint-disable-next-line */
   _handleOnDateSelected = ({ selected, selectable, date }) => {
     const { selected: selectedDate, onChange, onDateSelected } = this.props;
@@ -33,7 +33,5 @@ class DatePicker extends React.Component {
     );
   }
 }
-
-DatePicker.propTypes = datePickerPropTypes;
 
 export default DatePicker;

@@ -1,9 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import cn from 'classnames';
+import React from 'react';
 import './cell.css';
 
-const CalendarCell = ({
+type CalendarCellProps = {
+  end?: boolean;
+  hovered?: boolean;
+  inRange?: boolean;
+  nextMonth?: boolean;
+  prevMonth?: boolean;
+  selectable?: boolean;
+  selected?: boolean;
+  start?: boolean;
+  today?: boolean;
+  title?: string;
+};
+
+const CalendarCell: React.FC<CalendarCellProps> = ({
   end,
   hovered,
   inRange,
@@ -26,18 +38,6 @@ const CalendarCell = ({
     {...otherProps}
   />
 );
-
-CalendarCell.propTypes = {
-  end: PropTypes.bool,
-  hovered: PropTypes.bool,
-  inRange: PropTypes.bool,
-  nextMonth: PropTypes.bool,
-  prevMonth: PropTypes.bool,
-  selectable: PropTypes.bool,
-  selected: PropTypes.bool,
-  start: PropTypes.bool,
-  today: PropTypes.bool,
-};
 
 CalendarCell.defaultProps = {
   end: false,

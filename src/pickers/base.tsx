@@ -1,12 +1,14 @@
-import React from 'react';
 import Dayzed from 'dayzed';
+import React from 'react';
+import { DayzedProps } from '../types';
 import { getArrowKeyHandlers } from './utils';
-import { baseDatePickerPropTypes } from './propTypes';
 
-class BaseDatePicker extends React.Component {
+class BaseDatePicker extends React.Component<DayzedProps> {
   state = {
     offset: 0,
   };
+
+  rootNode = React.createRef<HTMLElement>();
 
   handleArrowKeys = getArrowKeyHandlers({
     left: () => {
@@ -24,8 +26,12 @@ class BaseDatePicker extends React.Component {
   });
 
   getKeyOffset(number) {
+    if (!this.rootNode.current) {
+      return;
+    }
+
     const e = document.activeElement;
-    const buttons = this.rootNode.querySelectorAll('button');
+    const buttons = this.rootNode.current.querySelectorAll('button');
     buttons.forEach((el, i) => {
       const newNodeKey = i + number;
       if (el === e) {
@@ -63,8 +69,7 @@ class BaseDatePicker extends React.Component {
   }
 
   render() {
-    const { children: childrenFn, render, ...rest } = this.props;
-    const children = render || childrenFn;
+    const { children, ...rest } = this.props;
 
     return (
       <Dayzed
@@ -81,7 +86,5 @@ class BaseDatePicker extends React.Component {
     );
   }
 }
-
-BaseDatePicker.propTypes = baseDatePickerPropTypes;
 
 export default BaseDatePicker;

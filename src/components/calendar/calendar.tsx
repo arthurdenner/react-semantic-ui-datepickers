@@ -1,14 +1,33 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
 import cn from 'classnames';
+import React, { Fragment } from 'react';
 import { Segment } from 'semantic-ui-react';
-import Button from '../button';
-import TodayButton from '../today-button';
-import CalendarCell from '../cell';
+import { DateFns, Locale, SemanticDatepickerProps } from 'types';
 import { getToday } from '../../utils';
+import Button from '../button';
+import CalendarCell from '../cell';
+import TodayButton from '../today-button';
 import './calendar.css';
 
-const styles = {
+type CalendarProps = {
+  calendars: any[];
+  filterDate: (date: Date) => void;
+  getBackProps: (props: any) => void;
+  getDateProps: (props: any) => void;
+  getForwardProps: (props: any) => void;
+  maxDate?: DateFns;
+  minDate?: DateFns;
+  months: Locale['months'];
+  nextMonth: string;
+  nextYear: string;
+  pointing: SemanticDatepickerProps['pointing'];
+  previousMonth: string;
+  previousYear: string;
+  showToday: boolean;
+  todayButton: string;
+  weekdays: Locale['weekdays'];
+};
+
+const styles: { [key: string]: React.CSSProperties } = {
   leftBtn: { textAlign: 'start' },
   rightBtn: { textAlign: 'end' },
 };
@@ -20,7 +39,7 @@ const pointings = {
   right: 'clndr-right',
 };
 
-const Calendar = ({
+const Calendar: React.FC<CalendarProps> = ({
   calendars,
   filterDate,
   getBackProps,
@@ -41,7 +60,7 @@ const Calendar = ({
   <Segment className={cn('clndr-calendars-segment', pointings[pointing])}>
     <div
       className="clndr-calendars-wrapper"
-      style={{ '--n': calendars.length }}
+      style={{ '--n': calendars.length } as React.CSSProperties}
     >
       {calendars.map((calendar, calendarIdx) => (
         <div key={`${calendar.year}-${calendar.month}`}>
@@ -135,29 +154,8 @@ const Calendar = ({
   </Segment>
 );
 
-Calendar.propTypes = {
-  calendars: PropTypes.array.isRequired,
-  filterDate: PropTypes.func.isRequired,
-  getBackProps: PropTypes.func.isRequired,
-  getDateProps: PropTypes.func.isRequired,
-  getForwardProps: PropTypes.func.isRequired,
-  maxDate: PropTypes.instanceOf(Date),
-  minDate: PropTypes.instanceOf(Date),
-  months: PropTypes.array.isRequired,
-  nextMonth: PropTypes.string.isRequired,
-  nextYear: PropTypes.string.isRequired,
-  pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
-  previousMonth: PropTypes.string.isRequired,
-  previousYear: PropTypes.string.isRequired,
-  showToday: PropTypes.bool,
-  todayButton: PropTypes.string.isRequired,
-  weekdays: PropTypes.array.isRequired,
-};
-
 Calendar.defaultProps = {
   pointing: 'left',
-  maxDate: null,
-  minDate: null,
   showToday: true,
 };
 
