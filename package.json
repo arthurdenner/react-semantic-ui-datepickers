@@ -11,7 +11,7 @@
     "prepare": "cd date-fns-v2/ && npm install",
     "test": "tsdx test --env=jsdom",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "storybook:build": "build-storybook"
   },
   "husky": {
     "hooks": {
