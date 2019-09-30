@@ -10,7 +10,7 @@ import './calendar.css';
 
 type CalendarProps = {
   calendars: any[];
-  filterDate: (date: Date) => void;
+  filterDate: (date: Date) => boolean;
   getBackProps: (props: any) => void;
   getDateProps: (props: any) => void;
   getForwardProps: (props: any) => void;
