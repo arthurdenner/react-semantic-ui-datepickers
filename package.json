@@ -6,11 +6,12 @@
   "module": "dist/react-semantic-ui-datepickers.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "lint": "tsdx lint",
+    "lint": "tsdx lint src",
     "start": "tsdx watch",
     "build": "tsdx build",
     "prepare": "cd date-fns-v2/ && npm install",
     "test": "tsdx test --env=jsdom",
+    "validate": "npm run lint && npm run test && npm run build",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },
@@ -69,6 +70,16 @@
   "peerDependencies": {
     "react": ">=16.3",
     "semantic-ui-react": ">=0.75.0"
+  },
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
+    },
+    "transform": {
+      ".(js|ts)x?": "ts-jest"
+    }
   },
   "repository": {
     "type": "git",
