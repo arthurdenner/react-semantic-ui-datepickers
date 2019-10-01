@@ -6,6 +6,7 @@
   "module": "dist/react-semantic-ui-datepickers.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
+    "lint": "tsdx lint",
     "start": "tsdx watch",
     "build": "tsdx build",
     "prepare": "cd date-fns-v2/ && npm install",
