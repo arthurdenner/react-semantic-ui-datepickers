@@ -91,6 +91,7 @@ class SemanticDatepicker extends React.Component {
     pointing: 'left',
     selected: null,
     type: 'basic',
+    readOnly: false,
   };
 
   componentDidUpdate(prevProps) {
@@ -340,7 +341,7 @@ class SemanticDatepicker extends React.Component {
       selectedDateFormatted,
       typedValue,
     } = this.state;
-    const { clearable, locale, pointing, filterDate } = this.props;
+    const { clearable, locale, pointing, filterDate, readOnly } = this.props;
     return (
       <div
         className="field"
@@ -355,7 +356,7 @@ class SemanticDatepicker extends React.Component {
           onBlur={this.handleBlur}
           onChange={this.handleChange}
           onClear={this.resetState}
-          onClick={this.showCalendar}
+          onClick={readOnly ? null : this.showCalendar}
           onKeyDown={this.handleKeyDown}
           value={typedValue || selectedDateFormatted}
         />
