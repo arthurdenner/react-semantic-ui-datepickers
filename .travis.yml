@@ -9,4 +9,6 @@ install: npm install
 script: npm run validate
 after_success: npx semantic-release
 branches:
-  only: master
+  only:
+    - develop
+    - master
