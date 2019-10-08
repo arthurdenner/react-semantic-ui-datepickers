@@ -82,7 +82,6 @@ class SemanticDatepicker extends React.Component<
     onBlur: () => {},
     placeholder: null,
     pointing: 'left',
-    readOnly: false,
     required: false,
     selected: null,
     showOutsideDays: false,
