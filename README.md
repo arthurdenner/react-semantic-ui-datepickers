@@ -4,7 +4,7 @@ Datepickers built with [Semantic UI for React][semantic-ui-react] and [Dayzed][d
 
 [![version][version-badge]][package]
 [![MIT License][license-badge]][license]
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors)
 
 ## Overview
 
@@ -145,6 +145,9 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/saminnet"><img src="https://avatars1.githubusercontent.com/u/5575369?v=4" width="100px;" alt="Samin Yousefnia"/><br /><sub><b>Samin Yousefnia</b></sub></a><br /><a href="#translation-saminnet" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/jalavosus"><img src="https://avatars3.githubusercontent.com/u/5103026?v=4" width="100px;" alt="James J. Alavosus"/><br /><sub><b>James J. Alavosus</b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=jalavosus" title="Code">💻</a> <a href="#example-jalavosus" title="Examples">💡</a> <a href="#ideas-jalavosus" title="Ideas, Planning, & Feedback">🤔</a></td>
     <td align="center"><a href="https://medium.com/@jaaaco"><img src="https://avatars3.githubusercontent.com/u/450726?v=4" width="100px;" alt="Jakub Wietrzyk"/><br /><sub><b>Jakub Wietrzyk</b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=jaaaco" title="Code">💻</a> <a href="#translation-jaaaco" title="Translation">🌍</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/benhancockco"><img src="https://avatars3.githubusercontent.com/u/20491242?v=4" width="100px;" alt="Ben Hancock"/><br /><sub><b>Ben Hancock</b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=benhancockco" title="Code">💻</a></td>
   </tr>
 </table>
 
