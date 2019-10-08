@@ -15,7 +15,9 @@ module.exports = {
         ],
         inject: true,
         // only write out CSS for the first bundle (avoids pointless extra files):
-        extract: !!options.writeMeta,
+        extract: options.writeMeta
+          ? 'dist/react-semantic-ui-datepickers.css'
+          : false,
       }),
       copy({
         'src/locales': 'dist/locales',
