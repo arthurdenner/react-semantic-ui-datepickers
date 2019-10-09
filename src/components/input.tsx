@@ -2,7 +2,6 @@ import React from 'react';
 import { Form, Icon, FormInputProps } from 'semantic-ui-react';
 
 type InputProps = FormInputProps & {
-  icon?: string;
   isClearIconVisible: boolean;
 };
 
