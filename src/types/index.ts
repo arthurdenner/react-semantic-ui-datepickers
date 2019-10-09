@@ -79,3 +79,7 @@ export type RangeDatePickerProps = DayzedProps & {
   onChange: (dates: Date[] | null) => void;
   selected: Date[];
 };
+
+export type ButtonProps = {
+  icon: string;
+};
