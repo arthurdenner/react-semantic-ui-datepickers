@@ -57,7 +57,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
   };
 
 export type DayzedProps = {
-  children: (children: any) => void;
+  children: (children: any) => React.ReactNode;
   date?: Date;
   firstDayOfWeek: number;
   maxDate?: Date;

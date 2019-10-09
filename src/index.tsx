@@ -1,3 +1,1 @@
-import SemanticDatepicker from './components/datepicker';
-
-export default SemanticDatepicker;
+export { default } from './components/datepicker';
