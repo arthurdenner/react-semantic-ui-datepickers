@@ -1,7 +1,10 @@
-coverage/
-dist/
-node_modules/
-storybook-static/
+coverage
+dist
+node_modules
 package-lock.json
 *.log
-.eslintcache
+.DS_Store
+.cache
+.rts2_cache_cjs
+.rts2_cache_esm
+.rts2_cache_umd

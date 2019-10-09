@@ -1,10 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Button } from 'semantic-ui-react';
 
-const style = { marginTop: 10 };
+type TodayButtonProps = {
+  end?: boolean;
+  hovered?: boolean;
+  inRange?: boolean;
+  selectable?: boolean;
+  selected?: boolean;
+  start?: boolean;
+  today?: boolean;
+};
 
-const TodayButton = ({
+const style: React.CSSProperties = { marginTop: 10 };
+
+const TodayButton: React.FC<TodayButtonProps> = ({
   end,
   hovered,
   inRange,
@@ -22,15 +31,5 @@ const TodayButton = ({
     {...otherProps}
   />
 );
-
-TodayButton.propTypes = {
-  end: PropTypes.bool,
-  hovered: PropTypes.bool,
-  inRange: PropTypes.bool,
-  selectable: PropTypes.bool,
-  selected: PropTypes.bool,
-  start: PropTypes.bool,
-  today: PropTypes.bool,
-};
 
 export default TodayButton;

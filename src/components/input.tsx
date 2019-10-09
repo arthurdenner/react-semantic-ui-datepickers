@@ -1,6 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Icon } from 'semantic-ui-react';
+import { Form, Icon, FormInputProps } from 'semantic-ui-react';
+
+type InputProps = FormInputProps & {
+  isClearIconVisible: boolean;
+};
 
 const CustomInput = ({
   icon,
@@ -9,7 +13,7 @@ const CustomInput = ({
   onClick,
   value,
   ...rest
-}) => (
+}: InputProps) => (
   <Form.Input
     {...rest}
     icon={

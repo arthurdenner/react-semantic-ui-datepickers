@@ -1,12 +1,18 @@
-import React from 'react';
-import isSameDay from 'date-fns/is_same_day';
 import compareAsc from 'date-fns/compare_asc';
-
+import isSameDay from 'date-fns/is_same_day';
+import React from 'react';
+import { DateFns, RangeDatePickerProps } from '../types';
 import BaseDatePicker from './base';
 import { composeEventHandlers, isInRange } from './utils';
-import { rangeDatePickerPropTypes } from './propTypes';
 
-class RangeDatePicker extends React.Component {
+type RangeDatePickerState = {
+  hoveredDate: DateFns | null;
+};
+
+class RangeDatePicker extends React.Component<
+  RangeDatePickerProps,
+  RangeDatePickerState
+> {
   static defaultProps = {
     selected: [],
   };
@@ -81,6 +87,7 @@ class RangeDatePicker extends React.Component {
       inRange: isInRange(dateBounds, date),
       start: dateBounds[0] && isSameDay(dateBounds[0], date),
       end: dateBounds[1] && isSameDay(dateBounds[1], date),
+      // @ts-ignore
       hovered: hoveredDate && isSameDay(hoveredDate, date),
       onMouseEnter: composeEventHandlers(onMouseEnter, () => {
         this.onHoverFocusDate(date);
@@ -98,22 +105,21 @@ class RangeDatePicker extends React.Component {
     });
 
   render() {
-    const { children: childrenFn, render, ...rest } = this.props;
+    const { children, ...rest } = this.props;
     const { hoveredDate } = this.state;
-    const children = render || childrenFn;
     const { selected } = this.props;
 
     const dateBounds =
       selected.length === 2 || !selected.length || !hoveredDate
         ? selected
-        : [selected[0], hoveredDate].sort(compareAsc);
+        : // prettier-ignore
+          // @ts-ignore
+          [selected[0], hoveredDate].sort(compareAsc);
 
     return (
-      <BaseDatePicker
-        {...rest}
-        onDateSelected={this._handleOnDateSelected}
-        render={({ getRootProps, getDateProps, ...renderProps }) => {
-          return children({
+      <BaseDatePicker {...rest} onDateSelected={this._handleOnDateSelected}>
+        {({ getRootProps, getDateProps, ...renderProps }) =>
+          children({
             ...renderProps,
             getRootProps: this.getEnhancedRootProps.bind(this, getRootProps),
             getDateProps: this.getEnhancedDateProps.bind(
@@ -121,13 +127,11 @@ class RangeDatePicker extends React.Component {
               getDateProps,
               dateBounds
             ),
-          });
-        }}
-      />
+          })
+        }
+      </BaseDatePicker>
     );
   }
 }
-
-RangeDatePicker.propTypes = rangeDatePickerPropTypes;
 
 export default RangeDatePicker;
