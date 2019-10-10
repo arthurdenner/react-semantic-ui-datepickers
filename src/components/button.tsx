@@ -1,13 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Button } from 'semantic-ui-react';
+import { Button, ButtonProps } from 'semantic-ui-react';
 
-const CustomButton = ({ icon, ...otherProps }) => (
+const CustomButton = ({ icon, ...otherProps }: ButtonProps) => (
   <Button basic compact icon={icon} {...otherProps} />
 );
-
-CustomButton.propTypes = {
-  icon: PropTypes.string.isRequired,
-};
 
 export default CustomButton;

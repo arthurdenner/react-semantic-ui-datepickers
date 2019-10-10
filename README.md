@@ -40,7 +40,7 @@ npm install --save react-semantic-ui-datepickers
 yarn add react-semantic-ui-datepickers
 ```
 
-> This package also depends on `react`, `prop-types`, and `semantic-ui-react`. Please make sure you have them installed as well.
+> This package also depends on `react` and `semantic-ui-react`. Please make sure you have them installed as well.
 
 ## Usage
 
