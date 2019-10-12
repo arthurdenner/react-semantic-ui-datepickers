@@ -5187,10 +5187,10 @@ form-data@~2.3.2:
     combined-stream "^1.0.6"
     mime-types "^2.1.12"
 
-format-string-by-pattern@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/format-string-by-pattern/-/format-string-by-pattern-1.0.0.tgz#3366c854b59969b5153c3f89678e3572780537b6"
-  integrity sha512-IlpLc4oF6vevBiEtMpIRR/rPOhweIP7fJo11u70Ne7UY9mZoNHAFvM4oLFNB7uR+wtE5+pnonetHCIsa0Bb3Vg==
+format-string-by-pattern@1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/format-string-by-pattern/-/format-string-by-pattern-1.1.1.tgz#db15665983df90a117a12b42207aa8b213e088af"
+  integrity sha512-iMhINdUh3WzZ0lCtFpIJnbwmKRGliJ/xhhhB+ORcVgFuyMe2fub6AKl6hJsttAwpTEfLFVWUXn4ZOtknejMAWw==
 
 format@^0.2.2:
   version "0.2.2"
