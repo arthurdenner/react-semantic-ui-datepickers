@@ -1,8 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import isEqual from 'react-fast-compare';
 import isValid from 'date-fns/is_valid';
 import formatStringByPattern from 'format-string-by-pattern';
+import React from 'react';
+import isEqual from 'react-fast-compare';
 import {
   formatSelectedDate,
   moveElementsByN,
@@ -14,10 +13,14 @@ import {
 import localeEn from '../locales/en-US';
 import BasicDatePicker from '../pickers/basic';
 import RangeDatePicker from '../pickers/range';
+import { SemanticDatepickerProps } from '../types';
 import Calendar from './calendar';
 import Input from './input';
 
-const style = { display: 'inline-block', position: 'relative' };
+const style: React.CSSProperties = {
+  display: 'inline-block',
+  position: 'relative',
+};
 const semanticInputProps = [
   'disabled',
   'error',
@@ -51,47 +54,42 @@ const semanticInputProps = [
   'readOnly',
 ];
 
-class SemanticDatepicker extends React.Component {
-  static propTypes = {
-    allowOnlyNumbers: PropTypes.bool,
-    clearable: PropTypes.bool,
-    date: PropTypes.instanceOf(Date),
-    firstDayOfWeek: PropTypes.number,
-    format: PropTypes.string,
-    keepOpenOnClear: PropTypes.bool,
-    keepOpenOnSelect: PropTypes.bool,
-    clearOnSameDateClick: PropTypes.bool,
-    locale: PropTypes.object,
-    onBlur: PropTypes.func,
-    onDateChange: PropTypes.func.isRequired,
-    placeholder: PropTypes.string,
-    selected: PropTypes.oneOfType([
-      PropTypes.arrayOf(Date),
-      PropTypes.instanceOf(Date),
-    ]),
-    type: PropTypes.oneOf(['basic', 'range']),
-    pointing: PropTypes.oneOf(['left', 'right', 'top left', 'top right']),
-    filterDate: PropTypes.func,
-    readOnly: PropTypes.bool,
-  };
+type SemanticDatepickerState = {
+  isVisible: boolean;
+  selectedDate: Date | Date[] | null;
+  selectedDateFormatted?: string;
+  typedValue: string | null;
+};
 
+class SemanticDatepicker extends React.Component<
+  SemanticDatepickerProps,
+  SemanticDatepickerState
+> {
   static defaultProps = {
     allowOnlyNumbers: false,
+    clearOnSameDateClick: true,
     clearable: true,
     date: undefined,
     filterDate: () => true,
     firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
+    id: undefined,
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
-    clearOnSameDateClick: true,
+    label: undefined,
     locale: localeEn,
+    name: undefined,
     onBlur: () => {},
     placeholder: null,
     pointing: 'left',
+    required: false,
     selected: null,
+    showOutsideDays: false,
     type: 'basic',
+    readOnly: false,
   };
+
+  el = React.createRef<HTMLDivElement>();
 
   componentDidUpdate(prevProps) {
     const { selected } = this.props;
@@ -147,7 +145,9 @@ class SemanticDatepicker extends React.Component {
 
   state = this.initialState;
 
-  Component = this.isRangeInput ? RangeDatePicker : BasicDatePicker;
+  Component: React.ElementType = this.isRangeInput
+    ? RangeDatePicker
+    : BasicDatePicker;
 
   resetState = () => {
     const { keepOpenOnClear, onDateChange } = this.props;
@@ -166,7 +166,7 @@ class SemanticDatepicker extends React.Component {
     const { isVisible } = this.state;
 
     if (isVisible && this.el) {
-      if (!this.el.contains(mousedownEvent.target)) {
+      if (this.el.current && !this.el.current.contains(mousedownEvent.target)) {
         this.close();
       }
     }
@@ -261,7 +261,7 @@ class SemanticDatepicker extends React.Component {
     });
   };
 
-  handleBlur = event => {
+  handleBlur = (event?: React.SyntheticEvent) => {
     const { format, onBlur } = this.props;
     const { typedValue } = this.state;
 
@@ -271,7 +271,11 @@ class SemanticDatepicker extends React.Component {
       return;
     }
 
-    const parsedValue = parseOnBlur(typedValue, format, this.isRangeInput);
+    const parsedValue = parseOnBlur(
+      String(typedValue),
+      format,
+      this.isRangeInput
+    );
 
     if (this.isRangeInput) {
       const areDatesValid = parsedValue.every(isValid);
@@ -292,7 +296,7 @@ class SemanticDatepicker extends React.Component {
     this.setState({ typedValue: null });
   };
 
-  handleChange = (evt, { value }) => {
+  handleChange = (_evt, { value }) => {
     const { allowOnlyNumbers, format, onDateChange } = this.props;
     const formatString = this.isRangeInput ? `${format} - ${format}` : format;
     const typedValue = allowOnlyNumbers ? onlyNumbers(value) : value;
@@ -325,11 +329,11 @@ class SemanticDatepicker extends React.Component {
     }
   };
 
-  onDateSelected = (...args) => {
+  onDateSelected = dateOrDates => {
     if (this.isRangeInput) {
-      this.handleRangeInput(...args);
+      this.handleRangeInput(dateOrDates);
     } else {
-      this.handleBasicInput(...args);
+      this.handleBasicInput(dateOrDates);
     }
   };
 
@@ -340,22 +344,16 @@ class SemanticDatepicker extends React.Component {
       selectedDateFormatted,
       typedValue,
     } = this.state;
-    const { clearable, locale, pointing, filterDate } = this.props;
+    const { clearable, locale, pointing, filterDate, readOnly } = this.props;
     return (
-      <div
-        className="field"
-        style={style}
-        ref={el => {
-          this.el = el;
-        }}
-      >
+      <div className="field" style={style} ref={this.el}>
         <Input
           {...this.inputProps}
           isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
           onBlur={this.handleBlur}
           onChange={this.handleChange}
           onClear={this.resetState}
-          onClick={this.showCalendar}
+          onClick={readOnly ? null : this.showCalendar}
           onKeyDown={this.handleKeyDown}
           value={typedValue || selectedDateFormatted}
         />

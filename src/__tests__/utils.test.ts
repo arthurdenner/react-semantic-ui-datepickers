@@ -88,19 +88,19 @@ describe('isSelectable', () => {
   });
 
   it('should return true if the first date is after the minDate', () => {
-    expect(isSelectable(dateTest, june14, null)).toBe(true);
+    expect(isSelectable(dateTest, june14, undefined)).toBe(true);
   });
 
   it('should return false if the first date is after the minDate', () => {
-    expect(isSelectable(dateTest, june25, null)).toBe(false);
+    expect(isSelectable(dateTest, june25, undefined)).toBe(false);
   });
 
   it('should return true if the first date is before the maxDate', () => {
-    expect(isSelectable(dateTest, null, june25)).toBe(true);
+    expect(isSelectable(dateTest, undefined, june25)).toBe(true);
   });
 
   it('should return false if the first date is before the maxDate', () => {
-    expect(isSelectable(dateTest, null, june14)).toBe(false);
+    expect(isSelectable(dateTest, undefined, june14)).toBe(false);
   });
 
   it('should return true if we only provide one date to the function', () => {

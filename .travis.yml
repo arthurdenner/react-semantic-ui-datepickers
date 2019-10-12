@@ -7,6 +7,8 @@ notifications:
 node_js: '8'
 install: npm install
 script: npm run validate
-after_success: npx semantic-release
+after_success: test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npx semantic-release
 branches:
-  only: master
+  only:
+    - develop
+    - master

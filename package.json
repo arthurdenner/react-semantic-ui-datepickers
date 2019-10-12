@@ -2,25 +2,23 @@
   "name": "react-semantic-ui-datepickers",
   "version": "0.0.0-development",
   "description": "Datepickers built with Semantic UI for React and Dayzed",
-  "main": "dist/react-semantic-ui-datepickers.js",
-  "typings": "./dist/index.d.ts",
+  "main": "dist/index.js",
+  "module": "dist/react-semantic-ui-datepickers.esm.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "kcd-scripts build --bundle cjs.minify",
-    "deploy": "now --public ./storybook-static -A ../now.json && now alias",
-    "lint": "kcd-scripts lint",
-    "predeploy": "npm run storybook:build",
+    "lint": "tsdx lint src",
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "prebuild": "rimraf dist",
     "prepare": "cd date-fns-v2/ && npm install",
-    "semantic-release": "semantic-release",
-    "storybook": "start-storybook -p 9001 -c stories",
-    "storybook:build": "build-storybook -c stories",
-    "storybook:serve": "serve ./storybook-static -p 6006",
-    "test": "kcd-scripts test",
-    "travis-deploy-once": "travis-deploy-once",
-    "validate": "kcd-scripts validate"
+    "test": "tsdx test --env=jsdom",
+    "validate": "npm run lint && npm run test && npm run build",
+    "storybook": "start-storybook -p 6006",
+    "storybook:build": "build-storybook"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "kcd-scripts pre-commit"
+      "pre-commit": "pretty-quick --staged"
     }
   },
   "files": [
@@ -35,59 +33,54 @@
   "author": "Arthur Denner <arthurdenner7@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "^7.4.5",
-    "classnames": "^2.2.5",
-    "core-js": "^3.1.3",
-    "date-fns": "^1.29.0",
-    "dayzed": "^2.2.0",
-    "format-string-by-pattern": "^1.0.0",
-    "react-fast-compare": "^2.0.1"
+    "@babel/runtime": "7.4.5",
+    "classnames": "2.2.5",
+    "core-js": "3.1.3",
+    "date-fns": "1.30.1",
+    "dayzed": "2.2.0",
+    "format-string-by-pattern": "1.0.0",
+    "react-fast-compare": "2.0.1"
   },
   "devDependencies": {
-    "@storybook/react": "^3.4.0",
-    "babel-core": "^6.26.0",
-    "babel-runtime": "^6.26.0",
-    "kcd-scripts": "^1.8.0",
-    "prop-types": "^15.6.1",
-    "react": ">=16.2.1",
-    "react-dom": ">=16.2.1",
-    "rollup-plugin-copy": "^0.2.3",
-    "rollup-plugin-postcss": "^1.6.2",
-    "semantic-release": "^15.13.12",
-    "semantic-ui-css": "^2.3.1",
-    "semantic-ui-react": "^0.79.1",
-    "serve": "^10.0.0",
-    "travis-deploy-once": "^5.0.1"
+    "@babel/core": "7.6.2",
+    "@storybook/addon-actions": "5.2.1",
+    "@storybook/addon-links": "5.2.1",
+    "@storybook/addons": "5.2.1",
+    "@storybook/react": "5.2.1",
+    "@types/jest": "24.0.16",
+    "@types/storybook__react": "4.0.2",
+    "autoprefixer": "9.6.1",
+    "awesome-typescript-loader": "5.2.1",
+    "babel-loader": "8.0.6",
+    "cssnano": "4.1.10",
+    "husky": "3.0.2",
+    "prettier": "1.18.2",
+    "pretty-quick": "1.11.1",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "rimraf": "3.0.0",
+    "rollup-plugin-copy": "0.2.3",
+    "rollup-plugin-postcss": "2.0.3",
+    "semantic-ui-css": "2.4.1",
+    "semantic-ui-react": "0.87.3",
+    "tsdx": "0.9.3",
+    "tslib": "1.10.0",
+    "typescript": "3.5.3"
   },
   "peerDependencies": {
-    "prop-types": ">=15",
-    "react": ">=15",
+    "react": ">=16.3",
     "semantic-ui-react": ">=0.75.0"
   },
-  "eslintConfig": {
-    "extends": "./node_modules/kcd-scripts/eslint.js",
-    "rules": {
-      "no-unused-vars": [
-        "error",
-        {
-          "ignoreRestSiblings": true
-        }
-      ],
-      "complexity": [
-        "error",
-        10
-      ],
-      "import/no-unassigned-import": 0,
-      "no-console": 1
+  "jest": {
+    "globals": {
+      "ts-jest": {
+        "tsConfig": "tsconfig.test.json"
+      }
+    },
+    "transform": {
+      ".(js|ts)x?": "ts-jest"
     }
   },
-  "eslintIgnore": [
-    "node_modules",
-    "coverage",
-    "dist",
-    "storybook-static",
-    "stories"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/arthurdenner/react-semantic-ui-datepickers.git"
