@@ -1,0 +1,30 @@
+{
+  "todayButton": "Dzisiaj",
+  "nextMonth": "Następny miesiąc",
+  "previousMonth": "Poprzedni Miesiąc",
+  "nextYear": "Następny rok",
+  "previousYear": "Poprzedni rok",
+  "weekdays": [
+    "Niedziala",
+    "Poniedziałek",
+    "Wtorek",
+    "Środa",
+    "Czwartek",
+    "Piątek",
+    "Sobota"
+  ],
+  "months": [
+    "Styczeń",
+    "Luty",
+    "Marzec",
+    "Kwiecień",
+    "Maj",
+    "Czerwiec",
+    "Lipiec",
+    "Sierpień",
+    "Wrzesień",
+    "Październik",
+    "Listopad",
+    "Grudzień"
+  ]
+}
