@@ -366,6 +366,7 @@ class SemanticDatepicker extends React.Component<
       typedValue,
     } = this.state;
     const { clearable, pointing, filterDate, readOnly } = this.props;
+
     return (
       <div className="field" style={style} ref={this.el}>
         <Input
