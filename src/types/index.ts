@@ -14,6 +14,18 @@ export type Locale = {
   months: string[];
 };
 
+export type LocaleOptions =
+  | 'de-DE'
+  | 'en-US'
+  | 'es-ES'
+  | 'fi-FL'
+  | 'fr-FR'
+  | 'it-IT'
+  | 'pl-PL'
+  | 'pt-BR'
+  | 'ru-RU'
+  | 'zn-CN';
+
 export type PickedDayzedProps = Pick<
   DayzedProps,
   | 'date'
@@ -49,7 +61,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     format: string;
     keepOpenOnClear: boolean;
     keepOpenOnSelect: boolean;
-    locale: Locale;
+    locale: LocaleOptions;
     onBlur: (event?: React.SyntheticEvent) => void;
     onDateChange: (date: Date | Date[] | null) => void;
     pointing: 'left' | 'right' | 'top left' | 'top right';
