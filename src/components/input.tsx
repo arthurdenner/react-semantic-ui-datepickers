@@ -17,6 +17,7 @@ const CustomInput = ({
     {...rest}
     icon={
       <Icon
+        data-testid="datepicker-icon"
         link
         name={isClearIconVisible ? 'close' : icon}
         onClick={isClearIconVisible ? onClear : onClick}

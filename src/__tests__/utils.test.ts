@@ -1,6 +1,6 @@
 import parse from 'date-fns/parse';
 import startOfDay from 'date-fns/start_of_day';
-import localeEn from '../locales/en-US';
+import localeEn from '../locales/en-US.json';
 import {
   formatDate,
   formatSelectedDate,

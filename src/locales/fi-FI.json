@@ -1,0 +1,30 @@
+{
+  "todayButton": "Tänään",
+  "nextMonth": "Seuraava kuukausi",
+  "previousMonth": "Edellinen kuukausi",
+  "nextYear": "Seuraava vuosi",
+  "previousYear": "Edellinen vuosi",
+  "weekdays": [
+    "Sunnuntai",
+    "Maanantai",
+    "Tiistai",
+    "Keskiviikko",
+    "Torstai",
+    "Perjantai",
+    "Lauantai"
+  ],
+  "months": [
+    "Tammikuu",
+    "Helmikuu",
+    "Maaliskuu",
+    "Huhtikuu",
+    "Toukokuu",
+    "Kesäkuu",
+    "Heinäkuu",
+    "Elokuu",
+    "Syyskuu",
+    "Lokakuu",
+    "Marraskuu",
+    "Joulukuu"
+  ]
+}

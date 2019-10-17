@@ -2,7 +2,6 @@ import React from 'react';
 import { action } from '@storybook/addon-actions';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
-import polishLocale from '../src/locales/pl-PL';
 import { Content } from './common';
 
 export default {
@@ -60,7 +59,7 @@ export const withPolishLocale = () => (
     <SemanticDatepicker
       type="range"
       onDateChange={action('selected date')}
-      locale={polishLocale}
+      locale="pl-PL"
     />
   </Content>
 );

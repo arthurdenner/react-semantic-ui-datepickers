@@ -4,7 +4,6 @@ import parse from 'date-fns/parse';
 import { Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
-import brazilianLocale from '../src/locales/pt-BR';
 import { Content } from './common';
 
 const isWeekday = date => {
@@ -79,7 +78,7 @@ export const withBrazilianPortugueseLocale = () => (
     <SemanticDatepicker
       onDateChange={action('selected date')}
       format="DD/MM/YYYY"
-      locale={brazilianLocale}
+      locale="pt-BR"
       selected={parse('2018-10-01')}
     />
   </Content>

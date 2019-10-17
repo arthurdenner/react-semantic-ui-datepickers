@@ -26,6 +26,7 @@ const TodayButton: React.FC<TodayButtonProps> = ({
   <Button
     className="clndr-button-today"
     compact
+    data-testid="datepicker-today-button"
     fluid
     style={style}
     {...otherProps}

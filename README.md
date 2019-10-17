@@ -47,7 +47,6 @@ yarn add react-semantic-ui-datepickers
 ```jsx
 import React from 'react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
-import ptLocale from 'react-semantic-ui-datepickers/dist/locales/pt-BR';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
 const AppWithBasic = ({ onDateChange }) => (
@@ -55,11 +54,7 @@ const AppWithBasic = ({ onDateChange }) => (
 );
 
 const AppWithRangeAndInPortuguese = ({ onDateChange }) => (
-  <SemanticDatepicker
-    locale={ptLocale}
-    onDateChange={onDateChange}
-    type="range"
-  />
+  <SemanticDatepicker locale="pt-BR" onDateChange={onDateChange} type="range" />
 );
 ```
 
@@ -69,20 +64,20 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 
 ### Own Props
 
-| property             | type     | required | default                                                                                                 | description                                                                                                     |
-| -------------------- | -------- | -------- | ------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| allowOnlyNumbers     | boolean  | no       | true                                                                                                    | Allows the user enter only numbers                                                                              |
-| clearOnSameDateClick | boolean  | no       | true                                                                                                    | Controls whether the datepicker's state resets if the same date is selected in succession.                      |
-| clearable            | boolean  | no       | true                                                                                                    | Allows the user to clear the value                                                                              |
-| filterDate           | function | no       | () => true                                                                                              | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
-| format               | string   | no       | 'YYYY-MM-DD'                                                                                            | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format) |
-| keepOpenOnClear      | boolean  | no       | false                                                                                                   | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                           |
-| keepOpenOnSelect     | boolean  | no       | false                                                                                                   | Keeps the datepicker open when a date is selected                                                               |
-| locale               | object   | no       | [en-US](https://github.com/arthurdenner/react-semantic-ui-datepickers/blob/master/src/locales/en-US.js) | Object with the labels to be used on the library PS: Feel free to submit PR's with more locales!                |
-| onBlur               | function | no       | () => {}                                                                                                | Callback fired when the input loses focus                                                                       |
-| onDateChange         | function | yes      |                                                                                                         | Callback fired when the value changes                                                                           |
-| pointing             | string   | no       | 'left'                                                                                                  | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
-| type                 | string   | no       | basic                                                                                                   | Type of input to render. Available options: 'basic' and 'range'                                                 |
+| property             | type     | required | default      | description                                                                                                     |
+| -------------------- | -------- | -------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
+| allowOnlyNumbers     | boolean  | no       | true         | Allows the user enter only numbers                                                                              |
+| clearOnSameDateClick | boolean  | no       | true         | Controls whether the datepicker's state resets if the same date is selected in succession.                      |
+| clearable            | boolean  | no       | true         | Allows the user to clear the value                                                                              |
+| filterDate           | function | no       | () => true   | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
+| format               | string   | no       | 'YYYY-MM-DD' | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format) |
+| keepOpenOnClear      | boolean  | no       | false        | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                           |
+| keepOpenOnSelect     | boolean  | no       | false        | Keeps the datepicker open when a date is selected                                                               |
+| locale               | string   | no       | 'en-US'      | Filename of the locale to be used. PS: Feel free to submit PR's with more locales!                              |
+| onBlur               | function | no       | () => {}     | Callback fired when the input loses focus                                                                       |
+| onDateChange         | function | yes      |              | Callback fired when the value changes                                                                           |
+| pointing             | string   | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
+| type                 | string   | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                 |
 
 ### Form.Input Props
 
