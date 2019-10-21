@@ -3,6 +3,7 @@ import { fireEvent, render } from '@testing-library/react';
 import { SemanticDatepickerProps } from '../types';
 import localeEn from '../locales/en-US.json';
 import localePt from '../locales/pt-BR.json';
+import { getShortDate } from '../utils';
 import DatePicker from '../';
 
 const setup = (props?: Partial<SemanticDatepickerProps>) => {
@@ -55,6 +56,24 @@ describe('Basic datepicker', () => {
 
     expect(todayButton.textContent).toBe(localeEn.todayButton);
   });
+
+  it('fires onDateChange with event and selected date as arguments', async () => {
+    const onDateChange = jest.fn();
+    const today = getShortDate(new Date()) as string;
+    const { getByTestId, openDatePicker } = setup({ onDateChange });
+
+    openDatePicker();
+
+    const todayCell = getByTestId(RegExp(today));
+
+    fireEvent.click(todayCell);
+
+    expect(onDateChange).toHaveBeenNthCalledWith(
+      1,
+      {},
+      expect.stringContaining(today)
+    );
+  });
 });
 
 describe('Range datepicker', () => {
@@ -86,7 +105,7 @@ describe('Range datepicker', () => {
     expect(todayButton.textContent).toBe(localeEn.todayButton);
 
     // @ts-ignore
-    rerender({ locale: 'invalid language' });
+    rerender({ locale: 'invalid' });
 
     expect(todayButton.textContent).toBe(localeEn.todayButton);
   });
