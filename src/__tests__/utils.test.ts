@@ -4,6 +4,7 @@ import localeEn from '../locales/en-US.json';
 import {
   formatDate,
   formatSelectedDate,
+  getShortDate,
   getToday,
   isSelectable,
   moveElementsByN,
@@ -14,7 +15,8 @@ import {
 } from '../utils';
 
 const objectTest = { a: 'a', b: 'b', c: 'c' };
-const dateTest = parse('2018-06-21');
+const dateTestString = '2018-06-21';
+const dateTest = parse(dateTestString);
 const june14 = parse('2018-06-14');
 const june20 = parse('2018-06-20');
 const june25 = parse('2018-06-25');
@@ -157,5 +159,15 @@ describe('parseFormatString', () => {
 describe('onlyNumbers', () => {
   it('should only return numbers', () => {
     expect(onlyNumbers('ABC-1025.4.8')).toBe('102548');
+  });
+});
+
+describe('getShortDate', () => {
+  it('should return undefined if date is not provided', () => {
+    expect(getShortDate(undefined)).toBe(undefined);
+  });
+
+  it('should return the date provided in the right format', () => {
+    expect(getShortDate(new Date(dateTestString))).toBe(dateTestString);
   });
 });
