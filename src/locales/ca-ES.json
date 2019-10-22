@@ -1,0 +1,30 @@
+{
+  "todayButton": "Avui",
+  "nextMonth": "Mes següent",
+  "previousMonth": "Mes anterior",
+  "nextYear": "Any següent",
+  "previousYear": "Any anterior",
+  "weekdays": [
+    "Diumenge",
+    "Dilluns",
+    "Dimarts",
+    "Dimecres",
+    "Dijous",
+    "Divendres",
+    "Dissabte"
+  ],
+  "months": [
+    "Gener",
+    "Febrer",
+    "Març",
+    "Abril",
+    "Maig",
+    "Juny",
+    "Juliol",
+    "Agost",
+    "Setembre",
+    "Octubre",
+    "Novembre",
+    "Desembre"
+  ]
+}
