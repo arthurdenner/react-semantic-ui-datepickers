@@ -39,10 +39,10 @@ class RangeDatePicker extends React.Component<
   }
 
   /* eslint-disable-next-line */
-  _handleOnDateSelected = ({ selected, selectable, date }) => {
+  _handleOnDateSelected = ({ selected, selectable, date }, event) => {
     const { selected: selectedDates, onDateSelected, onChange } = this.props;
     if (onDateSelected) {
-      onDateSelected({ selected, selectable, date });
+      onDateSelected({ selected, selectable, date }, event);
     }
 
     if (!selectable) {
@@ -67,7 +67,7 @@ class RangeDatePicker extends React.Component<
     }
 
     if (onChange) {
-      onChange(newDates);
+      onChange(newDates, event);
     }
 
     if (newDates.length === 2) {
