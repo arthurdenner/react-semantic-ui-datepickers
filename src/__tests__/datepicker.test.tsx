@@ -70,8 +70,10 @@ describe('Basic datepicker', () => {
 
     expect(onDateChange).toHaveBeenNthCalledWith(
       1,
-      {},
-      expect.stringContaining(today)
+      expect.any(Object),
+      expect.objectContaining({
+        value: expect.any(Date),
+      })
     );
   });
 });
@@ -108,5 +110,28 @@ describe('Range datepicker', () => {
     rerender({ locale: 'invalid' });
 
     expect(todayButton.textContent).toBe(localeEn.todayButton);
+  });
+
+  it('fires onDateChange with event and selected date as arguments', async () => {
+    const onDateChange = jest.fn();
+    const today = getShortDate(new Date()) as string;
+    const { getByTestId, openDatePicker } = setup({
+      onDateChange,
+      type: 'range',
+    });
+
+    openDatePicker();
+
+    const todayCell = getByTestId(RegExp(today));
+
+    fireEvent.click(todayCell);
+
+    expect(onDateChange).toHaveBeenNthCalledWith(
+      1,
+      expect.any(Object),
+      expect.objectContaining({
+        value: expect.arrayContaining([expect.any(Date)]),
+      })
+    );
   });
 });
