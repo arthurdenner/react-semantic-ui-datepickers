@@ -10,8 +10,7 @@ import {
   parseOnBlur,
   pick,
 } from './utils';
-import BasicDatePicker from './pickers/basic';
-import RangeDatePicker from './pickers/range';
+import { BasicDatePicker, RangeDatePicker } from './pickers';
 import { Locale, SemanticDatepickerProps } from './types';
 import Calendar from './components/calendar';
 import Input from './components/input';
