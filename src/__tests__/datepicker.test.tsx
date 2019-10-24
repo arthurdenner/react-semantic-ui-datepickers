@@ -112,9 +112,13 @@ describe('Range datepicker', () => {
     expect(todayButton.textContent).toBe(localeEn.todayButton);
   });
 
-  it('fires onDateChange with event and selected date as arguments', async () => {
+  it('fires onDateChange with event and selected dates as arguments', async () => {
     const onDateChange = jest.fn();
-    const today = getShortDate(new Date()) as string;
+    const now = new Date();
+    const today = getShortDate(now) as string;
+    const tomorrow = getShortDate(
+      new Date(now.setDate(now.getDate() + 1))
+    ) as string;
     const { getByTestId, openDatePicker } = setup({
       onDateChange,
       type: 'range',
@@ -123,6 +127,7 @@ describe('Range datepicker', () => {
     openDatePicker();
 
     const todayCell = getByTestId(RegExp(today));
+    const tomorrowCell = getByTestId(RegExp(tomorrow));
 
     fireEvent.click(todayCell);
 
@@ -130,7 +135,17 @@ describe('Range datepicker', () => {
       1,
       expect.any(Object),
       expect.objectContaining({
-        value: expect.arrayContaining([expect.any(Date)]),
+        value: [expect.any(Date)],
+      })
+    );
+
+    fireEvent.click(tomorrowCell);
+
+    expect(onDateChange).toHaveBeenNthCalledWith(
+      2,
+      expect.any(Object),
+      expect.objectContaining({
+        value: [expect.any(Date), expect.any(Date)],
       })
     );
   });
