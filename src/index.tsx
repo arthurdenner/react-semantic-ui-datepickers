@@ -1,6 +1,6 @@
 import isValid from 'date-fns/is_valid';
 import formatStringByPattern from 'format-string-by-pattern';
-import React, { SyntheticEvent } from 'react';
+import React from 'react';
 import isEqual from 'react-fast-compare';
 import {
   formatSelectedDate,
@@ -321,7 +321,7 @@ class SemanticDatepicker extends React.Component<
     this.setState({ typedValue: null });
   };
 
-  handleChange = (event: SyntheticEvent, { value }) => {
+  handleChange = (event: React.SyntheticEvent, { value }) => {
     const { allowOnlyNumbers, format, onChange } = this.props;
     const formatString = this.isRangeInput ? `${format} - ${format}` : format;
     const typedValue = allowOnlyNumbers ? onlyNumbers(value) : value;
@@ -354,7 +354,7 @@ class SemanticDatepicker extends React.Component<
     }
   };
 
-  onDateSelected = (dateOrDates, event?: SyntheticEvent) => {
+  onDateSelected = (dateOrDates, event?: React.SyntheticEvent) => {
     if (this.isRangeInput) {
       this.handleRangeInput(dateOrDates, event);
     } else {
