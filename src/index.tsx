@@ -82,20 +82,20 @@ class SemanticDatepicker extends React.Component<
     onBlur: () => {},
     placeholder: null,
     pointing: 'left',
+    readOnly: false,
     required: false,
-    selected: null,
     showOutsideDays: false,
     type: 'basic',
-    readOnly: false,
+    value: null,
   };
 
   el = React.createRef<HTMLDivElement>();
 
   componentDidUpdate(prevProps: SemanticDatepickerProps) {
-    const { locale, selected } = this.props;
+    const { locale, value } = this.props;
 
-    if (!isEqual(selected, prevProps.selected)) {
-      this.onDateSelected(selected);
+    if (!isEqual(value, prevProps.value)) {
+      this.onDateSelected(value);
     }
 
     if (locale !== prevProps.locale) {
@@ -108,14 +108,14 @@ class SemanticDatepicker extends React.Component<
   }
 
   get initialState() {
-    const { format, selected } = this.props;
+    const { format, value } = this.props;
     const initialSelectedDate = this.isRangeInput ? [] : null;
 
     return {
       isVisible: false,
       locale: this.locale,
-      selectedDate: selected || initialSelectedDate,
-      selectedDateFormatted: formatSelectedDate(selected, format),
+      selectedDate: value || initialSelectedDate,
+      selectedDateFormatted: formatSelectedDate(value, format),
       typedValue: null,
     };
   }
@@ -137,6 +137,10 @@ class SemanticDatepicker extends React.Component<
   get date() {
     const { selectedDate } = this.state;
     const { date } = this.props;
+
+    if (!selectedDate) {
+      return date;
+    }
 
     return this.isRangeInput ? selectedDate[0] : selectedDate || date;
   }

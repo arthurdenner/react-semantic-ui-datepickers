@@ -28,12 +28,7 @@ export type LocaleOptions =
 
 export type PickedDayzedProps = Pick<
   DayzedProps,
-  | 'date'
-  | 'maxDate'
-  | 'minDate'
-  | 'firstDayOfWeek'
-  | 'selected'
-  | 'showOutsideDays'
+  'date' | 'maxDate' | 'minDate' | 'firstDayOfWeek' | 'showOutsideDays'
 >;
 
 export type PickedFormInputProps = Pick<
@@ -69,6 +64,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     ) => void;
     pointing: 'left' | 'right' | 'top left' | 'top right';
     type: 'basic' | 'range';
+    value: DayzedProps['selected'];
   };
 
 export type DayzedProps = {
@@ -81,7 +77,7 @@ export type DayzedProps = {
   offset: number;
   onDateSelected: (dateObj: any, event: React.SyntheticEvent) => void;
   onOffsetChanged: () => void;
-  selected: Date | Date[];
+  selected: Date | Date[] | null;
   showOutsideDays: boolean;
 };
 

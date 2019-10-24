@@ -70,7 +70,7 @@ export const withBrazilianPortugueseLocale = () => (
       onChange={action('selected date')}
       format="DD/MM/YYYY"
       locale="pt-BR"
-      selected={parse('2018-10-01')}
+      value={parse('2018-10-01')}
     />
   </Content>
 );
