@@ -170,7 +170,7 @@ class SemanticDatepicker extends React.Component<
     : BasicDatePicker;
 
   resetState = event => {
-    const { keepOpenOnClear, onDateChange } = this.props;
+    const { keepOpenOnClear, onChange } = this.props;
     const newState = {
       isVisible: keepOpenOnClear,
       selectedDate: this.isRangeInput ? [] : null,
@@ -178,7 +178,7 @@ class SemanticDatepicker extends React.Component<
     };
 
     this.setState(newState, () => {
-      onDateChange(event, { ...this.props, value: null });
+      onChange(event, { ...this.props, value: null });
     });
   };
 
@@ -220,7 +220,7 @@ class SemanticDatepicker extends React.Component<
   };
 
   handleRangeInput = (newDates, event) => {
-    const { format, keepOpenOnSelect, onDateChange } = this.props;
+    const { format, keepOpenOnSelect, onChange } = this.props;
 
     if (!newDates || !newDates.length) {
       this.resetState(event);
@@ -235,7 +235,7 @@ class SemanticDatepicker extends React.Component<
     };
 
     this.setState(newState, () => {
-      onDateChange(event, { ...this.props, value: newDates });
+      onChange(event, { ...this.props, value: newDates });
 
       if (newDates.length === 2) {
         this.setState({ isVisible: keepOpenOnSelect });
@@ -247,7 +247,7 @@ class SemanticDatepicker extends React.Component<
     const {
       format,
       keepOpenOnSelect,
-      onDateChange,
+      onChange,
       clearOnSameDateClick,
     } = this.props;
 
@@ -277,7 +277,7 @@ class SemanticDatepicker extends React.Component<
     };
 
     this.setState(newState, () => {
-      onDateChange(event, { ...this.props, value: newDate });
+      onChange(event, { ...this.props, value: newDate });
     });
   };
 
@@ -317,7 +317,7 @@ class SemanticDatepicker extends React.Component<
   };
 
   handleChange = (event: SyntheticEvent, { value }) => {
-    const { allowOnlyNumbers, format, onDateChange } = this.props;
+    const { allowOnlyNumbers, format, onChange } = this.props;
     const formatString = this.isRangeInput ? `${format} - ${format}` : format;
     const typedValue = allowOnlyNumbers ? onlyNumbers(value) : value;
 
@@ -329,7 +329,7 @@ class SemanticDatepicker extends React.Component<
       };
 
       this.setState(newState, () => {
-        onDateChange(event, { ...this.props, value: null });
+        onChange(event, { ...this.props, value: null });
       });
 
       return;

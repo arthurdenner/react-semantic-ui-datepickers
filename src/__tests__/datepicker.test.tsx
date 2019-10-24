@@ -7,7 +7,7 @@ import { getShortDate } from '../utils';
 import DatePicker from '../';
 
 const setup = (props?: Partial<SemanticDatepickerProps>) => {
-  const options = render(<DatePicker onDateChange={jest.fn()} {...props} />);
+  const options = render(<DatePicker onChange={jest.fn()} {...props} />);
 
   return {
     ...options,
@@ -18,7 +18,7 @@ const setup = (props?: Partial<SemanticDatepickerProps>) => {
     },
     rerender: (newProps?: Partial<SemanticDatepickerProps>) =>
       options.rerender(
-        <DatePicker onDateChange={jest.fn()} {...props} {...newProps} />
+        <DatePicker onChange={jest.fn()} {...props} {...newProps} />
       ),
   };
 };
@@ -57,10 +57,10 @@ describe('Basic datepicker', () => {
     expect(todayButton.textContent).toBe(localeEn.todayButton);
   });
 
-  it('fires onDateChange with event and selected date as arguments', async () => {
-    const onDateChange = jest.fn();
+  it('fires onChange with event and selected date as arguments', async () => {
+    const onChange = jest.fn();
     const today = getShortDate(new Date()) as string;
-    const { getByTestId, openDatePicker } = setup({ onDateChange });
+    const { getByTestId, openDatePicker } = setup({ onChange });
 
     openDatePicker();
 
@@ -68,7 +68,7 @@ describe('Basic datepicker', () => {
 
     fireEvent.click(todayCell);
 
-    expect(onDateChange).toHaveBeenNthCalledWith(
+    expect(onChange).toHaveBeenNthCalledWith(
       1,
       expect.any(Object),
       expect.objectContaining({
@@ -112,15 +112,15 @@ describe('Range datepicker', () => {
     expect(todayButton.textContent).toBe(localeEn.todayButton);
   });
 
-  it('fires onDateChange with event and selected dates as arguments', async () => {
-    const onDateChange = jest.fn();
+  it('fires onChange with event and selected dates as arguments', async () => {
+    const onChange = jest.fn();
     const now = new Date();
     const today = getShortDate(now) as string;
     const tomorrow = getShortDate(
       new Date(now.setDate(now.getDate() + 1))
     ) as string;
     const { getByTestId, openDatePicker } = setup({
-      onDateChange,
+      onChange,
       type: 'range',
     });
 
@@ -131,7 +131,7 @@ describe('Range datepicker', () => {
 
     fireEvent.click(todayCell);
 
-    expect(onDateChange).toHaveBeenNthCalledWith(
+    expect(onChange).toHaveBeenNthCalledWith(
       1,
       expect.any(Object),
       expect.objectContaining({
@@ -141,7 +141,7 @@ describe('Range datepicker', () => {
 
     fireEvent.click(tomorrowCell);
 
-    expect(onDateChange).toHaveBeenNthCalledWith(
+    expect(onChange).toHaveBeenNthCalledWith(
       2,
       expect.any(Object),
       expect.objectContaining({

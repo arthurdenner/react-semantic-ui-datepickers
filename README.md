@@ -49,12 +49,12 @@ import React from 'react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
-const AppWithBasic = ({ onDateChange }) => (
-  <SemanticDatepicker onDateChange={onDateChange} />
+const AppWithBasic = ({ onChange }) => (
+  <SemanticDatepicker onChange={onChange} />
 );
 
-const AppWithRangeAndInPortuguese = ({ onDateChange }) => (
-  <SemanticDatepicker locale="pt-BR" onDateChange={onDateChange} type="range" />
+const AppWithRangeAndInPortuguese = ({ onChange }) => (
+  <SemanticDatepicker locale="pt-BR" onChange={onChange} type="range" />
 );
 ```
 
@@ -75,7 +75,7 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 | keepOpenOnSelect     | boolean  | no       | false        | Keeps the datepicker open when a date is selected                                                               |
 | locale               | string   | no       | 'en-US'      | Filename of the locale to be used. PS: Feel free to submit PR's with more locales!                              |
 | onBlur               | function | no       | () => {}     | Callback fired when the input loses focus                                                                       |
-| onDateChange         | function | yes      |              | Callback fired when the value changes                                                                           |
+| onChange             | function | yes      |              | Callback fired when the value changes                                                                           |
 | pointing             | string   | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
 | type                 | string   | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                 |
 
