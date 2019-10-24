@@ -60,7 +60,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     onBlur: (event?: React.SyntheticEvent) => void;
     onChange: (
       event: React.SyntheticEvent | undefined,
-      data: SemanticDatepickerProps & { value: Date | Date[] | null }
+      data: SemanticDatepickerProps
     ) => void;
     pointing: 'left' | 'right' | 'top left' | 'top right';
     type: 'basic' | 'range';
