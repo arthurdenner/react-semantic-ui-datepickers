@@ -75,7 +75,7 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 | keepOpenOnSelect     | boolean  | no       | false        | Keeps the datepicker open when a date is selected                                                               |
 | locale               | string   | no       | 'en-US'      | Filename of the locale to be used. PS: Feel free to submit PR's with more locales!                              |
 | onBlur               | function | no       | () => {}     | Callback fired when the input loses focus                                                                       |
-| onChange             | function | yes      |              | Callback fired when the value changes                                                                           |
+| onChange             | function | no       | () => {}     | Callback fired when the value changes                                                                           |
 | pointing             | string   | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
 | type                 | string   | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                 |
 

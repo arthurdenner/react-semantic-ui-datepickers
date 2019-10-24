@@ -80,6 +80,7 @@ class SemanticDatepicker extends React.Component<
     locale: 'en-US',
     name: undefined,
     onBlur: () => {},
+    onChange: () => {},
     placeholder: null,
     pointing: 'left',
     readOnly: false,
