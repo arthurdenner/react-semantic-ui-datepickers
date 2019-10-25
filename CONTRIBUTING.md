@@ -44,3 +44,7 @@ Also, make sure to run the tests before you commit your changes:
 `npm run test` or `yarn test`.
 
 Thank you for taking the time to contribute! 👍
+
+## Want to add a locale?
+
+Check the instructions on [this issue](https://github.com/arthurdenner/react-semantic-ui-datepickers/issues/2).
