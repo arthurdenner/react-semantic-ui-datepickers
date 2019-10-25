@@ -82,11 +82,11 @@ export type DayzedProps = {
 };
 
 export type BasicDatePickerProps = DayzedProps & {
-  onChange: (date: Date | null, event: React.SyntheticEvent) => void;
+  onChange: (event: React.SyntheticEvent, date: Date | null) => void;
   selected: Date;
 };
 
 export type RangeDatePickerProps = DayzedProps & {
-  onChange: (dates: Date[] | null, event: React.SyntheticEvent) => void;
+  onChange: (event: React.SyntheticEvent, dates: Date[] | null) => void;
   selected: Date[];
 };

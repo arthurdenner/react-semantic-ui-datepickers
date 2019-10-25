@@ -95,7 +95,7 @@ class SemanticDatepicker extends React.Component<
     const { locale, value } = this.props;
 
     if (!isEqual(value, prevProps.value)) {
-      this.onDateSelected(value);
+      this.onDateSelected(undefined, value);
     }
 
     if (locale !== prevProps.locale) {
@@ -353,7 +353,7 @@ class SemanticDatepicker extends React.Component<
     }
   };
 
-  onDateSelected = (dateOrDates, event?: React.SyntheticEvent) => {
+  onDateSelected = (event: React.SyntheticEvent | undefined, dateOrDates) => {
     if (this.isRangeInput) {
       this.handleRangeInput(dateOrDates, event);
     } else {

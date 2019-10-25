@@ -3,7 +3,10 @@ import { BasicDatePickerProps } from '../types';
 import BaseDatePicker from './base';
 
 class DatePicker extends React.Component<BasicDatePickerProps> {
-  _handleOnDateSelected = ({ selectable, date }, event) => {
+  _handleOnDateSelected = (
+    { selectable, date },
+    event: React.SyntheticEvent
+  ) => {
     const { selected: selectedDate, onChange } = this.props;
 
     if (!selectable) {
@@ -16,7 +19,7 @@ class DatePicker extends React.Component<BasicDatePickerProps> {
     }
 
     if (onChange) {
-      onChange(newDate, event);
+      onChange(event, newDate);
     }
   };
 
