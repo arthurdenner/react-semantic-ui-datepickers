@@ -38,12 +38,11 @@ class RangeDatePicker extends React.Component<
     this.setHoveredDate(date);
   }
 
-  /* eslint-disable-next-line */
-  _handleOnDateSelected = ({ selected, selectable, date }) => {
-    const { selected: selectedDates, onDateSelected, onChange } = this.props;
-    if (onDateSelected) {
-      onDateSelected({ selected, selectable, date });
-    }
+  _handleOnDateSelected = (
+    { selectable, date },
+    event: React.SyntheticEvent
+  ) => {
+    const { selected: selectedDates, onChange } = this.props;
 
     if (!selectable) {
       return;
@@ -67,7 +66,7 @@ class RangeDatePicker extends React.Component<
     }
 
     if (onChange) {
-      onChange(newDates);
+      onChange(event, newDates);
     }
 
     if (newDates.length === 2) {

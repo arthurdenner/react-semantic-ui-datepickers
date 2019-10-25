@@ -93,3 +93,11 @@ export const parseOnBlur = (
 };
 
 export const onlyNumbers = (value = '') => value.replace(/[^\d]/g, '');
+
+export function getShortDate(date?: Date) {
+  if (!date) {
+    return undefined;
+  }
+
+  return date.toISOString().slice(0, 10);
+}

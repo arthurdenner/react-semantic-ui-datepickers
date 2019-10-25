@@ -31,12 +31,7 @@ export type LocaleOptions =
 
 export type PickedDayzedProps = Pick<
   DayzedProps,
-  | 'date'
-  | 'maxDate'
-  | 'minDate'
-  | 'firstDayOfWeek'
-  | 'selected'
-  | 'showOutsideDays'
+  'date' | 'maxDate' | 'minDate' | 'firstDayOfWeek' | 'showOutsideDays'
 >;
 
 export type PickedFormInputProps = Pick<
@@ -66,9 +61,13 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     keepOpenOnSelect: boolean;
     locale: LocaleOptions;
     onBlur: (event?: React.SyntheticEvent) => void;
-    onDateChange: (date: Date | Date[] | null) => void;
+    onChange: (
+      event: React.SyntheticEvent | undefined,
+      data: SemanticDatepickerProps
+    ) => void;
     pointing: 'left' | 'right' | 'top left' | 'top right';
     type: 'basic' | 'range';
+    value: DayzedProps['selected'];
   };
 
 export type DayzedProps = {
@@ -79,18 +78,18 @@ export type DayzedProps = {
   minDate?: Date;
   monthsToDisplay: number;
   offset: number;
-  onDateSelected: (props: any) => void;
+  onDateSelected: (dateObj: any, event: React.SyntheticEvent) => void;
   onOffsetChanged: () => void;
-  selected: Date | Date[];
+  selected: Date | Date[] | null;
   showOutsideDays: boolean;
 };
 
 export type BasicDatePickerProps = DayzedProps & {
-  onChange: (date: Date | null) => void;
+  onChange: (event: React.SyntheticEvent, date: Date | null) => void;
   selected: Date;
 };
 
 export type RangeDatePickerProps = DayzedProps & {
-  onChange: (dates: Date[] | null) => void;
+  onChange: (event: React.SyntheticEvent, dates: Date[] | null) => void;
   selected: Date[];
 };

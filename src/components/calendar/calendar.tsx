@@ -2,7 +2,7 @@ import cn from 'classnames';
 import React, { Fragment } from 'react';
 import { Segment } from 'semantic-ui-react';
 import { DateFns, Locale, SemanticDatepickerProps } from 'types';
-import { getToday } from '../../utils';
+import { getShortDate, getToday } from '../../utils';
 import Button from '../button';
 import CalendarCell from '../cell';
 import TodayButton from '../today-button';
@@ -124,12 +124,14 @@ const Calendar: React.FC<CalendarProps> = ({
 
                 const selectable =
                   dateObj.selectable && filterDate(dateObj.date);
+                const shortDate = getShortDate(dateObj.date);
 
                 return (
                   <CalendarCell
                     key={key}
                     {...dateObj}
                     {...getDateProps({ dateObj: { ...dateObj, selectable } })}
+                    data-testid={`datepicker-cell-${shortDate}`}
                     selectable={selectable}
                   >
                     {dateObj.date.getDate()}

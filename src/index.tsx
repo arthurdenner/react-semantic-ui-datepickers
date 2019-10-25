@@ -10,8 +10,7 @@ import {
   parseOnBlur,
   pick,
 } from './utils';
-import BasicDatePicker from './pickers/basic';
-import RangeDatePicker from './pickers/range';
+import { BasicDatePicker, RangeDatePicker } from './pickers';
 import { Locale, SemanticDatepickerProps } from './types';
 import Calendar from './components/calendar';
 import Input from './components/input';
@@ -80,22 +79,23 @@ class SemanticDatepicker extends React.Component<
     locale: 'en-US',
     name: undefined,
     onBlur: () => {},
+    onChange: () => {},
     placeholder: null,
     pointing: 'left',
+    readOnly: false,
     required: false,
-    selected: null,
     showOutsideDays: false,
     type: 'basic',
-    readOnly: false,
+    value: null,
   };
 
   el = React.createRef<HTMLDivElement>();
 
   componentDidUpdate(prevProps: SemanticDatepickerProps) {
-    const { locale, selected } = this.props;
+    const { locale, value } = this.props;
 
-    if (!isEqual(selected, prevProps.selected)) {
-      this.onDateSelected(selected);
+    if (!isEqual(value, prevProps.value)) {
+      this.onDateSelected(undefined, value);
     }
 
     if (locale !== prevProps.locale) {
@@ -108,14 +108,14 @@ class SemanticDatepicker extends React.Component<
   }
 
   get initialState() {
-    const { format, selected } = this.props;
+    const { format, value } = this.props;
     const initialSelectedDate = this.isRangeInput ? [] : null;
 
     return {
       isVisible: false,
       locale: this.locale,
-      selectedDate: selected || initialSelectedDate,
-      selectedDateFormatted: formatSelectedDate(selected, format),
+      selectedDate: value || initialSelectedDate,
+      selectedDateFormatted: formatSelectedDate(value, format),
       typedValue: null,
     };
   }
@@ -137,6 +137,10 @@ class SemanticDatepicker extends React.Component<
   get date() {
     const { selectedDate } = this.state;
     const { date } = this.props;
+
+    if (!selectedDate) {
+      return date;
+    }
 
     return this.isRangeInput ? selectedDate[0] : selectedDate || date;
   }
@@ -169,8 +173,8 @@ class SemanticDatepicker extends React.Component<
     ? RangeDatePicker
     : BasicDatePicker;
 
-  resetState = () => {
-    const { keepOpenOnClear, onDateChange } = this.props;
+  resetState = event => {
+    const { keepOpenOnClear, onChange } = this.props;
     const newState = {
       isVisible: keepOpenOnClear,
       selectedDate: this.isRangeInput ? [] : null,
@@ -178,7 +182,7 @@ class SemanticDatepicker extends React.Component<
     };
 
     this.setState(newState, () => {
-      onDateChange(null);
+      onChange(event, { ...this.props, value: null });
     });
   };
 
@@ -219,11 +223,11 @@ class SemanticDatepicker extends React.Component<
     });
   };
 
-  handleRangeInput = newDates => {
-    const { format, keepOpenOnSelect, onDateChange } = this.props;
+  handleRangeInput = (newDates, event) => {
+    const { format, keepOpenOnSelect, onChange } = this.props;
 
     if (!newDates || !newDates.length) {
-      this.resetState();
+      this.resetState(event);
 
       return;
     }
@@ -235,7 +239,7 @@ class SemanticDatepicker extends React.Component<
     };
 
     this.setState(newState, () => {
-      onDateChange(newDates);
+      onChange(event, { ...this.props, value: newDates });
 
       if (newDates.length === 2) {
         this.setState({ isVisible: keepOpenOnSelect });
@@ -243,11 +247,11 @@ class SemanticDatepicker extends React.Component<
     });
   };
 
-  handleBasicInput = newDate => {
+  handleBasicInput = (newDate, event) => {
     const {
       format,
       keepOpenOnSelect,
-      onDateChange,
+      onChange,
       clearOnSameDateClick,
     } = this.props;
 
@@ -256,7 +260,7 @@ class SemanticDatepicker extends React.Component<
       // then reset the state. This is what was previously the default
       // behavior, without a specific prop.
       if (clearOnSameDateClick) {
-        this.resetState();
+        this.resetState(event);
       } else {
         // Don't reset the state. Instead, close or keep open the
         // datepicker according to the value of keepOpenOnSelect.
@@ -277,7 +281,7 @@ class SemanticDatepicker extends React.Component<
     };
 
     this.setState(newState, () => {
-      onDateChange(newDate);
+      onChange(event, { ...this.props, value: newDate });
     });
   };
 
@@ -301,14 +305,14 @@ class SemanticDatepicker extends React.Component<
       const areDatesValid = parsedValue.every(isValid);
 
       if (areDatesValid) {
-        this.handleRangeInput(parsedValue);
+        this.handleRangeInput(parsedValue, event);
         return;
       }
     } else {
       const isDateValid = isValid(parsedValue);
 
       if (isDateValid) {
-        this.handleBasicInput(parsedValue);
+        this.handleBasicInput(parsedValue, event);
         return;
       }
     }
@@ -316,8 +320,8 @@ class SemanticDatepicker extends React.Component<
     this.setState({ typedValue: null });
   };
 
-  handleChange = (_evt, { value }) => {
-    const { allowOnlyNumbers, format, onDateChange } = this.props;
+  handleChange = (event: React.SyntheticEvent, { value }) => {
+    const { allowOnlyNumbers, format, onChange } = this.props;
     const formatString = this.isRangeInput ? `${format} - ${format}` : format;
     const typedValue = allowOnlyNumbers ? onlyNumbers(value) : value;
 
@@ -329,7 +333,7 @@ class SemanticDatepicker extends React.Component<
       };
 
       this.setState(newState, () => {
-        onDateChange(null);
+        onChange(event, { ...this.props, value: null });
       });
 
       return;
@@ -349,11 +353,11 @@ class SemanticDatepicker extends React.Component<
     }
   };
 
-  onDateSelected = dateOrDates => {
+  onDateSelected = (event: React.SyntheticEvent | undefined, dateOrDates) => {
     if (this.isRangeInput) {
-      this.handleRangeInput(dateOrDates);
+      this.handleRangeInput(dateOrDates, event);
     } else {
-      this.handleBasicInput(dateOrDates);
+      this.handleBasicInput(dateOrDates, event);
     }
   };
 

@@ -10,7 +10,7 @@ export default {
 
 export const simple = () => (
   <Content>
-    <SemanticDatepicker type="range" onDateChange={action('selected date')} />
+    <SemanticDatepicker type="range" onChange={action('selected date')} />
   </Content>
 );
 
@@ -19,7 +19,7 @@ export const withRightPointing = () => (
     <SemanticDatepicker
       type="range"
       pointing="right"
-      onDateChange={action('selected date')}
+      onChange={action('selected date')}
     />
   </Content>
 );
@@ -29,7 +29,7 @@ export const withFirstDayOfWeek = () => (
     <SemanticDatepicker
       type="range"
       firstDayOfWeek={6}
-      onDateChange={action('selected date')}
+      onChange={action('selected date')}
     />
   </Content>
 );
@@ -39,7 +39,7 @@ export const withOutsideDays = () => (
     <SemanticDatepicker
       type="range"
       showOutsideDays
-      onDateChange={action('selected date')}
+      onChange={action('selected date')}
     />
   </Content>
 );
@@ -49,7 +49,7 @@ export const withFormatProp = () => (
     <SemanticDatepicker
       type="range"
       format="DD/MM/YYYY"
-      onDateChange={action('selected date')}
+      onChange={action('selected date')}
     />
   </Content>
 );
@@ -58,7 +58,7 @@ export const withPolishLocale = () => (
   <Content>
     <SemanticDatepicker
       type="range"
-      onDateChange={action('selected date')}
+      onChange={action('selected date')}
       locale="pl-PL"
     />
   </Content>
