@@ -21,6 +21,7 @@ export type LocaleOptions =
   | 'fi-FL'
   | 'fr-FR'
   | 'it-IT'
+  | 'ja-JP'
   | 'pl-PL'
   | 'pt-BR'
   | 'ru-RU'
