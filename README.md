@@ -4,7 +4,7 @@ Datepickers built with [Semantic UI for React][semantic-ui-react] and [Dayzed][d
 
 [![version][version-badge]][package]
 [![MIT License][license-badge]][license]
-[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors)
 
 ## Overview
 
@@ -143,6 +143,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/benhancockco"><img src="https://avatars3.githubusercontent.com/u/20491242?v=4" width="100px;" alt="Ben Hancock"/><br /><sub><b>Ben Hancock</b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=benhancockco" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Gallevy"><img src="https://avatars2.githubusercontent.com/u/17080607?v=4" width="100px;" alt="Gallevy"/><br /><sub><b>Gallevy</b></sub></a><br /><a href="#translation-Gallevy" title="Translation">🌍</a></td>
   </tr>
 </table>
 
