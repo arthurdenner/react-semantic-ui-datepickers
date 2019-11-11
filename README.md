@@ -4,7 +4,7 @@ Datepickers built with [Semantic UI for React][semantic-ui-react] and [Dayzed][d
 
 [![version][version-badge]][package]
 [![MIT License][license-badge]][license]
-[![All Contributors](https://img.shields.io/badge/all_contributors-12-orange.svg?style=flat-square)](#contributors)
+[![All Contributors](https://img.shields.io/badge/all_contributors-13-orange.svg?style=flat-square)](#contributors)
 
 ## Overview
 
@@ -147,6 +147,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/adamxtokyo"><img src="https://avatars3.githubusercontent.com/u/13076573?v=4" width="100px;" alt="Adam Grawender"/><br /><sub><b>Adam Grawender</b></sub></a><br /><a href="#translation-adamxtokyo" title="Translation">🌍</a></td>
     <td align="center"><a href="https://www.xzessmedia.de"><img src="https://avatars2.githubusercontent.com/u/3153586?v=4" width="100px;" alt="xzessmedia"/><br /><sub><b>xzessmedia</b></sub></a><br /><a href="#translation-xzessmedia" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/oriolhub"><img src="https://avatars3.githubusercontent.com/u/33755729?v=4" width="100px;" alt="oriolhub"/><br /><sub><b>oriolhub</b></sub></a><br /><a href="#translation-oriolhub" title="Translation">🌍</a></td>
+    <td align="center"><a href="http://colinramsay.co.uk"><img src="https://avatars2.githubusercontent.com/u/72954?v=4" width="100px;" alt="Colin Ramsay"/><br /><sub><b>Colin Ramsay</b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=colinramsay" title="Code">💻</a></td>
   </tr>
 </table>
 

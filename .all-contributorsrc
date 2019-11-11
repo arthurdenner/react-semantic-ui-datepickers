@@ -128,6 +128,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "colinramsay",
+      "name": "Colin Ramsay",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/72954?v=4",
+      "profile": "http://colinramsay.co.uk",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
