@@ -92,6 +92,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Gallevy",
+      "name": "Gallevy",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/17080607?v=4",
+      "profile": "https://github.com/Gallevy",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7
