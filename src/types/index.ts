@@ -27,7 +27,8 @@ export type LocaleOptions =
   | 'pt-BR'
   | 'ru-RU'
   | 'sv-SE'
-  | 'zn-CN';
+  | 'zn-CN'
+  | 'he-IL';
 
 export type PickedDayzedProps = Pick<
   DayzedProps,
