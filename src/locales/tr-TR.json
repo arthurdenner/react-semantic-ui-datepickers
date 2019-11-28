@@ -1,0 +1,30 @@
+{
+  "todayButton": "Bugün",
+  "nextMonth": "Sonraki ay",
+  "previousMonth": "Önceki ay",
+  "nextYear": "Sonraki yıl",
+  "previousYear": "Önceki yıl",
+  "weekdays": [
+    "Pazar",
+    "Pazartesi",
+    "Salı",
+    "Çarşamba",
+    "Perşembe",
+    "Cuma",
+    "Cumartesi"
+  ],
+  "months": [
+    "Ocak",
+    "Şubat",
+    "Mart",
+    "Nisan",
+    "Mayıs",
+    "Haziran",
+    "Temmuz",
+    "Ağustos",
+    "Eylül",
+    "Ekim",
+    "Kasım",
+    "Aralık"
+  ]
+}
