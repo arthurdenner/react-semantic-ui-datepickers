@@ -137,6 +137,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "gencer",
+      "name": "Gencer W. Genç",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/1711576?v=4",
+      "profile": "https://instagram.com/gencerwgenc",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7
