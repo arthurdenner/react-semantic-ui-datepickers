@@ -47,7 +47,7 @@
     "@storybook/addon-links": "5.2.8",
     "@storybook/addons": "5.2.8",
     "@storybook/react": "5.2.8",
-    "@testing-library/react": "9.3.2",
+    "@testing-library/react": "9.4.0",
     "@types/jest": "24.0.23",
     "@types/storybook__react": "4.0.2",
     "autoprefixer": "9.7.3",
