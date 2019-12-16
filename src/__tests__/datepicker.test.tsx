@@ -28,6 +28,60 @@ describe('Basic datepicker', () => {
     expect(setup()).toBeTruthy();
   });
 
+  describe('not read only or date picker only', () => {
+    it('accepts input', async () => {
+      const { getByTestId } = setup();
+      const datePickerInput = getByTestId('datepicker-input')
+        .firstChild as HTMLInputElement;
+      fireEvent.input(datePickerInput, { target: { value: '23' } });
+
+      expect(datePickerInput.value).toBe('23');
+    });
+
+    it('opens date picker', async () => {
+      const { getByTestId, openDatePicker } = setup();
+      openDatePicker();
+
+      expect(getByTestId('datepicker-today-button')).toBeDefined();
+    });
+  });
+
+  describe('is read only', () => {
+    it('does not accept input', async () => {
+      const { getByTestId } = setup({ readOnly: true });
+      const datePickerInput = getByTestId('datepicker-input')
+        .firstChild as HTMLInputElement;
+
+      expect(datePickerInput.readOnly).toBeTruthy();
+    });
+
+    it('does not open date picker', async () => {
+      const { getByTestId, openDatePicker } = setup({ readOnly: true });
+      openDatePicker();
+
+      expect(() => {
+        getByTestId('datepicker-today-button');
+      }).toThrow();
+    });
+  });
+
+  describe('is date picker only', () => {
+    it('does not accept input', async () => {
+      const { getByTestId } = setup({ readOnly: true });
+      const datePickerInput = getByTestId('datepicker-input')
+        .firstChild as HTMLInputElement;
+
+      expect(datePickerInput.readOnly).toBeTruthy();
+    });
+
+    it('opens date picker', async () => {
+      const { getByTestId, openDatePicker } = setup();
+      openDatePicker();
+
+      expect(getByTestId('datepicker-today-button')).toBeDefined();
+    });
+  });
+
   it('updates the locale if the prop changes', async () => {
     const { getByTestId, openDatePicker, rerender } = setup();
 
