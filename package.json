@@ -35,7 +35,7 @@
   "dependencies": {
     "@babel/runtime": "7.7.4",
     "classnames": "2.2.6",
-    "core-js": "3.4.7",
+    "core-js": "3.6.0",
     "date-fns": "1.30.1",
     "dayzed": "3.1.0",
     "format-string-by-pattern": "1.1.1",
