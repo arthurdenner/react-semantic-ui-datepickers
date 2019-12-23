@@ -78,7 +78,7 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 | onChange             | function | no       | () => {}     | Callback fired when the value changes                                                                           |
 | pointing             | string   | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
 | type                 | string   | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                 |
-| datePickerOnly       | boolean  | no       | false        | Allows the date to be selected only via the date picker, and disables the text input                            |
+| datePickerOnly       | boolean  | no       | false        | Allows the date to be selected only via the date picker and disables the text input                             |
 
 ### Form.Input Props
 
@@ -159,6 +159,7 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
