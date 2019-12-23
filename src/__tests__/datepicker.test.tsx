@@ -20,6 +20,8 @@ const setup = (props?: Partial<SemanticDatepickerProps>) => {
       options.rerender(
         <DatePicker onChange={jest.fn()} {...props} {...newProps} />
       ),
+    datePickerInput: options.getByTestId('datepicker-input')
+      .firstChild as HTMLInputElement,
   };
 };
 
@@ -30,9 +32,7 @@ describe('Basic datepicker', () => {
 
   describe('not read only or date picker only', () => {
     it('accepts input', async () => {
-      const { getByTestId } = setup();
-      const datePickerInput = getByTestId('datepicker-input')
-        .firstChild as HTMLInputElement;
+      const { datePickerInput } = setup();
       fireEvent.input(datePickerInput, { target: { value: '23' } });
 
       expect(datePickerInput.value).toBe('23');
@@ -48,20 +48,16 @@ describe('Basic datepicker', () => {
 
   describe('is read only', () => {
     it('does not accept input', async () => {
-      const { getByTestId } = setup({ readOnly: true });
-      const datePickerInput = getByTestId('datepicker-input')
-        .firstChild as HTMLInputElement;
+      const { datePickerInput } = setup({ readOnly: true });
 
       expect(datePickerInput.readOnly).toBeTruthy();
     });
 
     it('does not open date picker', async () => {
-      const { getByTestId, openDatePicker } = setup({ readOnly: true });
+      const { queryByTestId, openDatePicker } = setup({ readOnly: true });
       openDatePicker();
 
-      expect(() => {
-        getByTestId('datepicker-today-button');
-      }).toThrow();
+      expect(queryByTestId('datepicker-today-button')).toBeNull();
     });
   });
 
