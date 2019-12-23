@@ -146,7 +146,17 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "pivotal-james-zcheng",
+      "name": "pivotal-james-zcheng",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9889963?v=4",
+      "profile": "https://github.com/pivotal-james-zcheng",
+      "contributions": [
+        "code"
+      ]
     }
   ],
-  "contributorsPerLine": 7
+  "contributorsPerLine": 7,
+  "skipCi": true
 }
