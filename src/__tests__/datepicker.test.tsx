@@ -20,12 +20,62 @@ const setup = (props?: Partial<SemanticDatepickerProps>) => {
       options.rerender(
         <DatePicker onChange={jest.fn()} {...props} {...newProps} />
       ),
+    datePickerInput: options.getByTestId('datepicker-input')
+      .firstChild as HTMLInputElement,
   };
 };
 
 describe('Basic datepicker', () => {
   it('renders', () => {
     expect(setup()).toBeTruthy();
+  });
+
+  describe('not read only or date picker only', () => {
+    it('accepts input', async () => {
+      const { datePickerInput } = setup();
+      fireEvent.input(datePickerInput, { target: { value: '23' } });
+
+      expect(datePickerInput.value).toBe('23');
+    });
+
+    it('opens date picker', async () => {
+      const { getByTestId, openDatePicker } = setup();
+      openDatePicker();
+
+      expect(getByTestId('datepicker-today-button')).toBeDefined();
+    });
+  });
+
+  describe('is read only', () => {
+    it('does not accept input', async () => {
+      const { datePickerInput } = setup({ readOnly: true });
+
+      expect(datePickerInput.readOnly).toBeTruthy();
+    });
+
+    it('does not open date picker', async () => {
+      const { queryByTestId, openDatePicker } = setup({ readOnly: true });
+      openDatePicker();
+
+      expect(queryByTestId('datepicker-today-button')).toBeNull();
+    });
+  });
+
+  describe('is date picker only', () => {
+    it('does not accept input', async () => {
+      const { getByTestId } = setup({ readOnly: true });
+      const datePickerInput = getByTestId('datepicker-input')
+        .firstChild as HTMLInputElement;
+
+      expect(datePickerInput.readOnly).toBeTruthy();
+    });
+
+    it('opens date picker', async () => {
+      const { getByTestId, openDatePicker } = setup();
+      openDatePicker();
+
+      expect(getByTestId('datepicker-today-button')).toBeDefined();
+    });
   });
 
   it('updates the locale if the prop changes', async () => {

@@ -14,6 +14,7 @@ const CustomInput = ({
   ...rest
 }: InputProps) => (
   <Form.Input
+    data-testid="datepicker-input"
     {...rest}
     icon={
       <Icon

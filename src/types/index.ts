@@ -69,6 +69,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     ) => void;
     pointing: 'left' | 'right' | 'top left' | 'top right';
     type: 'basic' | 'range';
+    datePickerOnly: boolean;
     value: DayzedProps['selected'];
   };
 

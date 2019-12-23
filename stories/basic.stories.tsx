@@ -28,6 +28,12 @@ export const withReadOnly = () => (
   </Content>
 );
 
+export const withDatePickerOnly = () => (
+  <Content>
+    <SemanticDatepicker onChange={action('selected date')} datePickerOnly />
+  </Content>
+);
+
 export const withoutClearOnSameDateClick = () => (
   <Content>
     <SemanticDatepicker

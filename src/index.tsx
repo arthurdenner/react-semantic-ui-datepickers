@@ -83,6 +83,7 @@ class SemanticDatepicker extends React.Component<
     placeholder: null,
     pointing: 'left',
     readOnly: false,
+    datePickerOnly: false,
     required: false,
     showOutsideDays: false,
     type: 'basic',
@@ -369,7 +370,13 @@ class SemanticDatepicker extends React.Component<
       selectedDateFormatted,
       typedValue,
     } = this.state;
-    const { clearable, pointing, filterDate, readOnly } = this.props;
+    const {
+      clearable,
+      pointing,
+      filterDate,
+      readOnly,
+      datePickerOnly,
+    } = this.props;
 
     return (
       <div className="field" style={style} ref={this.el}>
@@ -382,6 +389,7 @@ class SemanticDatepicker extends React.Component<
           onClick={readOnly ? null : this.showCalendar}
           onKeyDown={this.handleKeyDown}
           value={typedValue || selectedDateFormatted}
+          readOnly={readOnly || datePickerOnly}
         />
         {isVisible && (
           <this.Component
