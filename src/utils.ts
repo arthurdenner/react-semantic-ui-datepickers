@@ -3,7 +3,8 @@ import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
 import { DateFns, Object } from './types';
 
-import { legacyParse, convertTokens } from '@date-fns/upgrade/v2';
+import { convertTokens, legacyParse } from '@date-fns/upgrade/v2';
+import { parse } from 'date-fns';
 
 export const isSelectable = (
   date: DateFns,
@@ -76,26 +77,18 @@ export const formatSelectedDate = (
 export const parseFormatString = (formatString: string) =>
   formatString.replace(/[D, Y]/gi, a => a.toLowerCase());
 
-export const parseOnBlur = (
-  typedValue: string,
-  formatString: string,
-  isRangeInput: boolean
-) => {
+export const parseOnBlur = (typedValue: string, formatString: string) => {
+  return parse(typedValue, parseFormatString(formatString), new Date());
+};
+
+export const parseRangeOnBlur = (typedValue: string, formatString: string) => {
   const parsedFormatString = parseFormatString(formatString);
 
-  if (isRangeInput) {
-    const rangeValues = typedValue.split(' - ');
+  const rangeValues = typedValue.split(' - ');
 
-    return (
-      rangeValues
-        // @ts-ignore
-        .map(value => dateFnsV2.parse(value, parsedFormatString, new Date()))
-        .sort((a, b) => (a > b ? 1 : -1))
-    );
-  }
-
-  // @ts-ignore
-  return dateFnsV2.parse(typedValue, parsedFormatString, new Date());
+  return rangeValues
+    .map(value => parse(value, parsedFormatString, new Date()))
+    .sort((a, b) => (a > b ? 1 : -1));
 };
 
 export const onlyNumbers = (value = '') => value.replace(/[^\d]/g, '');

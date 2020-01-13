@@ -10,7 +10,6 @@
     "start": "tsdx watch",
     "build": "tsdx build",
     "prebuild": "rimraf dist",
-    "prepare": "cd date-fns-v2/ && npm install",
     "test": "tsdx test --env=jsdom",
     "validate": "npm run lint && npm run test -- --coverage && npm run build",
     "storybook": "start-storybook -p 6006",
