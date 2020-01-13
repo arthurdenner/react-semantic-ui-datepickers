@@ -1,4 +1,4 @@
-import isValid from 'date-fns/is_valid';
+import isValid from 'date-fns/isValid';
 import formatStringByPattern from 'format-string-by-pattern';
 import React from 'react';
 import isEqual from 'react-fast-compare';
@@ -14,6 +14,8 @@ import { BasicDatePicker, RangeDatePicker } from './pickers';
 import { Locale, SemanticDatepickerProps } from './types';
 import Calendar from './components/calendar';
 import Input from './components/input';
+
+import { legacyParse } from '@date-fns/upgrade/v2';
 
 const style: React.CSSProperties = {
   display: 'inline-block',
@@ -310,7 +312,7 @@ class SemanticDatepicker extends React.Component<
         return;
       }
     } else {
-      const isDateValid = isValid(parsedValue);
+      const isDateValid = isValid(legacyParse(parsedValue));
 
       if (isDateValid) {
         this.handleBasicInput(parsedValue, event);

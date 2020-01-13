@@ -1,9 +1,11 @@
-import compareAsc from 'date-fns/compare_asc';
-import isSameDay from 'date-fns/is_same_day';
+import compareAsc from 'date-fns/compareAsc';
+import isSameDay from 'date-fns/isSameDay';
 import React from 'react';
 import { DateFns, RangeDatePickerProps } from '../types';
 import BaseDatePicker from './base';
 import { composeEventHandlers, isInRange } from './utils';
+
+import { legacyParse } from '@date-fns/upgrade/v2';
 
 type RangeDatePickerState = {
   hoveredDate: DateFns | null;
@@ -84,10 +86,15 @@ class RangeDatePicker extends React.Component<
     return getDateProps({
       ...restProps,
       inRange: isInRange(dateBounds, date),
-      start: dateBounds[0] && isSameDay(dateBounds[0], date),
-      end: dateBounds[1] && isSameDay(dateBounds[1], date),
+      start:
+        dateBounds[0] &&
+        isSameDay(legacyParse(dateBounds[0]), legacyParse(date)),
+      end:
+        dateBounds[1] &&
+        isSameDay(legacyParse(dateBounds[1]), legacyParse(date)),
       // @ts-ignore
-      hovered: hoveredDate && isSameDay(hoveredDate, date),
+      hovered:
+        hoveredDate && isSameDay(legacyParse(hoveredDate), legacyParse(date)),
       onMouseEnter: composeEventHandlers(onMouseEnter, () => {
         this.onHoverFocusDate(date);
       }),

@@ -1,10 +1,10 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
-import parse from 'date-fns/parse';
 import { Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
 import { Content } from './common';
+import { parseISO } from 'date-fns';
 
 const isWeekday = date => {
   const day = date.getDay();
@@ -76,7 +76,7 @@ export const withBrazilianPortugueseLocale = () => (
       onChange={action('selected date')}
       format="DD/MM/YYYY"
       locale="pt-BR"
-      value={parse('2018-10-01')}
+      value={parseISO('2018-10-01')}
     />
   </Content>
 );
