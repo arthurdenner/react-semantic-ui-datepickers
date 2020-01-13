@@ -13,7 +13,6 @@ import {
   pick,
 } from '../utils';
 
-import { legacyParse } from '@date-fns/upgrade/v2';
 import { parseISO } from 'date-fns';
 
 const objectTest = { a: 'a', b: 'b', c: 'c' };
@@ -113,7 +112,7 @@ describe('isSelectable', () => {
 });
 
 describe('getToday', () => {
-  const today = startOfDay(legacyParse(new Date()));
+  const today = startOfDay(new Date());
 
   it('should return the correct result if `today` is not selectable', () => {
     expect(getToday(june14, june28)).toEqual({
