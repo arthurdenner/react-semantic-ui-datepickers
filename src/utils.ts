@@ -1,19 +1,15 @@
 import format from 'date-fns/format';
 import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
-import { DateFns, Object } from './types';
+import { Object } from './types';
 
-import { convertTokens, legacyParse } from '@date-fns/upgrade/v2';
+import { convertTokens } from '@date-fns/upgrade/v2';
 import { parse } from 'date-fns';
 
-export const isSelectable = (
-  date: DateFns,
-  minDate?: DateFns,
-  maxDate?: DateFns
-) => {
+export const isSelectable = (date: Date, minDate?: Date, maxDate?: Date) => {
   if (
-    (minDate && isBefore(legacyParse(date), legacyParse(minDate))) ||
-    (maxDate && isBefore(legacyParse(maxDate), legacyParse(date)))
+    (minDate && isBefore(date, minDate)) ||
+    (maxDate && isBefore(maxDate, date))
   ) {
     return false;
   }
@@ -21,24 +17,19 @@ export const isSelectable = (
   return true;
 };
 
-export const getToday = (minDate?: DateFns, maxDate?: DateFns) => {
+export const getToday = (minDate?: Date, maxDate?: Date) => {
   const today = new Date();
 
   return {
-    date: startOfDay(legacyParse(today)),
+    date: startOfDay(today),
     selectable: isSelectable(today, minDate, maxDate),
     selected: false,
     today: true,
   };
 };
 
-export const formatDate = (date: DateFns | null, dateFormat: string) =>
-  date
-    ? format(
-        legacyParse(startOfDay(legacyParse(date))),
-        convertTokens(dateFormat)
-      )
-    : undefined;
+export const formatDate = (date: Date | null, dateFormat: string) =>
+  date ? format(startOfDay(date), convertTokens(dateFormat)) : undefined;
 
 export const omit = (keysToOmit: string[], obj: Object) => {
   const newObj = { ...obj };

@@ -16,8 +16,6 @@ import { Locale, SemanticDatepickerProps } from './types';
 import Calendar from './components/calendar';
 import Input from './components/input';
 
-import { legacyParse } from '@date-fns/upgrade/v2';
-
 const style: React.CSSProperties = {
   display: 'inline-block',
   position: 'relative',
@@ -309,7 +307,7 @@ class SemanticDatepicker extends React.Component<
       }
     } else {
       const parsedValue = parseOnBlur(String(typedValue), format);
-      const isDateValid = isValid(legacyParse(parsedValue));
+      const isDateValid = isValid(parsedValue);
 
       if (isDateValid) {
         this.handleBasicInput(parsedValue, event);

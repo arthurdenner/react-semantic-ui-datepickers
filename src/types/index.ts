@@ -2,8 +2,6 @@ import { FormInputProps } from 'semantic-ui-react';
 
 export type Object = { [key: string]: any };
 
-export type DateFns = string | number | Date;
-
 export type Locale = {
   todayButton: string;
   nextMonth: string;
