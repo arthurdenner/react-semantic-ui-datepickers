@@ -1,3 +1,4 @@
+import { parseISO } from 'date-fns';
 import startOfDay from 'date-fns/startOfDay';
 import localeEn from '../locales/en-US.json';
 import {
@@ -12,8 +13,6 @@ import {
   parseFormatString,
   pick,
 } from '../utils';
-
-import { parseISO } from 'date-fns';
 
 const objectTest = { a: 'a', b: 'b', c: 'c' };
 const dateTestString = '2018-06-21';
