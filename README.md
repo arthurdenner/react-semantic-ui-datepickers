@@ -51,20 +51,14 @@ import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
 const AppWithBasic = () => {
   const [currentDate, setNewDate] = useState('');
-  const onChange=(event, data) => setNewDate(data.value)
+  const onChange = (event, data) => setNewDate(data.value);
   <SemanticDatepicker onChange={onChange} />;
 };
 
 const AppWithRangeAndInPortuguese = () => {
   const [currentRange, setNewRange] = useState([]);
-  const onChange = (event, data) => setNewRange(data.value)
-  return (
-    <SemanticDatepicker
-      locale="pt-BR"
-      onChange={onChange}
-      type="range"
-    />
-  );
+  const onChange = (event, data) => setNewRange(data.value);
+  return <SemanticDatepicker locale="pt-BR" onChange={onChange} type="range" />;
 };
 ```
 
