@@ -164,6 +164,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "artawood",
+      "name": "Artawood Chitamitara",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/9616109?v=4",
+      "profile": "http://www.artawood.net",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
