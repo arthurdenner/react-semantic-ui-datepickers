@@ -50,7 +50,7 @@ import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
 const AppWithBasic = () => {
-  const [currentDate, setNewDate] = useState('');
+  const [currentDate, setNewDate] = useState(null);
   const onChange = (event, data) => setNewDate(data.value);
   <SemanticDatepicker onChange={onChange} />;
 };
