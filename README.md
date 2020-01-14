@@ -45,17 +45,21 @@ yarn add react-semantic-ui-datepickers
 ## Usage
 
 ```jsx
-import React from 'react';
+import React, { useState } from 'react';
 import SemanticDatepicker from 'react-semantic-ui-datepickers';
 import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
 
-const AppWithBasic = ({ onChange }) => (
-  <SemanticDatepicker onChange={onChange} />
-);
+const AppWithBasic = () => {
+  const [currentDate, setNewDate] = useState(null);
+  const onChange = (event, data) => setNewDate(data.value);
+  <SemanticDatepicker onChange={onChange} />;
+};
 
-const AppWithRangeAndInPortuguese = ({ onChange }) => (
-  <SemanticDatepicker locale="pt-BR" onChange={onChange} type="range" />
-);
+const AppWithRangeAndInPortuguese = () => {
+  const [currentRange, setNewRange] = useState([]);
+  const onChange = (event, data) => setNewRange(data.value);
+  return <SemanticDatepicker locale="pt-BR" onChange={onChange} type="range" />;
+};
 ```
 
 More examples [here](https://react-semantic-ui-datepickers.now.sh).
