@@ -154,12 +154,12 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/pivotal-james-zcheng"><img src="https://avatars3.githubusercontent.com/u/9889963?v=4" width="100px;" alt=""/><br /><sub><b>pivotal-james-zcheng</b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=pivotal-james-zcheng" title="Code">💻</a></td>
+    <td align="center"><a href="http://christianmoen.me"><img src="https://avatars1.githubusercontent.com/u/2778221?v=4" width="100px;" alt=""/><br /><sub><b>Christian Moen</b></sub></a><br /><a href="#translation-Cmoen11" title="Translation">🌍</a></td>
   </tr>
 </table>
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
-
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/kentcdodds/all-contributors) specification. Contributions of any kind welcome!
