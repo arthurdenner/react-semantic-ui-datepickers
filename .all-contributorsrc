@@ -155,6 +155,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Cmoen11",
+      "name": "Christian Moen",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2778221?v=4",
+      "profile": "http://christianmoen.me",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
