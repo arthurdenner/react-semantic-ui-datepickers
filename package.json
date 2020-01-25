@@ -33,7 +33,7 @@
   "author": "Arthur Denner <arthurdenner7@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "7.8.0",
+    "@babel/runtime": "7.8.3",
     "classnames": "2.2.6",
     "core-js": "3.6.3",
     "date-fns": "1.30.1",
