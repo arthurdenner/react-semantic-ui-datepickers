@@ -180,6 +180,19 @@ describe('Basic datepicker', () => {
       })
     );
   });
+
+  it('reset its state on clear', () => {
+    const { datePickerInput, getByTestId, getByText, openDatePicker } = setup();
+
+    openDatePicker();
+    fireEvent.click(getByText('Today'));
+
+    expect(datePickerInput.value).not.toBe('');
+
+    fireEvent.click(getByTestId('datepicker-icon'));
+
+    expect(datePickerInput.value).toBe('');
+  });
 });
 
 describe('Range datepicker', () => {
