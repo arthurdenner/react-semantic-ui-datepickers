@@ -39,6 +39,47 @@ describe('Basic datepicker', () => {
     expect(setup()).toBeTruthy();
   });
 
+  describe('reacts to keyboard events', () => {
+    it('ignore keys different from Enter', async () => {
+      const onBlur = jest.fn();
+      const { datePickerInput } = setup({ onBlur });
+      fireEvent.keyDown(datePickerInput);
+
+      expect(onBlur).not.toHaveBeenCalled();
+    });
+
+    it('only return if Enter is pressed without any value', async () => {
+      const onBlur = jest.fn();
+      const { datePickerInput } = setup({ onBlur });
+      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+
+      expect(datePickerInput.value).toBe('');
+      expect(onBlur).toHaveBeenCalledTimes(1);
+    });
+
+    it('accepts valid input followed by Enter key', async () => {
+      const onBlur = jest.fn();
+      const { datePickerInput } = setup({ onBlur });
+      fireEvent.input(datePickerInput, { target: { value: '2020-02-02' } });
+      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+
+      expect(datePickerInput.value).toBe('2020-02-02');
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(undefined);
+    });
+
+    it("doesn't accept invalid input followed by Enter key", async () => {
+      const onBlur = jest.fn();
+      const { datePickerInput } = setup({ onBlur });
+      fireEvent.input(datePickerInput, { target: { value: '2020-02' } });
+      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+
+      expect(datePickerInput.value).toBe('');
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(undefined);
+    });
+  });
+
   describe('without readOnly or datePickerOnly', () => {
     it('accepts input', async () => {
       const { datePickerInput } = setup();
