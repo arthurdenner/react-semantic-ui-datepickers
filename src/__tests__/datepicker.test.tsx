@@ -233,6 +233,30 @@ describe('Range datepicker', () => {
     expect(setup({ type: 'range' })).toBeTruthy();
   });
 
+  describe('reacts to keyboard events', () => {
+    it('accepts valid input followed by Enter key', async () => {
+      const onBlur = jest.fn();
+      const { datePickerInput } = setup({ onBlur, type: 'range' });
+      fireEvent.input(datePickerInput, { target: { value: '2020-02-02' } });
+      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+
+      expect(datePickerInput.value).toBe('2020-02-02');
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(undefined);
+    });
+
+    it("doesn't accept invalid input followed by Enter key", async () => {
+      const onBlur = jest.fn();
+      const { datePickerInput } = setup({ onBlur, type: 'range' });
+      fireEvent.input(datePickerInput, { target: { value: '2020-02' } });
+      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+
+      expect(datePickerInput.value).toBe('');
+      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledWith(undefined);
+    });
+  });
+
   it('updates the locale if the prop changes', async () => {
     const { getByTestId, openDatePicker, rerender } = setup({ type: 'range' });
 
@@ -302,5 +326,20 @@ describe('Range datepicker', () => {
         value: [expect.any(Date), expect.any(Date)],
       })
     );
+  });
+
+  it('reset its state on clear', () => {
+    const { datePickerInput, getByTestId, getByText, openDatePicker } = setup({
+      type: 'range',
+    });
+
+    openDatePicker();
+    fireEvent.click(getByText('Today'));
+
+    expect(datePickerInput.value).not.toBe('');
+
+    fireEvent.click(getByTestId('datepicker-icon'));
+
+    expect(datePickerInput.value).toBe('');
   });
 });
