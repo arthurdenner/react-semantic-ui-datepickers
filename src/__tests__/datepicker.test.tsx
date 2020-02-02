@@ -94,7 +94,14 @@ describe('Basic datepicker', () => {
   describe('without readOnly or datePickerOnly', () => {
     it('accepts input', async () => {
       const { datePickerInput } = setup();
-      fireEvent.input(datePickerInput, { target: { value: '23' } });
+      fireEvent.input(datePickerInput, { target: { value: 'a2b3' } });
+
+      expect(datePickerInput.value).toBe('a2b3');
+    });
+
+    it("doesn't accept letters on input with allowOnlyNumbers", async () => {
+      const { datePickerInput } = setup({ allowOnlyNumbers: true });
+      fireEvent.input(datePickerInput, { target: { value: 'a2b3c' } });
 
       expect(datePickerInput.value).toBe('23');
     });
