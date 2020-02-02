@@ -143,7 +143,7 @@ class SemanticDatepicker extends React.Component<
       return date;
     }
 
-    return this.isRangeInput ? selectedDate[0] : selectedDate || date;
+    return this.isRangeInput ? selectedDate[0] : selectedDate;
   }
 
   get locale() {

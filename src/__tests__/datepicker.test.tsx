@@ -199,6 +199,19 @@ describe('Basic datepicker', () => {
     );
   });
 
+  it('updates datepicker value if value prop updates', async () => {
+    const now = new Date();
+    const today = new Date(now.getTime());
+    const tomorrow = new Date(now.setDate(now.getDate() + 1));
+    const { datePickerInput, rerender } = setup({ value: today });
+
+    expect(datePickerInput.value).toBe(getShortDate(today));
+
+    rerender({ value: tomorrow });
+
+    expect(datePickerInput.value).toBe(getShortDate(tomorrow));
+  });
+
   it('reset its state on clear', () => {
     const { datePickerInput, getByTestId, getByText, openDatePicker } = setup();
 
