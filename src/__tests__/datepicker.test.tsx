@@ -24,6 +24,15 @@ const setup = (props?: Partial<SemanticDatepickerProps>) => {
       .firstChild as HTMLInputElement,
   };
 };
+let spy: jest.SpyInstance;
+
+beforeEach(() => {
+  spy = jest.spyOn(console, 'warn').mockImplementation();
+});
+
+afterEach(() => {
+  spy.mockRestore();
+});
 
 describe('Basic datepicker', () => {
   it('renders', () => {
@@ -105,6 +114,10 @@ describe('Basic datepicker', () => {
     rerender({ locale: 'invalid' });
 
     expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(
+      expect.stringMatching(/not a valid locale/)
+    );
   });
 
   it('fires onChange with event and selected date as arguments', async () => {
@@ -160,6 +173,10 @@ describe('Range datepicker', () => {
     rerender({ locale: 'invalid' });
 
     expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(
+      expect.stringMatching(/not a valid locale/)
+    );
   });
 
   it('fires onChange with event and selected dates as arguments', async () => {
