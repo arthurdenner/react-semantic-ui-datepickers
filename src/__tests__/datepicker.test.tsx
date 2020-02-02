@@ -39,7 +39,7 @@ describe('Basic datepicker', () => {
     expect(setup()).toBeTruthy();
   });
 
-  describe('not read only or date picker only', () => {
+  describe('without readOnly or datePickerOnly', () => {
     it('accepts input', async () => {
       const { datePickerInput } = setup();
       fireEvent.input(datePickerInput, { target: { value: '23' } });
@@ -55,7 +55,7 @@ describe('Basic datepicker', () => {
     });
   });
 
-  describe('is read only', () => {
+  describe('with readOnly', () => {
     it('does not accept input', async () => {
       const { datePickerInput } = setup({ readOnly: true });
 
@@ -70,9 +70,9 @@ describe('Basic datepicker', () => {
     });
   });
 
-  describe('is date picker only', () => {
+  describe('with datePickerOnly', () => {
     it('does not accept input', async () => {
-      const { getByTestId } = setup({ readOnly: true });
+      const { getByTestId } = setup({ datePickerOnly: true });
       const datePickerInput = getByTestId('datepicker-input')
         .firstChild as HTMLInputElement;
 
@@ -80,7 +80,7 @@ describe('Basic datepicker', () => {
     });
 
     it('opens date picker', async () => {
-      const { getByTestId, openDatePicker } = setup();
+      const { getByTestId, openDatePicker } = setup({ datePickerOnly: true });
       openDatePicker();
 
       expect(getByTestId('datepicker-today-button')).toBeDefined();
