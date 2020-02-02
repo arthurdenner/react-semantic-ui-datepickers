@@ -193,6 +193,39 @@ describe('Basic datepicker', () => {
 
     expect(datePickerInput.value).toBe('');
   });
+
+  describe('clearOnSameDateClick', () => {
+    it('reset its state when prop is true', () => {
+      const { datePickerInput, getByText, openDatePicker } = setup({
+        keepOpenOnSelect: true,
+      });
+
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+
+      expect(datePickerInput.value).not.toBe('');
+
+      fireEvent.click(getByText('Today'));
+
+      expect(datePickerInput.value).toBe('');
+    });
+
+    it("doesn't reset its state when prop is false", () => {
+      const { datePickerInput, getByText, openDatePicker } = setup({
+        clearOnSameDateClick: false,
+        keepOpenOnSelect: true,
+      });
+
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+
+      expect(datePickerInput.value).not.toBe('');
+
+      fireEvent.click(getByText('Today'));
+
+      expect(datePickerInput.value).not.toBe('');
+    });
+  });
 });
 
 describe('Range datepicker', () => {
