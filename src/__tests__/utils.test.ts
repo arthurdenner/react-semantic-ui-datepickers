@@ -1,5 +1,5 @@
-import parse from 'date-fns/parse';
-import startOfDay from 'date-fns/start_of_day';
+import { parseISO } from 'date-fns';
+import startOfDay from 'date-fns/startOfDay';
 import localeEn from '../locales/en-US.json';
 import {
   formatDate,
@@ -16,11 +16,11 @@ import {
 
 const objectTest = { a: 'a', b: 'b', c: 'c' };
 const dateTestString = '2018-06-21';
-const dateTest = parse(dateTestString);
-const june14 = parse('2018-06-14');
-const june20 = parse('2018-06-20');
-const june25 = parse('2018-06-25');
-const june28 = parse('2018-06-28');
+const dateTest = parseISO(dateTestString);
+const june14 = parseISO('2018-06-14');
+const june20 = parseISO('2018-06-20');
+const june25 = parseISO('2018-06-25');
+const june28 = parseISO('2018-06-28');
 
 describe('moveElementsByN', () => {
   it('should return the same array if `n` is zero', () => {

@@ -1,7 +1,7 @@
 import cn from 'classnames';
 import React, { Fragment } from 'react';
 import { Segment } from 'semantic-ui-react';
-import { DateFns, Locale, SemanticDatepickerProps } from 'types';
+import { Locale, SemanticDatepickerProps } from 'types';
 import { getShortDate, getToday } from '../../utils';
 import Button from '../button';
 import CalendarCell from '../cell';
@@ -14,8 +14,8 @@ type CalendarProps = {
   getBackProps: (props: any) => void;
   getDateProps: (props: any) => void;
   getForwardProps: (props: any) => void;
-  maxDate?: DateFns;
-  minDate?: DateFns;
+  maxDate?: Date;
+  minDate?: Date;
   months: Locale['months'];
   nextMonth: string;
   nextYear: string;

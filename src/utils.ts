@@ -1,14 +1,12 @@
 import format from 'date-fns/format';
-import isBefore from 'date-fns/is_before';
-import startOfDay from 'date-fns/start_of_day';
-import { DateFns, Object } from './types';
-import dateFnsV2 from '../date-fns-v2';
+import isBefore from 'date-fns/isBefore';
+import startOfDay from 'date-fns/startOfDay';
+import { Object } from './types';
 
-export const isSelectable = (
-  date: DateFns,
-  minDate?: DateFns,
-  maxDate?: DateFns
-) => {
+import { convertTokens } from '@date-fns/upgrade/v2';
+import { parse } from 'date-fns';
+
+export const isSelectable = (date: Date, minDate?: Date, maxDate?: Date) => {
   if (
     (minDate && isBefore(date, minDate)) ||
     (maxDate && isBefore(maxDate, date))
@@ -19,7 +17,7 @@ export const isSelectable = (
   return true;
 };
 
-export const getToday = (minDate?: DateFns, maxDate?: DateFns) => {
+export const getToday = (minDate?: Date, maxDate?: Date) => {
   const today = new Date();
 
   return {
@@ -30,8 +28,8 @@ export const getToday = (minDate?: DateFns, maxDate?: DateFns) => {
   };
 };
 
-export const formatDate = (date: DateFns | null, dateFormat: string) =>
-  date ? format(startOfDay(date), dateFormat) : undefined;
+export const formatDate = (date: Date | null, dateFormat: string) =>
+  date ? format(startOfDay(date), convertTokens(dateFormat)) : undefined;
 
 export const omit = (keysToOmit: string[], obj: Object) => {
   const newObj = { ...obj };
@@ -70,26 +68,18 @@ export const formatSelectedDate = (
 export const parseFormatString = (formatString: string) =>
   formatString.replace(/[D, Y]/gi, a => a.toLowerCase());
 
-export const parseOnBlur = (
-  typedValue: string,
-  formatString: string,
-  isRangeInput: boolean
-) => {
+export const parseOnBlur = (typedValue: string, formatString: string) => {
+  return parse(typedValue, parseFormatString(formatString), new Date());
+};
+
+export const parseRangeOnBlur = (typedValue: string, formatString: string) => {
   const parsedFormatString = parseFormatString(formatString);
 
-  if (isRangeInput) {
-    const rangeValues = typedValue.split(' - ');
+  const rangeValues = typedValue.split(' - ');
 
-    return (
-      rangeValues
-        // @ts-ignore
-        .map(value => dateFnsV2.parse(value, parsedFormatString, new Date()))
-        .sort((a, b) => (a > b ? 1 : -1))
-    );
-  }
-
-  // @ts-ignore
-  return dateFnsV2.parse(typedValue, parsedFormatString, new Date());
+  return rangeValues
+    .map(value => parse(value, parsedFormatString, new Date()))
+    .sort((a, b) => (a > b ? 1 : -1));
 };
 
 export const onlyNumbers = (value = '') => value.replace(/[^\d]/g, '');

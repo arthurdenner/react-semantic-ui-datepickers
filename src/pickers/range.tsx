@@ -1,12 +1,12 @@
-import compareAsc from 'date-fns/compare_asc';
-import isSameDay from 'date-fns/is_same_day';
+import compareAsc from 'date-fns/compareAsc';
+import isSameDay from 'date-fns/isSameDay';
 import React from 'react';
-import { DateFns, RangeDatePickerProps } from '../types';
+import { RangeDatePickerProps } from '../types';
 import BaseDatePicker from './base';
 import { composeEventHandlers, isInRange } from './utils';
 
 type RangeDatePickerState = {
-  hoveredDate: DateFns | null;
+  hoveredDate: Date | null;
 };
 
 class RangeDatePicker extends React.Component<

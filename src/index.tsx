@@ -1,4 +1,4 @@
-import isValid from 'date-fns/is_valid';
+import isValid from 'date-fns/isValid';
 import formatStringByPattern from 'format-string-by-pattern';
 import React from 'react';
 import isEqual from 'react-fast-compare';
@@ -8,6 +8,7 @@ import {
   omit,
   onlyNumbers,
   parseOnBlur,
+  parseRangeOnBlur,
   pick,
 } from './utils';
 import { BasicDatePicker, RangeDatePicker } from './pickers';
@@ -296,13 +297,8 @@ class SemanticDatepicker extends React.Component<
       return;
     }
 
-    const parsedValue = parseOnBlur(
-      String(typedValue),
-      format,
-      this.isRangeInput
-    );
-
     if (this.isRangeInput) {
+      const parsedValue = parseRangeOnBlur(String(typedValue), format);
       const areDatesValid = parsedValue.every(isValid);
 
       if (areDatesValid) {
@@ -310,6 +306,7 @@ class SemanticDatepicker extends React.Component<
         return;
       }
     } else {
+      const parsedValue = parseOnBlur(String(typedValue), format);
       const isDateValid = isValid(parsedValue);
 
       if (isDateValid) {
