@@ -40,6 +40,17 @@ describe('Basic datepicker', () => {
   });
 
   describe('reacts to keyboard events', () => {
+    it('closes datepicker on Esc', async () => {
+      const { getByText, openDatePicker, queryByText } = setup();
+      openDatePicker();
+
+      expect(getByText('Today')).toBeDefined();
+
+      fireEvent.keyDown(getByText('Today'), { keyCode: 27 });
+
+      expect(queryByText('Today')).toBeNull();
+    });
+
     it('ignore keys different from Enter', async () => {
       const onBlur = jest.fn();
       const { datePickerInput } = setup({ onBlur });
