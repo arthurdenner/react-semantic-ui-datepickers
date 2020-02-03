@@ -46,7 +46,7 @@
     "@storybook/addon-actions": "5.3.9",
     "@storybook/addon-links": "5.3.1",
     "@storybook/addons": "5.3.10",
-    "@storybook/react": "5.3.9",
+    "@storybook/react": "5.3.10",
     "@testing-library/react": "9.4.0",
     "@types/jest": "24.9.0",
     "@types/storybook__react": "5.2.1",
