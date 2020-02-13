@@ -39,7 +39,7 @@
     "date-fns": "2.9.0",
     "dayzed": "3.1.0",
     "format-string-by-pattern": "1.1.1",
-    "react-fast-compare": "2.0.4"
+    "react-fast-compare": "3.0.1"
   },
   "devDependencies": {
     "@babel/core": "7.8.3",
