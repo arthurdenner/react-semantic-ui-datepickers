@@ -10847,10 +10847,10 @@ rollup-plugin-copy@3.3.0:
     globby "10.0.1"
     is-plain-object "^3.0.0"
 
-rollup-plugin-postcss@2.0.5:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-postcss/-/rollup-plugin-postcss-2.0.5.tgz#93cad7b22e2647a013f3f158c2d45796e9885626"
-  integrity sha512-7z6gyeArYukoU+pyonj///KIak0lYWxhbaT6uJUESM1gBrqiXWMEHdvBcXysajtRsRBD8ZIMXD3smlFEN+sZkw==
+rollup-plugin-postcss@2.1.1:
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-postcss/-/rollup-plugin-postcss-2.1.1.tgz#39b9b7c5da91741631b3a07ad1622a3477b307f4"
+  integrity sha512-A9G3VGnWwfjlb5REp992+9NEosY0KdrysXYytNFCy107+QlZaRzIgHQYwBQ67BYlV8K4t0Yk2ukySFQceneUKA==
   dependencies:
     chalk "^2.4.2"
     concat-with-sourcemaps "^1.0.5"
