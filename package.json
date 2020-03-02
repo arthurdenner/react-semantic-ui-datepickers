@@ -69,7 +69,7 @@
     "semantic-ui-react": "0.88.2",
     "tsdx": "0.12.3",
     "tslib": "1.10.0",
-    "typescript": "3.8.2"
+    "typescript": "3.8.3"
   },
   "peerDependencies": {
     "react": ">=16.8.0",
