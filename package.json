@@ -38,7 +38,7 @@
     "core-js": "3.6.4",
     "date-fns": "2.9.0",
     "dayzed": "3.1.0",
-    "format-string-by-pattern": "1.1.1",
+    "format-string-by-pattern": "1.2.1",
     "react-fast-compare": "3.0.1"
   },
   "devDependencies": {
