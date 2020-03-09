@@ -15,7 +15,9 @@ export type Locale = {
 };
 
 export type LocaleOptions =
+  | 'ar-AR'
   | 'ca-ES'
+  | 'cs-CS'
   | 'de-DE'
   | 'en-US'
   | 'es-ES'
@@ -23,6 +25,7 @@ export type LocaleOptions =
   | 'fr-FR'
   | 'it-IT'
   | 'ja-JP'
+  | 'ko-KO'
   | 'pl-PL'
   | 'pt-BR'
   | 'ru-RU'
