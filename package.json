@@ -12,6 +12,7 @@
     "prebuild": "rimraf dist",
     "test": "tsdx test --env=jsdom",
     "validate": "npm run lint && npm run test -- --coverage && npm run build",
+    "now-build": "npm run storybook:build",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },

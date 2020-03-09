@@ -3,5 +3,11 @@
   "public": true,
   "alias": "react-semantic-ui-datepickers",
   "name": "react-semantic-ui-datepickers",
-  "builds": [{ "src": "./package.json", "use": "@now/static-build" }]
+  "builds": [
+    {
+      "src": "./package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "storybook-static" }
+    }
+  ]
 }
