@@ -23,6 +23,7 @@ export type LocaleOptions =
   | 'fr-FR'
   | 'it-IT'
   | 'ja-JP'
+  | 'ko-KR'
   | 'pl-PL'
   | 'pt-BR'
   | 'ru-RU'
