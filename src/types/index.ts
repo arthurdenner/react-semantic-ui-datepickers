@@ -54,6 +54,7 @@ export type PickedFormInputProps = Pick<
 export type SemanticDatepickerProps = PickedDayzedProps &
   PickedFormInputProps & {
     allowOnlyNumbers: boolean;
+    autoComplete?: string;
     clearOnSameDateClick: boolean;
     clearable: boolean;
     filterDate: (date: Date) => boolean;

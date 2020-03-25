@@ -21,6 +21,7 @@ const style: React.CSSProperties = {
   position: 'relative',
 };
 const semanticInputProps = [
+  'autoComplete',
   'disabled',
   'error',
   'icon',

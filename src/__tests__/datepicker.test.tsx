@@ -146,6 +146,20 @@ describe('Basic datepicker', () => {
     });
   });
 
+  describe('with autoComplete', () => {
+    it("it's empty by default", async () => {
+      const { datePickerInput } = setup();
+
+      expect(datePickerInput.autocomplete).toBe('');
+    });
+
+    it("it's passed down, if provided", async () => {
+      const { datePickerInput } = setup({ autoComplete: 'off' });
+
+      expect(datePickerInput.autocomplete).toBe('off');
+    });
+  });
+
   it('updates the locale if the prop changes', async () => {
     const { getByTestId, openDatePicker, rerender } = setup();
 
