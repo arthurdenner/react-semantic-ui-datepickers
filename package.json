@@ -37,7 +37,7 @@
     "@date-fns/upgrade": "1.0.1",
     "classnames": "2.2.6",
     "core-js": "3.6.4",
-    "date-fns": "2.11.0",
+    "date-fns": "2.11.1",
     "dayzed": "3.1.0",
     "format-string-by-pattern": "1.2.1",
     "react-fast-compare": "3.0.1"
