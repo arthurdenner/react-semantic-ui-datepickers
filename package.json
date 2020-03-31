@@ -64,7 +64,7 @@
     "react-dom": "16.13.0",
     "rimraf": "3.0.2",
     "rollup-plugin-copy": "3.3.0",
-    "rollup-plugin-postcss": "2.1.1",
+    "rollup-plugin-postcss": "2.5.0",
     "rollup-plugin-typescript2": "0.26.0",
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "0.88.2",
