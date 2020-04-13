@@ -979,10 +979,10 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@date-fns/upgrade@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@date-fns/upgrade/-/upgrade-1.0.1.tgz#95cbcb57feddc182b1a1408257b9abffcd1eea26"
-  integrity sha512-jKRhTxAOFAIkflSCLeqq8BjdSofDo1jG/jiy4peJKLDcXaHZnmNr6oq/iJ+A0bvgOh3WePIK1QQ7GulNo5U14A==
+"@date-fns/upgrade@1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@date-fns/upgrade/-/upgrade-1.0.3.tgz#1e59d8c936f63c5c7daeeca09ec82b0849a1252e"
+  integrity sha512-0BLzKmXwWw3Zh3cZzW4xScmwGijXCAulaFdikqNiSnK8PAgYYSWWxOP/kuJFpKaoIT5KzstVGyHsjA7t/QXi1Q==
   dependencies:
     date-fns "^2.1"
 
