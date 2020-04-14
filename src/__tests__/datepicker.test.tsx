@@ -20,8 +20,8 @@ const setup = (props?: Partial<SemanticDatepickerProps>) => {
       options.rerender(
         <DatePicker onChange={jest.fn()} {...props} {...newProps} />
       ),
-    datePickerInput: options.getByTestId('datepicker-input')
-      .firstChild as HTMLInputElement,
+    datePickerInput:
+      options.getByTestId('datepicker-input').firstChild as HTMLInputElement,
   };
 };
 let spy: jest.SpyInstance;
@@ -132,8 +132,8 @@ describe('Basic datepicker', () => {
   describe('with datePickerOnly', () => {
     it('does not accept input', async () => {
       const { getByTestId } = setup({ datePickerOnly: true });
-      const datePickerInput = getByTestId('datepicker-input')
-        .firstChild as HTMLInputElement;
+      const datePickerInput =
+        getByTestId('datepicker-input').firstChild as HTMLInputElement;
 
       expect(datePickerInput.readOnly).toBeTruthy();
     });
@@ -339,9 +339,8 @@ describe('Range datepicker', () => {
     const onChange = jest.fn();
     const now = new Date();
     const today = getShortDate(now) as string;
-    const tomorrow = getShortDate(
-      new Date(now.setDate(now.getDate() + 1))
-    ) as string;
+    const tomorrow =
+      getShortDate(new Date(now.setDate(now.getDate() + 1))) as string;
     const { getByTestId, openDatePicker } = setup({
       onChange,
       type: 'range',

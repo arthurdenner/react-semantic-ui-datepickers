@@ -44,7 +44,7 @@ class BaseDatePicker extends React.Component<DayzedProps> {
     });
   }
 
-  setRootNode = ref => {
+  setRootNode = (ref) => {
     this.rootNode = ref;
   };
 
@@ -56,7 +56,7 @@ class BaseDatePicker extends React.Component<DayzedProps> {
     };
   };
 
-  _handleOffsetChanged = offset => {
+  _handleOffsetChanged = (offset) => {
     this.setState({
       offset,
     });
@@ -76,7 +76,7 @@ class BaseDatePicker extends React.Component<DayzedProps> {
         {...rest}
         offset={this.state.offset}
         onOffsetChanged={this._handleOffsetChanged}
-        render={renderProps =>
+        render={(renderProps) =>
           children({
             ...renderProps,
             getRootProps: this.getRootProps,
