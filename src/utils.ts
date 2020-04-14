@@ -34,7 +34,7 @@ export const formatDate = (date: Date | null, dateFormat: string) =>
 export const omit = (keysToOmit: string[], obj: Object) => {
   const newObj = { ...obj };
 
-  keysToOmit.forEach(key => delete newObj[key]);
+  keysToOmit.forEach((key) => delete newObj[key]);
 
   return newObj;
 };
@@ -42,7 +42,7 @@ export const omit = (keysToOmit: string[], obj: Object) => {
 export const pick = (keysToPick: string[], obj: Object) => {
   const newObj: Object = {};
 
-  keysToPick.forEach(key => {
+  keysToPick.forEach((key) => {
     newObj[key] = obj[key];
   });
 
@@ -61,12 +61,12 @@ export const formatSelectedDate = (
   }
 
   return Array.isArray(selectedDate)
-    ? selectedDate.map(date => formatDate(date, dateFormat)).join(' - ')
+    ? selectedDate.map((date) => formatDate(date, dateFormat)).join(' - ')
     : formatDate(selectedDate, dateFormat);
 };
 
 export const parseFormatString = (formatString: string) =>
-  formatString.replace(/[D, Y]/gi, a => a.toLowerCase());
+  formatString.replace(/[D, Y]/gi, (a) => a.toLowerCase());
 
 export const parseOnBlur = (typedValue: string, formatString: string) => {
   return parse(typedValue, parseFormatString(formatString), new Date());
@@ -78,7 +78,7 @@ export const parseRangeOnBlur = (typedValue: string, formatString: string) => {
   const rangeValues = typedValue.split(' - ');
 
   return rangeValues
-    .map(value => parse(value, parsedFormatString, new Date()))
+    .map((value) => parse(value, parsedFormatString, new Date()))
     .sort((a, b) => (a > b ? 1 : -1));
 };
 

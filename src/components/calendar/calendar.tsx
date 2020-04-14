@@ -106,7 +106,7 @@ const Calendar: React.FC<CalendarProps> = ({
             </div>
           </div>
           <div className="clndr-days">
-            {weekdays.map(weekday => (
+            {weekdays.map((weekday) => (
               <CalendarCell
                 key={`${calendar.year}-${calendar.month}-${weekday}`}
                 title={weekday}
@@ -114,7 +114,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 {weekday.slice(0, 2)}
               </CalendarCell>
             ))}
-            {calendar.weeks.map(week =>
+            {calendar.weeks.map((week) =>
               week.map((dateObj, weekIdx) => {
                 const key = `${calendar.year}-${calendar.month}-${weekIdx}`;
 

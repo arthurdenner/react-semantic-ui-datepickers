@@ -8,7 +8,7 @@
  */
 export function composeEventHandlers(...fns) {
   return (event, ...args) =>
-    fns.some(fn => {
+    fns.some((fn) => {
       if (fn) {
         fn(event, ...args);
       }
@@ -24,7 +24,7 @@ export function composeEventHandlers(...fns) {
  * @return {Function} the event handler to handle keyboard key
  */
 export function getArrowKeyHandlers(config) {
-  return event => {
+  return (event) => {
     const { keyCode } = event;
     const fn = {
       37: config.left,

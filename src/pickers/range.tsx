@@ -19,8 +19,8 @@ class RangeDatePicker extends React.Component<
 
   state = { hoveredDate: null };
 
-  setHoveredDate = date => {
-    this.setState(state =>
+  setHoveredDate = (date) => {
+    this.setState((state) =>
       state.hoveredDate === date ? null : { hoveredDate: date }
     );
   };

@@ -176,7 +176,7 @@ class SemanticDatepicker extends React.Component<
     ? RangeDatePicker
     : BasicDatePicker;
 
-  resetState = event => {
+  resetState = (event) => {
     const { keepOpenOnClear, onChange } = this.props;
     const newState = {
       isVisible: keepOpenOnClear,
@@ -189,7 +189,7 @@ class SemanticDatepicker extends React.Component<
     });
   };
 
-  mousedownCb = mousedownEvent => {
+  mousedownCb = (mousedownEvent) => {
     const { isVisible } = this.state;
 
     if (isVisible && this.el) {
@@ -199,7 +199,7 @@ class SemanticDatepicker extends React.Component<
     }
   };
 
-  keydownCb = keydownEvent => {
+  keydownCb = (keydownEvent) => {
     const { isVisible } = this.state;
     if (keydownEvent.keyCode === 27 && isVisible) {
       // Escape
@@ -216,7 +216,7 @@ class SemanticDatepicker extends React.Component<
     });
   };
 
-  showCalendar = event => {
+  showCalendar = (event) => {
     event.preventDefault();
     window.addEventListener('mousedown', this.mousedownCb);
     window.addEventListener('keydown', this.keydownCb);
@@ -345,7 +345,7 @@ class SemanticDatepicker extends React.Component<
     });
   };
 
-  handleKeyDown = evt => {
+  handleKeyDown = (evt) => {
     // If the Enter key was pressed...
     if (evt.keyCode === 13) {
       this.handleBlur();
@@ -397,7 +397,7 @@ class SemanticDatepicker extends React.Component<
             selected={selectedDate}
             date={this.date}
           >
-            {props => (
+            {(props) => (
               <Calendar
                 {...this.dayzedProps}
                 {...props}
