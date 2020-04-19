@@ -24,6 +24,7 @@ const setup = (props?: Partial<SemanticDatepickerProps>) => {
       .firstChild as HTMLInputElement,
   };
 };
+const onBlur = jest.fn();
 let spy: jest.SpyInstance;
 
 beforeEach(() => {
@@ -31,6 +32,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  onBlur.mockRestore();
   spy.mockRestore();
 });
 
@@ -41,18 +43,16 @@ describe('Basic datepicker', () => {
 
   describe('reacts to keyboard events', () => {
     it('closes datepicker on Esc', async () => {
-      const { getByText, openDatePicker, queryByText } = setup();
+      const { getByText, openDatePicker, queryByText } = setup({ onBlur });
       openDatePicker();
 
       expect(getByText('Today')).toBeDefined();
-
       fireEvent.keyDown(getByText('Today'), { keyCode: 27 });
-
       expect(queryByText('Today')).toBeNull();
+      expect(onBlur).toHaveBeenCalledTimes(1);
     });
 
     it('ignore keys different from Enter', async () => {
-      const onBlur = jest.fn();
       const { datePickerInput } = setup({ onBlur });
       fireEvent.keyDown(datePickerInput);
 
@@ -60,7 +60,6 @@ describe('Basic datepicker', () => {
     });
 
     it('only return if Enter is pressed without any value', async () => {
-      const onBlur = jest.fn();
       const { datePickerInput } = setup({ onBlur });
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
@@ -69,7 +68,6 @@ describe('Basic datepicker', () => {
     });
 
     it('accepts valid input followed by Enter key', async () => {
-      const onBlur = jest.fn();
       const { datePickerInput } = setup({ onBlur });
       fireEvent.input(datePickerInput, { target: { value: '2020-02-02' } });
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
@@ -80,7 +78,6 @@ describe('Basic datepicker', () => {
     });
 
     it("doesn't accept invalid input followed by Enter key", async () => {
-      const onBlur = jest.fn();
       const { datePickerInput } = setup({ onBlur });
       fireEvent.input(datePickerInput, { target: { value: '2020-02' } });
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
@@ -241,7 +238,6 @@ describe('Basic datepicker', () => {
 
   describe('clearOnSameDateClick', () => {
     it('reset its state when prop is true', () => {
-      const onBlur = jest.fn();
       const { datePickerInput, getByText, openDatePicker } = setup({
         keepOpenOnSelect: true,
         onBlur,
@@ -282,7 +278,6 @@ describe('Range datepicker', () => {
 
   describe('reacts to keyboard events', () => {
     it('accepts valid input followed by Enter key', async () => {
-      const onBlur = jest.fn();
       const { datePickerInput } = setup({ onBlur, type: 'range' });
       fireEvent.input(datePickerInput, { target: { value: '2020-02-02' } });
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
@@ -293,7 +288,6 @@ describe('Range datepicker', () => {
     });
 
     it("doesn't accept invalid input followed by Enter key", async () => {
-      const onBlur = jest.fn();
       const { datePickerInput } = setup({ onBlur, type: 'range' });
       fireEvent.input(datePickerInput, { target: { value: '2020-02' } });
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
@@ -305,7 +299,6 @@ describe('Range datepicker', () => {
   });
 
   it('fires onBlur prop when selecting both dates', async () => {
-    const onBlur = jest.fn();
     const onChange = jest.fn();
     const now = new Date();
     const today = getShortDate(now) as string;
