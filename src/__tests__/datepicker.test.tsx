@@ -245,11 +245,9 @@ describe('Basic datepicker', () => {
 
       openDatePicker();
       fireEvent.click(getByText('Today'));
-
       expect(datePickerInput.value).not.toBe('');
       fireEvent.click(getByText('Today'));
       expect(datePickerInput.value).toBe('');
-
       expect(onBlur).toHaveBeenCalledTimes(1);
     });
 
@@ -257,16 +255,15 @@ describe('Basic datepicker', () => {
       const { datePickerInput, getByText, openDatePicker } = setup({
         clearOnSameDateClick: false,
         keepOpenOnSelect: true,
+        onBlur,
       });
 
       openDatePicker();
       fireEvent.click(getByText('Today'));
-
       expect(datePickerInput.value).not.toBe('');
-
       fireEvent.click(getByText('Today'));
-
       expect(datePickerInput.value).not.toBe('');
+      expect(onBlur).not.toHaveBeenCalled();
     });
   });
 });
