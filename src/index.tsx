@@ -2,6 +2,7 @@ import isValid from 'date-fns/isValid';
 import formatStringByPattern from 'format-string-by-pattern';
 import React from 'react';
 import isEqual from 'react-fast-compare';
+import { Input as SUIInput } from 'semantic-ui-react';
 import {
   formatSelectedDate,
   moveElementsByN,
@@ -93,6 +94,7 @@ class SemanticDatepicker extends React.Component<
   };
 
   el = React.createRef<HTMLDivElement>();
+  inputRef = React.createRef<SUIInput>();
 
   componentDidUpdate(prevProps: SemanticDatepickerProps) {
     const { locale, value } = this.props;
@@ -386,8 +388,9 @@ class SemanticDatepicker extends React.Component<
           onClear={this.resetState}
           onClick={readOnly ? null : this.showCalendar}
           onKeyDown={this.handleKeyDown}
-          value={typedValue || selectedDateFormatted}
           readOnly={readOnly || datePickerOnly}
+          ref={this.inputRef}
+          value={typedValue || selectedDateFormatted}
         />
         {isVisible && (
           <this.Component
