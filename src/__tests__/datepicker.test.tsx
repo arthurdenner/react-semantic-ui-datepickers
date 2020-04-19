@@ -241,18 +241,20 @@ describe('Basic datepicker', () => {
 
   describe('clearOnSameDateClick', () => {
     it('reset its state when prop is true', () => {
+      const onBlur = jest.fn();
       const { datePickerInput, getByText, openDatePicker } = setup({
         keepOpenOnSelect: true,
+        onBlur,
       });
 
       openDatePicker();
       fireEvent.click(getByText('Today'));
 
       expect(datePickerInput.value).not.toBe('');
-
       fireEvent.click(getByText('Today'));
-
       expect(datePickerInput.value).toBe('');
+
+      expect(onBlur).toHaveBeenCalledTimes(1);
     });
 
     it("doesn't reset its state when prop is false", () => {
@@ -300,6 +302,31 @@ describe('Range datepicker', () => {
       expect(onBlur).toHaveBeenCalledTimes(1);
       expect(onBlur).toHaveBeenCalledWith(undefined);
     });
+  });
+
+  it('fires onBlur prop when selecting both dates', async () => {
+    const onBlur = jest.fn();
+    const onChange = jest.fn();
+    const now = new Date();
+    const today = getShortDate(now) as string;
+    const tomorrow = getShortDate(
+      new Date(now.setDate(now.getDate() + 1))
+    ) as string;
+    const { getByTestId, openDatePicker } = setup({
+      onBlur,
+      onChange,
+      type: 'range',
+    });
+
+    openDatePicker();
+    const todayCell = getByTestId(RegExp(today));
+    const tomorrowCell = getByTestId(RegExp(tomorrow));
+
+    fireEvent.click(todayCell);
+    expect(onBlur).toHaveBeenCalledTimes(0);
+
+    fireEvent.click(tomorrowCell);
+    expect(onBlur).toHaveBeenCalledTimes(1);
   });
 
   it('updates the locale if the prop changes', async () => {

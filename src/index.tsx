@@ -191,12 +191,17 @@ class SemanticDatepicker extends React.Component<
     });
   };
 
+  clearInput = (event) => {
+    this.resetState(event);
+    this.handleBlur(event);
+  };
+
   mousedownCb = (mousedownEvent) => {
     const { isVisible } = this.state;
 
     if (isVisible && this.el) {
       if (this.el.current && !this.el.current.contains(mousedownEvent.target)) {
-        this.close();
+        this.close(mousedownEvent);
       }
     }
   };
@@ -205,17 +210,24 @@ class SemanticDatepicker extends React.Component<
     const { isVisible } = this.state;
     if (keydownEvent.keyCode === 27 && isVisible) {
       // Escape
-      this.close();
+      this.close(keydownEvent);
     }
   };
 
-  close = () => {
+  close = (event) => {
     window.removeEventListener('keydown', this.keydownCb);
     window.removeEventListener('mousedown', this.mousedownCb);
 
+    this.handleBlur(event);
     this.setState({
       isVisible: false,
     });
+  };
+
+  focusOnInput = () => {
+    if (this.inputRef?.current?.focus) {
+      this.inputRef.current.focus();
+    }
   };
 
   showCalendar = (event) => {
@@ -223,16 +235,21 @@ class SemanticDatepicker extends React.Component<
     window.addEventListener('mousedown', this.mousedownCb);
     window.addEventListener('keydown', this.keydownCb);
 
+    this.focusOnInput();
     this.setState({
       isVisible: true,
     });
   };
 
-  handleRangeInput = (newDates, event) => {
+  handleRangeInput = (newDates, event, fromBlur = false) => {
     const { format, keepOpenOnSelect, onChange } = this.props;
 
     if (!newDates || !newDates.length) {
       this.resetState(event);
+
+      if (!fromBlur) {
+        this.handleBlur(event);
+      }
 
       return;
     }
@@ -248,11 +265,21 @@ class SemanticDatepicker extends React.Component<
 
       if (newDates.length === 2) {
         this.setState({ isVisible: keepOpenOnSelect });
+
+        if (keepOpenOnSelect) {
+          this.focusOnInput();
+        } else if (!fromBlur) {
+          this.handleBlur(event);
+        }
+      } else if (newDates.length === 1) {
+        this.focusOnInput();
+      } else if (!fromBlur) {
+        this.handleBlur(event);
       }
     });
   };
 
-  handleBasicInput = (newDate, event) => {
+  handleBasicInput = (newDate, event, fromBlur = false) => {
     const {
       format,
       keepOpenOnSelect,
@@ -266,6 +293,10 @@ class SemanticDatepicker extends React.Component<
       // behavior, without a specific prop.
       if (clearOnSameDateClick) {
         this.resetState(event);
+
+        if (!fromBlur) {
+          this.handleBlur(event);
+        }
       } else {
         // Don't reset the state. Instead, close or keep open the
         // datepicker according to the value of keepOpenOnSelect.
@@ -274,7 +305,14 @@ class SemanticDatepicker extends React.Component<
         this.setState({
           isVisible: keepOpenOnSelect,
         });
+
+        if (keepOpenOnSelect) {
+          this.focusOnInput();
+        } else if (!fromBlur) {
+          this.handleBlur(event);
+        }
       }
+
       return;
     }
 
@@ -284,6 +322,12 @@ class SemanticDatepicker extends React.Component<
       selectedDateFormatted: formatSelectedDate(newDate, format),
       typedValue: null,
     };
+
+    if (keepOpenOnSelect) {
+      this.focusOnInput();
+    } else if (!fromBlur) {
+      this.handleBlur(event);
+    }
 
     this.setState(newState, () => {
       onChange(event, { ...this.props, value: newDate });
@@ -305,7 +349,7 @@ class SemanticDatepicker extends React.Component<
       const areDatesValid = parsedValue.every(isValid);
 
       if (areDatesValid) {
-        this.handleRangeInput(parsedValue, event);
+        this.handleRangeInput(parsedValue, event, true);
         return;
       }
     } else {
@@ -313,7 +357,7 @@ class SemanticDatepicker extends React.Component<
       const isDateValid = isValid(parsedValue);
 
       if (isDateValid) {
-        this.handleBasicInput(parsedValue, event);
+        this.handleBasicInput(parsedValue, event, true);
         return;
       }
     }
@@ -383,9 +427,9 @@ class SemanticDatepicker extends React.Component<
         <Input
           {...this.inputProps}
           isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
-          onBlur={this.handleBlur}
+          onBlur={() => {}}
           onChange={this.handleChange}
-          onClear={this.resetState}
+          onClear={this.clearInput}
           onClick={readOnly ? null : this.showCalendar}
           onKeyDown={this.handleKeyDown}
           readOnly={readOnly || datePickerOnly}
