@@ -6,7 +6,8 @@
   "module": "dist/react-semantic-ui-datepickers.esm.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "lint": "tsdx lint src",
+    "lint": "tsdx lint src stories",
+    "lint:fix": "yarn lint --fix",
     "start": "tsdx watch",
     "build": "tsdx build",
     "prebuild": "rimraf dist",

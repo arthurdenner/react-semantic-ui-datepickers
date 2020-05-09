@@ -266,6 +266,26 @@ describe('Basic datepicker', () => {
       expect(onBlur).not.toHaveBeenCalled();
     });
   });
+
+  describe('placeholder', () => {
+    it('should use the format prop as default', () => {
+      const { datePickerInput } = setup();
+
+      expect(datePickerInput.placeholder).toBe('YYYY-MM-DD');
+    });
+
+    it('should allow empty strings', () => {
+      const { datePickerInput } = setup({ placeholder: '' });
+
+      expect(datePickerInput.placeholder).toBe('');
+    });
+
+    it('should allow null', () => {
+      const { datePickerInput } = setup({ placeholder: null });
+
+      expect(datePickerInput.placeholder).toBe('');
+    });
+  });
 });
 
 describe('Range datepicker', () => {

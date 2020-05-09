@@ -83,7 +83,7 @@ class SemanticDatepicker extends React.Component<
     name: undefined,
     onBlur: () => {},
     onChange: () => {},
-    placeholder: null,
+    placeholder: undefined,
     pointing: 'left',
     readOnly: false,
     datePickerOnly: false,
@@ -131,7 +131,8 @@ class SemanticDatepicker extends React.Component<
 
   get inputProps() {
     const props = pick(semanticInputProps, this.props);
-    const placeholder = props.placeholder || this.props.format;
+    const placeholder =
+      props.placeholder !== undefined ? props.placeholder : this.props.format;
 
     return {
       ...props,
