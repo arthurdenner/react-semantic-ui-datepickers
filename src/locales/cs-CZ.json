@@ -1,0 +1,30 @@
+{
+  "todayButton": "Dnes",
+  "nextMonth": "Příští měsíc",
+  "previousMonth": "Minulý měsíc",
+  "nextYear": "Příští rok",
+  "previousYear": "Minulý rok",
+  "weekdays": [
+    "Neděle",
+    "Pondělí",
+    "Úterý",
+    "Středa",
+    "Čtvrtek",
+    "Pátek",
+    "Sobota"
+  ],
+  "months": [
+    "Leden",
+    "Únor",
+    "Březen",
+    "Duben",
+    "Květen",
+    "Červen",
+    "Červenec",
+    "Srpen",
+    "Září",
+    "Říjen",
+    "Listopad",
+    "Prosinec"
+  ]
+}
