@@ -14,6 +14,7 @@ export type Locale = {
 
 export type LocaleOptions =
   | 'ca-ES'
+  | 'cs-CZ'
   | 'de-DE'
   | 'en-US'
   | 'es-ES'
