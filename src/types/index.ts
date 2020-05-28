@@ -13,6 +13,7 @@ export type Locale = {
 };
 
 export type LocaleOptions =
+  | 'bg-BG'
   | 'ca-ES'
   | 'cs-CZ'
   | 'de-DE'
@@ -20,17 +21,16 @@ export type LocaleOptions =
   | 'es-ES'
   | 'fi-FL'
   | 'fr-FR'
+  | 'he-IL'
   | 'it-IT'
   | 'ja-JP'
+  | 'nb-NO'
   | 'pl-PL'
   | 'pt-BR'
   | 'ru-RU'
   | 'sv-SE'
-  | 'zn-CN'
-  | 'he-IL'
   | 'tr-TR'
-  | 'nb-NO'
-  | 'bg-BG';
+  | 'zh-CN';
 
 export type PickedDayzedProps = Pick<
   DayzedProps,
