@@ -8,7 +8,7 @@ import {
   text,
 } from '@storybook/addon-knobs';
 import { storiesOf } from '@storybook/react';
-// import { Form } from 'semantic-ui-react';
+import { Form } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
 import {
@@ -82,6 +82,28 @@ stories.add('Basic usage', () => {
         type={type}
         value={initialValue}
       />
+    </Content>
+  );
+});
+
+stories.add('Usage with Form', () => {
+  return (
+    <Content>
+      <Form>
+        <Form.Group width="equals">
+          <SemanticDatepicker
+            label="Initial date"
+            id="initialDate"
+            onChange={onChange}
+            required
+          />
+          <SemanticDatepicker
+            label="Final date"
+            id="finalDate"
+            onChange={onChange}
+          />
+        </Form.Group>
+      </Form>
     </Content>
   );
 });
