@@ -236,6 +236,16 @@ describe('Basic datepicker', () => {
     expect(datePickerInput.value).toBe('');
   });
 
+  it('should be accessible when id is provided', () => {
+    const { getByLabelText, getByText } = setup({
+      id: 'click-me',
+      label: 'Click me',
+    });
+
+    fireEvent.click(getByLabelText('Click me'));
+    expect(getByText('Today')).toBeTruthy();
+  });
+
   describe('clearOnSameDateClick', () => {
     it('reset its state when prop is true', () => {
       const { datePickerInput, getByText, openDatePicker } = setup({

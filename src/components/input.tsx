@@ -18,7 +18,7 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
 
   return (
     <Form.Field>
-      {label && <label>{label}</label>}
+      {label && <label htmlFor={rest.id as string | undefined}>{label}</label>}
       <Input
         data-testid="datepicker-input"
         {...rest}
