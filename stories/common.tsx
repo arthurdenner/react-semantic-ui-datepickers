@@ -23,4 +23,6 @@ export const Content: React.FC<ContentProps> = ({ children, style }) => (
 export const onChange = (_: any, data: any) =>
   console.log('[react-semantic-ui-datepickers]\n', data);
 
+export const isWeekday = (date: Date) => ![0, 6].includes(date.getDay());
+
 export * from './data';
