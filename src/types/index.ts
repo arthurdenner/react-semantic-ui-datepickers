@@ -63,6 +63,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     format: string;
     keepOpenOnClear: boolean;
     keepOpenOnSelect: boolean;
+    inline: boolean;
     locale: LocaleOptions;
     onBlur: (event?: React.SyntheticEvent) => void;
     onChange: (

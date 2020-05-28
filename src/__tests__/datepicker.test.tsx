@@ -6,8 +6,9 @@ import localePt from '../locales/pt-BR.json';
 import { getShortDate } from '../utils';
 import DatePicker from '../';
 
-const setup = (props?: Partial<SemanticDatepickerProps>) => {
+const setup = (props: Partial<SemanticDatepickerProps> = {}) => {
   const options = render(<DatePicker onChange={jest.fn()} {...props} />);
+  const getQuery = props.inline ? options.queryByTestId : options.getByTestId;
 
   return {
     ...options,
@@ -20,8 +21,8 @@ const setup = (props?: Partial<SemanticDatepickerProps>) => {
       options.rerender(
         <DatePicker onChange={jest.fn()} {...props} {...newProps} />
       ),
-    datePickerInput: options.getByTestId('datepicker-input')
-      .firstChild as HTMLInputElement,
+    datePickerInput: getQuery('datepicker-input')
+      ?.firstChild as HTMLInputElement,
   };
 };
 const onBlur = jest.fn();
@@ -37,10 +38,6 @@ afterEach(() => {
 });
 
 describe('Basic datepicker', () => {
-  it('renders', () => {
-    expect(setup()).toBeTruthy();
-  });
-
   describe('reacts to keyboard events', () => {
     it('closes datepicker on Esc', async () => {
       const { getByText, openDatePicker, queryByText } = setup({ onBlur });
@@ -299,10 +296,6 @@ describe('Basic datepicker', () => {
 });
 
 describe('Range datepicker', () => {
-  it('renders', () => {
-    expect(setup({ type: 'range' })).toBeTruthy();
-  });
-
   describe('reacts to keyboard events', () => {
     it('accepts valid input followed by Enter key', async () => {
       const { datePickerInput } = setup({ onBlur, type: 'range' });
@@ -433,5 +426,66 @@ describe('Range datepicker', () => {
     fireEvent.click(getByTestId('datepicker-icon'));
 
     expect(datePickerInput.value).toBe('');
+  });
+});
+
+describe('Inline datepicker', () => {
+  it('should not display the input when inline prop is true', () => {
+    const { queryByTestId } = setup({ inline: true });
+
+    expect(queryByTestId('datepicker-input')).toBeFalsy();
+  });
+
+  describe('basic variant', () => {
+    it('fires onChange with event and selected date as arguments', async () => {
+      const onChange = jest.fn();
+      const today = getShortDate(new Date()) as string;
+      const { getByTestId } = setup({ inline: true, onChange });
+      const todayCell = getByTestId(RegExp(today));
+
+      fireEvent.click(todayCell);
+
+      expect(onChange).toHaveBeenNthCalledWith(
+        1,
+        expect.any(Object),
+        expect.objectContaining({
+          value: expect.any(Date),
+        })
+      );
+    });
+  });
+
+  describe('range variant', () => {
+    it('fires onChange with event and selected dates as arguments', async () => {
+      const onChange = jest.fn();
+      const now = new Date();
+      const today = getShortDate(now) as string;
+      const tomorrow = getShortDate(
+        new Date(now.setDate(now.getDate() + 1))
+      ) as string;
+      const { getByTestId } = setup({ onChange, inline: true, type: 'range' });
+      const todayCell = getByTestId(RegExp(today));
+      const tomorrowCell = getByTestId(RegExp(tomorrow));
+
+      fireEvent.click(todayCell);
+
+      expect(onChange).toHaveBeenNthCalledWith(
+        1,
+        expect.any(Object),
+        expect.objectContaining({
+          value: [expect.any(Date)],
+        })
+      );
+
+      fireEvent.click(tomorrowCell);
+
+      expect(onChange).toHaveBeenNthCalledWith(
+        2,
+        expect.any(Object),
+        expect.objectContaining({
+          value: [expect.any(Date), expect.any(Date)],
+        })
+      );
+    });
   });
 });

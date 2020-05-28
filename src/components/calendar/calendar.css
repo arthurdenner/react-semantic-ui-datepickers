@@ -1,7 +1,11 @@
 .clndr-calendars-segment {
   text-align: center;
-  position: absolute !important;
+  margin-bottom: 0.25rem !important;
   margin-top: 0.25rem !important;
+}
+
+.clndr-calendars-segment.clndr-floating {
+  position: absolute !important;
   z-index: 2000;
 }
 

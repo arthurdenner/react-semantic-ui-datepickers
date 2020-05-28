@@ -76,6 +76,7 @@ class SemanticDatepicker extends React.Component<
     firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
     id: undefined,
+    inline: false,
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
     label: undefined,
@@ -419,11 +420,34 @@ class SemanticDatepicker extends React.Component<
       clearable,
       pointing,
       filterDate,
+      inline,
       readOnly,
       datePickerOnly,
     } = this.props;
+    const datepickerComponent = (
+      <this.Component
+        {...this.dayzedProps}
+        monthsToDisplay={this.isRangeInput ? 2 : 1}
+        onChange={this.onDateSelected}
+        selected={selectedDate}
+        date={this.date}
+      >
+        {(props) => (
+          <Calendar
+            {...this.dayzedProps}
+            {...props}
+            {...locale}
+            filterDate={filterDate}
+            pointing={pointing}
+            weekdays={this.weekdays}
+          />
+        )}
+      </this.Component>
+    );
 
-    return (
+    return inline ? (
+      datepickerComponent
+    ) : (
       <div className="field" style={style} ref={this.el}>
         <Input
           {...this.inputProps}
@@ -437,26 +461,7 @@ class SemanticDatepicker extends React.Component<
           ref={this.inputRef}
           value={typedValue || selectedDateFormatted}
         />
-        {isVisible && (
-          <this.Component
-            {...this.dayzedProps}
-            monthsToDisplay={this.isRangeInput ? 2 : 1}
-            onChange={this.onDateSelected}
-            selected={selectedDate}
-            date={this.date}
-          >
-            {(props) => (
-              <Calendar
-                {...this.dayzedProps}
-                {...props}
-                {...locale}
-                filterDate={filterDate}
-                pointing={pointing}
-                weekdays={this.weekdays}
-              />
-            )}
-          </this.Component>
-        )}
+        {isVisible && datepickerComponent}
       </div>
     );
   }

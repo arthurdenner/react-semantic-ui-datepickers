@@ -8,6 +8,7 @@ export const Content: React.FC<ContentProps> = ({ children, style }) => (
   <div
     style={{
       display: 'flex',
+      flexDirection: 'column',
       position: 'absolute',
       height: '100%',
       width: '100%',
