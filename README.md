@@ -17,16 +17,19 @@ It supports most props of Form.Input and Dayzed components. Check the [supported
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Supported Props](#supported-props)
-  - [Own Props](#own-props)
-  - [Form.Input Props](#forminput-props)
-  - [Dayzed Props](#dayzed-props)
-- [Customization](#customization)
-- [Roadmap](#roadmap)
-- [Contributors](#contributors)
-- [LICENSE](#license)
+- [📆 react-semantic-ui-datepickers](#-react-semantic-ui-datepickers)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Supported Props](#supported-props)
+    - [Own Props](#own-props)
+    - [Form.Input Props](#forminput-props)
+    - [Dayzed Props](#dayzed-props)
+  - [Customization](#customization)
+  - [Roadmap](#roadmap)
+  - [Contributors](#contributors)
+  - [LICENSE](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -70,21 +73,24 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 
 ### Own Props
 
-| property             | type     | required | default      | description                                                                                                     |
-| -------------------- | -------- | -------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
-| allowOnlyNumbers     | boolean  | no       | true         | Allows the user enter only numbers                                                                              |
-| clearOnSameDateClick | boolean  | no       | true         | Controls whether the datepicker's state resets if the same date is selected in succession.                      |
-| clearable            | boolean  | no       | true         | Allows the user to clear the value                                                                              |
-| filterDate           | function | no       | () => true   | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
-| format               | string   | no       | 'YYYY-MM-DD' | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format) |
-| keepOpenOnClear      | boolean  | no       | false        | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                           |
-| keepOpenOnSelect     | boolean  | no       | false        | Keeps the datepicker open when a date is selected                                                               |
-| locale               | string   | no       | 'en-US'      | Filename of the locale to be used. PS: Feel free to submit PR's with more locales!                              |
-| onBlur               | function | no       | () => {}     | Callback fired when the input loses focus                                                                       |
-| onChange             | function | no       | () => {}     | Callback fired when the value changes                                                                           |
-| pointing             | string   | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
-| type                 | string   | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                 |
-| datePickerOnly       | boolean  | no       | false        | Allows the date to be selected only via the date picker and disables the text input                             |
+| property             | type         | required | default      | description                                                                                                     |
+| -------------------- | ------------ | -------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
+| allowOnlyNumbers     | boolean      | no       | true         | Allows the user enter only numbers                                                                              |
+| autoComplete         | string       | no       | --           | Specifies if the input should have autocomplete enabled                                                         |
+| clearOnSameDateClick | boolean      | no       | true         | Controls whether the datepicker's state resets if the same date is selected in succession.                      |
+| clearable            | boolean      | no       | true         | Allows the user to clear the value                                                                              |
+| filterDate           | function     | no       | () => true   | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
+| format               | string       | no       | 'YYYY-MM-DD' | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format) |
+| keepOpenOnClear      | boolean      | no       | false        | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                           |
+| keepOpenOnSelect     | boolean      | no       | false        | Keeps the datepicker open when a date is selected                                                               |
+| inline               | boolean      | no       | false        | Uses an inline variant, without the input and the features related to it, e.g. clearable datepicker             |
+| locale               | string       | no       | 'en-US'      | Filename of the locale to be used. PS: Feel free to submit PR's with more locales!                              |
+| onBlur               | function     | no       | () => {}     | Callback fired when the input loses focus                                                                       |
+| onChange             | function     | no       | () => {}     | Callback fired when the value changes                                                                           |
+| pointing             | string       | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
+| type                 | string       | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                 |
+| datePickerOnly       | boolean      | no       | false        | Allows the date to be selected only via the date picker and disables the text input                             |
+| value                | Date\|Date[] | no       | --           | The value of the datepicker                                                                                     |
 
 ### Form.Input Props
 
@@ -129,7 +135,6 @@ In order to customize the elements, you can override the styles of the classes b
 - Improve accessibility
   > @donysukardi did some work on accessibility in the BaseDatePicker, but I couldn't get it working correcly. Feel free to help on this!
 - Add more tests (including e2e)
-  > The current threshold is pretty useless 😕
 
 > Feel free to open issues and/or create PRs to improve other aspects of the library!
 
