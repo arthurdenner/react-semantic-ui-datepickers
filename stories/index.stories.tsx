@@ -19,7 +19,6 @@ import {
   pointingMap,
   typeMap,
 } from './common';
-// import { parseISO } from 'date-fns';
 
 const stories = storiesOf('Datepickers', module);
 
