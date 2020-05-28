@@ -1,0 +1,30 @@
+{
+  "todayButton": "Idag",
+  "nextMonth": "Neste måned",
+  "previousMonth": "Forrige måned",
+  "nextYear": "Neste år",
+  "previousYear": "Forrige år",
+  "weekdays": [
+    "Søndag",
+    "Mandag",
+    "Tisdag",
+    "Onsdag",
+    "Torsdag",
+    "Fredag",
+    "Lørdag"
+  ],
+  "months": [
+    "Januar",
+    "Februar",
+    "Mars",
+    "April",
+    "Mai",
+    "Juni",
+    "Juli",
+    "August",
+    "September",
+    "Oktober",
+    "November",
+    "Desember"
+  ]
+}
