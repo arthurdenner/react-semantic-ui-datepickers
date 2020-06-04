@@ -14,6 +14,7 @@ type CalendarProps = {
   getBackProps: (props: any) => void;
   getDateProps: (props: any) => void;
   getForwardProps: (props: any) => void;
+  inline: SemanticDatepickerProps['inline'];
   maxDate?: Date;
   minDate?: Date;
   months: Locale['months'];
@@ -45,6 +46,7 @@ const Calendar: React.FC<CalendarProps> = ({
   getBackProps,
   getDateProps,
   getForwardProps,
+  inline,
   maxDate,
   minDate,
   months,
@@ -57,7 +59,12 @@ const Calendar: React.FC<CalendarProps> = ({
   weekdays,
   pointing,
 }) => (
-  <Segment className={cn('clndr-calendars-segment', pointings[pointing])}>
+  <Segment
+    className={cn('clndr-calendars-segment', {
+      'clndr-floating': !inline,
+      [pointings[pointing]]: !inline,
+    })}
+  >
     <div
       className="clndr-calendars-wrapper"
       style={{ '--n': calendars.length } as React.CSSProperties}

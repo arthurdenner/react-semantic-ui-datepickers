@@ -34,6 +34,7 @@ stories.addParameters({
 
 stories.add('Basic usage', () => {
   const type = select('Type', typeMap, typeMap.basic);
+  const inline = boolean('Inline (without input)', false);
   const allowOnlyNumbers = boolean('Allow only numbers', false);
   const clearOnSameDateClick = boolean('Clear on same date click', true);
   const datePickerOnly = boolean('Datepicker only', false);
@@ -71,6 +72,7 @@ stories.add('Basic usage', () => {
         format={format}
         keepOpenOnClear={keepOpenOnClear}
         keepOpenOnSelect={keepOpenOnSelect}
+        inline={inline}
         locale={locale}
         maxDate={maxDate}
         minDate={minDate}
