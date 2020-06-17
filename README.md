@@ -73,31 +73,32 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 
 ### Own Props
 
-| property             | type         | required | default      | description                                                                                                     |
-| -------------------- | ------------ | -------- | ------------ | --------------------------------------------------------------------------------------------------------------- |
-| allowOnlyNumbers     | boolean      | no       | true         | Allows the user enter only numbers                                                                              |
-| autoComplete         | string       | no       | --           | Specifies if the input should have autocomplete enabled                                                         |
-| clearOnSameDateClick | boolean      | no       | true         | Controls whether the datepicker's state resets if the same date is selected in succession.                      |
-| clearable            | boolean      | no       | true         | Allows the user to clear the value                                                                              |
-| filterDate           | function     | no       | () => true   | Function that receives each date and returns a boolean to indicate whether it is enabled or not                 |
-| format               | string       | no       | 'YYYY-MM-DD' | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format) |
-| keepOpenOnClear      | boolean      | no       | false        | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                           |
-| keepOpenOnSelect     | boolean      | no       | false        | Keeps the datepicker open when a date is selected                                                               |
-| inline               | boolean      | no       | false        | Uses an inline variant, without the input and the features related to it, e.g. clearable datepicker             |
-| locale               | string       | no       | 'en-US'      | Filename of the locale to be used. PS: Feel free to submit PR's with more locales!                              |
-| onBlur               | function     | no       | () => {}     | Callback fired when the input loses focus                                                                       |
-| onChange             | function     | no       | () => {}     | Callback fired when the value changes                                                                           |
-| pointing             | string       | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'      |
-| type                 | string       | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                 |
-| datePickerOnly       | boolean      | no       | false        | Allows the date to be selected only via the date picker and disables the text input                             |
-| value                | Date\|Date[] | no       | --           | The value of the datepicker                                                                                     |
+| property             | type                                | required | default      | description                                                                                                                                                                 |
+| -------------------- | ----------------------------------- | -------- | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| allowOnlyNumbers     | boolean                             | no       | true         | Allows the user enter only numbers                                                                                                                                          |
+| autoComplete         | string                              | no       | --           | Specifies if the input should have autocomplete enabled                                                                                                                     |
+| clearIcon            | SemanticICONS \| React.ReactElement | no       | 'close'      | An [icon from semantic-ui-react](https://react.semantic-ui.com/elements/icon/) or a custom component. The custom component will get two props: `data-testid` and `onClick`. |
+| clearOnSameDateClick | boolean                             | no       | true         | Controls whether the datepicker's state resets if the same date is selected in succession.                                                                                  |
+| clearable            | boolean                             | no       | true         | Allows the user to clear the value                                                                                                                                          |
+| datePickerOnly       | boolean                             | no       | false        | Allows the date to be selected only via the date picker and disables the text input                                                                                         |
+| filterDate           | function                            | no       | () => true   | Function that receives each date and returns a boolean to indicate whether it is enabled or not                                                                             |
+| format               | string                              | no       | 'YYYY-MM-DD' | Specifies how the date will be formatted using the [date-fns' format](https://date-fns.org/v1.29.0/docs/format)                                                             |
+| icon                 | SemanticICONS \| React.ReactElement | no       | 'calendar'   | An [icon from semantic-ui-react](https://react.semantic-ui.com/elements/icon/) or a custom component. The custom component will get two props: `data-testid` and `onClick`. |
+| inline               | boolean                             | no       | false        | Uses an inline variant, without the input and the features related to it, e.g. clearable datepicker                                                                         |
+| keepOpenOnClear      | boolean                             | no       | false        | Keeps the datepicker open (or opens it if it's closed) when the clear icon is clicked                                                                                       |
+| keepOpenOnSelect     | boolean                             | no       | false        | Keeps the datepicker open when a date is selected                                                                                                                           |
+| locale               | string                              | no       | 'en-US'      | Filename of the locale to be used. PS: Feel free to submit PR's with more locales!                                                                                          |
+| onBlur               | function                            | no       | () => {}     | Callback fired when the input loses focus                                                                                                                                   |
+| onChange             | function                            | no       | () => {}     | Callback fired when the value changes                                                                                                                                       |
+| pointing             | string                              | no       | 'left'       | Location to render the component around input. Available options: 'left', 'right', 'top left', 'top right'                                                                  |
+| type                 | string                              | no       | basic        | Type of input to render. Available options: 'basic' and 'range'                                                                                                             |
+| value                | Date\|Date[]                        | no       | --           | The value of the datepicker                                                                                                                                                 |
 
 ### Form.Input Props
 
 - autoComplete
 - disabled
 - error
-- icon
 - iconPosition
 - id
 - label
