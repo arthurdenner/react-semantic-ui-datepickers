@@ -39,6 +39,6 @@ export const pointingMap = arrayToMap(pointing);
 
 export const localeMap = arrayToMap([...locale].sort());
 
-export const iconMap = arrayToMap(ALL_ICONS_IN_ALL_CONTEXTS.sort()) as {
-  [key in SemanticICONS]: SemanticICONS;
-};
+export const iconMap = arrayToMap<SemanticICONS>(
+  ALL_ICONS_IN_ALL_CONTEXTS.sort()
+);

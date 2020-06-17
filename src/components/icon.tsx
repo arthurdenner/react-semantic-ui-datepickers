@@ -17,14 +17,14 @@ const CustomIcon = ({
   onClear,
   onClick,
 }: CustomIconProps) => {
-  if (isClearIconVisible && clearIcon && typeof clearIcon !== 'string') {
+  if (isClearIconVisible && clearIcon && React.isValidElement(clearIcon)) {
     return React.cloneElement(clearIcon, {
       'data-testid': 'datepicker-icon',
       onClick: onClear,
     });
   }
 
-  if (isClearIconVisible && clearIcon && typeof clearIcon === 'string') {
+  if (isClearIconVisible && clearIcon && !React.isValidElement(clearIcon)) {
     return (
       <SUIIcon
         data-testid="datepicker-icon"
@@ -35,7 +35,7 @@ const CustomIcon = ({
     );
   }
 
-  if (icon && typeof icon !== 'string') {
+  if (icon && React.isValidElement(icon)) {
     return React.cloneElement(icon, {
       'data-testid': 'datepicker-icon',
       onClick,
