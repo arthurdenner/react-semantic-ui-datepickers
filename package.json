@@ -50,6 +50,7 @@
     "@storybook/addon-links": "5.3.19",
     "@storybook/addons": "5.3.19",
     "@storybook/react": "5.3.19",
+    "@testing-library/jest-dom": "5.10.1",
     "@testing-library/react": "10.2.1",
     "@types/jest": "26.0.0",
     "@types/storybook__react": "5.2.1",
@@ -84,6 +85,7 @@
         "tsConfig": "tsconfig.test.json"
       }
     },
+    "setupFilesAfterEnv": ["./jest.setup.ts"],
     "transform": {
       ".+\\.css$": "jest-transform-css",
       ".(js|ts)x?": "ts-jest"
