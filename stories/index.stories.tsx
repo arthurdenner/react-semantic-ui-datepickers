@@ -13,6 +13,7 @@ import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
 import {
   Content,
+  iconMap,
   isWeekday,
   localeMap,
   onChange,
@@ -37,6 +38,9 @@ stories.add('Basic usage', () => {
   const inline = boolean('Inline (without input)', false);
   const allowOnlyNumbers = boolean('Allow only numbers', false);
   const clearOnSameDateClick = boolean('Clear on same date click', true);
+  const clearable = boolean('Clearable', true);
+  const icon = select('Icon (without value)', iconMap, iconMap.calendar);
+  const clearIcon = select('Clear icon (with value)', iconMap, iconMap.close);
   const datePickerOnly = boolean('Datepicker only', false);
   const firstDayOfWeek = number('First day of week', 0, { max: 6, min: 0 });
   const format = text('Format', 'YYYY-MM-DD');
@@ -44,7 +48,6 @@ stories.add('Basic usage', () => {
   const keepOpenOnSelect = boolean('Keep open on select', false);
   const locale = select('Locale', localeMap, localeMap['en-US']);
   const pointing = select('Pointing', pointingMap, pointingMap.left);
-  const clearable = boolean('Clearable', true);
   const readOnly = boolean('Read-only', false);
   const showOutsideDays = boolean('Show outside days', false);
   const minDate = new Date(date('Min date', new Date('2018-01-01')));
@@ -64,15 +67,17 @@ stories.add('Basic usage', () => {
       <SemanticDatepicker
         key={key}
         allowOnlyNumbers={allowOnlyNumbers}
+        clearIcon={clearIcon}
         clearOnSameDateClick={clearOnSameDateClick}
         clearable={clearable}
         datePickerOnly={datePickerOnly}
         filterDate={filterDate}
         firstDayOfWeek={firstDayOfWeek}
         format={format}
+        icon={icon}
+        inline={inline}
         keepOpenOnClear={keepOpenOnClear}
         keepOpenOnSelect={keepOpenOnSelect}
-        inline={inline}
         locale={locale}
         maxDate={maxDate}
         minDate={minDate}
