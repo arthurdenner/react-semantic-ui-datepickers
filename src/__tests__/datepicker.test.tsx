@@ -490,14 +490,34 @@ describe('Inline datepicker', () => {
   describe('Custom icons', () => {
     it('should allow for custom Semantic UI icons', () => {
       const icon = 'search';
-      const { getIcon } = setup({ icon });
+      const { getByText, getIcon, openDatePicker } = setup({ icon });
 
+      // Assert custom icon
+      expect(getIcon()).toHaveClass(icon, 'icon');
+      // Select current date
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+      // Assert datepicker is clearable
+      expect(getIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
       expect(getIcon()).toHaveClass(icon, 'icon');
     });
 
     it('should allow for custom icon components', () => {
-      const { getIcon } = setup({ icon: <span>Custom icon</span> });
+      const { getByText, getIcon, openDatePicker } = setup({
+        icon: <span>Custom icon</span>,
+      });
 
+      // Assert custom icon
+      expect(getIcon().textContent).toBe('Custom icon');
+      // Select current date
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+      // Assert datepicker is clearable
+      expect(getIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
       expect(getIcon().textContent).toBe('Custom icon');
     });
 
@@ -505,10 +525,15 @@ describe('Inline datepicker', () => {
       const clearIcon = 'ban';
       const { getByText, getIcon, openDatePicker } = setup({ clearIcon });
 
+      // Select current date
       openDatePicker();
       fireEvent.click(getByText('Today'));
-
+      // Assert custom icon
       expect(getIcon()).toHaveClass(clearIcon, 'icon');
+      // Assert datepicker is clearable
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
+      expect(getIcon()).toHaveClass('calendar', 'icon');
     });
 
     it('should allow for custom clear icon components', () => {
@@ -517,10 +542,15 @@ describe('Inline datepicker', () => {
         clearIcon: customClearIcon,
       });
 
+      // Select current date
       openDatePicker();
       fireEvent.click(getByText('Today'));
-
+      // Assert custom icon
       expect(getIcon().textContent).toBe('Custom icon');
+      // Assert datepicker is clearable
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
+      expect(getIcon()).toHaveClass('calendar', 'icon');
     });
   });
 });
