@@ -23,7 +23,7 @@ type CalendarProps = {
   pointing: SemanticDatepickerProps['pointing'];
   previousMonth: string;
   previousYear: string;
-  showToday: boolean;
+  showToday: SemanticDatepickerProps['showToday'];
   todayButton: string;
   weekdays: Locale['weekdays'];
 };
@@ -162,10 +162,5 @@ const Calendar: React.FC<CalendarProps> = ({
     )}
   </Segment>
 );
-
-Calendar.defaultProps = {
-  pointing: 'left',
-  showToday: true,
-};
 
 export default Calendar;
