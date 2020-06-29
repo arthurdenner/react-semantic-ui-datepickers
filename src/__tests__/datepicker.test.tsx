@@ -9,14 +9,12 @@ import DatePicker from '../';
 const setup = (props: Partial<SemanticDatepickerProps> = {}) => {
   const options = render(<DatePicker onChange={jest.fn()} {...props} />);
   const getQuery = props.inline ? options.queryByTestId : options.getByTestId;
+  const getIcon = () => options.getByTestId('datepicker-icon');
 
   return {
     ...options,
-    openDatePicker: () => {
-      const icon = options.getByTestId('datepicker-icon');
-
-      fireEvent.click(icon);
-    },
+    getIcon,
+    openDatePicker: () => fireEvent.click(getIcon()),
     rerender: (newProps?: Partial<SemanticDatepickerProps>) =>
       options.rerender(
         <DatePicker onChange={jest.fn()} {...props} {...newProps} />
@@ -486,6 +484,73 @@ describe('Inline datepicker', () => {
           value: [expect.any(Date), expect.any(Date)],
         })
       );
+    });
+  });
+
+  describe('Custom icons', () => {
+    it('should allow for custom Semantic UI icons', () => {
+      const icon = 'search';
+      const { getByText, getIcon, openDatePicker } = setup({ icon });
+
+      // Assert custom icon
+      expect(getIcon()).toHaveClass(icon, 'icon');
+      // Select current date
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+      // Assert datepicker is clearable
+      expect(getIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
+      expect(getIcon()).toHaveClass(icon, 'icon');
+    });
+
+    it('should allow for custom icon components', () => {
+      const { getByText, getIcon, openDatePicker } = setup({
+        icon: <span>Custom icon</span>,
+      });
+
+      // Assert custom icon
+      expect(getIcon().textContent).toBe('Custom icon');
+      // Select current date
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+      // Assert datepicker is clearable
+      expect(getIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
+      expect(getIcon().textContent).toBe('Custom icon');
+    });
+
+    it('should allow for custom clear Semantic UI icons', () => {
+      const clearIcon = 'ban';
+      const { getByText, getIcon, openDatePicker } = setup({ clearIcon });
+
+      // Select current date
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+      // Assert custom icon
+      expect(getIcon()).toHaveClass(clearIcon, 'icon');
+      // Assert datepicker is clearable
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
+      expect(getIcon()).toHaveClass('calendar', 'icon');
+    });
+
+    it('should allow for custom clear icon components', () => {
+      const customClearIcon = <span>Custom icon</span>;
+      const { getByText, getIcon, openDatePicker } = setup({
+        clearIcon: customClearIcon,
+      });
+
+      // Select current date
+      openDatePicker();
+      fireEvent.click(getByText('Today'));
+      // Assert custom icon
+      expect(getIcon().textContent).toBe('Custom icon');
+      // Assert datepicker is clearable
+      fireEvent.click(getIcon());
+      // Assert datepicker was cleared
+      expect(getIcon()).toHaveClass('calendar', 'icon');
     });
   });
 });

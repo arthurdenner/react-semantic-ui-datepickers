@@ -1,3 +1,6 @@
+import { ALL_ICONS_IN_ALL_CONTEXTS } from 'semantic-ui-react/src/lib/SUI';
+import { SemanticICONS } from 'semantic-ui-react';
+
 const types = <const>['basic', 'range'];
 const pointing = <const>['left', 'right', 'top left', 'top right'];
 const locale = <const>[
@@ -35,3 +38,7 @@ export const typeMap = arrayToMap(types);
 export const pointingMap = arrayToMap(pointing);
 
 export const localeMap = arrayToMap([...locale].sort());
+
+export const iconMap = arrayToMap<SemanticICONS>(
+  ALL_ICONS_IN_ALL_CONTEXTS.sort()
+);

@@ -1,4 +1,4 @@
-import { FormInputProps } from 'semantic-ui-react';
+import { FormInputProps, SemanticICONS } from 'semantic-ui-react';
 
 export type Object = { [key: string]: any };
 
@@ -41,7 +41,6 @@ export type PickedFormInputProps = Pick<
   FormInputProps,
   | 'disabled'
   | 'error'
-  | 'icon'
   | 'iconPosition'
   | 'id'
   | 'label'
@@ -59,10 +58,12 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     autoComplete?: string;
     clearOnSameDateClick: boolean;
     clearable: boolean;
+    clearIcon?: SemanticICONS | React.ReactElement;
     filterDate: (date: Date) => boolean;
     format: string;
     keepOpenOnClear: boolean;
     keepOpenOnSelect: boolean;
+    icon?: SemanticICONS | React.ReactElement;
     inline: boolean;
     locale: LocaleOptions;
     onBlur: (event?: React.SyntheticEvent) => void;

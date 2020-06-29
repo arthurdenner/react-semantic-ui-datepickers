@@ -1,12 +1,17 @@
 import React from 'react';
-import { Form, Icon, Input, FormInputProps } from 'semantic-ui-react';
+import { Form, Input, FormInputProps } from 'semantic-ui-react';
+import { SemanticDatepickerProps } from '../types';
+import CustomIcon from './icon';
 
 type InputProps = FormInputProps & {
+  clearIcon: SemanticDatepickerProps['clearIcon'];
+  icon: SemanticDatepickerProps['icon'];
   isClearIconVisible: boolean;
 };
 
 const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
   const {
+    clearIcon,
     icon,
     isClearIconVisible,
     label,
@@ -24,11 +29,12 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
         {...rest}
         ref={ref}
         icon={
-          <Icon
-            data-testid="datepicker-icon"
-            link
-            name={isClearIconVisible ? 'close' : icon}
-            onClick={isClearIconVisible ? onClear : onClick}
+          <CustomIcon
+            clearIcon={clearIcon}
+            icon={icon}
+            isClearIconVisible={isClearIconVisible}
+            onClear={onClear}
+            onClick={onClick}
           />
         }
         onClick={onClick}
@@ -37,9 +43,5 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
     </Form.Field>
   );
 });
-
-CustomInput.defaultProps = {
-  icon: 'calendar',
-};
 
 export default CustomInput;
