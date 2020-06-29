@@ -79,6 +79,9 @@
     "react": ">=16.8.0",
     "semantic-ui-react": ">=0.75.0"
   },
+  "resolutions": {
+    "handlebars" : "4.5.0"
+  },
   "jest": {
     "globals": {
       "ts-jest": {
