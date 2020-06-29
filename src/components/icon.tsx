@@ -47,9 +47,4 @@ const CustomIcon = ({
   );
 };
 
-CustomIcon.defaultProps = {
-  clearIcon: 'close',
-  icon: 'calendar',
-};
-
 export default CustomIcon;

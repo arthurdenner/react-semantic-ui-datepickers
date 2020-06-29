@@ -30,6 +30,7 @@
   background-color: rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 0.28571429rem;
+  overflow: hidden;
 }
 
 .clndr-left {

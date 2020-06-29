@@ -70,12 +70,14 @@ class SemanticDatepicker extends React.Component<
 > {
   static defaultProps = {
     allowOnlyNumbers: false,
+    clearIcon: 'close',
     clearOnSameDateClick: true,
     clearable: true,
     date: undefined,
     filterDate: () => true,
     firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
+    icon: 'calendar',
     id: undefined,
     inline: false,
     keepOpenOnClear: false,
@@ -90,6 +92,7 @@ class SemanticDatepicker extends React.Component<
     readOnly: false,
     datePickerOnly: false,
     required: false,
+    showToday: true,
     showOutsideDays: false,
     type: 'basic',
     value: null,
