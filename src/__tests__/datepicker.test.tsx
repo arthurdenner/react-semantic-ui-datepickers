@@ -291,6 +291,20 @@ describe('Basic datepicker', () => {
       expect(datePickerInput.placeholder).toBe('');
     });
   });
+
+  describe('showToday', () => {
+    it('should display the Today button when prop is true', () => {
+      const { getByText } = setup({ inline: true, showToday: true });
+
+      expect(getByText('Today')).toBeInTheDocument();
+    });
+
+    it('should NOT display the Today button when prop is true', () => {
+      const { queryByText } = setup({ inline: true, showToday: false });
+
+      expect(queryByText('Today')).not.toBeInTheDocument();
+    });
+  });
 });
 
 describe('Range datepicker', () => {
