@@ -1,12 +1,10 @@
 language: node_js
-cache:
-  directories:
-    - ~/.npm
+cache: yarn
 notifications:
   email: false
 node_js: '10'
-install: npm install
-script: npm run validate
+install: yarn --frozen-lockfile
+script: yarn validate
 after_success:
   - npx codecov --disable=gcov
   - test $TRAVIS_BRANCH = "master" && test $TRAVIS_PULL_REQUEST = "false" && npx semantic-release
