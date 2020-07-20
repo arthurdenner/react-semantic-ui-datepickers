@@ -52,7 +52,7 @@
     "@storybook/react": "5.3.19",
     "@testing-library/jest-dom": "5.11.1",
     "@testing-library/react": "10.4.4",
-    "@types/jest": "26.0.3",
+    "@types/jest": "26.0.5",
     "@types/storybook__react": "5.2.1",
     "autoprefixer": "9.8.5",
     "awesome-typescript-loader": "5.2.1",
