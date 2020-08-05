@@ -1,28 +1,10 @@
 import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import { SemanticDatepickerProps } from '../types';
+import { fireEvent } from '@testing-library/react';
 import localeEn from '../locales/en-US.json';
 import localePt from '../locales/pt-BR.json';
 import { getShortDate } from '../utils';
-import DatePicker from '../';
+import { setup } from './_utils';
 
-const setup = (props: Partial<SemanticDatepickerProps> = {}) => {
-  const options = render(<DatePicker onChange={jest.fn()} {...props} />);
-  const getQuery = props.inline ? options.queryByTestId : options.getByTestId;
-  const getIcon = () => options.getByTestId('datepicker-icon');
-
-  return {
-    ...options,
-    getIcon,
-    openDatePicker: () => fireEvent.click(getIcon()),
-    rerender: (newProps?: Partial<SemanticDatepickerProps>) =>
-      options.rerender(
-        <DatePicker onChange={jest.fn()} {...props} {...newProps} />
-      ),
-    datePickerInput: getQuery('datepicker-input')
-      ?.firstChild as HTMLInputElement,
-  };
-};
 const onBlur = jest.fn();
 let spy: jest.SpyInstance;
 
