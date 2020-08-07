@@ -10,6 +10,7 @@ const locale = <const>[
   'de-DE',
   'en-US',
   'es-ES',
+  'et-ET',
   'fi-FL',
   'fr-FR',
   'he-IL',
