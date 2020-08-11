@@ -98,6 +98,7 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 ### Form.Input Props
 
 - autoComplete
+- className
 - disabled
 - error
 - iconPosition

@@ -23,6 +23,7 @@ const style: React.CSSProperties = {
 };
 const semanticInputProps = [
   'autoComplete',
+  'className',
   'clearIcon',
   'disabled',
   'error',
