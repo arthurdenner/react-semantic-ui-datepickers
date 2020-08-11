@@ -19,7 +19,7 @@ export type LocaleOptions =
   | 'de-DE'
   | 'en-US'
   | 'es-ES'
-  | 'et-ET'
+  | 'et-EE'
   | 'fi-FL'
   | 'fr-FR'
   | 'he-IL'
