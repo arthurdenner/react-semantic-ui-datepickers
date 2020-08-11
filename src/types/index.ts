@@ -39,6 +39,7 @@ export type PickedDayzedProps = Pick<
 
 export type PickedFormInputProps = Pick<
   FormInputProps,
+  | 'className'
   | 'disabled'
   | 'error'
   | 'iconPosition'
