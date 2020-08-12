@@ -1,0 +1,30 @@
+{
+  "todayButton": "Täna",
+  "nextMonth": "Järgmine kuu",
+  "previousMonth": "Eelmine kuu",
+  "nextYear": "Järgmine aasta",
+  "previousYear": "Eelmine aasta",
+  "weekdays": [
+    "Pühapäev",
+    "Esmaspäev",
+    "Teisipäev",
+    "Kolmapäev",
+    "Neljapäev",
+    "Reede",
+    "Laupäev"
+  ],
+  "months": [
+    "Jaanuar",
+    "Veebruar",
+    "Märts",
+    "Aprill",
+    "Mai",
+    "Juuni",
+    "Juuli",
+    "August",
+    "September",
+    "Oktoober",
+    "November",
+    "Detsember"
+  ]
+}
