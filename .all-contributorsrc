@@ -173,6 +173,16 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "unbugged",
+      "name": "unbugged",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/6146052?v=4",
+      "profile": "https://github.com/unbugged",
+      "contributions": [
+        "code",
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
