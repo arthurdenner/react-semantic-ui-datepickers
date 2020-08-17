@@ -15,6 +15,9 @@ import {
 
 export default {
   title: 'Datepickers',
+  parameters: {
+    options: { panelPosition: 'right' },
+  },
 };
 
 export const basicUsage = () => {
