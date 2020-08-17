@@ -14,7 +14,7 @@
     "test": "tsdx test --env=jsdom",
     "validate": "npm run lint && npm run test -- --coverage && npm run build",
     "now-build": "npm run storybook:build",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook --ci -p 6006",
     "storybook:build": "build-storybook"
   },
   "husky": {
@@ -56,7 +56,6 @@
     "@types/jest": "26.0.10",
     "@types/storybook__react": "5.2.1",
     "autoprefixer": "9.8.6",
-    "awesome-typescript-loader": "5.2.1",
     "babel-loader": "8.1.0",
     "cssnano": "4.1.10",
     "eslint-plugin-prettier": "3.1.4",
