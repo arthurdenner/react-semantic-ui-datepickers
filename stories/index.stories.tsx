@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  withKnobs,
-  boolean,
-  date,
-  number,
-  select,
-  text,
-} from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { boolean, date, number, select, text } from '@storybook/addon-knobs';
 import { Form, SemanticICONS } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
@@ -21,19 +13,14 @@ import {
   typeMap,
 } from './common';
 
-const stories = storiesOf('Datepickers', module);
-
-stories.addDecorator(withKnobs);
-stories.addParameters({
-  info: {
-    disable: true,
+export default {
+  title: 'Datepickers',
+  parameters: {
+    options: { panelPosition: 'right' },
   },
-  options: {
-    panelPosition: 'right',
-  },
-});
+};
 
-stories.add('Basic usage', () => {
+export const basicUsage = () => {
   const type = select('Type', typeMap, typeMap.basic);
   const inline = boolean('Inline (without input)', false);
   const allowOnlyNumbers = boolean('Allow only numbers', false);
@@ -94,9 +81,9 @@ stories.add('Basic usage', () => {
       />
     </Content>
   );
-});
+};
 
-stories.add('With custom icons', () => {
+export const withCustomIcons = () => {
   const icon = select('Icon (without value)', iconMap, iconMap.calendar);
   const clearIcon = select('Clear icon (with value)', iconMap, iconMap.close);
   const useCustomIcon = boolean('Custom icon', false);
@@ -114,9 +101,9 @@ stories.add('With custom icons', () => {
       />
     </Content>
   );
-});
+};
 
-stories.add('Usage with Form', () => {
+export const usageWithForm = () => {
   return (
     <Content>
       <Form>
@@ -136,4 +123,4 @@ stories.add('Usage with Form', () => {
       </Form>
     </Content>
   );
-});
+};
