@@ -33,7 +33,9 @@ stories.addParameters({
   },
 });
 
-stories.add('Basic usage', () => {
+export default { title: 'Datepickers' };
+
+export const basicUsage = () => {
   const type = select('Type', typeMap, typeMap.basic);
   const inline = boolean('Inline (without input)', false);
   const allowOnlyNumbers = boolean('Allow only numbers', false);
@@ -94,9 +96,9 @@ stories.add('Basic usage', () => {
       />
     </Content>
   );
-});
+};
 
-stories.add('With custom icons', () => {
+export const withCustomIcons = () => {
   const icon = select('Icon (without value)', iconMap, iconMap.calendar);
   const clearIcon = select('Clear icon (with value)', iconMap, iconMap.close);
   const useCustomIcon = boolean('Custom icon', false);
@@ -114,9 +116,9 @@ stories.add('With custom icons', () => {
       />
     </Content>
   );
-});
+};
 
-stories.add('Usage with Form', () => {
+export const usageWithForm = () => {
   return (
     <Content>
       <Form>
@@ -136,4 +138,4 @@ stories.add('Usage with Form', () => {
       </Form>
     </Content>
   );
-});
+};
