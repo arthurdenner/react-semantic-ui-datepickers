@@ -71,7 +71,7 @@
     "rollup-plugin-postcss": "3.1.5",
     "rollup-plugin-typescript2": "0.27.2",
     "semantic-ui-css": "2.4.1",
-    "semantic-ui-react": "1.1.1",
+    "semantic-ui-react": "1.2.0",
     "tsdx": "0.13.2",
     "tslib": "2.0.1",
     "typescript": "3.9.7"

@@ -11235,10 +11235,10 @@ semantic-ui-css@2.4.1:
   dependencies:
     jquery x.*
 
-semantic-ui-react@1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-1.1.1.tgz#7d32e4cf5e07e7272b705ca287c39c61bd4c0284"
-  integrity sha512-QtzLNkK4MUe1HQo4S7/tIkSp4NFtxSGDzTMKxmvztMJ6jt+nKGmMyjpyxJsrm3ohU8Z3sTyBUyiBsDYW4jNtjw==
+semantic-ui-react@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/semantic-ui-react/-/semantic-ui-react-1.2.0.tgz#5bc62003b28701c5b923a0290bd17be43336d031"
+  integrity sha512-9tNL94nEy16RdupTQNiURyemWUIxtTpQgFimCbOOHRBOe1ApsFz3FWFsrGjv9zFtE7dQMslLYov9BQOelTCVwA==
   dependencies:
     "@babel/runtime" "^7.10.5"
     "@semantic-ui-react/event-stack" "^3.1.0"
