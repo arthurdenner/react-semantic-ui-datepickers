@@ -53,7 +53,7 @@
     "@testing-library/jest-dom": "5.11.2",
     "@testing-library/react": "10.4.8",
     "@testing-library/user-event": "12.1.0",
-    "@types/jest": "26.0.9",
+    "@types/jest": "26.0.10",
     "@types/storybook__react": "5.2.1",
     "autoprefixer": "9.8.6",
     "awesome-typescript-loader": "5.2.1",
