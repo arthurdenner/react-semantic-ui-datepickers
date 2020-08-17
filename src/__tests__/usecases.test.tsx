@@ -14,6 +14,7 @@ it('onChange is fired when invalid date is typed', () => {
   expect(onBlur).toHaveBeenCalledTimes(1);
 
   userEvent.type(datePickerInput, '{backspace}');
+  userEvent.type(datePickerInput, '{backspace}');
   fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
   expect(datePickerInput.value).toBe('');
