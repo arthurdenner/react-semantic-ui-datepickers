@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  withKnobs,
-  boolean,
-  date,
-  number,
-  select,
-  text,
-} from '@storybook/addon-knobs';
-import { storiesOf } from '@storybook/react';
+import { boolean, date, number, select, text } from '@storybook/addon-knobs';
 import { Form, SemanticICONS } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
@@ -21,19 +13,9 @@ import {
   typeMap,
 } from './common';
 
-const stories = storiesOf('Datepickers', module);
-
-stories.addDecorator(withKnobs);
-stories.addParameters({
-  info: {
-    disable: true,
-  },
-  options: {
-    panelPosition: 'right',
-  },
-});
-
-export default { title: 'Datepickers' };
+export default {
+  title: 'Datepickers',
+};
 
 export const basicUsage = () => {
   const type = select('Type', typeMap, typeMap.basic);
