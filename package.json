@@ -39,7 +39,7 @@
     "classnames": "2.2.6",
     "core-js": "3.6.5",
     "date-fns": "2.15.0",
-    "dayzed": "3.1.0",
+    "dayzed": "3.2.1",
     "format-string-by-pattern": "1.2.1",
     "react-fast-compare": "3.2.0"
   },
@@ -51,6 +51,7 @@
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/react": "10.4.9",
     "@testing-library/user-event": "12.1.2",
+    "@types/classnames": "2.2.10",
     "@types/jest": "26.0.10",
     "@types/storybook__react": "5.2.1",
     "autoprefixer": "9.8.6",

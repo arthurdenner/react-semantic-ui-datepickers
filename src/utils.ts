@@ -1,10 +1,10 @@
+import { convertTokens } from '@date-fns/upgrade/v2';
+import { parse } from 'date-fns';
 import format from 'date-fns/format';
 import isBefore from 'date-fns/isBefore';
 import startOfDay from 'date-fns/startOfDay';
+import { DateObj } from 'dayzed';
 import { Object } from './types';
-
-import { convertTokens } from '@date-fns/upgrade/v2';
-import { parse } from 'date-fns';
 
 export const isSelectable = (date: Date, minDate?: Date, maxDate?: Date) => {
   if (
@@ -17,11 +17,13 @@ export const isSelectable = (date: Date, minDate?: Date, maxDate?: Date) => {
   return true;
 };
 
-export const getToday = (minDate?: Date, maxDate?: Date) => {
+export const getToday = (minDate?: Date, maxDate?: Date): DateObj => {
   const today = new Date();
 
   return {
     date: startOfDay(today),
+    nextMonth: false,
+    prevMonth: false,
     selectable: isSelectable(today, minDate, maxDate),
     selected: false,
     today: true,
@@ -49,11 +51,11 @@ export const pick = (keysToPick: string[], obj: Object) => {
   return newObj;
 };
 
-export const moveElementsByN = (n: number, arr: any[]) =>
+export const moveElementsByN = <T>(n: number, arr: T[]) =>
   arr.slice(n).concat(arr.slice(0, n));
 
 export const formatSelectedDate = (
-  selectedDate: Date | Date[] | null,
+  selectedDate: Date | Date[] | null | undefined,
   dateFormat: string
 ) => {
   if (!selectedDate) {

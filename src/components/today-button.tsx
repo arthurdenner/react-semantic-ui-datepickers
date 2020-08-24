@@ -1,15 +1,13 @@
 import React from 'react';
+import { DateObj } from 'dayzed';
 import { Button } from 'semantic-ui-react';
 
-type TodayButtonProps = {
+interface TodayButtonProps extends DateObj {
   end?: boolean;
   hovered?: boolean;
   inRange?: boolean;
-  selectable?: boolean;
-  selected?: boolean;
   start?: boolean;
-  today?: boolean;
-};
+}
 
 const style: React.CSSProperties = { marginTop: 10 };
 
@@ -17,6 +15,8 @@ const TodayButton: React.FC<TodayButtonProps> = ({
   end,
   hovered,
   inRange,
+  nextMonth,
+  prevMonth,
   selectable,
   selected,
   start,

@@ -1,3 +1,4 @@
+import { Props as DayzedProps, RenderProps } from 'dayzed';
 import { FormInputProps, SemanticICONS } from 'semantic-ui-react';
 
 export type Object = { [key: string]: any };
@@ -77,29 +78,21 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     showToday: boolean;
     type: 'basic' | 'range';
     datePickerOnly: boolean;
-    value: DayzedProps['selected'];
+    value: DayzedProps['selected'] | null;
   };
 
-export type DayzedProps = {
-  children: (children: any) => React.ReactNode;
-  date?: Date;
-  firstDayOfWeek: number;
-  maxDate?: Date;
-  minDate?: Date;
-  monthsToDisplay: number;
-  offset: number;
-  onDateSelected: (dateObj: any, event: React.SyntheticEvent) => void;
-  onOffsetChanged: () => void;
-  selected: Date | Date[] | null;
-  showOutsideDays: boolean;
+export type BaseDatePickerProps = DayzedProps & {
+  children: any;
 };
 
-export type BasicDatePickerProps = DayzedProps & {
+export interface BasicDatePickerProps extends BaseDatePickerProps {
   onChange: (event: React.SyntheticEvent, date: Date | null) => void;
   selected: Date;
-};
+}
 
-export type RangeDatePickerProps = DayzedProps & {
+export interface RangeDatePickerProps extends BaseDatePickerProps {
   onChange: (event: React.SyntheticEvent, dates: Date[] | null) => void;
   selected: Date[];
-};
+}
+
+export { DayzedProps, RenderProps };

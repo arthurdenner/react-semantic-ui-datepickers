@@ -1,9 +1,9 @@
 import Dayzed from 'dayzed';
 import React from 'react';
-import { DayzedProps } from '../types';
+import { BaseDatePickerProps } from '../types';
 import { getArrowKeyHandlers } from './utils';
 
-class BaseDatePicker extends React.Component<DayzedProps> {
+class BaseDatePicker extends React.Component<BaseDatePickerProps> {
   state = {
     offset: 0,
   };
