@@ -5767,10 +5767,10 @@ date-now@^0.1.4:
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
   integrity sha1-6vQ5/U1ISK105cx9vvIAZyueNFs=
 
-dayzed@3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/dayzed/-/dayzed-3.1.0.tgz#ca02d0e02828f2ebdfe100bf834f0a888af1c05a"
-  integrity sha512-Mwb/T78ppKDIoXsNgSLfIYfIO7ylal+vKp8VVMzK6rQq4VJSE7AdrGFN2EQDmve037J9TKZo06mX+QuuKQ2raA==
+dayzed@3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/dayzed/-/dayzed-3.2.1.tgz#0387abfcaf9da57128ddcf92dfc3e2fceea5fcde"
+  integrity sha512-3jnjfUOGxGA31iYAR2QfiDzWVfl3ccejm7/ya5P1gYpOtc9b4PEcl0xUAf7f74czEteAC/oPQCspNv/LAJlIYw==
   dependencies:
     "@babel/runtime" "^7.6.2"
     date-fns "^2.0.0"
