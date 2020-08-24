@@ -75,6 +75,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
       data: SemanticDatepickerProps
     ) => void;
     pointing: 'left' | 'right' | 'top left' | 'top right';
+    required?: boolean;
     showToday: boolean;
     type: 'basic' | 'range';
     datePickerOnly: boolean;

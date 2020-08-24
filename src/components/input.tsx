@@ -17,17 +17,19 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
     label,
     onClear,
     onClick,
+    required,
     value,
     ...rest
   } = props;
 
   return (
-    <Form.Field>
+    <Form.Field required={required}>
       {label && <label htmlFor={rest.id as string | undefined}>{label}</label>}
       <Input
         data-testid="datepicker-input"
         {...rest}
         ref={ref}
+        required={required}
         icon={
           <CustomIcon
             clearIcon={clearIcon}
