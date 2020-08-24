@@ -3,6 +3,7 @@ import { boolean, date, number, select, text } from '@storybook/addon-knobs';
 import { Form, SemanticICONS } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
+import { SemanticDatepickerProps } from '../src/types';
 import {
   Content,
   iconMap,
@@ -31,7 +32,10 @@ export const basicUsage = () => {
   const clearIcon = select('Clear icon (with value)', iconMap, iconMap.close);
   const iconOnLeft = boolean('Icon on the left', false);
   const datePickerOnly = boolean('Datepicker only', false);
-  const firstDayOfWeek = number('First day of week', 0, { max: 6, min: 0 });
+  const firstDayOfWeek = number('First day of week', 0, {
+    max: 6,
+    min: 0,
+  }) as SemanticDatepickerProps['firstDayOfWeek'];
   const format = text('Format', 'YYYY-MM-DD');
   const keepOpenOnClear = boolean('Keep open on clear', false);
   const keepOpenOnSelect = boolean('Keep open on select', false);
