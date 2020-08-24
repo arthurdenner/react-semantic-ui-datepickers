@@ -116,6 +116,8 @@ describe('getToday', () => {
   it('should return the correct result if `today` is not selectable', () => {
     expect(getToday(june14, june28)).toEqual({
       date: today,
+      nextMonth: false,
+      prevMonth: false,
       selectable: false,
       selected: false,
       today: true,
@@ -125,6 +127,8 @@ describe('getToday', () => {
   it('should return the correct result if `today` is selectable', () => {
     expect(getToday(june14)).toEqual({
       date: today,
+      nextMonth: false,
+      prevMonth: false,
       selectable: true,
       selected: false,
       today: true,
