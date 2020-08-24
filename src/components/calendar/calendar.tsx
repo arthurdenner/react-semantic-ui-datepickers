@@ -1,19 +1,15 @@
 import cn from 'classnames';
 import React, { Fragment } from 'react';
 import { Segment } from 'semantic-ui-react';
-import { Locale, SemanticDatepickerProps } from 'types';
+import { Locale, RenderProps, SemanticDatepickerProps } from 'types';
 import { getShortDate, getToday } from '../../utils';
 import Button from '../button';
 import CalendarCell from '../cell';
 import TodayButton from '../today-button';
 import './calendar.css';
 
-type CalendarProps = {
-  calendars: any[];
+interface CalendarProps extends RenderProps {
   filterDate: (date: Date) => boolean;
-  getBackProps: (props: any) => void;
-  getDateProps: (props: any) => void;
-  getForwardProps: (props: any) => void;
   inline: SemanticDatepickerProps['inline'];
   maxDate?: Date;
   minDate?: Date;
@@ -26,7 +22,7 @@ type CalendarProps = {
   showToday: SemanticDatepickerProps['showToday'];
   todayButton: string;
   weekdays: Locale['weekdays'];
-};
+}
 
 const styles: { [key: string]: React.CSSProperties } = {
   leftBtn: { textAlign: 'start' },
