@@ -46,7 +46,7 @@
   "devDependencies": {
     "@babel/core": "7.11.4",
     "@storybook/addon-knobs": "6.0.20",
-    "@storybook/addons": "6.0.12",
+    "@storybook/addons": "6.0.21",
     "@storybook/react": "6.0.20",
     "@testing-library/jest-dom": "5.11.4",
     "@testing-library/react": "10.4.9",
