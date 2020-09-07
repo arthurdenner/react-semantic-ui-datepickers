@@ -11,6 +11,7 @@ import './calendar.css';
 interface CalendarProps extends RenderProps {
   filterDate: (date: Date) => boolean;
   inline: SemanticDatepickerProps['inline'];
+  inverted: SemanticDatepickerProps['inverted'];
   maxDate?: Date;
   minDate?: Date;
   months: Locale['months'];
@@ -43,6 +44,7 @@ const Calendar: React.FC<CalendarProps> = ({
   getDateProps,
   getForwardProps,
   inline,
+  inverted,
   maxDate,
   minDate,
   months,
@@ -56,6 +58,7 @@ const Calendar: React.FC<CalendarProps> = ({
   pointing,
 }) => (
   <Segment
+    inverted={inverted}
     className={cn('clndr-calendars-segment', {
       'clndr-floating': !inline,
       [pointings[pointing]]: !inline,
@@ -73,11 +76,13 @@ const Calendar: React.FC<CalendarProps> = ({
                 <Fragment>
                   <Button
                     icon="angle double left"
+                    inverted={inverted}
                     title={previousYear}
                     {...getBackProps({ calendars, offset: 12 })}
                   />
                   <Button
                     icon="angle left"
+                    inverted={inverted}
                     style={{ marginRight: 0 }}
                     title={previousMonth}
                     {...getBackProps({ calendars })}
@@ -95,11 +100,13 @@ const Calendar: React.FC<CalendarProps> = ({
                 <Fragment>
                   <Button
                     icon="angle right"
+                    inverted={inverted}
                     title={nextMonth}
                     {...getForwardProps({ calendars })}
                   />
                   <Button
                     icon="angle double right"
+                    inverted={inverted}
                     style={{ marginRight: 0 }}
                     title={nextYear}
                     {...getForwardProps({ calendars, offset: 12 })}
@@ -148,6 +155,7 @@ const Calendar: React.FC<CalendarProps> = ({
     </div>
     {showToday && (
       <TodayButton
+        inverted={inverted}
         {...getToday(minDate, maxDate)}
         {...getDateProps({
           dateObj: getToday(minDate, maxDate),
