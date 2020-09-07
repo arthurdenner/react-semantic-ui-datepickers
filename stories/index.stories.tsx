@@ -1,6 +1,6 @@
 import React from 'react';
 import { boolean, date, number, select, text } from '@storybook/addon-knobs';
-import { Form, SemanticICONS } from 'semantic-ui-react';
+import { Form, SemanticICONS, Table } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
 import { SemanticDatepickerProps } from '../src/types';
@@ -128,3 +128,11 @@ export const usageWithForm = () => {
     </Content>
   );
 };
+
+export const inverted = () => (
+  <Content style={{ padding: 20 }}>
+    <Table inverted style={{ margin: 20, padding: 20 }}>
+      <SemanticDatepicker inverted onChange={onChange} />
+    </Table>
+  </Content>
+);
