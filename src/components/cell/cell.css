@@ -6,6 +6,15 @@
   cursor: pointer;
 }
 
+.clndr-cell.inverted {
+  background-color: #4f4f4f;
+}
+
+.clndr-cell.inverted:hover {
+  background-color: #757575;
+  color: inherit;
+}
+
 .clndr-cell:hover {
   background-color: #cacbcd;
   color: inherit;
@@ -20,6 +29,11 @@
   color: inherit;
 }
 
+.clndr-cell-inrange.inverted {
+  background-color: #757575;
+  color: inherit;
+}
+
 .clndr-cell-disabled {
   cursor: default;
   opacity: 0.45;
@@ -29,11 +43,25 @@
   background-color: white;
 }
 
+.clndr-cell-disabled.inverted:hover {
+  background-color: #4f4f4f;
+  color: inherit;
+}
+
 .clndr-cell-selected {
   background-color: #4f4f4f;
   color: #f2f2f2;
 }
 
+.clndr-cell-selected.inverted {
+  background-color: white;
+  color: black;
+}
+
 .clndr-cell-other-month {
   color: #d9d9d9;
+}
+
+.clndr-cell-other-month.inverted {
+  color: #a6a6a6;
 }

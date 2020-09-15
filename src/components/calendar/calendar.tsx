@@ -119,6 +119,7 @@ const Calendar: React.FC<CalendarProps> = ({
             {weekdays.map((weekday) => (
               <CalendarCell
                 key={`${calendar.year}-${calendar.month}-${weekday}`}
+                inverted={inverted}
                 title={weekday}
               >
                 {weekday.slice(0, 2)}
@@ -129,7 +130,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 const key = `${calendar.year}-${calendar.month}-${weekIdx}`;
 
                 if (!dateObj) {
-                  return <CalendarCell key={key} />;
+                  return <CalendarCell key={key} inverted={inverted} />;
                 }
 
                 const selectable =
@@ -142,6 +143,7 @@ const Calendar: React.FC<CalendarProps> = ({
                     {...dateObj}
                     {...getDateProps({ dateObj: { ...dateObj, selectable } })}
                     data-testid={`datepicker-cell-${shortDate}`}
+                    inverted={inverted}
                     selectable={selectable}
                   >
                     {dateObj.date.getDate()}
