@@ -1,8 +1,8 @@
 import React from 'react';
 import { DateObj } from 'dayzed';
-import { Button } from 'semantic-ui-react';
+import { Button, ButtonProps } from 'semantic-ui-react';
 
-interface TodayButtonProps extends DateObj {
+interface TodayButtonProps extends DateObj, ButtonProps {
   end?: boolean;
   hovered?: boolean;
   inRange?: boolean;

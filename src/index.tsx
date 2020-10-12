@@ -69,7 +69,7 @@ class SemanticDatepicker extends React.Component<
   SemanticDatepickerProps,
   SemanticDatepickerState
 > {
-  static defaultProps = {
+  static defaultProps: SemanticDatepickerProps = {
     allowOnlyNumbers: false,
     clearIcon: 'close',
     clearOnSameDateClick: true,
@@ -97,6 +97,7 @@ class SemanticDatepicker extends React.Component<
     showOutsideDays: false,
     type: 'basic',
     value: null,
+    inverted: false,
   };
 
   el = React.createRef<HTMLDivElement>();
@@ -428,6 +429,7 @@ class SemanticDatepicker extends React.Component<
       pointing,
       filterDate,
       inline,
+      inverted,
       readOnly,
       datePickerOnly,
     } = this.props;
@@ -445,6 +447,7 @@ class SemanticDatepicker extends React.Component<
             {...props}
             {...locale}
             filterDate={filterDate}
+            inverted={inverted}
             pointing={pointing}
             weekdays={this.weekdays}
           />

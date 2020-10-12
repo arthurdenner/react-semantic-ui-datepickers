@@ -6,6 +6,7 @@ type CalendarCellProps = {
   end?: boolean;
   hovered?: boolean;
   inRange?: boolean;
+  inverted?: boolean;
   nextMonth?: boolean;
   prevMonth?: boolean;
   selectable?: boolean;
@@ -19,6 +20,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
   end,
   hovered,
   inRange,
+  inverted,
   nextMonth,
   prevMonth,
   selectable,
@@ -29,6 +31,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
 }) => (
   <span
     className={cn('clndr-cell', {
+      inverted,
       'clndr-cell-today': today,
       'clndr-cell-disabled': !selectable,
       'clndr-cell-other-month': nextMonth || prevMonth,

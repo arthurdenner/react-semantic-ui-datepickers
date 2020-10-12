@@ -1,6 +1,6 @@
 import React from 'react';
 import { boolean, date, number, select, text } from '@storybook/addon-knobs';
-import { Form, SemanticICONS } from 'semantic-ui-react';
+import { Form, SemanticICONS, Table } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
 import { SemanticDatepickerProps } from '../src/types';
@@ -107,24 +107,34 @@ export const withCustomIcons = () => {
   );
 };
 
-export const usageWithForm = () => {
+export const usageWithForm = () => (
+  <Content>
+    <Form>
+      <Form.Group width="equals">
+        <SemanticDatepicker
+          label="Initial date"
+          id="initialDate"
+          onChange={onChange}
+          required
+        />
+        <SemanticDatepicker
+          label="Final date"
+          id="finalDate"
+          onChange={onChange}
+        />
+      </Form.Group>
+    </Form>
+  </Content>
+);
+
+export const inverted = () => {
+  const type = select('Type', typeMap, typeMap.basic);
+
   return (
-    <Content>
-      <Form>
-        <Form.Group width="equals">
-          <SemanticDatepicker
-            label="Initial date"
-            id="initialDate"
-            onChange={onChange}
-            required
-          />
-          <SemanticDatepicker
-            label="Final date"
-            id="finalDate"
-            onChange={onChange}
-          />
-        </Form.Group>
-      </Form>
+    <Content style={{ padding: 20 }}>
+      <Table inverted style={{ margin: 20, padding: 20 }}>
+        <SemanticDatepicker inverted onChange={onChange} type={type} />
+      </Table>
     </Content>
   );
 };
