@@ -183,6 +183,15 @@
         "code",
         "bug"
       ]
+    },
+    {
+      "login": "Yeongjae-Shin",
+      "name": "Shin YeongJae",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/60685930?v=4",
+      "profile": "http://velog.io/@syj9484",
+      "contributions": [
+        "translation"
+      ]
     }
   ],
   "contributorsPerLine": 7,
