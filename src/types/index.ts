@@ -26,6 +26,7 @@ export type LocaleOptions =
   | 'he-IL'
   | 'it-IT'
   | 'ja-JP'
+  | 'ko-KR'
   | 'nb-NO'
   | 'pl-PL'
   | 'pt-BR'
