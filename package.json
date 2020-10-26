@@ -63,7 +63,7 @@
     "prettier": "2.1.2",
     "pretty-quick": "3.1.0",
     "react": "16.14.0",
-    "react-dom": "16.13.1",
+    "react-dom": "16.14.0",
     "rimraf": "3.0.2",
     "rollup-plugin-copy": "3.3.0",
     "rollup-plugin-postcss": "3.1.8",
