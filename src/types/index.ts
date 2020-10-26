@@ -28,6 +28,7 @@ export type LocaleOptions =
   | 'ja-JP'
   | 'ko-KR'
   | 'nb-NO'
+  | 'nn-NO'
   | 'pl-PL'
   | 'pt-BR'
   | 'ru-RU'
