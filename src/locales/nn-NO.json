@@ -1,5 +1,5 @@
 {
-  "todayButton": "I dag",
+  "todayButton": "Idag",
   "nextMonth": "Neste månad",
   "previousMonth": "Førre månad",
   "nextYear": "Neste år",
@@ -7,7 +7,7 @@
   "weekdays": [
     "Søndag",
     "Måndag",
-    "Tisdag",
+    "Tysdag",
     "Onsdag",
     "Torsdag",
     "Fredag",
