@@ -1,17 +1,17 @@
 {
-  "todayButton": "Idag",
-  "nextMonth": "Neste måned",
-  "previousMonth": "Forrige måned",
+  "todayButton": "I dag",
+  "nextMonth": "Neste månad",
+  "previousMonth": "Førre månad",
   "nextYear": "Neste år",
-  "previousYear": "Forrige år",
+  "previousYear": "Førre år",
   "weekdays": [
     "Søndag",
-    "Mandag",
-    "Tirsdag",
+    "Måndag",
+    "Tysdag",
     "Onsdag",
     "Torsdag",
     "Fredag",
-    "Lørdag"
+    "Laurdag"
   ],
   "months": [
     "Januar",
