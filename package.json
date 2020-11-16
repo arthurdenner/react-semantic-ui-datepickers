@@ -55,7 +55,7 @@
     "@types/jest": "26.0.15",
     "@types/storybook__react": "5.2.1",
     "autoprefixer": "9.8.6",
-    "babel-loader": "8.1.0",
+    "babel-loader": "8.2.1",
     "cssnano": "4.1.10",
     "eslint-plugin-prettier": "3.1.4",
     "husky": "4.3.0",
