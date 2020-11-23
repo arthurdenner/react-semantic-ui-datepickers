@@ -47,7 +47,7 @@
     "@babel/core": "7.12.7",
     "@storybook/addon-knobs": "6.0.28",
     "@storybook/addons": "6.1.2",
-    "@storybook/react": "6.0.28",
+    "@storybook/react": "6.1.2",
     "@testing-library/jest-dom": "5.11.6",
     "@testing-library/react": "11.1.2",
     "@testing-library/user-event": "12.2.2",
