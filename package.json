@@ -52,7 +52,7 @@
     "@testing-library/react": "11.2.2",
     "@testing-library/user-event": "12.5.0",
     "@types/classnames": "2.2.11",
-    "@types/jest": "26.0.16",
+    "@types/jest": "26.0.19",
     "@types/storybook__react": "5.2.1",
     "autoprefixer": "9.8.6",
     "babel-loader": "8.2.2",
