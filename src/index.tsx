@@ -53,6 +53,7 @@ const semanticInputProps = [
   'placeholder',
   'required',
   'size',
+  'tabIndex',
   'transparent',
   'readOnly',
 ];
