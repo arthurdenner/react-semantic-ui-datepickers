@@ -234,8 +234,12 @@ class SemanticDatepicker extends React.Component<
   };
 
   focusOnInput = () => {
-    if (this.inputRef?.current?.focus) {
-      this.inputRef.current.focus();
+    if (this.inputRef?.current) {
+      // @ts-ignore
+      const { focus, inputRef } = this.inputRef.current;
+      if (document.activeElement !== inputRef.current) {
+        focus();
+      }
     }
   };
 
@@ -466,7 +470,7 @@ class SemanticDatepicker extends React.Component<
           onBlur={this.handleBlur}
           onChange={this.handleChange}
           onClear={this.clearInput}
-          onClick={readOnly ? null : this.showCalendar}
+          onFocus={readOnly ? null : this.showCalendar}
           onKeyDown={this.handleKeyDown}
           readOnly={readOnly || datePickerOnly}
           ref={this.inputRef}

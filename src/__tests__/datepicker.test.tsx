@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import localeEn from '../locales/en-US.json';
 import localePt from '../locales/pt-BR.json';
 import { getShortDate } from '../utils';
@@ -220,7 +220,8 @@ describe('Basic datepicker', () => {
     });
 
     fireEvent.click(getByLabelText('Click me'));
-    expect(getByText('Today')).toBeTruthy();
+
+    waitFor(() => expect(getByText('Today')).toBeTruthy());
   });
 
   describe('clearOnSameDateClick', () => {
@@ -235,7 +236,7 @@ describe('Basic datepicker', () => {
       expect(datePickerInput.value).not.toBe('');
       fireEvent.click(getByText('Today'));
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(2);
+      expect(onBlur).toHaveBeenCalledTimes(1);
     });
 
     it("doesn't reset its state when prop is false", () => {
@@ -250,7 +251,7 @@ describe('Basic datepicker', () => {
       expect(datePickerInput.value).not.toBe('');
       fireEvent.click(getByText('Today'));
       expect(datePickerInput.value).not.toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(2);
+      expect(onBlur).not.toHaveBeenCalled();
     });
   });
 
@@ -330,10 +331,10 @@ describe('Range datepicker', () => {
     const tomorrowCell = getByTestId(RegExp(tomorrow));
 
     fireEvent.click(todayCell);
-    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onBlur).toHaveBeenCalledTimes(0);
 
     fireEvent.click(tomorrowCell);
-    expect(onBlur).toHaveBeenCalledTimes(2);
+    expect(onBlur).toHaveBeenCalledTimes(1);
   });
 
   it('updates the locale if the prop changes', async () => {
