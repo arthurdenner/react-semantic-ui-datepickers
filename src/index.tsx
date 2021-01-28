@@ -326,7 +326,7 @@ class SemanticDatepicker extends React.Component<
     }
 
     const newState = {
-      isVisible: keepOpenOnSelect,
+      isVisible: fromBlur || keepOpenOnSelect,
       selectedDate: newDate,
       selectedDateFormatted: formatSelectedDate(newDate, format),
       typedValue: null,
@@ -463,7 +463,7 @@ class SemanticDatepicker extends React.Component<
         <Input
           {...this.inputProps}
           isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
-          onBlur={() => {}}
+          onBlur={this.handleBlur}
           onChange={this.handleChange}
           onClear={this.clearInput}
           onClick={readOnly ? null : this.showCalendar}

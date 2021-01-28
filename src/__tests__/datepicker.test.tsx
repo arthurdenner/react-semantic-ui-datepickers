@@ -235,7 +235,7 @@ describe('Basic datepicker', () => {
       expect(datePickerInput.value).not.toBe('');
       fireEvent.click(getByText('Today'));
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).toHaveBeenCalledTimes(2);
     });
 
     it("doesn't reset its state when prop is false", () => {
@@ -250,7 +250,7 @@ describe('Basic datepicker', () => {
       expect(datePickerInput.value).not.toBe('');
       fireEvent.click(getByText('Today'));
       expect(datePickerInput.value).not.toBe('');
-      expect(onBlur).not.toHaveBeenCalled();
+      expect(onBlur).toHaveBeenCalledTimes(2);
     });
   });
 
@@ -330,10 +330,10 @@ describe('Range datepicker', () => {
     const tomorrowCell = getByTestId(RegExp(tomorrow));
 
     fireEvent.click(todayCell);
-    expect(onBlur).toHaveBeenCalledTimes(0);
+    expect(onBlur).toHaveBeenCalledTimes(1);
 
     fireEvent.click(tomorrowCell);
-    expect(onBlur).toHaveBeenCalledTimes(1);
+    expect(onBlur).toHaveBeenCalledTimes(2);
   });
 
   it('updates the locale if the prop changes', async () => {

@@ -18,6 +18,6 @@ it('onChange is fired when invalid date is typed', () => {
   fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
   expect(datePickerInput.value).toBe('');
-  expect(onBlur).toHaveBeenCalledTimes(2);
-  expect(onChange).toHaveBeenCalledTimes(2);
+  expect(onBlur).toHaveBeenCalledTimes(4);
+  expect(onChange).toHaveBeenCalledTimes(3);
 });
