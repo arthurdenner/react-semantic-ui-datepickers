@@ -12,6 +12,8 @@ interface TodayButtonProps extends DateObj, ButtonProps {
 const style: React.CSSProperties = { marginTop: 10 };
 
 const TodayButton: React.FC<TodayButtonProps> = ({
+  'aria-label': ariaLabel,
+  children,
   end,
   hovered,
   inRange,
@@ -24,13 +26,16 @@ const TodayButton: React.FC<TodayButtonProps> = ({
   ...otherProps
 }) => (
   <Button
+    aria-label={`${ariaLabel}, ${children}`}
     className="clndr-button-today"
     compact
     data-testid="datepicker-today-button"
     fluid
     style={style}
     {...otherProps}
-  />
+  >
+    {children}
+  </Button>
 );
 
 export default TodayButton;

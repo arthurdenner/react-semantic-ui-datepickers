@@ -17,6 +17,7 @@ type CalendarCellProps = {
 };
 
 const CalendarCell: React.FC<CalendarCellProps> = ({
+  children,
   end,
   hovered,
   inRange,
@@ -28,19 +29,30 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
   start,
   today,
   ...otherProps
-}) => (
-  <span
-    className={cn('clndr-cell', {
-      inverted,
-      'clndr-cell-today': today,
-      'clndr-cell-disabled': !selectable,
-      'clndr-cell-other-month': nextMonth || prevMonth,
-      'clndr-cell-inrange': inRange,
-      'clndr-cell-selected': selected,
-    })}
-    {...otherProps}
-  />
-);
+}) => {
+  const className = cn('clndr-cell', {
+    inverted,
+    'clndr-cell-today': today,
+    'clndr-cell-disabled': !selectable,
+    'clndr-cell-other-month': nextMonth || prevMonth,
+    'clndr-cell-inrange': inRange,
+    'clndr-cell-selected': selected,
+  });
+
+  if (!children || !selectable) {
+    return (
+      <span className={className} {...otherProps} tabIndex={children ? 0 : -1}>
+        {children}
+      </span>
+    );
+  }
+
+  return (
+    <button className={className} {...otherProps}>
+      {children}
+    </button>
+  );
+};
 
 CalendarCell.defaultProps = {
   end: false,
