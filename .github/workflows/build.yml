@@ -1,0 +1,38 @@
+name: Run checks
+on: [push, pull_request]
+jobs:
+  run-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.4.0
+        with:
+          access_token: ${{ github.token }}
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Install Node.js 10
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10
+      - name: Setup cache
+        uses: bahmutov/npm-install@HEAD
+      - name: Install dependencies
+        run: npm t
+      - name: Test and build code
+        run: yarn validate
+      - name: Upload test reports
+        uses: codecov/codecov-action@v1
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        with:
+          branches: |
+            [
+              'master', 
+              {
+                name: 'beta', 
+                prerelease: true
+              }
+            ]
