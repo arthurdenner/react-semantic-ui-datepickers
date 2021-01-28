@@ -53,6 +53,7 @@ export type PickedFormInputProps = Pick<
   | 'name'
   | 'placeholder'
   | 'size'
+  | 'tabIndex'
   | 'transparent'
   | 'readOnly'
 >;

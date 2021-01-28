@@ -10,6 +10,7 @@ it('onChange is fired when invalid date is typed', () => {
   openDatePicker();
   fireEvent.click(screen.getByText('Today'));
 
+  expect(datePickerInput).toHaveFocus();
   expect(onChange).toHaveBeenCalledTimes(1);
   expect(onBlur).toHaveBeenCalledTimes(1);
 
