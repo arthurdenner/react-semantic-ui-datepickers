@@ -78,14 +78,21 @@ const Calendar: React.FC<CalendarProps> = ({
                     icon="angle double left"
                     inverted={inverted}
                     title={previousYear}
-                    {...getBackProps({ calendars, offset: 12 })}
+                    {...getBackProps({
+                      calendars,
+                      'aria-label': previousYear,
+                      offset: 12,
+                    })}
                   />
                   <Button
                     icon="angle left"
                     inverted={inverted}
                     style={{ marginRight: 0 }}
                     title={previousMonth}
-                    {...getBackProps({ calendars })}
+                    {...getBackProps({
+                      calendars,
+                      'aria-label': previousMonth,
+                    })}
                   />
                 </Fragment>
               )}
@@ -102,14 +109,21 @@ const Calendar: React.FC<CalendarProps> = ({
                     icon="angle right"
                     inverted={inverted}
                     title={nextMonth}
-                    {...getForwardProps({ calendars })}
+                    {...getForwardProps({
+                      calendars,
+                      'aria-label': nextMonth,
+                    })}
                   />
                   <Button
                     icon="angle double right"
                     inverted={inverted}
                     style={{ marginRight: 0 }}
                     title={nextYear}
-                    {...getForwardProps({ calendars, offset: 12 })}
+                    {...getForwardProps({
+                      calendars,
+                      'aria-label': nextYear,
+                      offset: 12,
+                    })}
                   />
                 </Fragment>
               )}
@@ -120,6 +134,7 @@ const Calendar: React.FC<CalendarProps> = ({
               <CalendarCell
                 key={`${calendar.year}-${calendar.month}-${weekday}`}
                 inverted={inverted}
+                aria-label={weekday}
                 title={weekday}
               >
                 {weekday.slice(0, 2)}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent } from '@testing-library/react';
+import { fireEvent, waitFor } from '@testing-library/react';
 import localeEn from '../locales/en-US.json';
 import localePt from '../locales/pt-BR.json';
 import { getShortDate } from '../utils';
@@ -220,7 +220,8 @@ describe('Basic datepicker', () => {
     });
 
     fireEvent.click(getByLabelText('Click me'));
-    expect(getByText('Today')).toBeTruthy();
+
+    waitFor(() => expect(getByText('Today')).toBeTruthy());
   });
 
   describe('clearOnSameDateClick', () => {

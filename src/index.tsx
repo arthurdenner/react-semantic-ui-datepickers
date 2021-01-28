@@ -53,6 +53,7 @@ const semanticInputProps = [
   'placeholder',
   'required',
   'size',
+  'tabIndex',
   'transparent',
   'readOnly',
 ];
@@ -233,8 +234,12 @@ class SemanticDatepicker extends React.Component<
   };
 
   focusOnInput = () => {
-    if (this.inputRef?.current?.focus) {
-      this.inputRef.current.focus();
+    if (this.inputRef?.current) {
+      // @ts-ignore
+      const { focus, inputRef } = this.inputRef.current;
+      if (document.activeElement !== inputRef.current) {
+        focus();
+      }
     }
   };
 
@@ -325,7 +330,7 @@ class SemanticDatepicker extends React.Component<
     }
 
     const newState = {
-      isVisible: keepOpenOnSelect,
+      isVisible: fromBlur || keepOpenOnSelect,
       selectedDate: newDate,
       selectedDateFormatted: formatSelectedDate(newDate, format),
       typedValue: null,
@@ -462,10 +467,10 @@ class SemanticDatepicker extends React.Component<
         <Input
           {...this.inputProps}
           isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
-          onBlur={() => {}}
+          onBlur={this.handleBlur}
           onChange={this.handleChange}
           onClear={this.clearInput}
-          onClick={readOnly ? null : this.showCalendar}
+          onFocus={readOnly ? null : this.showCalendar}
           onKeyDown={this.handleKeyDown}
           readOnly={readOnly || datePickerOnly}
           ref={this.inputRef}

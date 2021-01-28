@@ -16,7 +16,7 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
     isClearIconVisible,
     label,
     onClear,
-    onClick,
+    onFocus,
     required,
     value,
     ...rest
@@ -36,10 +36,10 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
             icon={icon}
             isClearIconVisible={isClearIconVisible}
             onClear={onClear}
-            onClick={onClick}
+            onClick={onFocus}
           />
         }
-        onClick={onClick}
+        onFocus={onFocus}
         value={value}
       />
     </Form.Field>
