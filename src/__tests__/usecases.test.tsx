@@ -11,14 +11,14 @@ it('onChange is fired when invalid date is typed', () => {
   fireEvent.click(screen.getByText('Today'));
 
   expect(datePickerInput).toHaveFocus();
+  expect(onBlur).not.toHaveBeenCalled();
   expect(onChange).toHaveBeenCalledTimes(1);
-  expect(onBlur).toHaveBeenCalledTimes(1);
 
   userEvent.type(datePickerInput, '{backspace}');
   userEvent.type(datePickerInput, '{backspace}');
   fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
   expect(datePickerInput.value).toBe('');
-  expect(onBlur).toHaveBeenCalledTimes(2);
+  expect(onBlur).not.toHaveBeenCalled();
   expect(onChange).toHaveBeenCalledTimes(2);
 });

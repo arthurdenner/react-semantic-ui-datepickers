@@ -26,7 +26,7 @@ describe('Basic datepicker', () => {
       expect(getByText('Today')).toBeDefined();
       fireEvent.keyDown(getByText('Today'), { keyCode: 27 });
       expect(queryByText('Today')).toBeNull();
-      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it('ignore keys different from Enter', async () => {
@@ -41,7 +41,7 @@ describe('Basic datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it('accepts valid input followed by Enter key', async () => {
@@ -50,8 +50,7 @@ describe('Basic datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('2020-02-02');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it("doesn't accept invalid input followed by Enter key", async () => {
@@ -60,8 +59,7 @@ describe('Basic datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
   });
 
@@ -251,7 +249,7 @@ describe('Basic datepicker', () => {
       expect(datePickerInput.value).not.toBe('');
       fireEvent.click(getByText('Today'));
       expect(datePickerInput.value).not.toBe('');
-      expect(onBlur).not.toHaveBeenCalled();
+      expect(onBlur).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -298,8 +296,7 @@ describe('Range datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('2020-02-02');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it("doesn't accept invalid input followed by Enter key", async () => {
@@ -308,8 +305,7 @@ describe('Range datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
   });
 
@@ -331,7 +327,7 @@ describe('Range datepicker', () => {
     const tomorrowCell = getByTestId(RegExp(tomorrow));
 
     fireEvent.click(todayCell);
-    expect(onBlur).toHaveBeenCalledTimes(0);
+    expect(onBlur).toHaveBeenCalledTimes(1);
 
     fireEvent.click(tomorrowCell);
     expect(onBlur).toHaveBeenCalledTimes(1);

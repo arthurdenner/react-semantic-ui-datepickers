@@ -202,7 +202,6 @@ class SemanticDatepicker extends React.Component<
 
   clearInput = (event) => {
     this.resetState(event);
-    this.handleBlur(event);
   };
 
   mousedownCb = (mousedownEvent) => {
@@ -210,24 +209,24 @@ class SemanticDatepicker extends React.Component<
 
     if (isVisible && this.el) {
       if (this.el.current && !this.el.current.contains(mousedownEvent.target)) {
-        this.close(mousedownEvent);
+        this.close();
       }
     }
   };
 
   keydownCb = (keydownEvent) => {
     const { isVisible } = this.state;
+
     if (keydownEvent.keyCode === 27 && isVisible) {
       // Escape
-      this.close(keydownEvent);
+      this.close();
     }
   };
 
-  close = (event) => {
+  close = () => {
     window.removeEventListener('keydown', this.keydownCb);
     window.removeEventListener('mousedown', this.mousedownCb);
 
-    this.handleBlur(event);
     this.setState({
       isVisible: false,
     });
@@ -254,15 +253,11 @@ class SemanticDatepicker extends React.Component<
     });
   };
 
-  handleRangeInput = (newDates, event, fromBlur = false) => {
+  handleRangeInput = (newDates, event) => {
     const { format, keepOpenOnSelect, onChange } = this.props;
 
     if (!newDates || !newDates.length) {
       this.resetState(event);
-
-      if (!fromBlur) {
-        this.handleBlur(event);
-      }
 
       return;
     }
@@ -278,21 +273,11 @@ class SemanticDatepicker extends React.Component<
 
       if (newDates.length === 2) {
         this.setState({ isVisible: keepOpenOnSelect });
-
-        if (keepOpenOnSelect) {
-          this.focusOnInput();
-        } else if (!fromBlur) {
-          this.handleBlur(event);
-        }
-      } else if (newDates.length === 1) {
-        this.focusOnInput();
-      } else if (!fromBlur) {
-        this.handleBlur(event);
       }
     });
   };
 
-  handleBasicInput = (newDate, event, fromBlur = false) => {
+  handleBasicInput = (newDate, event) => {
     const {
       format,
       keepOpenOnSelect,
@@ -306,10 +291,6 @@ class SemanticDatepicker extends React.Component<
       // behavior, without a specific prop.
       if (clearOnSameDateClick) {
         this.resetState(event);
-
-        if (!fromBlur) {
-          this.handleBlur(event);
-        }
       } else {
         // Don't reset the state. Instead, close or keep open the
         // datepicker according to the value of keepOpenOnSelect.
@@ -318,29 +299,17 @@ class SemanticDatepicker extends React.Component<
         this.setState({
           isVisible: keepOpenOnSelect,
         });
-
-        if (keepOpenOnSelect) {
-          this.focusOnInput();
-        } else if (!fromBlur) {
-          this.handleBlur(event);
-        }
       }
 
       return;
     }
 
     const newState = {
-      isVisible: fromBlur || keepOpenOnSelect,
+      isVisible: keepOpenOnSelect,
       selectedDate: newDate,
       selectedDateFormatted: formatSelectedDate(newDate, format),
       typedValue: null,
     };
-
-    if (keepOpenOnSelect) {
-      this.focusOnInput();
-    } else if (!fromBlur) {
-      this.handleBlur(event);
-    }
 
     this.setState(newState, () => {
       onChange(event, { ...this.props, value: newDate });
@@ -351,7 +320,9 @@ class SemanticDatepicker extends React.Component<
     const { format, onBlur, onChange } = this.props;
     const { typedValue } = this.state;
 
-    onBlur(event);
+    if (event) {
+      onBlur(event);
+    }
 
     if (!typedValue) {
       return;
@@ -362,7 +333,7 @@ class SemanticDatepicker extends React.Component<
       const areDatesValid = parsedValue.every(isValid);
 
       if (areDatesValid) {
-        this.handleRangeInput(parsedValue, event, true);
+        this.handleRangeInput(parsedValue, event);
         return;
       }
     } else {
@@ -370,7 +341,7 @@ class SemanticDatepicker extends React.Component<
       const isDateValid = isValid(parsedValue);
 
       if (isDateValid) {
-        this.handleBasicInput(parsedValue, event, true);
+        this.handleBasicInput(parsedValue, event);
         return;
       }
     }

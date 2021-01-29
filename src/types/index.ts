@@ -73,7 +73,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     inline: boolean;
     inverted: boolean;
     locale: LocaleOptions;
-    onBlur: (event?: React.SyntheticEvent) => void;
+    onBlur: (event: React.SyntheticEvent) => void;
     onChange: (
       event: React.SyntheticEvent | undefined,
       data: SemanticDatepickerProps
