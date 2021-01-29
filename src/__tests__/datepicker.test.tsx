@@ -197,14 +197,19 @@ describe('Basic datepicker', () => {
   });
 
   it('reset its state on clear', () => {
-    const { datePickerInput, getByText, getIcon, openDatePicker } = setup();
+    const {
+      datePickerInput,
+      getByText,
+      getClearIcon,
+      openDatePicker,
+    } = setup();
 
     openDatePicker();
     fireEvent.click(getByText('Today'));
 
     expect(datePickerInput.value).not.toBe('');
 
-    fireEvent.click(getIcon());
+    fireEvent.click(getClearIcon());
 
     expect(datePickerInput.value).toBe('');
   });
@@ -403,7 +408,7 @@ describe('Range datepicker', () => {
   });
 
   it('reset its state on clear', () => {
-    const { datePickerInput, getByText, getIcon, openDatePicker } = setup({
+    const { datePickerInput, getByText, getClearIcon, openDatePicker } = setup({
       type: 'range',
     });
 
@@ -412,7 +417,7 @@ describe('Range datepicker', () => {
 
     expect(datePickerInput.value).not.toBe('');
 
-    fireEvent.click(getIcon());
+    fireEvent.click(getClearIcon());
 
     expect(datePickerInput.value).toBe('');
   });
@@ -481,7 +486,7 @@ describe('Inline datepicker', () => {
   describe('Custom icons', () => {
     it('should allow for custom Semantic UI icons', () => {
       const icon = 'search';
-      const { getByText, getIcon, openDatePicker } = setup({
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
         icon,
       });
 
@@ -491,14 +496,14 @@ describe('Inline datepicker', () => {
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert datepicker is clearable
-      expect(getIcon()).toHaveClass('close', 'icon');
-      fireEvent.click(getIcon());
+      expect(getClearIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon()).toHaveClass(icon, 'icon');
     });
 
     it('should allow for custom icon components', () => {
-      const { getByText, getIcon, openDatePicker } = setup({
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
         icon: <span>Custom icon</span>,
       });
 
@@ -508,15 +513,15 @@ describe('Inline datepicker', () => {
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert datepicker is clearable
-      expect(getIcon()).toHaveClass('close', 'icon');
-      fireEvent.click(getIcon());
+      expect(getClearIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon().textContent).toBe('Custom icon');
     });
 
     it('should allow for custom clear Semantic UI icons', () => {
       const clearIcon = 'ban';
-      const { getByText, getIcon, openDatePicker } = setup({
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
         clearIcon,
       });
 
@@ -524,16 +529,16 @@ describe('Inline datepicker', () => {
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert custom icon
-      expect(getIcon()).toHaveClass(clearIcon, 'icon');
+      expect(getClearIcon()).toHaveClass(clearIcon, 'icon');
       // Assert datepicker is clearable
-      fireEvent.click(getIcon());
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon()).toHaveClass('calendar', 'icon');
     });
 
     it('should allow for custom clear icon components', () => {
       const customClearIcon = <span>Custom icon</span>;
-      const { getByText, getIcon, openDatePicker } = setup({
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
         clearIcon: customClearIcon,
       });
 
@@ -541,9 +546,9 @@ describe('Inline datepicker', () => {
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert custom icon
-      expect(getIcon().textContent).toBe('Custom icon');
+      expect(getClearIcon().textContent).toBe('Custom icon');
       // Assert datepicker is clearable
-      fireEvent.click(getIcon());
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon()).toHaveClass('calendar', 'icon');
     });

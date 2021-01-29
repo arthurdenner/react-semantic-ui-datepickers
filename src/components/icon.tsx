@@ -17,7 +17,7 @@ const CustomIcon = ({
 }: CustomIconProps) => {
   if (isClearIconVisible && clearIcon && React.isValidElement(clearIcon)) {
     return React.cloneElement(clearIcon, {
-      'data-testid': 'datepicker-icon',
+      'data-testid': 'datepicker-clear-icon',
       onClick: onClear,
     });
   }
@@ -25,7 +25,7 @@ const CustomIcon = ({
   if (isClearIconVisible && clearIcon && !React.isValidElement(clearIcon)) {
     return (
       <SUIIcon
-        data-testid="datepicker-icon"
+        data-testid="datepicker-clear-icon"
         link
         name={clearIcon}
         onClick={onClear}
