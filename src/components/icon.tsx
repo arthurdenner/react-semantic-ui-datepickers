@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon as SUIIcon } from 'semantic-ui-react';
 import { SemanticDatepickerProps } from '../types';
+import { keys } from '../utils';
 
 type CustomIconProps = {
   clearIcon: SemanticDatepickerProps['clearIcon'];
@@ -15,6 +16,12 @@ const CustomIcon = ({
   isClearIconVisible,
   onClear,
 }: CustomIconProps) => {
+  const onKeydown = (evt: KeyboardEvent) => {
+    if (evt.keyCode === keys.enter || evt.keyCode === keys.space) {
+      onClear();
+    }
+  };
+
   if (isClearIconVisible && clearIcon && React.isValidElement(clearIcon)) {
     return React.cloneElement(clearIcon, {
       'data-testid': 'datepicker-clear-icon',
@@ -25,10 +32,14 @@ const CustomIcon = ({
   if (isClearIconVisible && clearIcon && !React.isValidElement(clearIcon)) {
     return (
       <SUIIcon
+        aria-pressed="false"
         data-testid="datepicker-clear-icon"
         link
         name={clearIcon}
+        role="button"
+        tabIndex="0"
         onClick={onClear}
+        onKeyDown={onKeydown}
       />
     );
   }

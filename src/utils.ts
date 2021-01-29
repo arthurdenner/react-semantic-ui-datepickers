@@ -6,6 +6,12 @@ import startOfDay from 'date-fns/startOfDay';
 import { DateObj } from 'dayzed';
 import { Object } from './types';
 
+export const keys = {
+  enter: 13,
+  escape: 27,
+  space: 32,
+};
+
 export const isSelectable = (date: Date, minDate?: Date, maxDate?: Date) => {
   if (
     (minDate && isBefore(date, minDate)) ||

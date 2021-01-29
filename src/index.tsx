@@ -5,6 +5,7 @@ import isEqual from 'react-fast-compare';
 import { Input as SUIInput } from 'semantic-ui-react';
 import {
   formatSelectedDate,
+  keys,
   moveElementsByN,
   omit,
   onlyNumbers,
@@ -196,6 +197,10 @@ class SemanticDatepicker extends React.Component<
       selectedDateFormatted: '',
     };
 
+    if (keepOpenOnClear) {
+      this.focusOnInput();
+    }
+
     this.setState(newState, () => {
       onChange(event, { ...this.props, value: null });
     });
@@ -218,8 +223,7 @@ class SemanticDatepicker extends React.Component<
   keydownCb = (keydownEvent) => {
     const { isVisible } = this.state;
 
-    if (keydownEvent.keyCode === 27 && isVisible) {
-      // Escape
+    if (keydownEvent.keyCode === keys.escape && isVisible) {
       this.close();
     }
   };
@@ -381,8 +385,7 @@ class SemanticDatepicker extends React.Component<
   };
 
   handleKeyDown = (evt) => {
-    // If the Enter key was pressed...
-    if (evt.keyCode === 13) {
+    if (evt.keyCode === keys.enter) {
       this.handleBlur();
     }
   };
