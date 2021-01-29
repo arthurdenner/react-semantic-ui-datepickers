@@ -39,16 +39,16 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
     'clndr-cell-selected': selected,
   });
 
-  if (!children || !selectable) {
+  if (!children) {
     return (
-      <span className={className} {...otherProps} tabIndex={children ? 0 : -1}>
+      <span className={className} tabIndex={children ? 0 : -1} {...otherProps}>
         {children}
       </span>
     );
   }
 
   return (
-    <button className={className} {...otherProps}>
+    <button className={className} disabled={!selectable} {...otherProps}>
       {children}
     </button>
   );

@@ -43,6 +43,7 @@ export type PickedDayzedProps = Pick<
 
 export type PickedFormInputProps = Pick<
   FormInputProps,
+  | 'autoFocus'
   | 'className'
   | 'disabled'
   | 'error'
@@ -73,7 +74,8 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     inline: boolean;
     inverted: boolean;
     locale: LocaleOptions;
-    onBlur: (event?: React.SyntheticEvent) => void;
+    onBlur: (event: React.SyntheticEvent) => void;
+    onFocus: (event: React.SyntheticEvent) => void;
     onChange: (
       event: React.SyntheticEvent | undefined,
       data: SemanticDatepickerProps
