@@ -9,6 +9,10 @@ type InputProps = FormInputProps & {
   isClearIconVisible: boolean;
 };
 
+const inputData = {
+  'data-testid': 'datepicker-input',
+};
+
 const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
   const {
     clearIcon,
@@ -26,7 +30,6 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
     <Form.Field required={required}>
       {label && <label htmlFor={rest.id as string | undefined}>{label}</label>}
       <Input
-        data-testid="datepicker-input"
         {...rest}
         ref={ref}
         required={required}
@@ -36,9 +39,9 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
             icon={icon}
             isClearIconVisible={isClearIconVisible}
             onClear={onClear}
-            onClick={onFocus}
           />
         }
+        input={inputData}
         onFocus={onFocus}
         value={value}
       />

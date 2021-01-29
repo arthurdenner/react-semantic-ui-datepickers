@@ -22,3 +22,13 @@ it('onChange is fired when invalid date is typed', () => {
   expect(onBlur).not.toHaveBeenCalled();
   expect(onChange).toHaveBeenCalledTimes(2);
 });
+
+it('onFocus is fired when input is focused', () => {
+  const onFocus = jest.fn();
+  const { datePickerInput, openDatePicker } = setup({ onFocus });
+
+  openDatePicker();
+
+  expect(datePickerInput).toHaveFocus();
+  expect(onFocus).toHaveBeenCalled();
+});

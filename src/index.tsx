@@ -89,6 +89,7 @@ class SemanticDatepicker extends React.Component<
     name: undefined,
     onBlur: () => {},
     onChange: () => {},
+    onFocus: () => {},
     placeholder: undefined,
     pointing: 'left',
     readOnly: false,
@@ -243,7 +244,9 @@ class SemanticDatepicker extends React.Component<
   };
 
   showCalendar = (event) => {
-    event.preventDefault();
+    const { onFocus } = this.props;
+
+    onFocus(event);
     window.addEventListener('mousedown', this.mousedownCb);
     window.addEventListener('keydown', this.keydownCb);
 

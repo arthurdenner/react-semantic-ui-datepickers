@@ -103,9 +103,7 @@ describe('Basic datepicker', () => {
 
   describe('with datePickerOnly', () => {
     it('does not accept input', async () => {
-      const { getByTestId } = setup({ datePickerOnly: true });
-      const datePickerInput = getByTestId('datepicker-input')
-        .firstChild as HTMLInputElement;
+      const { datePickerInput } = setup({ datePickerOnly: true });
 
       expect(datePickerInput.readOnly).toBeTruthy();
     });
@@ -199,14 +197,14 @@ describe('Basic datepicker', () => {
   });
 
   it('reset its state on clear', () => {
-    const { datePickerInput, getByTestId, getByText, openDatePicker } = setup();
+    const { datePickerInput, getByText, getIcon, openDatePicker } = setup();
 
     openDatePicker();
     fireEvent.click(getByText('Today'));
 
     expect(datePickerInput.value).not.toBe('');
 
-    fireEvent.click(getByTestId('datepicker-icon'));
+    fireEvent.click(getIcon());
 
     expect(datePickerInput.value).toBe('');
   });
@@ -405,7 +403,7 @@ describe('Range datepicker', () => {
   });
 
   it('reset its state on clear', () => {
-    const { datePickerInput, getByTestId, getByText, openDatePicker } = setup({
+    const { datePickerInput, getByText, getIcon, openDatePicker } = setup({
       type: 'range',
     });
 
@@ -414,7 +412,7 @@ describe('Range datepicker', () => {
 
     expect(datePickerInput.value).not.toBe('');
 
-    fireEvent.click(getByTestId('datepicker-icon'));
+    fireEvent.click(getIcon());
 
     expect(datePickerInput.value).toBe('');
   });
@@ -483,7 +481,9 @@ describe('Inline datepicker', () => {
   describe('Custom icons', () => {
     it('should allow for custom Semantic UI icons', () => {
       const icon = 'search';
-      const { getByText, getIcon, openDatePicker } = setup({ icon });
+      const { getByText, getIcon, openDatePicker } = setup({
+        icon,
+      });
 
       // Assert custom icon
       expect(getIcon()).toHaveClass(icon, 'icon');
@@ -516,7 +516,9 @@ describe('Inline datepicker', () => {
 
     it('should allow for custom clear Semantic UI icons', () => {
       const clearIcon = 'ban';
-      const { getByText, getIcon, openDatePicker } = setup({ clearIcon });
+      const { getByText, getIcon, openDatePicker } = setup({
+        clearIcon,
+      });
 
       // Select current date
       openDatePicker();

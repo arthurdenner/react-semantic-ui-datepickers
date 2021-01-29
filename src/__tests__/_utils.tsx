@@ -7,16 +7,16 @@ export const setup = (props: Partial<SemanticDatepickerProps> = {}) => {
   const options = render(<DatePicker onChange={jest.fn()} {...props} />);
   const getQuery = props.inline ? options.queryByTestId : options.getByTestId;
   const getIcon = () => options.getByTestId('datepicker-icon');
+  const datePickerInput = getQuery('datepicker-input') as HTMLInputElement;
 
   return {
     ...options,
+    datePickerInput,
     getIcon,
-    openDatePicker: () => fireEvent.click(getIcon()),
+    openDatePicker: () => fireEvent.focus(datePickerInput),
     rerender: (newProps?: Partial<SemanticDatepickerProps>) =>
       options.rerender(
         <DatePicker onChange={jest.fn()} {...props} {...newProps} />
       ),
-    datePickerInput: getQuery('datepicker-input')
-      ?.firstChild as HTMLInputElement,
   };
 };
