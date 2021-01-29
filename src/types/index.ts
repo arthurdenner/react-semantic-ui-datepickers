@@ -43,6 +43,7 @@ export type PickedDayzedProps = Pick<
 
 export type PickedFormInputProps = Pick<
   FormInputProps,
+  | 'autoFocus'
   | 'className'
   | 'disabled'
   | 'error'

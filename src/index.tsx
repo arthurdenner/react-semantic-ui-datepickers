@@ -24,6 +24,7 @@ const style: React.CSSProperties = {
 };
 const semanticInputProps = [
   'autoComplete',
+  'autoFocus',
   'className',
   'clearIcon',
   'disabled',
@@ -73,6 +74,7 @@ class SemanticDatepicker extends React.Component<
 > {
   static defaultProps: SemanticDatepickerProps = {
     allowOnlyNumbers: false,
+    autoFocus: false,
     clearIcon: 'close',
     clearOnSameDateClick: true,
     clearable: true,
