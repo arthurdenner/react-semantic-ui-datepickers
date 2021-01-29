@@ -1,4 +1,4 @@
-import { parseISO } from 'date-fns';
+import parseISO from 'date-fns/parseISO';
 import startOfDay from 'date-fns/startOfDay';
 import localeEn from '../locales/en-US.json';
 import {

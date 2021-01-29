@@ -26,7 +26,7 @@ describe('Basic datepicker', () => {
       expect(getByText('Today')).toBeDefined();
       fireEvent.keyDown(getByText('Today'), { keyCode: 27 });
       expect(queryByText('Today')).toBeNull();
-      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it('ignore keys different from Enter', async () => {
@@ -41,7 +41,7 @@ describe('Basic datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(1);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it('accepts valid input followed by Enter key', async () => {
@@ -50,8 +50,7 @@ describe('Basic datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('2020-02-02');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it("doesn't accept invalid input followed by Enter key", async () => {
@@ -60,8 +59,7 @@ describe('Basic datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
   });
 
@@ -105,9 +103,7 @@ describe('Basic datepicker', () => {
 
   describe('with datePickerOnly', () => {
     it('does not accept input', async () => {
-      const { getByTestId } = setup({ datePickerOnly: true });
-      const datePickerInput = getByTestId('datepicker-input')
-        .firstChild as HTMLInputElement;
+      const { datePickerInput } = setup({ datePickerOnly: true });
 
       expect(datePickerInput.readOnly).toBeTruthy();
     });
@@ -201,14 +197,19 @@ describe('Basic datepicker', () => {
   });
 
   it('reset its state on clear', () => {
-    const { datePickerInput, getByTestId, getByText, openDatePicker } = setup();
+    const {
+      datePickerInput,
+      getByText,
+      getClearIcon,
+      openDatePicker,
+    } = setup();
 
     openDatePicker();
     fireEvent.click(getByText('Today'));
 
     expect(datePickerInput.value).not.toBe('');
 
-    fireEvent.click(getByTestId('datepicker-icon'));
+    fireEvent.click(getClearIcon());
 
     expect(datePickerInput.value).toBe('');
   });
@@ -251,7 +252,7 @@ describe('Basic datepicker', () => {
       expect(datePickerInput.value).not.toBe('');
       fireEvent.click(getByText('Today'));
       expect(datePickerInput.value).not.toBe('');
-      expect(onBlur).not.toHaveBeenCalled();
+      expect(onBlur).toHaveBeenCalledTimes(1);
     });
   });
 
@@ -298,8 +299,7 @@ describe('Range datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('2020-02-02');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
 
     it("doesn't accept invalid input followed by Enter key", async () => {
@@ -308,8 +308,7 @@ describe('Range datepicker', () => {
       fireEvent.keyDown(datePickerInput, { keyCode: 13 });
 
       expect(datePickerInput.value).toBe('');
-      expect(onBlur).toHaveBeenCalledTimes(1);
-      expect(onBlur).toHaveBeenCalledWith(undefined);
+      expect(onBlur).not.toHaveBeenCalled();
     });
   });
 
@@ -331,7 +330,7 @@ describe('Range datepicker', () => {
     const tomorrowCell = getByTestId(RegExp(tomorrow));
 
     fireEvent.click(todayCell);
-    expect(onBlur).toHaveBeenCalledTimes(0);
+    expect(onBlur).toHaveBeenCalledTimes(1);
 
     fireEvent.click(tomorrowCell);
     expect(onBlur).toHaveBeenCalledTimes(1);
@@ -409,7 +408,7 @@ describe('Range datepicker', () => {
   });
 
   it('reset its state on clear', () => {
-    const { datePickerInput, getByTestId, getByText, openDatePicker } = setup({
+    const { datePickerInput, getByText, getClearIcon, openDatePicker } = setup({
       type: 'range',
     });
 
@@ -418,7 +417,7 @@ describe('Range datepicker', () => {
 
     expect(datePickerInput.value).not.toBe('');
 
-    fireEvent.click(getByTestId('datepicker-icon'));
+    fireEvent.click(getClearIcon());
 
     expect(datePickerInput.value).toBe('');
   });
@@ -487,7 +486,9 @@ describe('Inline datepicker', () => {
   describe('Custom icons', () => {
     it('should allow for custom Semantic UI icons', () => {
       const icon = 'search';
-      const { getByText, getIcon, openDatePicker } = setup({ icon });
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
+        icon,
+      });
 
       // Assert custom icon
       expect(getIcon()).toHaveClass(icon, 'icon');
@@ -495,14 +496,14 @@ describe('Inline datepicker', () => {
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert datepicker is clearable
-      expect(getIcon()).toHaveClass('close', 'icon');
-      fireEvent.click(getIcon());
+      expect(getClearIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon()).toHaveClass(icon, 'icon');
     });
 
     it('should allow for custom icon components', () => {
-      const { getByText, getIcon, openDatePicker } = setup({
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
         icon: <span>Custom icon</span>,
       });
 
@@ -512,30 +513,32 @@ describe('Inline datepicker', () => {
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert datepicker is clearable
-      expect(getIcon()).toHaveClass('close', 'icon');
-      fireEvent.click(getIcon());
+      expect(getClearIcon()).toHaveClass('close', 'icon');
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon().textContent).toBe('Custom icon');
     });
 
     it('should allow for custom clear Semantic UI icons', () => {
       const clearIcon = 'ban';
-      const { getByText, getIcon, openDatePicker } = setup({ clearIcon });
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
+        clearIcon,
+      });
 
       // Select current date
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert custom icon
-      expect(getIcon()).toHaveClass(clearIcon, 'icon');
+      expect(getClearIcon()).toHaveClass(clearIcon, 'icon');
       // Assert datepicker is clearable
-      fireEvent.click(getIcon());
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon()).toHaveClass('calendar', 'icon');
     });
 
     it('should allow for custom clear icon components', () => {
       const customClearIcon = <span>Custom icon</span>;
-      const { getByText, getIcon, openDatePicker } = setup({
+      const { getByText, getClearIcon, getIcon, openDatePicker } = setup({
         clearIcon: customClearIcon,
       });
 
@@ -543,9 +546,9 @@ describe('Inline datepicker', () => {
       openDatePicker();
       fireEvent.click(getByText('Today'));
       // Assert custom icon
-      expect(getIcon().textContent).toBe('Custom icon');
+      expect(getClearIcon().textContent).toBe('Custom icon');
       // Assert datepicker is clearable
-      fireEvent.click(getIcon());
+      fireEvent.click(getClearIcon());
       // Assert datepicker was cleared
       expect(getIcon()).toHaveClass('calendar', 'icon');
     });
