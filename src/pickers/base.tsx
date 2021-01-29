@@ -8,61 +8,59 @@ class BaseDatePicker extends React.Component<BaseDatePickerProps> {
     offset: 0,
   };
 
-  rootNode = React.createRef<HTMLElement>();
+  rootNode = React.createRef<HTMLDivElement>();
 
   handleArrowKeys = getArrowKeyHandlers({
-    left: () => {
-      this.getKeyOffset(-1);
-    },
-    right: () => {
-      this.getKeyOffset(1);
-    },
-    up: () => {
-      this.getKeyOffset(-7);
-    },
-    down: () => {
-      this.getKeyOffset(7);
-    },
+    left: () => this.getKeyOffset(-1),
+    right: () => this.getKeyOffset(1),
+    up: () => this.getKeyOffset(-7),
+    down: () => this.getKeyOffset(7),
   });
 
-  getKeyOffset(number) {
+  getKeyOffset(number: number) {
     if (!this.rootNode.current) {
       return;
     }
 
-    const e = document.activeElement;
-    const buttons = this.rootNode.current.querySelectorAll('button');
-    buttons.forEach((el, i) => {
+    const activeEl = document.activeElement;
+    const buttons = Array.from(
+      this.rootNode.current.querySelectorAll<HTMLButtonElement>(
+        'button:not(:disabled)'
+      )
+    );
+
+    buttons.some((btn, i) => {
       const newNodeKey = i + number;
-      if (el === e) {
-        if (newNodeKey <= buttons.length - 1 && newNodeKey >= 0) {
-          buttons[newNodeKey].focus();
-        } else {
-          buttons[0].focus();
-        }
+
+      if (btn !== activeEl) {
+        return false;
       }
+
+      if (newNodeKey <= buttons.length - 1 && newNodeKey >= 0) {
+        buttons[newNodeKey].focus();
+        return true;
+      }
+
+      buttons[0].focus();
+      return true;
     });
   }
 
-  setRootNode = (ref) => {
-    this.rootNode = ref;
-  };
-
   getRootProps = ({ refKey = 'ref', ...rest } = {}) => {
     return {
-      [refKey]: this.setRootNode,
+      [refKey]: this.rootNode,
       onKeyDown: this.handleArrowKeys,
       ...rest,
     };
   };
 
-  _handleOffsetChanged = (offset) => {
+  _handleOffsetChanged = (offset: number) => {
     this.setState({
       offset,
     });
   };
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: BaseDatePickerProps) {
     if (this.props.date !== prevProps.date) {
       this._handleOffsetChanged(0);
     }

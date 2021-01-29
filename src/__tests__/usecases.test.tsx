@@ -1,5 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import subDays from 'date-fns/subDays';
+import { getShortDate } from '../utils';
 import { setup } from './_utils';
 
 it('onChange is fired when invalid date is typed', () => {
@@ -31,4 +33,34 @@ it('onFocus is fired when input is focused', () => {
 
   expect(datePickerInput).toHaveFocus();
   expect(onFocus).toHaveBeenCalled();
+});
+
+it('navigation with keyboard is possible', () => {
+  const now = new Date();
+  const today = getShortDate(now)!;
+  const yesterday = getShortDate(subDays(now, 1))!;
+  const eightDaysAgo = getShortDate(subDays(now, 8))!;
+  const sevenDaysAgo = getShortDate(subDays(now, 7))!;
+  const { getByTestId } = setup({
+    autoFocus: true,
+    keepOpenOnSelect: true,
+    showOutsideDays: true,
+  });
+
+  const todayCell = getByTestId(RegExp(today));
+
+  fireEvent.click(todayCell);
+  expect(todayCell).toHaveFocus();
+
+  fireEvent.keyDown(document.activeElement!, { keyCode: 37 });
+  expect(getByTestId(RegExp(yesterday))).toHaveFocus();
+
+  fireEvent.keyDown(document.activeElement!, { keyCode: 38 });
+  expect(getByTestId(RegExp(eightDaysAgo))).toHaveFocus();
+
+  fireEvent.keyDown(document.activeElement!, { keyCode: 39 });
+  expect(getByTestId(RegExp(sevenDaysAgo))).toHaveFocus();
+
+  fireEvent.keyDown(document.activeElement!, { keyCode: 40 });
+  expect(todayCell).toHaveFocus();
 });

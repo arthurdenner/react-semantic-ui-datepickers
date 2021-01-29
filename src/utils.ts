@@ -1,7 +1,7 @@
-import { convertTokens } from '@date-fns/upgrade/v2';
-import { parse } from 'date-fns';
+import { convertTokens } from '@date-fns/upgrade/v2/convertTokens';
 import format from 'date-fns/format';
 import isBefore from 'date-fns/isBefore';
+import parse from 'date-fns/parse';
 import startOfDay from 'date-fns/startOfDay';
 import { DateObj } from 'dayzed';
 import { Object } from './types';
@@ -97,5 +97,5 @@ export function getShortDate(date?: Date) {
     return undefined;
   }
 
-  return date.toISOString().slice(0, 10);
+  return format(date, 'yyyy-MM-dd');
 }
