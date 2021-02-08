@@ -44,7 +44,7 @@
     "react-fast-compare": "3.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.12.10",
+    "@babel/core": "7.12.13",
     "@storybook/addon-knobs": "6.1.15",
     "@storybook/addons": "6.1.15",
     "@storybook/react": "6.1.15",
