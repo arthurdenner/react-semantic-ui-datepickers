@@ -1,0 +1,30 @@
+{
+  "todayButton": "Vandaag",
+  "nextMonth": "Volgende maand",
+  "previousMonth": "Vorige maand",
+  "nextYear": "Volgende jaar",
+  "previousYear": "Vorige jaar",
+  "weekdays": [
+    "zondag",
+    "maandag",
+    "dinsdag",
+    "woensdag",
+    "donderdag",
+    "vrijdag",
+    "zaterdag"
+  ],
+  "months": [
+    "januari",
+    "februari",
+    "maart",
+    "april",
+    "mei",
+    "juni",
+    "juli",
+    "augustus",
+    "september",
+    "oktober",
+    "november",
+    "december"
+  ]
+}
