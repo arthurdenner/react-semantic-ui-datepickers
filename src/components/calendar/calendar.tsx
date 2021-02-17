@@ -125,7 +125,7 @@ const Calendar: React.FC<CalendarProps> = ({
                 </div>
 
                 <span title={`${months[calendar.month]} ${calendar.year}`}>
-                  {months[calendar.month].slice(0, 3)} {calendar.year}
+                  {months[calendar.month].slice(0, 10)} {calendar.year}
                 </span>
 
                 <div style={styles.rightBtn}>
