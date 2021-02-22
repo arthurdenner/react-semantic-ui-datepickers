@@ -67,7 +67,7 @@
     "rimraf": "3.0.2",
     "rollup-plugin-copy": "3.3.0",
     "rollup-plugin-postcss": "3.1.8",
-    "rollup-plugin-typescript2": "0.29.0",
+    "rollup-plugin-typescript2": "0.30.0",
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "2.0.3",
     "tsdx": "0.13.3",
