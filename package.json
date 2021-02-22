@@ -37,7 +37,7 @@
     "@babel/runtime": "7.12.18",
     "@date-fns/upgrade": "1.0.3",
     "classnames": "2.2.6",
-    "core-js": "3.8.3",
+    "core-js": "3.9.0",
     "date-fns": "2.17.0",
     "dayzed": "3.2.1",
     "format-string-by-pattern": "1.2.2",
