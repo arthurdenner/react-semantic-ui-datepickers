@@ -47,6 +47,7 @@ export const basicUsage = () => {
   const maxDate = new Date(date('Max date', new Date('2030-01-01')));
   const onlyWeekdays = boolean('Only weekdays (filterDate example)', false);
   const controlValue = boolean('Control value', false);
+  const error = boolean('Error state', false);
   const initialValue = controlValue
     ? type === 'basic'
       ? new Date(date('Initial value'))
@@ -64,6 +65,7 @@ export const basicUsage = () => {
         clearOnSameDateClick={clearOnSameDateClick}
         clearable={clearable}
         datePickerOnly={datePickerOnly}
+        error={error}
         filterDate={filterDate}
         firstDayOfWeek={firstDayOfWeek}
         format={format}
