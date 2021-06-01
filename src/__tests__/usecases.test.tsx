@@ -1,6 +1,7 @@
 import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import subDays from 'date-fns/subDays';
+import tk from 'timekeeper';
 import { getShortDate } from '../utils';
 import { setup } from './_utils';
 
@@ -36,6 +37,10 @@ it('onFocus is fired when input is focused', () => {
 });
 
 it('navigation with keyboard is possible', () => {
+  const frozenDate = new Date('2021-01-24');
+
+  tk.freeze(frozenDate);
+
   const now = new Date();
   const today = getShortDate(now)!;
   const yesterday = getShortDate(subDays(now, 1))!;
@@ -43,6 +48,7 @@ it('navigation with keyboard is possible', () => {
   const sevenDaysAgo = getShortDate(subDays(now, 7))!;
   const { getByTestId } = setup({
     autoFocus: true,
+    date: frozenDate,
     keepOpenOnSelect: true,
     showOutsideDays: true,
   });
@@ -63,4 +69,6 @@ it('navigation with keyboard is possible', () => {
 
   fireEvent.keyDown(document.activeElement!, { keyCode: 40 });
   expect(todayCell).toHaveFocus();
+
+  tk.reset();
 });
