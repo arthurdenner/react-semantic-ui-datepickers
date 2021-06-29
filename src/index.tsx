@@ -22,6 +22,7 @@ const style: React.CSSProperties = {
   display: 'inline-block',
   position: 'relative',
 };
+
 const semanticInputProps = [
   'autoComplete',
   'autoFocus',
@@ -152,11 +153,11 @@ class SemanticDatepicker extends React.Component<
     };
   }
 
-  get date() {
+  get date(): Date | undefined {
     const { selectedDate } = this.state;
     const { date } = this.props;
 
-    if (!selectedDate) {
+    if (date || !selectedDate) {
       return date;
     }
 
