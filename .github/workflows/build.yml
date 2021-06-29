@@ -1,7 +1,7 @@
 name: Run checks
 on:
   push:
-    branches: [master]
+    branches: [beta, master]
   pull_request:
     branches: [develop]
 jobs:
