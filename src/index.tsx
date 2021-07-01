@@ -288,12 +288,8 @@ class SemanticDatepicker extends React.Component<
   };
 
   handleBasicInput = (newDate, event) => {
-    const {
-      format,
-      keepOpenOnSelect,
-      onChange,
-      clearOnSameDateClick,
-    } = this.props;
+    const { format, keepOpenOnSelect, onChange, clearOnSameDateClick } =
+      this.props;
 
     if (!newDate) {
       // if clearOnSameDateClick is true (this is the default case)
