@@ -197,12 +197,8 @@ describe('Basic datepicker', () => {
   });
 
   it('reset its state on clear', () => {
-    const {
-      datePickerInput,
-      getByText,
-      getClearIcon,
-      openDatePicker,
-    } = setup();
+    const { datePickerInput, getByText, getClearIcon, openDatePicker } =
+      setup();
 
     openDatePicker();
     fireEvent.click(getByText('Today'));
