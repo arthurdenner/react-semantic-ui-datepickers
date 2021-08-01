@@ -14,6 +14,8 @@ import {
   pick,
 } from '../utils';
 
+const ruLocale = require('date-fns/locale/ru')
+
 const objectTest = { a: 'a', b: 'b', c: 'c' };
 const dateTestString = '2018-06-21';
 const dateTest = parseISO(dateTestString);
@@ -72,11 +74,15 @@ describe('pick', () => {
 
 describe('formatDate', () => {
   it('should return `undefined` if an invalid date is given', () => {
-    expect(formatDate(null, 'DD/MM/YYYY')).toBe(undefined);
+    expect(formatDate(null, 'DD/MM/YYYY', null)).toBe(undefined);
   });
 
   it('should format correctly if a valid date is given', () => {
-    expect(formatDate(dateTest, 'DD/MM/YYYY')).toBe('21/06/2018');
+    expect(formatDate(dateTest, 'DD/MM/YYYY', null)).toBe('21/06/2018');
+  });
+
+  it('should format correctly if a valid date is given', () => {
+    expect(formatDate(dateTest, 'EEE, d MMM YYYY', {locale: ruLocale})).toBe('чтв, 4 июнь 2018');
   });
 });
 
@@ -138,16 +144,22 @@ describe('getToday', () => {
 
 describe('formatSelectedDate', () => {
   it('should return an empty string if an invalid date is given', () => {
-    expect(formatSelectedDate(null, 'DD/MM/YYYY')).toBe('');
+    expect(formatSelectedDate(null, 'DD/MM/YYYY', null)).toBe('');
   });
 
   it('should return the correct result if a valid date is given', () => {
-    expect(formatSelectedDate(june14, 'DD/MM/YYYY')).toBe('14/06/2018');
+    expect(formatSelectedDate(june14, 'DD/MM/YYYY', null)).toBe('14/06/2018');
   });
 
   it('should return the correct result if a valid array of dates is given', () => {
-    expect(formatSelectedDate([june14, june20], 'DD/MM/YYYY')).toBe(
+    expect(formatSelectedDate([june14, june20], 'DD/MM/YYYY', null)).toBe(
       '14/06/2018 - 20/06/2018'
+    );
+  });
+
+  it('should return the correct result if a valid array of dates is given', () => {
+    expect(formatSelectedDate([june14, june20], 'EEE, d MMM YYYY', {locale:ruLocale})).toBe(
+        'чтв, 4 июнь 2018 - срд, 3 июнь 2018'
     );
   });
 });

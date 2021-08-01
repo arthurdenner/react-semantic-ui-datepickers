@@ -83,6 +83,7 @@ class SemanticDatepicker extends React.Component<
     filterDate: () => true,
     firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
+    formatOptions: null,
     icon: 'calendar',
     id: undefined,
     inline: false,
@@ -126,14 +127,14 @@ class SemanticDatepicker extends React.Component<
   }
 
   get initialState() {
-    const { format, value } = this.props;
+    const { format, value, formatOptions } = this.props;
     const initialSelectedDate = this.isRangeInput ? [] : null;
 
     return {
       isVisible: false,
       locale: this.locale,
       selectedDate: value || initialSelectedDate,
-      selectedDateFormatted: formatSelectedDate(value, format),
+      selectedDateFormatted: formatSelectedDate(value, format, formatOptions),
       typedValue: null,
     };
   }
@@ -264,7 +265,7 @@ class SemanticDatepicker extends React.Component<
   };
 
   handleRangeInput = (newDates, event) => {
-    const { format, keepOpenOnSelect, onChange } = this.props;
+    const { format, keepOpenOnSelect, onChange, formatOptions } = this.props;
 
     if (!newDates || !newDates.length) {
       this.resetState(event);
@@ -274,7 +275,7 @@ class SemanticDatepicker extends React.Component<
 
     const newState = {
       selectedDate: newDates,
-      selectedDateFormatted: formatSelectedDate(newDates, format),
+      selectedDateFormatted: formatSelectedDate(newDates, format, formatOptions),
       typedValue: null,
     };
 
@@ -288,7 +289,7 @@ class SemanticDatepicker extends React.Component<
   };
 
   handleBasicInput = (newDate, event) => {
-    const { format, keepOpenOnSelect, onChange, clearOnSameDateClick } =
+    const { format, keepOpenOnSelect, onChange, clearOnSameDateClick, formatOptions } =
       this.props;
 
     if (!newDate) {
@@ -313,7 +314,7 @@ class SemanticDatepicker extends React.Component<
     const newState = {
       isVisible: keepOpenOnSelect,
       selectedDate: newDate,
-      selectedDateFormatted: formatSelectedDate(newDate, format),
+      selectedDateFormatted: formatSelectedDate(newDate, format, formatOptions),
       typedValue: null,
     };
 

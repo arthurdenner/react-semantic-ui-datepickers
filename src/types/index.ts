@@ -68,6 +68,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     clearIcon?: SemanticICONS | React.ReactElement;
     filterDate: (date: Date) => boolean;
     format: string;
+    formatOptions: Object | null;
     keepOpenOnClear: boolean;
     keepOpenOnSelect: boolean;
     icon?: SemanticICONS | React.ReactElement;
