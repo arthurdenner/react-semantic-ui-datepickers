@@ -57,7 +57,7 @@
     "babel-loader": "8.2.2",
     "cssnano": "4.1.11",
     "eslint-plugin-prettier": "3.4.0",
-    "husky": "6.0.0",
+    "husky": "7.0.1",
     "jest-transform-css": "2.1.0",
     "prettier": "2.3.2",
     "pretty-quick": "3.1.1",
