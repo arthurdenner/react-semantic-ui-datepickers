@@ -14,10 +14,10 @@ jobs:
           access_token: ${{ github.token }}
       - name: Checkout code
         uses: actions/checkout@v1
-      - name: Install Node.js 10
+      - name: Install Node.js 12
         uses: actions/setup-node@v1
         with:
-          node-version: 10
+          node-version: 12
       - name: Setup cache
         uses: bahmutov/npm-install@HEAD
       - name: Install dependencies
