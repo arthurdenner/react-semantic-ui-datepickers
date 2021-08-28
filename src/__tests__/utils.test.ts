@@ -74,14 +74,14 @@ describe('pick', () => {
 
 describe('formatDate', () => {
   it('should return `undefined` if an invalid date is given', () => {
-    expect(formatDate(null, 'DD/MM/YYYY', null)).toBe(undefined);
+    expect(formatDate(null, 'DD/MM/YYYY')).toBe(undefined);
   });
 
-  it('should format correctly if a valid date is given', () => {
-    expect(formatDate(dateTest, 'DD/MM/YYYY', null)).toBe('21/06/2018');
+  it('should format correctly if a valid date and a locale are not given', () => {
+    expect(formatDate(dateTest, 'DD/MM/YYYY')).toBe('21/06/2018');
   });
 
-  it('should format correctly if a valid date is given', () => {
+  it('should format correctly if a valid date and a locale are given', () => {
     expect(formatDate(dateTest, 'EEE, d MMM YYYY', {locale: ruLocale})).toBe('чтв, 4 июнь 2018');
   });
 });
@@ -144,15 +144,15 @@ describe('getToday', () => {
 
 describe('formatSelectedDate', () => {
   it('should return an empty string if an invalid date is given', () => {
-    expect(formatSelectedDate(null, 'DD/MM/YYYY', null)).toBe('');
+    expect(formatSelectedDate(null, 'DD/MM/YYYY')).toBe('');
   });
 
   it('should return the correct result if a valid date is given', () => {
-    expect(formatSelectedDate(june14, 'DD/MM/YYYY', null)).toBe('14/06/2018');
+    expect(formatSelectedDate(june14, 'DD/MM/YYYY')).toBe('14/06/2018');
   });
 
   it('should return the correct result if a valid array of dates is given', () => {
-    expect(formatSelectedDate([june14, june20], 'DD/MM/YYYY', null)).toBe(
+    expect(formatSelectedDate([june14, june20], 'DD/MM/YYYY')).toBe(
       '14/06/2018 - 20/06/2018'
     );
   });

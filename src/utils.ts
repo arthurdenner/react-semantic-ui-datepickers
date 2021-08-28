@@ -4,7 +4,7 @@ import isBefore from 'date-fns/isBefore';
 import parse from 'date-fns/parse';
 import startOfDay from 'date-fns/startOfDay';
 import { DateObj } from 'dayzed';
-import { Object } from './types';
+import { Object, FnsFormatOptions } from './types';
 
 export const keys = {
   enter: 13,
@@ -36,8 +36,8 @@ export const getToday = (minDate?: Date, maxDate?: Date): DateObj => {
   };
 };
 
-export const formatDate = (date: Date | null, dateFormat: string, formatOptions: Object | null) =>
-  date ? formatOptions ? format(startOfDay(date), convertTokens(dateFormat), formatOptions): format(startOfDay(date), convertTokens(dateFormat)) : undefined;
+export const formatDate = (date: Date | null, dateFormat: string, formatOptions?: FnsFormatOptions) =>
+  date ? format(startOfDay(date), convertTokens(dateFormat), formatOptions) : undefined;
 
 export const omit = (keysToOmit: string[], obj: Object) => {
   const newObj = { ...obj };
@@ -63,7 +63,7 @@ export const moveElementsByN = <T>(n: number, arr: T[]) =>
 export const formatSelectedDate = (
   selectedDate: Date | Date[] | null | undefined,
   dateFormat: string,
-  formatOptions: Object | null,
+  formatOptions?: FnsFormatOptions,
 ) => {
   if (!selectedDate) {
     return '';

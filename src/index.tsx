@@ -83,7 +83,6 @@ class SemanticDatepicker extends React.Component<
     filterDate: () => true,
     firstDayOfWeek: 0,
     format: 'YYYY-MM-DD',
-    formatOptions: null,
     icon: 'calendar',
     id: undefined,
     inline: false,
