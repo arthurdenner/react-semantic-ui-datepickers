@@ -1,0 +1,30 @@
+{
+  "todayButton": "Astăzi",
+  "nextMonth": "Luna următoare",
+  "previousMonth": "Luna anterioară",
+  "nextYear": "Anul următor",
+  "previousYear": "Anul anterior",
+  "zilele săptămânii": [
+    "Duminică",
+    "Luni",
+    "Marți",
+    "Miercuri",
+    "Joi",
+    "Vineri",
+    "Sâmbătă"
+  ],
+  "luni": [
+    "Ianuarie",
+    "Februarie",
+    "Martie",
+    "Aprilie",
+    "Mai",
+    "Iunie",
+    "Iulie",
+    "August",
+    "Septembrie",
+    "Octombrie",
+    "Noiembrie",
+    "Decembrie"
+  ]
+}
