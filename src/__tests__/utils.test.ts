@@ -14,6 +14,8 @@ import {
   pick,
 } from '../utils';
 
+const ruLocale = require('date-fns/locale/ru')
+
 const objectTest = { a: 'a', b: 'b', c: 'c' };
 const dateTestString = '2018-06-21';
 const dateTest = parseISO(dateTestString);
@@ -75,8 +77,12 @@ describe('formatDate', () => {
     expect(formatDate(null, 'DD/MM/YYYY')).toBe(undefined);
   });
 
-  it('should format correctly if a valid date is given', () => {
+  it('should format correctly if a valid date and a locale are not given', () => {
     expect(formatDate(dateTest, 'DD/MM/YYYY')).toBe('21/06/2018');
+  });
+
+  it('should format correctly if a valid date and a locale are given', () => {
+    expect(formatDate(dateTest, 'EEE, d MMM YYYY', {locale: ruLocale})).toBe('чтв, 4 июнь 2018');
   });
 });
 
@@ -148,6 +154,12 @@ describe('formatSelectedDate', () => {
   it('should return the correct result if a valid array of dates is given', () => {
     expect(formatSelectedDate([june14, june20], 'DD/MM/YYYY')).toBe(
       '14/06/2018 - 20/06/2018'
+    );
+  });
+
+  it('should return the correct result if a valid array of dates is given', () => {
+    expect(formatSelectedDate([june14, june20], 'EEE, d MMM YYYY', {locale:ruLocale})).toBe(
+        'чтв, 4 июнь 2018 - срд, 3 июнь 2018'
     );
   });
 });
