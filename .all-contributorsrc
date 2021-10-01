@@ -201,6 +201,15 @@
       "contributions": [
         "translation"
       ]
+    },
+    {
+      "login": "uchti",
+      "name": "Denis ",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5838665?v=4",
+      "profile": "https://github.com/uchti",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
