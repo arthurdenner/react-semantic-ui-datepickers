@@ -1,4 +1,4 @@
-import {Locale as FnsLocale} from "date-fns";
+import format from 'date-fns/format';
 import { Props as DayzedProps, RenderProps } from 'dayzed';
 import { FormInputProps, SemanticICONS } from 'semantic-ui-react';
 
@@ -60,13 +60,7 @@ export type PickedFormInputProps = Pick<
   | 'readOnly'
 >;
 
-export type FnsFormatOptions = {
-    locale?: FnsLocale
-    weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6
-    firstWeekContainsDate?: number
-    useAdditionalWeekYearTokens?: boolean
-    useAdditionalDayOfYearTokens?: boolean
-};
+export type FnsFormatOptions = Parameters<typeof format>[2];
 
 export type SemanticDatepickerProps = PickedDayzedProps &
   PickedFormInputProps & {

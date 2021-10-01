@@ -36,8 +36,14 @@ export const getToday = (minDate?: Date, maxDate?: Date): DateObj => {
   };
 };
 
-export const formatDate = (date: Date | null, dateFormat: string, formatOptions?: FnsFormatOptions) =>
-  date ? format(startOfDay(date), convertTokens(dateFormat), formatOptions) : undefined;
+export const formatDate = (
+  date: Date | null,
+  dateFormat: string,
+  formatOptions?: FnsFormatOptions
+) =>
+  date
+    ? format(startOfDay(date), convertTokens(dateFormat), formatOptions)
+    : undefined;
 
 export const omit = (keysToOmit: string[], obj: Object) => {
   const newObj = { ...obj };
@@ -63,14 +69,16 @@ export const moveElementsByN = <T>(n: number, arr: T[]) =>
 export const formatSelectedDate = (
   selectedDate: Date | Date[] | null | undefined,
   dateFormat: string,
-  formatOptions?: FnsFormatOptions,
+  formatOptions?: FnsFormatOptions
 ) => {
   if (!selectedDate) {
     return '';
   }
 
   return Array.isArray(selectedDate)
-    ? selectedDate.map((date) => formatDate(date, dateFormat, formatOptions)).join(' - ')
+    ? selectedDate
+        .map((date) => formatDate(date, dateFormat, formatOptions))
+        .join(' - ')
     : formatDate(selectedDate, dateFormat, formatOptions);
 };
 
