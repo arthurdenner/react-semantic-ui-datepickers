@@ -1,6 +1,7 @@
 import parseISO from 'date-fns/parseISO';
 import startOfDay from 'date-fns/startOfDay';
-import localeEn from '../locales/en-US.json';
+import ruLocale from 'date-fns/locale/ru';
+import enLocale from '../locales/en-US.json';
 import {
   formatDate,
   formatSelectedDate,
@@ -24,11 +25,11 @@ const june28 = parseISO('2018-06-28');
 
 describe('moveElementsByN', () => {
   it('should return the same array if `n` is zero', () => {
-    expect(moveElementsByN(0, localeEn.weekdays)).toEqual(localeEn.weekdays);
+    expect(moveElementsByN(0, enLocale.weekdays)).toEqual(enLocale.weekdays);
   });
 
   it('should return the correct array if `n` is different than zero', () => {
-    expect(moveElementsByN(3, localeEn.weekdays)).toEqual([
+    expect(moveElementsByN(3, enLocale.weekdays)).toEqual([
       'Wednesday',
       'Thursday',
       'Friday',
@@ -38,7 +39,7 @@ describe('moveElementsByN', () => {
       'Tuesday',
     ]);
 
-    expect(moveElementsByN(5, localeEn.weekdays)).toEqual([
+    expect(moveElementsByN(5, enLocale.weekdays)).toEqual([
       'Friday',
       'Saturday',
       'Sunday',
@@ -75,8 +76,14 @@ describe('formatDate', () => {
     expect(formatDate(null, 'DD/MM/YYYY')).toBe(undefined);
   });
 
-  it('should format correctly if a valid date is given', () => {
+  it('should format correctly if a valid date and a locale are not given', () => {
     expect(formatDate(dateTest, 'DD/MM/YYYY')).toBe('21/06/2018');
+  });
+
+  it('should format correctly if a valid date and a locale are given', () => {
+    expect(formatDate(dateTest, 'EEE, d MMM YYYY', { locale: ruLocale })).toBe(
+      'чтв, 4 июнь 2018'
+    );
   });
 });
 
@@ -149,6 +156,14 @@ describe('formatSelectedDate', () => {
     expect(formatSelectedDate([june14, june20], 'DD/MM/YYYY')).toBe(
       '14/06/2018 - 20/06/2018'
     );
+  });
+
+  it('should return the correct result if a valid array of dates is given', () => {
+    expect(
+      formatSelectedDate([june14, june20], 'EEE, d MMM YYYY', {
+        locale: ruLocale,
+      })
+    ).toBe('чтв, 4 июнь 2018 - срд, 3 июнь 2018');
   });
 });
 
