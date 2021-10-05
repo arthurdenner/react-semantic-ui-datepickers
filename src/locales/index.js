@@ -6,7 +6,7 @@ import en_US from "./en-US";
 import es_ES from "./es-ES";
 import et_EE from "./et-EE";
 import fi_FI from "./fi-FI";
-import fr_FR from "./fi-FI";
+import fr_FR from "./fr-FR";
 import he_IL from "./he-IL";
 import it_IT from './it-IT';
 import ja_JP from "./ja-JP";
