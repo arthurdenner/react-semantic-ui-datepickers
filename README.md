@@ -177,6 +177,9 @@ Thanks goes to these wonderful people ([emoji key](https://github.com/kentcdodds
     <td align="center"><a href="https://github.com/JorgenVatle"><img src="https://avatars0.githubusercontent.com/u/4034561?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Jørgen Vatle</b></sub></a><br /><a href="#translation-JorgenVatle" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/uchti"><img src="https://avatars.githubusercontent.com/u/5838665?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Denis </b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=uchti" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/kmoutzou"><img src="https://avatars.githubusercontent.com/u/91475713?v=4?s=100" width="100px;" alt=""/><br /><sub><b>kmoutzou</b></sub></a><br /><a href="https://github.com/arthurdenner/react-semantic-ui-datepickers/commits?author=kmoutzou" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
