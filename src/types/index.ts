@@ -89,7 +89,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     pointing: 'left' | 'right' | 'top left' | 'top right';
     required?: boolean;
     showToday: boolean;
-    type: 'basic' | 'range';
+    type: 'basic' | 'range' | 'week';
     datePickerOnly: boolean;
     value: DayzedProps['selected'] | null;
   };
@@ -104,6 +104,11 @@ export interface BasicDatePickerProps extends BaseDatePickerProps {
 }
 
 export interface RangeDatePickerProps extends BaseDatePickerProps {
+  onChange: (event: React.SyntheticEvent, dates: Date[] | null) => void;
+  selected: Date[];
+}
+
+export interface WeekDataPickerProps extends BaseDatePickerProps {
   onChange: (event: React.SyntheticEvent, dates: Date[] | null) => void;
   selected: Date[];
 }

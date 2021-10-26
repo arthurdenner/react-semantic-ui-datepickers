@@ -140,3 +140,24 @@ export const inverted = () => {
     </Content>
   );
 };
+
+export const week = () => {
+  const firstDayOfWeek = number('First Day Of Week', 1, { max: 6, min: 0 });
+  const disabledWeekend = boolean('Disabled Weekend', false);
+
+  return (
+    <Content>
+      <SemanticDatepicker
+        showOutsideDays
+        filterDate={
+          disabledWeekend
+            ? (date) => date.getDay() != 0 && date.getDay() !== 6
+            : undefined
+        }
+        firstDayOfWeek={firstDayOfWeek as 0 | 1 | 2 | 3 | 4 | 5 | 6}
+        onChange={onChange}
+        type="week"
+      />
+    </Content>
+  );
+};

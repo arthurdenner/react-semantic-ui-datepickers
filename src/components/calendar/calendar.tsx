@@ -22,6 +22,8 @@ interface CalendarProps extends RenderProps {
   previousMonth: string;
   previousYear: string;
   showToday: SemanticDatepickerProps['showToday'];
+  type: SemanticDatepickerProps['type'];
+  thisWeekButton: string;
   todayButton: string;
   weekdays: Locale['weekdays'];
 }
@@ -55,7 +57,9 @@ const Calendar: React.FC<CalendarProps> = ({
   previousMonth,
   previousYear,
   showToday,
+  type,
   todayButton,
+  thisWeekButton,
   weekdays,
   pointing,
 }) => {
@@ -210,7 +214,7 @@ const Calendar: React.FC<CalendarProps> = ({
               onClick: onPressBtn,
             })}
           >
-            {todayButton}
+            {(type === 'week' && thisWeekButton) ? thisWeekButton : todayButton}
           </TodayButton>
         )}
       </Segment>

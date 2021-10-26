@@ -13,7 +13,7 @@ import {
   parseRangeOnBlur,
   pick,
 } from './utils';
-import { BasicDatePicker, RangeDatePicker } from './pickers';
+import { BasicDatePicker, RangeDatePicker, WeekDatePicker } from './pickers';
 import { Locale, SemanticDatepickerProps } from './types';
 import Calendar from './components/calendar';
 import Input from './components/input';
@@ -125,9 +125,17 @@ class SemanticDatepicker extends React.Component<
     return this.props.type === 'range';
   }
 
+  get isWeekInput() {
+    return this.props.type === 'week';
+  }
+
+  get isWeekOrRangeInput() {
+    return this.isWeekInput || this.isRangeInput;
+  }
+
   get initialState() {
     const { format, value, formatOptions } = this.props;
-    const initialSelectedDate = this.isRangeInput ? [] : null;
+    const initialSelectedDate = this.isWeekOrRangeInput ? [] : null;
 
     return {
       isVisible: false,
@@ -161,7 +169,7 @@ class SemanticDatepicker extends React.Component<
       return date;
     }
 
-    return this.isRangeInput ? selectedDate[0] : selectedDate;
+    return this.isWeekOrRangeInput ? selectedDate[0] : selectedDate;
   }
 
   get locale() {
@@ -188,7 +196,9 @@ class SemanticDatepicker extends React.Component<
 
   state = this.initialState;
 
-  Component: React.ElementType = this.isRangeInput
+  Component: React.ElementType = this.isWeekInput
+    ? WeekDatePicker
+    : this.isRangeInput
     ? RangeDatePicker
     : BasicDatePicker;
 
@@ -343,7 +353,7 @@ class SemanticDatepicker extends React.Component<
       return;
     }
 
-    if (this.isRangeInput) {
+    if (this.isWeekOrRangeInput) {
       const parsedValue = parseRangeOnBlur(String(typedValue), format);
       const areDatesValid = parsedValue.every(isValid);
 
