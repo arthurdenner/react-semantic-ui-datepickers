@@ -1,0 +1,30 @@
+{
+    "todayButton": "Dnes",
+    "nextMonth": "Budúci mesiac",
+    "previousMonth": "Minulý mesiac",
+    "nextYear": "Budúci rok",
+    "previousYear": "Minulý rok",
+    "weekdays": [
+        "Nedeľa",
+        "Pondelok",
+        "Utorok",
+        "Streda",
+        "Štvrtok",
+        "Piatok",
+        "Sobota"
+    ],
+    "months": [
+        "Január",
+        "Február",
+        "Marec",
+        "Apríl",
+        "Máj",
+        "Jún",
+        "Júl",
+        "August",
+        "September",
+        "Október",
+        "November",
+        "December"
+    ]
+}
