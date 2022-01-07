@@ -296,26 +296,11 @@ class SemanticDatepicker extends React.Component<
       format,
       keepOpenOnSelect,
       onChange,
-      clearOnSameDateClick,
       formatOptions,
     } = this.props;
 
     if (!newDate) {
-      // if clearOnSameDateClick is true (this is the default case)
-      // then reset the state. This is what was previously the default
-      // behavior, without a specific prop.
-      if (clearOnSameDateClick) {
-        this.resetState(event);
-      } else {
-        // Don't reset the state. Instead, close or keep open the
-        // datepicker according to the value of keepOpenOnSelect.
-        // Essentially, follow the default behavior of clicking a date
-        // but without changing the value in state.
-        this.setState({
-          isVisible: keepOpenOnSelect,
-        });
-      }
-
+      this.resetState(event);
       return;
     }
 
