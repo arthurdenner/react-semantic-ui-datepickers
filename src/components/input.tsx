@@ -16,6 +16,7 @@ const inputData = {
 const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
   const {
     clearIcon,
+    error,
     icon,
     isClearIconVisible,
     label,
@@ -27,11 +28,12 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
   } = props;
 
   return (
-    <Form.Field required={required}>
+    <Form.Field error={error} required={required}>
       {label && <label htmlFor={rest.id as string | undefined}>{label}</label>}
       <Input
         {...rest}
         ref={ref}
+        error={error}
         required={required}
         icon={
           <CustomIcon
