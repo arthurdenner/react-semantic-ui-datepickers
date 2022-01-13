@@ -109,25 +109,31 @@ export const withCustomIcons = () => {
   );
 };
 
-export const usageWithForm = () => (
-  <Content>
-    <Form>
-      <Form.Group width="equals">
-        <SemanticDatepicker
-          label="Initial date"
-          id="initialDate"
-          onChange={onChange}
-          required
-        />
-        <SemanticDatepicker
-          label="Final date"
-          id="finalDate"
-          onChange={onChange}
-        />
-      </Form.Group>
-    </Form>
-  </Content>
-);
+export const usageWithForm = () => {
+  const error = boolean('Error state', false);
+
+  return (
+    <Content>
+      <Form>
+        <Form.Group width="equals">
+          <SemanticDatepicker
+            error={error}
+            label="Initial date"
+            id="initialDate"
+            onChange={onChange}
+            required
+          />
+          <SemanticDatepicker
+            error={error}
+            label="Final date"
+            id="finalDate"
+            onChange={onChange}
+          />
+        </Form.Group>
+      </Form>
+    </Content>
+  );
+};
 
 export const inverted = () => {
   const type = select('Type', typeMap, typeMap.basic);
