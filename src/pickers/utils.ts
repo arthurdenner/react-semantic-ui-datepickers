@@ -47,3 +47,30 @@ export function getArrowKeyHandlers(config) {
 export function isInRange(range, date) {
   return range.length === 2 && range[0] <= date && range[1] >= date;
 }
+
+/**
+ * Generates an array of all week dates in the same week for a given date
+ * @param {Date} date a given date
+ * @param {number} firstDayOfWeek first day of the week (e.g. 1 for Monday)
+ */
+export function findWeekDatesForDate(
+  date: Date,
+  firstDayOfWeek: 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined
+) {
+  firstDayOfWeek = firstDayOfWeek !== undefined ? firstDayOfWeek : 0;
+  let weekStartDay = new Date(date.getTime());
+  let dayOfWeek = date.getDay() - firstDayOfWeek;
+
+  if (dayOfWeek < 0) {
+    dayOfWeek = dayOfWeek + 7;
+  }
+  weekStartDay.setDate(date.getDate() - dayOfWeek);
+
+  let dates = [weekStartDay];
+  while (dates.length !== 7) {
+    let nextDay = new Date(dates[dates.length - 1]);
+    nextDay.setDate(nextDay.getDate() + 1);
+    dates.push(nextDay);
+  }
+  return dates;
+}

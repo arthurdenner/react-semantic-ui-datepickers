@@ -1,7 +1,7 @@
 import { ALL_ICONS_IN_ALL_CONTEXTS } from 'semantic-ui-react/src/lib/SUI';
 import { SemanticICONS } from 'semantic-ui-react';
 
-const types = <const>['basic', 'range'];
+const types = <const>['basic', 'range', 'week'];
 const pointing = <const>['left', 'right', 'top left', 'top right'];
 const locale = <const>[
   'bg-BG',
