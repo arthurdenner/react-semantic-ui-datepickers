@@ -99,7 +99,7 @@ export type BaseDatePickerProps = DayzedProps & {
 };
 
 export interface BasicDatePickerProps extends BaseDatePickerProps {
-  clearOnSameDateClick?: boolean
+  clearOnSameDateClick?: boolean;
   onChange: (event: React.SyntheticEvent, date: Date | null) => void;
   selected: Date;
 }

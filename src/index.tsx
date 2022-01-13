@@ -292,12 +292,7 @@ class SemanticDatepicker extends React.Component<
   };
 
   handleBasicInput = (newDate, event) => {
-    const {
-      format,
-      keepOpenOnSelect,
-      onChange,
-      formatOptions,
-    } = this.props;
+    const { format, keepOpenOnSelect, onChange, formatOptions } = this.props;
 
     if (!newDate) {
       this.resetState(event);

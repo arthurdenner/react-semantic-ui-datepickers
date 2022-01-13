@@ -7,7 +7,11 @@ class DatePicker extends React.Component<BasicDatePickerProps> {
     { selectable, date },
     event: React.SyntheticEvent
   ) => {
-    const { clearOnSameDateClick, selected: selectedDate, onChange } = this.props;
+    const {
+      clearOnSameDateClick,
+      selected: selectedDate,
+      onChange,
+    } = this.props;
 
     if (!selectable) {
       return;
