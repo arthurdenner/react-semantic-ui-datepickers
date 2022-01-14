@@ -24,6 +24,7 @@ const locale = <const>[
   'pt-BR',
   'ro-RO',
   'ru-RU',
+  'sk-SK',
   'sv-SE',
   'tr-TR',
   'zh-CN',
