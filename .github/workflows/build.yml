@@ -4,6 +4,7 @@ on:
     branches: [beta, master]
   pull_request:
     branches: [develop]
+  workflow_dispatch:
 jobs:
   run-checks:
     runs-on: ubuntu-latest
