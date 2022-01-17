@@ -1,4 +1,5 @@
 {
+  "extends": "@tsconfig/create-react-app/tsconfig.json",
   "include": ["src", "types"],
   "compilerOptions": {
     "target": "es5",
