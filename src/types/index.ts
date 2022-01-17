@@ -80,7 +80,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     icon?: SemanticICONS | React.ReactElement;
     inline: boolean;
     inverted: boolean;
-    locale: LocaleOptions;
+    locale: LocaleOptions | Locale;
     onBlur: (event: React.SyntheticEvent) => void;
     onFocus: (event: React.SyntheticEvent) => void;
     onChange: (

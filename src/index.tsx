@@ -167,6 +167,16 @@ class SemanticDatepicker extends React.Component<
   get locale() {
     const { locale } = this.props;
 
+    if (typeof locale === 'object') {
+      return locale;
+    }
+
+    if (typeof require === 'undefined') {
+      console.warn(
+        "This environment doesn't support require(). Please use locale as an object."
+      );
+    }
+
     let localeJson: Locale;
 
     try {
