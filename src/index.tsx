@@ -17,6 +17,7 @@ import { BasicDatePicker, RangeDatePicker } from './pickers';
 import { Locale, SemanticDatepickerProps } from './types';
 import Calendar from './components/calendar';
 import Input from './components/input';
+import allLocales from './locales';
 
 const style: React.CSSProperties = {
   display: 'inline-block',
@@ -167,16 +168,25 @@ class SemanticDatepicker extends React.Component<
   get locale() {
     const { locale } = this.props;
 
-    let localeJson: Locale;
+    if (process.env.FORMAT === 'cjs') {
+      let localeJson: Locale;
 
-    try {
-      localeJson = require(`./locales/${locale}.json`);
-    } catch (e) {
-      console.warn(`"${locale}" is not a valid locale`);
-      localeJson = require('./locales/en-US.json');
+      try {
+        localeJson = require(`./locales/${locale}.json`);
+      } catch (e) {
+        console.warn(`"${locale}" is not a valid locale`);
+        localeJson = require('./locales/en-US.json');
+      }
+
+      return localeJson;
+    } else {
+      if (!allLocales.has(locale)) {
+        console.warn(`"${locale}" is not a valid locale`);
+        return allLocales.get('en-US');
+      }
+
+      return allLocales.get(locale);
     }
-
-    return localeJson;
   }
 
   get weekdays() {

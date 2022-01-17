@@ -1,5 +1,6 @@
 const copy = require('rollup-plugin-copy');
 const postcss = require('rollup-plugin-postcss');
+const replace = require('@rollup/plugin-replace');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
@@ -18,6 +19,11 @@ module.exports = {
         extract: options.writeMeta
           ? 'react-semantic-ui-datepickers.css'
           : false,
+      }),
+      replace({
+        // This allows tree-shaking based on the output format
+        'process.env.FORMAT': JSON.stringify(options.format),
+        preventAssignment: true,
       })
     );
 
