@@ -110,4 +110,4 @@ export interface RangeDatePickerProps extends BaseDatePickerProps {
   selected: Date[];
 }
 
-export { DayzedProps, RenderProps };
+export type { DayzedProps, RenderProps };
