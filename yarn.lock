@@ -6292,10 +6292,10 @@ downshift@^6.0.15:
     react-is "^17.0.2"
     tslib "^2.3.0"
 
-dts-cli@1.1.6:
-  version "1.1.6"
-  resolved "https://registry.yarnpkg.com/dts-cli/-/dts-cli-1.1.6.tgz#40981d3ff290647e3638be7b8db902dfd961279b"
-  integrity sha512-2EnhscswhVoNGueKJVJpQS+whHrWcXQ1gtuha/Tkq/zAXOHuYx4X2LnCNDb/NioOo8PuY9eRQ6XqRCEWipEqkQ==
+dts-cli@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/dts-cli/-/dts-cli-1.2.0.tgz#5f891d1d02710d2f404c1c9685bcb4071a93a8dd"
+  integrity sha512-15cUH4CLLG5EC51Tj8vqAHYSJYCqpuG+/FArLAON20daJrZ0ivTstujjU5h5H4ZmI85cY10dLyrSyojSRcKmsA==
   dependencies:
     "@babel/core" "^7.16.7"
     "@babel/helper-module-imports" "^7.16.7"
