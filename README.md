@@ -24,6 +24,7 @@ It supports most props of Form.Input and Dayzed components. Check the [supported
   - [Usage](#usage)
   - [Supported Props](#supported-props)
     - [Own Props](#own-props)
+    - [Form.Field Props](#formfield-props)
     - [Form.Input Props](#forminput-props)
     - [Dayzed Props](#dayzed-props)
   - [Customization](#customization)
@@ -96,6 +97,15 @@ More examples [here](https://react-semantic-ui-datepickers.now.sh).
 | showToday            | boolean                                                       | no       | true                | Hides the "Today" button if false                                                                                                                                           |
 | type                 | string                                                        | no       | basic               | Type of input to render. Available options: 'basic' and 'range'                                                                                                             |
 | value                | Date\|Date[]                                                  | no       | --                  | The value of the datepicker                                                                                                                                                 |
+
+### Form.Field Props
+
+- disabled
+- error
+- fieldClassName &rarr; className
+- inline
+- required
+- width
 
 ### Form.Input Props
 
