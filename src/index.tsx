@@ -18,11 +18,6 @@ import { Locale, SemanticDatepickerProps } from './types';
 import Calendar from './components/calendar';
 import Input from './components/input';
 
-const style: React.CSSProperties = {
-  display: 'inline-block',
-  position: 'relative',
-};
-
 const semanticInputProps = [
   'autoComplete',
   'autoFocus',
@@ -59,6 +54,14 @@ const semanticInputProps = [
   'tabIndex',
   'transparent',
   'readOnly',
+];
+
+const semanticFormFieldProps = [
+  'disabled',
+  'error',
+  'inline',
+  'required',
+  'width',
 ];
 
 type SemanticDatepickerState = {
@@ -150,6 +153,19 @@ class SemanticDatepicker extends React.Component<
     return {
       ...props,
       placeholder,
+    };
+  }
+
+  get fieldProps() {
+    const props = pick(semanticFormFieldProps, this.props);
+    const className =
+      this.props.fieldClassName !== undefined
+        ? this.props.fieldClassName
+        : null;
+
+    return {
+      ...props,
+      className,
     };
   }
 
@@ -428,21 +444,22 @@ class SemanticDatepicker extends React.Component<
     return inline ? (
       datepickerComponent
     ) : (
-      <div className="field" style={style} ref={this.el}>
-        <Input
-          {...this.inputProps}
-          isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
-          onBlur={this.handleBlur}
-          onChange={this.handleChange}
-          onClear={this.clearInput}
-          onFocus={readOnly ? null : this.showCalendar}
-          onKeyDown={this.handleKeyDown}
-          readOnly={readOnly || datePickerOnly}
-          ref={this.inputRef}
-          value={typedValue || selectedDateFormatted}
-        />
+      <Input
+        {...this.inputProps}
+        isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
+        onBlur={this.handleBlur}
+        onChange={this.handleChange}
+        onClear={this.clearInput}
+        onFocus={readOnly ? null : this.showCalendar}
+        onKeyDown={this.handleKeyDown}
+        readOnly={readOnly || datePickerOnly}
+        fieldProps={this.fieldProps}
+        fieldRef={this.el}
+        ref={this.inputRef}
+        value={typedValue || selectedDateFormatted}
+      >
         {isVisible && datepickerComponent}
-      </div>
+      </Input>
     );
   }
 }
