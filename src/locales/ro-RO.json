@@ -4,7 +4,7 @@
   "previousMonth": "Luna anterioară",
   "nextYear": "Anul următor",
   "previousYear": "Anul anterior",
-  "zilele săptămânii": [
+  "weekdays": [
     "Duminică",
     "Luni",
     "Marți",
@@ -13,7 +13,7 @@
     "Vineri",
     "Sâmbătă"
   ],
-  "luni": [
+  "months": [
     "Ianuarie",
     "Februarie",
     "Martie",
