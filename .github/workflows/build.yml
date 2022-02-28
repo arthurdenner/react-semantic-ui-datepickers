@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: 16
+      - name: Validate locales
+        run: yarn validate:locales
       - name: Setup cache
         uses: bahmutov/npm-install@HEAD
       - name: Install dependencies
