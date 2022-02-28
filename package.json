@@ -12,6 +12,7 @@
     "build": "dts build",
     "prebuild": "rimraf dist",
     "test": "dts test",
+    "validate:locales": "node scripts/validateLocales.js",
     "validate": "npm run lint && npm run test -- --coverage && npm run build",
     "now-build": "npm run storybook:build",
     "storybook": "start-storybook --ci -p 6006",
