@@ -549,4 +549,29 @@ describe('Inline datepicker', () => {
       expect(getIcon()).toHaveClass('calendar', 'icon');
     });
   });
+
+  describe('with wrapperProps', () => {
+    it('should pass props to the wrapper component', async () => {
+      const { datePickerInput } = setup({
+        wrapperProps: { 'data-test': '1234' },
+      });
+
+      expect(
+        (datePickerInput.parentNode?.parentNode?.parentNode as HTMLDivElement)
+          .dataset.test
+      ).toBe('1234');
+    });
+  });
+
+  describe('with inputProps', () => {
+    it('should pass props to the input component', async () => {
+      const { datePickerInput } = setup({
+        inputProps: { 'data-test': '1234' },
+      });
+
+      expect((datePickerInput.parentNode as HTMLDivElement).dataset.test).toBe(
+        '1234'
+      );
+    });
+  });
 });

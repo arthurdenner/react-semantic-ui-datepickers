@@ -104,6 +104,8 @@ class SemanticDatepicker extends React.Component<
     type: 'basic',
     value: null,
     inverted: false,
+    inputProps: {},
+    wrapperProps: {},
   };
 
   el = React.createRef<HTMLDivElement>();
@@ -402,6 +404,8 @@ class SemanticDatepicker extends React.Component<
       inverted,
       readOnly,
       datePickerOnly,
+      wrapperProps,
+      inputProps,
     } = this.props;
     const datepickerComponent = (
       <this.Component
@@ -428,7 +432,13 @@ class SemanticDatepicker extends React.Component<
     return inline ? (
       datepickerComponent
     ) : (
-      <div className="field" style={style} ref={this.el}>
+      <div
+        className="field"
+        style={style}
+        ref={this.el}
+        data-testid="datepicker-wrapper"
+        {...wrapperProps}
+      >
         <Input
           {...this.inputProps}
           isClearIconVisible={Boolean(clearable && selectedDateFormatted)}
@@ -440,6 +450,7 @@ class SemanticDatepicker extends React.Component<
           readOnly={readOnly || datePickerOnly}
           ref={this.inputRef}
           value={typedValue || selectedDateFormatted}
+          {...inputProps}
         />
         {isVisible && datepickerComponent}
       </div>

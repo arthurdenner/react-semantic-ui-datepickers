@@ -1,6 +1,7 @@
 import format from 'date-fns/format';
 import { Props as DayzedProps, RenderProps } from 'dayzed';
-import { FormInputProps, SemanticICONS } from 'semantic-ui-react';
+import React from 'react';
+import { FormInputProps, InputProps, SemanticICONS } from 'semantic-ui-react';
 
 export type Object = { [key: string]: any };
 
@@ -93,6 +94,10 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     type: 'basic' | 'range';
     datePickerOnly: boolean;
     value: DayzedProps['selected'] | null;
+    wrapperProps: React.ComponentProps<'div'> & {
+      [key: string]: any;
+    };
+    inputProps: InputProps;
   };
 
 export type BaseDatePickerProps = DayzedProps & {
