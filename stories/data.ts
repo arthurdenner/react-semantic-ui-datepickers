@@ -19,6 +19,7 @@ const locale = <const>[
   'ja-JP',
   'ko-KR',
   'nb-NO',
+  'nl-NL',
   'nn-NO',
   'pl-PL',
   'pt-BR',
