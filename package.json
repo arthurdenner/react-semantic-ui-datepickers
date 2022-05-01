@@ -57,7 +57,7 @@
     "@tsconfig/recommended": "1.0.1",
     "@types/react": "17.0.43",
     "@types/react-dom": "17.0.14",
-    "autoprefixer": "10.4.2",
+    "autoprefixer": "10.4.5",
     "babel-loader": "8.2.3",
     "cssnano": "5.1.7",
     "dts-cli": "1.4.0",
