@@ -2,7 +2,7 @@ import React from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import localeEn from '../locales/en-US.json';
 import localePt from '../locales/pt-BR.json';
-import { getShortDate } from '../utils';
+import { getShortDate, keys } from '../utils';
 import { setup } from './_utils';
 
 const onBlur = jest.fn();
@@ -24,7 +24,7 @@ describe('Basic datepicker', () => {
       openDatePicker();
 
       expect(getByText('Today')).toBeDefined();
-      fireEvent.keyDown(getByText('Today'), { keyCode: 27 });
+      fireEvent.keyDown(getByText('Today'), { keyCode: keys.escape });
       expect(queryByText('Today')).toBeNull();
       expect(onBlur).not.toHaveBeenCalled();
     });
@@ -38,7 +38,7 @@ describe('Basic datepicker', () => {
 
     it('only return if Enter is pressed without any value', async () => {
       const { datePickerInput } = setup({ onBlur });
-      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+      fireEvent.keyDown(datePickerInput, { keyCode: keys.enter });
 
       expect(datePickerInput.value).toBe('');
       expect(onBlur).not.toHaveBeenCalled();
@@ -47,7 +47,7 @@ describe('Basic datepicker', () => {
     it('accepts valid input followed by Enter key', async () => {
       const { datePickerInput } = setup({ onBlur });
       fireEvent.input(datePickerInput, { target: { value: '2020-02-02' } });
-      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+      fireEvent.keyDown(datePickerInput, { keyCode: keys.enter });
 
       expect(datePickerInput.value).toBe('2020-02-02');
       expect(onBlur).not.toHaveBeenCalled();
@@ -56,7 +56,7 @@ describe('Basic datepicker', () => {
     it("doesn't accept invalid input followed by Enter key", async () => {
       const { datePickerInput } = setup({ onBlur });
       fireEvent.input(datePickerInput, { target: { value: '2020-02' } });
-      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+      fireEvent.keyDown(datePickerInput, { keyCode: keys.enter });
 
       expect(datePickerInput.value).toBe('');
       expect(onBlur).not.toHaveBeenCalled();
@@ -292,7 +292,7 @@ describe('Range datepicker', () => {
     it('accepts valid input followed by Enter key', async () => {
       const { datePickerInput } = setup({ onBlur, type: 'range' });
       fireEvent.input(datePickerInput, { target: { value: '2020-02-02' } });
-      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+      fireEvent.keyDown(datePickerInput, { keyCode: keys.enter });
 
       expect(datePickerInput.value).toBe('2020-02-02');
       expect(onBlur).not.toHaveBeenCalled();
@@ -301,7 +301,7 @@ describe('Range datepicker', () => {
     it("doesn't accept invalid input followed by Enter key", async () => {
       const { datePickerInput } = setup({ onBlur, type: 'range' });
       fireEvent.input(datePickerInput, { target: { value: '2020-02' } });
-      fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+      fireEvent.keyDown(datePickerInput, { keyCode: keys.enter });
 
       expect(datePickerInput.value).toBe('');
       expect(onBlur).not.toHaveBeenCalled();

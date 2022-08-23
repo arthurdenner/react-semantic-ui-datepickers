@@ -60,7 +60,6 @@ export const basicUsage = (
     initialValue: initialValueProps,
     finalValue,
   } = props;
-  console.log('props', props);
 
   const initialValue = controlValue
     ? type === 'basic'

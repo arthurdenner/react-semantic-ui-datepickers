@@ -2,7 +2,7 @@ import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import subDays from 'date-fns/subDays';
 import tk from 'timekeeper';
-import { getShortDate } from '../utils';
+import { getShortDate, keys } from '../utils';
 import { setup } from './_utils';
 
 it('onChange is fired when invalid date is typed', async () => {
@@ -19,7 +19,7 @@ it('onChange is fired when invalid date is typed', async () => {
 
   await userEvent.type(datePickerInput, '{backspace}');
   await userEvent.type(datePickerInput, '{backspace}');
-  fireEvent.keyDown(datePickerInput, { keyCode: 13 });
+  fireEvent.keyDown(datePickerInput, { keyCode: keys.enter });
 
   expect(datePickerInput.value).toBe('');
   expect(onBlur).not.toHaveBeenCalled();
