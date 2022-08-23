@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 type ContentProps = {
+  children: ReactNode;
   style?: object;
 };
 

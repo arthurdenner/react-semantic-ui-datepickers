@@ -187,6 +187,9 @@ describe('getShortDate', () => {
   });
 
   it('should return the date provided in the right format', () => {
-    expect(getShortDate(new Date(dateTestString))).toBe(dateTestString);
+    // https://stackoverflow.com/questions/7556591/is-the-javascript-date-object-always-one-day-off
+    const dateTest = new Date(dateTestString);
+    dateTest.setMinutes(dateTest.getMinutes() + dateTest.getTimezoneOffset());
+    expect(getShortDate(dateTest)).toBe(dateTestString);
   });
 });

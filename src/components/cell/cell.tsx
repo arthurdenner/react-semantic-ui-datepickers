@@ -3,6 +3,7 @@ import React from 'react';
 import './cell.css';
 
 type CalendarCellProps = {
+  children?: string | number;
   end?: boolean;
   hovered?: boolean;
   inRange?: boolean;
