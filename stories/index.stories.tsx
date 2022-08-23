@@ -1,5 +1,4 @@
 import React from 'react';
-import { boolean, date, number, select, text } from '@storybook/addon-knobs';
 import { Form, SemanticICONS, Table } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
@@ -8,50 +7,65 @@ import {
   Content,
   iconMap,
   isWeekday,
+  locale,
   localeMap,
   onChange,
+  pointing,
   pointingMap,
   typeMap,
+  types,
 } from './common';
 
-export default {
+const index = {
   title: 'Datepickers',
   parameters: {
     options: { panelPosition: 'right' },
   },
 };
+export default index;
 
-export const basicUsage = () => {
-  const type = select('Type', typeMap, typeMap.basic);
-  const inline = boolean('Inline (without input)', false);
-  const allowOnlyNumbers = boolean('Allow only numbers', false);
-  const clearOnSameDateClick = boolean('Clear on same date click', true);
-  const showToday = boolean('Show Today button', true);
-  const clearable = boolean('Clearable', true);
-  const icon = select('Icon (without value)', iconMap, iconMap.calendar);
-  const clearIcon = select('Clear icon (with value)', iconMap, iconMap.close);
-  const iconOnLeft = boolean('Icon on the left', false);
-  const datePickerOnly = boolean('Datepicker only', false);
-  const firstDayOfWeek = number('First day of week', 0, {
-    max: 6,
-    min: 0,
-  }) as SemanticDatepickerProps['firstDayOfWeek'];
-  const format = text('Format', 'YYYY-MM-DD');
-  const keepOpenOnClear = boolean('Keep open on clear', false);
-  const keepOpenOnSelect = boolean('Keep open on select', false);
-  const locale = select('Locale', localeMap, localeMap['en-US']);
-  const pointing = select('Pointing', pointingMap, pointingMap.left);
-  const readOnly = boolean('Read-only', false);
-  const showOutsideDays = boolean('Show outside days', false);
-  const minDate = new Date(date('Min date', new Date('2018-01-01')));
-  const maxDate = new Date(date('Max date', new Date('2030-01-01')));
-  const onlyWeekdays = boolean('Only weekdays (filterDate example)', false);
-  const controlValue = boolean('Control value', false);
-  const error = boolean('Error state', false);
+export const basicUsage = (
+  props: SemanticDatepickerProps & {
+    iconOnLeft: boolean;
+    onlyWeekdays: boolean;
+    controlValue: boolean;
+    initialValue: Date;
+    finalValue: Date;
+  }
+) => {
+  const {
+    type,
+    inline,
+    allowOnlyNumbers,
+    clearOnSameDateClick,
+    showToday,
+    clearable,
+    icon,
+    clearIcon,
+    iconOnLeft,
+    datePickerOnly,
+    firstDayOfWeek,
+    format,
+    keepOpenOnClear,
+    keepOpenOnSelect,
+    locale,
+    pointing,
+    readOnly,
+    showOutsideDays,
+    minDate,
+    maxDate,
+    onlyWeekdays,
+    controlValue,
+    error,
+    initialValue: initialValueProps,
+    finalValue,
+  } = props;
+  console.log('props', props);
+
   const initialValue = controlValue
     ? type === 'basic'
-      ? new Date(date('Initial value'))
-      : [new Date(date('Initial value')), new Date(date('Final value'))]
+      ? new Date(initialValueProps)
+      : [new Date(initialValueProps), new Date(finalValue)]
     : undefined;
   const filterDate = onlyWeekdays ? isWeekday : undefined;
   const key = type + format + readOnly;
@@ -89,11 +103,136 @@ export const basicUsage = () => {
   );
 };
 
-export const withCustomIcons = () => {
-  const icon = select('Icon (without value)', iconMap, iconMap.calendar);
-  const clearIcon = select('Clear icon (with value)', iconMap, iconMap.close);
-  const useCustomIcon = boolean('Custom icon', false);
-  const useCustomClearIcon = boolean('Custom clear icon', false);
+basicUsage.args = {
+  type: typeMap.basic,
+  inline: false,
+  allowOnlyNumbers: false,
+  clearOnSameDateClick: true,
+  showToday: true,
+  clearable: true,
+  icon: iconMap.calendar,
+  clearIcon: iconMap.close,
+  iconOnLeft: false,
+  datePickerOnly: false,
+  firstDayOfWeek: 0,
+  format: 'YYYY-MM-DD',
+  keepOpenOnClear: false,
+  keepOpenOnSelect: false,
+  locale: localeMap['en-US'],
+  pointing: pointingMap.left,
+  readOnly: false,
+  showOutsideDays: false,
+  minDate: new Date('2018-01-01'),
+  maxDate: new Date('2030-01-01'),
+  onlyWeekdays: false,
+  controlValue: false,
+  error: false,
+};
+
+basicUsage.argTypes = {
+  type: {
+    name: 'Type',
+    options: types,
+    mapping: typeMap,
+    control: 'select',
+  },
+  inline: { name: 'Inline (without input)', control: 'boolean' },
+  allowOnlyNumbers: { name: 'Allow only numbers', control: 'boolean' },
+  clearOnSameDateClick: {
+    name: 'Clear on same date click',
+    control: 'boolean',
+  },
+  showToday: { name: 'Show Today button', control: 'boolean' },
+  clearable: { name: 'Clearable', control: 'boolean' },
+  icon: {
+    name: 'Icon (without value)',
+    options: Object.keys(iconMap),
+    mapping: iconMap,
+    control: 'select',
+  },
+  clearIcon: {
+    name: 'Clear icon (with value)',
+    options: Object.keys(iconMap),
+    mapping: iconMap,
+    control: 'select',
+  },
+  iconOnLeft: { name: 'Icon on the left', control: 'boolean' },
+  datePickerOnly: { name: 'Datepicker only', control: 'boolean' },
+  firstDayOfWeek: {
+    name: 'First day of week',
+    control: { type: 'number', min: 0, max: 6 },
+  },
+  format: {
+    name: 'Format',
+    control: 'text',
+  },
+  keepOpenOnClear: {
+    name: 'Keep open on clear',
+    control: 'boolean',
+  },
+  keepOpenOnSelect: {
+    name: 'Keep open on select',
+    control: 'boolean',
+  },
+  locale: {
+    name: 'Locale',
+    options: locale,
+    mapping: localeMap,
+    control: 'select',
+  },
+  pointing: {
+    name: 'Pointing',
+    options: pointing,
+    mapping: pointingMap,
+    control: 'select',
+  },
+  readOnly: {
+    name: 'Read-only',
+    control: 'boolean',
+  },
+
+  showOutsideDays: {
+    name: 'Show outside days',
+    control: 'boolean',
+  },
+  minDate: {
+    name: 'Min date',
+    control: 'date',
+  },
+  maxDate: {
+    name: 'Max date',
+    control: 'date',
+  },
+  onlyWeekdays: {
+    name: 'Only weekdays (filterDate example)',
+    control: 'boolean',
+  },
+  controlValue: {
+    name: 'Control value',
+    control: 'boolean',
+  },
+  error: {
+    name: 'Error state',
+    control: 'boolean',
+  },
+  initialValue: {
+    name: 'Initial value',
+    control: 'date',
+  },
+  finalValue: {
+    name: 'Final value',
+    control: 'date',
+  },
+};
+
+export const withCustomIcons = (
+  props: Pick<SemanticDatepickerProps, 'icon' | 'clearIcon'> & {
+    useCustomIcon: boolean;
+    useCustomClearIcon: boolean;
+  }
+) => {
+  const { icon, clearIcon, useCustomIcon, useCustomClearIcon } = props;
+
   const CustomIcon = (props: any) => <button {...props}>Select</button>;
   const CustomClearIcon = (props: any) => <button {...props}>Reset</button>;
   const x = useCustomIcon ? ((<CustomIcon />) as unknown) : icon;
@@ -109,8 +248,40 @@ export const withCustomIcons = () => {
   );
 };
 
-export const usageWithForm = () => {
-  const error = boolean('Error state', false);
+withCustomIcons.args = {
+  icon: iconMap.calendar,
+  clearIcon: iconMap.close,
+  useCustomIcon: false,
+  useCustomClearIcon: false,
+};
+
+withCustomIcons.argTypes = {
+  icon: {
+    name: 'Icon (without value)',
+    options: Object.keys(iconMap),
+    mapping: iconMap,
+    control: 'select',
+  },
+  clearIcon: {
+    name: 'Clear icon (with value)',
+    options: Object.keys(iconMap),
+    mapping: iconMap,
+    control: 'select',
+  },
+  useCustomIcon: {
+    name: 'Custom icon',
+    control: 'boolean',
+  },
+  useCustomClearIcon: {
+    name: 'Custom clear icon',
+    control: 'boolean',
+  },
+};
+
+export const usageWithForm = (
+  props: Pick<SemanticDatepickerProps, 'error'>
+) => {
+  const { error } = props;
 
   return (
     <Content>
@@ -135,8 +306,19 @@ export const usageWithForm = () => {
   );
 };
 
-export const inverted = () => {
-  const type = select('Type', typeMap, typeMap.basic);
+usageWithForm.args = {
+  error: false,
+};
+
+usageWithForm.argTypes = {
+  error: {
+    name: 'Error state',
+    control: 'boolean',
+  },
+};
+
+export const inverted = (props: Pick<SemanticDatepickerProps, 'type'>) => {
+  const { type } = props;
 
   return (
     <Content style={{ padding: 20 }}>
@@ -145,4 +327,17 @@ export const inverted = () => {
       </Table>
     </Content>
   );
+};
+
+inverted.args = {
+  type: typeMap.basic,
+};
+
+inverted.argTypes = {
+  type: {
+    name: 'Type',
+    options: types,
+    mapping: typeMap,
+    control: 'select',
+  },
 };
