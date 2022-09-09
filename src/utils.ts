@@ -108,3 +108,36 @@ export function getShortDate(date?: Date) {
 
   return format(date, 'yyyy-MM-dd');
 }
+
+export function isValidLocale(locale: Object) {
+  const keys = [
+    'todayButton',
+    'nextMonth',
+    'previousMonth',
+    'nextYear',
+    'previousYear',
+  ];
+  for (const key of keys) {
+    if (typeof locale[key] !== 'string') {
+      return false;
+    }
+  }
+
+  if (
+    !locale?.weekdays ||
+    typeof locale.weekdays !== 'object' ||
+    locale.weekdays.length !== 7
+  ) {
+    return false;
+  }
+
+  if (
+    !locale?.months ||
+    typeof locale.months !== 'object' ||
+    locale.months.length !== 12
+  ) {
+    return false;
+  }
+
+  return true;
+}

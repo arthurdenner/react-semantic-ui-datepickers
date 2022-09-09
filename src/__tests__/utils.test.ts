@@ -1,7 +1,7 @@
 import parseISO from 'date-fns/parseISO';
 import startOfDay from 'date-fns/startOfDay';
 import ruLocale from 'date-fns/locale/ru';
-import enLocale from '../locales/en-US.json';
+import { enUS } from '../locales';
 import {
   formatDate,
   formatSelectedDate,
@@ -25,11 +25,11 @@ const june28 = parseISO('2018-06-28');
 
 describe('moveElementsByN', () => {
   it('should return the same array if `n` is zero', () => {
-    expect(moveElementsByN(0, enLocale.weekdays)).toEqual(enLocale.weekdays);
+    expect(moveElementsByN(0, enUS.weekdays)).toEqual(enUS.weekdays);
   });
 
   it('should return the correct array if `n` is different than zero', () => {
-    expect(moveElementsByN(3, enLocale.weekdays)).toEqual([
+    expect(moveElementsByN(3, enUS.weekdays)).toEqual([
       'Wednesday',
       'Thursday',
       'Friday',
@@ -39,7 +39,7 @@ describe('moveElementsByN', () => {
       'Tuesday',
     ]);
 
-    expect(moveElementsByN(5, enLocale.weekdays)).toEqual([
+    expect(moveElementsByN(5, enUS.weekdays)).toEqual([
       'Friday',
       'Saturday',
       'Sunday',

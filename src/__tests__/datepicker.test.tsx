@@ -1,7 +1,6 @@
 import React from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
-import localeEn from '../locales/en-US.json';
-import localePt from '../locales/pt-BR.json';
+import { enUS, ptBR } from '../locales';
 import { getShortDate, keys } from '../utils';
 import { setup } from './_utils';
 
@@ -137,11 +136,11 @@ describe('Basic datepicker', () => {
 
     const todayButton = getByTestId('datepicker-today-button');
 
-    expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(todayButton.textContent).toBe(enUS.todayButton);
 
-    rerender({ locale: 'pt-BR' });
+    rerender({ locale: ptBR });
 
-    expect(todayButton.textContent).toBe(localePt.todayButton);
+    expect(todayButton.textContent).toBe(ptBR.todayButton);
   });
 
   it('fallbacks the locale to `en-US` when it has invalid value', async () => {
@@ -151,12 +150,12 @@ describe('Basic datepicker', () => {
 
     const todayButton = getByTestId('datepicker-today-button');
 
-    expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(todayButton.textContent).toBe(enUS.todayButton);
 
     // @ts-ignore
     rerender({ locale: 'invalid' });
 
-    expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(todayButton.textContent).toBe(enUS.todayButton);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(
       expect.stringMatching(/not a valid locale/)
@@ -339,11 +338,11 @@ describe('Range datepicker', () => {
 
     const todayButton = getByTestId('datepicker-today-button');
 
-    expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(todayButton.textContent).toBe(enUS.todayButton);
 
-    rerender({ locale: 'pt-BR' });
+    rerender({ locale: ptBR });
 
-    expect(todayButton.textContent).toBe(localePt.todayButton);
+    expect(todayButton.textContent).toBe(ptBR.todayButton);
   });
 
   it('fallbacks the locale to `en-US` when it has invalid value', async () => {
@@ -353,12 +352,12 @@ describe('Range datepicker', () => {
 
     const todayButton = getByTestId('datepicker-today-button');
 
-    expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(todayButton.textContent).toBe(enUS.todayButton);
 
     // @ts-ignore
     rerender({ locale: 'invalid' });
 
-    expect(todayButton.textContent).toBe(localeEn.todayButton);
+    expect(todayButton.textContent).toBe(enUS.todayButton);
     expect(spy).toHaveBeenCalledTimes(1);
     expect(spy).toHaveBeenCalledWith(
       expect.stringMatching(/not a valid locale/)

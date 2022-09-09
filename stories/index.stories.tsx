@@ -2,13 +2,12 @@ import React from 'react';
 import { Form, SemanticICONS, Table } from 'semantic-ui-react';
 import 'semantic-ui-css/semantic.min.css';
 import SemanticDatepicker from '../src';
+import * as locales from '../src/locales';
 import { SemanticDatepickerProps } from '../src/types';
 import {
   Content,
   iconMap,
   isWeekday,
-  locale,
-  localeMap,
   onChange,
   pointing,
   pointingMap,
@@ -18,9 +17,7 @@ import {
 
 const index = {
   title: 'Datepickers',
-  parameters: {
-    options: { panelPosition: 'right' },
-  },
+  parameters: { options: { panelPosition: 'right' } },
 };
 export default index;
 
@@ -117,7 +114,7 @@ basicUsage.args = {
   format: 'YYYY-MM-DD',
   keepOpenOnClear: false,
   keepOpenOnSelect: false,
-  locale: localeMap['en-US'],
+  locale: locales.enUS,
   pointing: pointingMap.left,
   readOnly: false,
   showOutsideDays: false,
@@ -175,8 +172,8 @@ basicUsage.argTypes = {
   },
   locale: {
     name: 'Locale',
-    options: locale,
-    mapping: localeMap,
+    options: Object.keys(locales).sort(),
+    mapping: locales,
     control: 'select',
   },
   pointing: {

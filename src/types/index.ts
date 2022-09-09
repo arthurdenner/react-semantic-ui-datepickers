@@ -14,33 +14,6 @@ export type Locale = {
   months: string[];
 };
 
-export type LocaleOptions =
-  | 'bg-BG'
-  | 'ca-ES'
-  | 'cs-CZ'
-  | 'de-DE'
-  | 'el-GR'
-  | 'en-US'
-  | 'es-ES'
-  | 'et-EE'
-  | 'fi-FI'
-  | 'fr-FR'
-  | 'he-IL'
-  | 'it-IT'
-  | 'ja-JP'
-  | 'ko-KR'
-  | 'nb-NO'
-  | 'nl-NL'
-  | 'nn-NO'
-  | 'pl-PL'
-  | 'pt-BR'
-  | 'ro-RO'
-  | 'ru-RU'
-  | 'sk-SK'
-  | 'sv-SE'
-  | 'tr-TR'
-  | 'zh-CN';
-
 export type PickedDayzedProps = Pick<
   DayzedProps,
   'date' | 'maxDate' | 'minDate' | 'firstDayOfWeek' | 'showOutsideDays'
@@ -81,7 +54,7 @@ export type SemanticDatepickerProps = PickedDayzedProps &
     icon?: SemanticICONS | React.ReactElement;
     inline: boolean;
     inverted: boolean;
-    locale: LocaleOptions;
+    locale: Locale;
     onBlur: (event: React.SyntheticEvent) => void;
     onFocus: (event: React.SyntheticEvent) => void;
     onChange: (

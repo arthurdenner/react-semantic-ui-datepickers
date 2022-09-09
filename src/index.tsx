@@ -3,8 +3,14 @@ import formatStringByPattern from 'format-string-by-pattern';
 import React from 'react';
 import isEqual from 'react-fast-compare';
 import { Input as SUIInput } from 'semantic-ui-react';
+import Calendar from './components/calendar';
+import Input from './components/input';
+import { enUS } from './locales';
+import { BasicDatePicker, RangeDatePicker } from './pickers';
+import { Locale, SemanticDatepickerProps } from './types';
 import {
   formatSelectedDate,
+  isValidLocale,
   keys,
   moveElementsByN,
   omit,
@@ -13,11 +19,6 @@ import {
   parseRangeOnBlur,
   pick,
 } from './utils';
-import { BasicDatePicker, RangeDatePicker } from './pickers';
-import { Locale, SemanticDatepickerProps } from './types';
-import Calendar from './components/calendar';
-import Input from './components/input';
-import locales from './locales/index';
 
 const style: React.CSSProperties = {
   display: 'inline-block',
@@ -90,7 +91,7 @@ class SemanticDatepicker extends React.Component<
     keepOpenOnClear: false,
     keepOpenOnSelect: false,
     label: undefined,
-    locale: 'en-US',
+    locale: enUS,
     name: undefined,
     onBlur: () => {},
     onChange: () => {},
@@ -118,7 +119,11 @@ class SemanticDatepicker extends React.Component<
     }
 
     if (locale !== prevProps.locale) {
-      this.setState({ locale: this.locale });
+      if (isValidLocale(locale)) {
+        this.setState({ locale });
+      } else {
+        console.warn(`"${locale}" is not a valid locale`);
+      }
     }
   }
 
@@ -127,12 +132,12 @@ class SemanticDatepicker extends React.Component<
   }
 
   get initialState() {
-    const { format, value, formatOptions } = this.props;
+    const { format, value, formatOptions, locale } = this.props;
     const initialSelectedDate = this.isRangeInput ? [] : null;
 
     return {
       isVisible: false,
-      locale: this.locale,
+      locale: locale || enUS,
       selectedDate: value || initialSelectedDate,
       selectedDateFormatted: formatSelectedDate(value, format, formatOptions),
       typedValue: null,
@@ -163,18 +168,6 @@ class SemanticDatepicker extends React.Component<
     }
 
     return this.isRangeInput ? selectedDate[0] : selectedDate;
-  }
-
-  get locale() {
-    const { locale } = this.props;
-    let result = locales[locale];
-
-    if (!result) {
-      console.warn(`"${locale}" is not a valid locale`);
-      result = locales['en-US'];
-    }
-
-    return result;
   }
 
   get weekdays() {
