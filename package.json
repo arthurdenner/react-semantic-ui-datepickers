@@ -43,7 +43,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
-    "@storybook/addon-essentials": "6.4.22",
+    "@storybook/addon-essentials": "6.5.12",
     "@storybook/addon-info": "5.3.21",
     "@storybook/addon-knobs": "6.4.0",
     "@storybook/addon-links": "6.4.22",
