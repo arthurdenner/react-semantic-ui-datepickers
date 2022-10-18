@@ -6002,17 +6002,6 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
   integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
 
-cosmiconfig@7.0.1, cosmiconfig@^7.0.0:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-7.0.1.tgz#714d756522cace867867ccb4474c5d01bbae5d6d"
-  integrity sha512-a1YWNUV2HwGimB7dU2s1wUMurNKjpx60HxBB6xUM8Re+2s1g1IIfJvFR0/iCF+XHdE0GMTKTuLR32UQff4TEyQ==
-  dependencies:
-    "@types/parse-json" "^4.0.0"
-    import-fresh "^3.2.1"
-    parse-json "^5.0.0"
-    path-type "^4.0.0"
-    yaml "^1.10.0"
-
 cosmiconfig@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-4.0.0.tgz#760391549580bbd2df1e562bc177b13c290972dc"
@@ -6033,6 +6022,17 @@ cosmiconfig@^6.0.0:
     parse-json "^5.0.0"
     path-type "^4.0.0"
     yaml "^1.7.2"
+
+cosmiconfig@^7.0.0:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-7.0.1.tgz#714d756522cace867867ccb4474c5d01bbae5d6d"
+  integrity sha512-a1YWNUV2HwGimB7dU2s1wUMurNKjpx60HxBB6xUM8Re+2s1g1IIfJvFR0/iCF+XHdE0GMTKTuLR32UQff4TEyQ==
+  dependencies:
+    "@types/parse-json" "^4.0.0"
+    import-fresh "^3.2.1"
+    parse-json "^5.0.0"
+    path-type "^4.0.0"
+    yaml "^1.10.0"
 
 cp-file@^7.0.0:
   version "7.0.0"
@@ -9588,13 +9588,12 @@ jest-snapshot@^27.5.1:
     pretty-format "^27.5.1"
     semver "^7.3.2"
 
-jest-transform-css@4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/jest-transform-css/-/jest-transform-css-4.0.0.tgz#47147071e2341f2b185e6f5d1f1b11539795e1e0"
-  integrity sha512-WnxLoXGObw5/i/m1xXl2hvlRsrsWYkSkwzfyWEawg9lOswDK6jtwXRwroNM0eidq8Dtef5d6ML4T1ZRQCwNgPQ==
+jest-transform-css@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/jest-transform-css/-/jest-transform-css-5.0.0.tgz#b35786d4de1abfea2d8d5d13076b8c0f2fc486c8"
+  integrity sha512-ShTIKDQEOPL2UJMH1H8fvAkKCoHiw2tx8vYnlRnHorfUe3E/AErwf/68IUvn9pNM53MaS8SmWpIyDuS3ueD5FQ==
   dependencies:
     common-tags "1.8.2"
-    cosmiconfig "7.0.1"
     cross-spawn "7.0.3"
     postcss-load-config "2.0.0"
     postcss-modules "4.3.1"
