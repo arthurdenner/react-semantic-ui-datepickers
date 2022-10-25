@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, ButtonProps } from 'semantic-ui-react';
 
 const CustomButton = ({ icon, ...otherProps }: ButtonProps) => (

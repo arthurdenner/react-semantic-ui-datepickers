@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import React from 'react';
+import type { PropsWithChildren } from 'react';
 import './cell.css';
 
 type CalendarCellProps = {
@@ -16,7 +16,7 @@ type CalendarCellProps = {
   title?: string;
 };
 
-const CalendarCell: React.FC<CalendarCellProps> = ({
+const CalendarCell = ({
   children,
   end,
   hovered,
@@ -29,7 +29,7 @@ const CalendarCell: React.FC<CalendarCellProps> = ({
   start,
   today,
   ...otherProps
-}) => {
+}: PropsWithChildren<CalendarCellProps>) => {
   const className = cn('clndr-cell', {
     inverted,
     'clndr-cell-today': today,

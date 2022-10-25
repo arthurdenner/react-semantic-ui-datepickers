@@ -1,4 +1,5 @@
 import React from 'react';
+import type { ReactNode } from 'react';
 import { Form, Input, FormInputProps } from 'semantic-ui-react';
 import { SemanticDatepickerProps } from '../types';
 import CustomIcon from './icon';
@@ -29,7 +30,11 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
 
   return (
     <Form.Field error={error} required={required}>
-      {label && <label htmlFor={rest.id as string | undefined}>{label}</label>}
+      {label ? (
+        <label htmlFor={rest.id as string | undefined}>
+          {label as ReactNode}
+        </label>
+      ) : null}
       <Input
         {...rest}
         ref={ref}
