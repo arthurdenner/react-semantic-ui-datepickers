@@ -6,28 +6,3 @@ updates:
     interval: monthly
     time: "04:00"
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: typescript
-    versions:
-    - 4.2.2
-  - dependency-name: "@storybook/react"
-    versions:
-    - 6.1.20
-  - dependency-name: "@babel/runtime"
-    versions:
-    - 7.13.8
-  - dependency-name: "@storybook/addon-knobs"
-    versions:
-    - 6.1.20
-  - dependency-name: husky
-    versions:
-    - 5.1.2
-  - dependency-name: "@testing-library/user-event"
-    versions:
-    - 12.8.0
-  - dependency-name: "@storybook/addons"
-    versions:
-    - 6.1.20
-  - dependency-name: "@testing-library/react"
-    versions:
-    - 11.2.5

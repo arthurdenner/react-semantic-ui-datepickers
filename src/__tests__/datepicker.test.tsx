@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, waitFor } from '@testing-library/react';
 import localeEn from '../locales/en-US.json';
 import localePt from '../locales/pt-BR.json';

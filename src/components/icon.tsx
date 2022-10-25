@@ -16,7 +16,7 @@ const CustomIcon = ({
   onClear,
 }: CustomIconProps) => {
   if (isClearIconVisible && clearIcon && React.isValidElement(clearIcon)) {
-    return React.cloneElement(clearIcon, {
+    return React.cloneElement<any>(clearIcon, {
       'data-testid': 'datepicker-clear-icon',
       onClick: onClear,
     });
@@ -35,7 +35,7 @@ const CustomIcon = ({
   }
 
   if (icon && React.isValidElement(icon)) {
-    return React.cloneElement(icon, {
+    return React.cloneElement<any>(icon, {
       'data-testid': 'datepicker-icon',
     });
   }
