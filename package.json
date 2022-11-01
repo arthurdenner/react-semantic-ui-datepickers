@@ -58,7 +58,7 @@
     "@types/react-dom": "18.0.8",
     "autoprefixer": "10.4.13",
     "babel-loader": "9.0.1",
-    "cssnano": "5.1.13",
+    "cssnano": "5.1.14",
     "dts-cli": "1.6.0",
     "eslint-config-react-app": "7.0.1",
     "eslint-plugin-prettier": "4.2.1",
