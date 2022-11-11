@@ -48,7 +48,12 @@ const CalendarCell = ({
   }
 
   return (
-    <button className={className} disabled={!selectable} {...otherProps}>
+    <button
+      className={className}
+      disabled={!selectable}
+      type="button"
+      {...otherProps}
+    >
       {children}
     </button>
   );

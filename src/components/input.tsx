@@ -46,6 +46,7 @@ const CustomInput = React.forwardRef<Input, InputProps>((props, ref) => {
             icon={icon}
             isClearIconVisible={isClearIconVisible}
             onClear={onClear}
+            onClick={onFocus}
           />
         }
         input={inputData}

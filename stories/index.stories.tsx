@@ -94,8 +94,16 @@ export const withCustomIcons = () => {
   const clearIcon = select('Clear icon (with value)', iconMap, iconMap.close);
   const useCustomIcon = boolean('Custom icon', false);
   const useCustomClearIcon = boolean('Custom clear icon', false);
-  const CustomIcon = (props: any) => <button {...props}>Select</button>;
-  const CustomClearIcon = (props: any) => <button {...props}>Reset</button>;
+  const CustomIcon = (props: any) => (
+    <button type="button" {...props}>
+      Select
+    </button>
+  );
+  const CustomClearIcon = (props: any) => (
+    <button type="button" {...props}>
+      Reset
+    </button>
+  );
   const x = useCustomIcon ? ((<CustomIcon />) as unknown) : icon;
   const y = useCustomClearIcon ? ((<CustomClearIcon />) as unknown) : clearIcon;
 
