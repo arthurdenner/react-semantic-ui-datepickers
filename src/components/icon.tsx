@@ -7,6 +7,7 @@ type CustomIconProps = {
   icon: SemanticDatepickerProps['icon'];
   isClearIconVisible: boolean;
   onClear: () => void;
+  onClick: () => void;
 };
 
 const CustomIcon = ({
@@ -14,6 +15,7 @@ const CustomIcon = ({
   icon,
   isClearIconVisible,
   onClear,
+  onClick,
 }: CustomIconProps) => {
   if (isClearIconVisible && clearIcon && React.isValidElement(clearIcon)) {
     return React.cloneElement<any>(clearIcon, {
@@ -37,6 +39,7 @@ const CustomIcon = ({
   if (icon && React.isValidElement(icon)) {
     return React.cloneElement<any>(icon, {
       'data-testid': 'datepicker-icon',
+      onClick,
     });
   }
 
