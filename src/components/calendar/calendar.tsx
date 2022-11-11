@@ -102,6 +102,7 @@ const Calendar: React.FC<CalendarProps> = ({
                         icon="angle double left"
                         inverted={inverted}
                         title={previousYear}
+                        type="button"
                         {...getBackProps({
                           calendars,
                           'aria-label': previousYear,
@@ -114,6 +115,7 @@ const Calendar: React.FC<CalendarProps> = ({
                         inverted={inverted}
                         style={{ marginRight: 0 }}
                         title={previousMonth}
+                        type="button"
                         {...getBackProps({
                           calendars,
                           'aria-label': previousMonth,
@@ -135,6 +137,7 @@ const Calendar: React.FC<CalendarProps> = ({
                         icon="angle right"
                         inverted={inverted}
                         title={nextMonth}
+                        type="button"
                         {...getForwardProps({
                           calendars,
                           'aria-label': nextMonth,
@@ -146,6 +149,7 @@ const Calendar: React.FC<CalendarProps> = ({
                         inverted={inverted}
                         style={{ marginRight: 0 }}
                         title={nextYear}
+                        type="button"
                         {...getForwardProps({
                           calendars,
                           'aria-label': nextYear,
@@ -201,7 +205,7 @@ const Calendar: React.FC<CalendarProps> = ({
             </div>
           ))}
         </div>
-        {showToday && (
+        {showToday ? (
           <TodayButton
             inverted={inverted}
             {...getToday(minDate, maxDate)}
@@ -212,7 +216,7 @@ const Calendar: React.FC<CalendarProps> = ({
           >
             {todayButton}
           </TodayButton>
-        )}
+        ) : null}
       </Segment>
     </Ref>
   );

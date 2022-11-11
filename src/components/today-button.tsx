@@ -32,6 +32,7 @@ const TodayButton: React.FC<TodayButtonProps> = ({
     data-testid="datepicker-today-button"
     fluid
     style={style}
+    type="button"
     {...otherProps}
   >
     {children}
