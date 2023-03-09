@@ -2122,21 +2122,21 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
-"@storybook/addon-storysource@6.5.13":
-  version "6.5.13"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.5.13.tgz#e773bf528ef4ba5b809c308b77b0e1551dccdafb"
-  integrity sha512-Gcru/fBuLZKlswHiD3JNjIWshtv7g0XtNpLOFg1B0lPVgISvBQ92k7SGdRV5HpHVkkzTcQ1yFH78h1RJY80MIQ==
+"@storybook/addon-storysource@6.5.16":
+  version "6.5.16"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.5.16.tgz#b663622d2420d6ad3746ae477dd272ce00ed8525"
+  integrity sha512-cwYZ5ggucw3oLr1OiDCEbuUf9JRYhPOoZbDyiXKYG8KyD1QfsY85lRVHa/b1CFjGVOTaoC//CLe5B//9hwGWiw==
   dependencies:
-    "@storybook/addons" "6.5.13"
-    "@storybook/api" "6.5.13"
-    "@storybook/client-logger" "6.5.13"
-    "@storybook/components" "6.5.13"
-    "@storybook/router" "6.5.13"
-    "@storybook/source-loader" "6.5.13"
-    "@storybook/theming" "6.5.13"
+    "@storybook/addons" "6.5.16"
+    "@storybook/api" "6.5.16"
+    "@storybook/client-logger" "6.5.16"
+    "@storybook/components" "6.5.16"
+    "@storybook/router" "6.5.16"
+    "@storybook/source-loader" "6.5.16"
+    "@storybook/theming" "6.5.16"
     core-js "^3.8.2"
     estraverse "^5.2.0"
-    loader-utils "^2.0.0"
+    loader-utils "^2.0.4"
     prop-types "^15.7.2"
     react-syntax-highlighter "^15.4.5"
     regenerator-runtime "^0.13.7"
@@ -3016,22 +3016,6 @@
   dependencies:
     core-js "^3.6.5"
     find-up "^4.1.0"
-
-"@storybook/source-loader@6.5.13":
-  version "6.5.13"
-  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.5.13.tgz#40e6e42888b8c12b43a505ffa6c6f1f2cebb0b0d"
-  integrity sha512-tHuM8PfeB/0m+JigbaFp+Ld0euFH+fgOObH2W9rjEXy5vnwmaeex/JAdCprv4oL+LcDQEERqNULUUNIvbcTPAg==
-  dependencies:
-    "@storybook/addons" "6.5.13"
-    "@storybook/client-logger" "6.5.13"
-    "@storybook/csf" "0.0.2--canary.4566f4d.1"
-    core-js "^3.8.2"
-    estraverse "^5.2.0"
-    global "^4.4.0"
-    loader-utils "^2.0.0"
-    lodash "^4.17.21"
-    prettier ">=2.2.1 <=2.3.0"
-    regenerator-runtime "^0.13.7"
 
 "@storybook/source-loader@6.5.16":
   version "6.5.16"
@@ -9875,16 +9859,7 @@ loader-utils@^1.2.3:
     emojis-list "^3.0.0"
     json5 "^1.0.1"
 
-loader-utils@^2.0.0:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.2.tgz#d6e3b4fb81870721ae4e0868ab11dd638368c129"
-  integrity sha512-TM57VeHptv569d/GKh6TAYdzKblwDNiumOdkFnejjD0XwTH87K90w3O7AiJRqdQoXygvi1VQTJTLGhJl7WqA7A==
-  dependencies:
-    big.js "^5.2.2"
-    emojis-list "^3.0.0"
-    json5 "^2.1.2"
-
-loader-utils@^2.0.4:
+loader-utils@^2.0.0, loader-utils@^2.0.4:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.4.tgz#8b5cb38b5c34a9a018ee1fc0e6a066d1dfcc528c"
   integrity sha512-xXqpXoINfFhgua9xiqD8fPFHgkoq1mmmpE92WlDbm9rNRd/EbRb+Gqf908T2DMfuHjjJlksiK2RbHVOdD/MqSw==
