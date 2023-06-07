@@ -7,6 +7,7 @@ const locale = <const>[
   'bg-BG',
   'ca-ES',
   'cs-CZ',
+  'da-DK',
   'de-DE',
   'el-GR',
   'en-US',
