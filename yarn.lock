@@ -3383,10 +3383,10 @@
   resolved "https://registry.yarnpkg.com/@trysound/sax/-/sax-0.2.0.tgz#cccaab758af56761eb7bf37af6f03f326dd798ad"
   integrity sha512-L7z9BgrNEcYyUYtF+HaEfiS5ebkh9jXqbszz7pC0hRBPaatV0XjSD3+eHrpqFemQfgwiFF0QPIarnIihIDn7OA==
 
-"@tsconfig/create-react-app@1.0.3":
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/@tsconfig/create-react-app/-/create-react-app-1.0.3.tgz#2dd6ef3adb18a551b3e13aee5d18efe517069d4b"
-  integrity sha512-sAsKAmKzWJlLWpCTyaUHUhqkQEAGAIaNs90sVbZsBhqBTNTnLkcZUr7U5HLI9EUN8QppfkxfGjvaATSgZQhiGQ==
+"@tsconfig/create-react-app@2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@tsconfig/create-react-app/-/create-react-app-2.0.0.tgz#21f1a1bc26676645a203e975a94b4b6555f1b04c"
+  integrity sha512-FwBmf+PZjk+scQ05XRGvVL2XBWQEOBQ10B3ZVc4RaFkNj2Zukumdn0xLQ+LVO8NycjQfxuUw/ecYLEELs5R8oQ==
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.8"
