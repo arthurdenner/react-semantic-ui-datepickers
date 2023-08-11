@@ -33,7 +33,7 @@ const locale = <const>[
 
 function arrayToMap<T extends string>(
   arr: readonly T[]
-): { [key in typeof arr[number]]: typeof arr[number] } {
+): { [key in (typeof arr)[number]]: (typeof arr)[number] } {
   return arr.reduce(
     (acc, cur) => ({ ...acc, [cur]: cur }),
     {} as { [key in T]: T }
